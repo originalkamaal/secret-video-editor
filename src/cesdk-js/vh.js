@@ -1,4 +1,3 @@
-
 export var vh = "UBQ_Theme-module__transition--Ldgpe";
 export var Eh = "UBQ_LayoutEdge-module__block--0R8Ut";
 export var Lh = "UBQ_LayoutEdge-module__topLeft--y36dM";
@@ -324,5 +323,10 @@ export var Vae = "UBQ_CutoutSmoothing-module__popoverContent--bzG-7";
 export var sle = "UBQ_TextAlignmentSelect-module__option--YlC8o";
 export var ile = "UBQ_TextAlignmentSelect-module__cornerChevronOverlay--mjLT0";
 export var Ale = "UBQ_NavigationBarCallToActionButton-module__listing--3r-xc";
-export var Zle = "UBQ_NavigationBarUndoControls-module__block--mNDbM";export var dY = "UBQ_PlaceholderSettings-module__placeholderPopoverButton--OBw2i";
+export var Zle = "UBQ_NavigationBarUndoControls-module__block--mNDbM";
+export var dY =
+  "UBQ_PlaceholderSettings-module__placeholderPopoverButton--OBw2i";
+export var classNamePlainToggleButton =
+  "UBQ_PlainToggleButton-module__block--OZ9GQ";export var yh = "UBQ_Theme-module__block--sJF92";
+export var C7 = "UBQ_BackgroundTrackAddButton-module__addClipStickySentinel--Wcwxd";
 

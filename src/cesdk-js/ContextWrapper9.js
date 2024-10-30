@@ -1,5 +1,5 @@
 import { ClickOutsideEvent } from "./ClickOutsideEvent";
-import { ClickOutsideContext } from "./working";
+import { ClickOutsideContext } from "./ClickOutsideContextProvider";
 import { tx } from "./reacts";
 import { ex } from "./reacts";
 

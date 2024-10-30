@@ -1,4 +1,5 @@
-import { f$, VI } from "./working";
+import { f$ } from "./working";
+import { VI } from "./Icons";
 import { Pq, wq, Mq, xq, Bq, Sq, Eq, Cq, yq } from "./Icons";
 import { Rq, Oq } from "./vh";
 import { Vq } from "./reacts";

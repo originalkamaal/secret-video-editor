@@ -1,4 +1,4 @@
-import { yI } from "./working";
+import { ShortcutScopeContext } from "./useShortcutScope";
 import { wI } from "./reacts";
 import { kI, CI } from "./reacts";
 
@@ -30,5 +30,5 @@ export function ContextWrapper14({ children: e }) {
     }),
     [o, s, r, i, a]
   );
-  return (0, CI.jsx)(yI.Provider, { value: l, children: e });
+  return (0, CI.jsx)(ShortcutScopeContext.Provider, { value: l, children: e });
 }

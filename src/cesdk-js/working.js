@@ -18,9 +18,6 @@ import {
   supportsWasm,
   supportsVideo,
 } from "@/cesdk-engine";
-
-import { classnames } from "../cesdk-common/classnames";
-import { reactJsxRuntime } from "../cesdk-common/react";
 import { emotionIsPropValid } from "../cesdk-common/emotion";
 import {
   framerAppearId,
@@ -33,26 +30,39 @@ import {
   setupRenderingProcessor,
 } from "./utils";
 import {
+  _m,
   allAnimationStates,
+  Am,
   animationEventProps,
+  Bm,
+  Cm,
+  customColorsMap,
   dimensionalProperties,
+  Em,
   interactionStates,
+  JC,
+  jm,
+  km,
+  Lm,
+  Om,
+  Pm,
+  Sm,
   SOME_CONSTANTS_KEYS,
   unknownBool1,
   unknownBool2,
+  vm,
+  wm,
 } from "./constants/constants";
 import { EventEmitter } from "./classes/EventEmitter";
 import { CreativeEditorSDK } from "./classes/CreativeEditorSDK/CreativeEditorSDK";
 import { CompCustomIcon } from "./CompCustomIcon";
 import { CompCustomButton } from "./CompCustomButton";
-import { BUTTON_STYLES } from "./constants/constants";
 import { ComponentController } from "./classes/ComponentController";
 import { translations } from "./constants/translations";
 import { CompCustomShapes } from "./CompCustomShapes";
 import { ColorRelatedSomething } from "./classes/ColorRelatedSomething";
 import { PercentageHelper } from "./PercentageHelper";
 import {
-  react12,
   react10,
   react3,
   react4,
@@ -60,7 +70,6 @@ import {
   react6,
   react7,
   react9,
-  react11,
   reactJsx1,
   react13,
   react14,
@@ -77,9 +86,6 @@ import {
   Fo,
   Ho,
   QL,
-  Kp,
-  Wp,
-  kh,
   _d,
   Ed,
   Ld,
@@ -91,9 +97,6 @@ import {
   Id,
   Ud,
   fp,
-  Dp,
-  Rp,
-  Vp,
   _h,
   Vh,
   Uh,
@@ -103,17 +106,12 @@ import {
   Kh,
   nm,
   Xh,
-  fm,
   gm,
   hm,
-  mm,
-  pm,
   ym,
   Ig,
   Ug,
   zg,
-  Xg,
-  wh,
   lx,
   context9,
   Aae,
@@ -130,7 +128,6 @@ import {
   Ule,
   Wae,
   Wle,
-  Yle,
   _ae,
   cle,
   gae,
@@ -153,11 +150,9 @@ import {
   Doe,
   Dre,
   Dse,
-  Eie,
   Ere,
   Ese,
   Foe,
-  Gse,
   Hoe,
   Hse,
   Iie,
@@ -186,7 +181,6 @@ import {
   Zre,
   _oe,
   _se,
-  aie,
   aoe,
   are,
   boe,
@@ -196,7 +190,6 @@ import {
   eae,
   fie,
   fre,
-  gre,
   hoe,
   joe,
   jse,
@@ -204,11 +197,8 @@ import {
   mie,
   mse,
   nre,
-  oie,
   qoe,
-  qse,
   rae,
-  sie,
   soe,
   tae,
   uae,
@@ -227,7 +217,6 @@ import {
   $Z,
   $b,
   A$,
-  A0,
   A2,
   A6,
   A9,
@@ -246,7 +235,6 @@ import {
   CQ,
   CW,
   Cne,
-  Cte,
   Cw,
   Cz,
   D4,
@@ -256,7 +244,6 @@ import {
   DS,
   DZ,
   Dv,
-  Dx,
   Dy,
   Dz,
   E4,
@@ -273,7 +260,6 @@ import {
   Fj,
   Fk,
   Fne,
-  Fx,
   G4,
   G6,
   GH,
@@ -299,7 +285,6 @@ import {
   JS,
   J_,
   Jee,
-  Jk,
   Jw,
   K$,
   K2,
@@ -338,13 +323,11 @@ import {
   Nb,
   Nee,
   Nv,
-  Nx,
   O0,
   O4,
   O5,
   OE,
   OI,
-  Ow,
   Oy,
   P4,
   P5,
@@ -383,7 +366,6 @@ import {
   S2,
   S4,
   S6,
-  SC,
   SQ,
   Sx,
   T5,
@@ -404,11 +386,9 @@ import {
   V4,
   V5,
   V6,
-  VC,
   VW,
   Vte,
   Vv,
-  Vx,
   Vy,
   W0,
   W1,
@@ -418,7 +398,6 @@ import {
   WX,
   Wb,
   Wj,
-  Wk,
   Wy,
   X0,
   X2,
@@ -430,7 +409,6 @@ import {
   Xj,
   Xne,
   Xte,
-  Xx,
   Xz,
   Y$,
   Y0,
@@ -449,15 +427,12 @@ import {
   ZX,
   Zb,
   Zj,
-  Zk,
   Zte,
   Zv,
-  Zx,
   _2,
   _8,
   _9,
   _I,
-  _J,
   _K,
   _S,
   _W,
@@ -474,7 +449,6 @@ import {
   b7,
   b8,
   bI,
-  bS,
   bX,
   bk,
   bte,
@@ -486,7 +460,6 @@ import {
   cN,
   cW,
   cZ,
-  cee,
   cne,
   d1,
   d3,
@@ -501,7 +474,6 @@ import {
   dy,
   e1,
   e2,
-  eC,
   eE,
   eK,
   eW,
@@ -543,12 +515,10 @@ import {
   iH,
   iJ,
   iQ,
-  ib,
   ik,
   iv,
   j7,
   j9,
-  jC,
   jJ,
   jZ,
   jee,
@@ -565,7 +535,6 @@ import {
   kre,
   l7,
   l9,
-  lC,
   lN,
   lW,
   lY,
@@ -613,7 +582,6 @@ import {
   rK,
   rL,
   rS,
-  rb,
   rj,
   rk,
   s8,
@@ -623,7 +591,6 @@ import {
   sS,
   sW,
   sZ,
-  sb,
   sv,
   sw,
   t0,
@@ -651,7 +618,6 @@ import {
   vj,
   vte,
   vw,
-  vx,
   w4,
   w5,
   w6,
@@ -682,85 +648,34 @@ import {
   zQ,
   zZ,
   zee,
-  zne,
   zw,
   zz,
   $7,
   A3,
   Ate,
   B8,
-  D0,
-  Eee,
-  Ete,
   F9,
-  G8,
-  Gne,
   H3,
   H9,
-  Hne,
-  I0,
-  I8,
   L8,
   M8,
-  N8,
   Qee,
-  R0,
-  Ste,
-  T0,
   V8,
-  W8,
   Wee,
-  Wne,
   Yne,
-  ane,
   c0,
-  c8,
-  d8,
-  dte,
   f5,
-  f9,
-  fte,
-  g5,
   ise,
-  l1,
   n4,
   o1,
   o2,
-  one,
   p3,
-  q8,
-  qne,
-  rse,
   s1,
-  t8,
   tse,
   ute,
   w9,
-  z8,
   zJ,
   C1,
-  $q,
-  $v,
-  Fw,
-  Hw,
-  Kq,
-  Qq,
-  RI,
-  Uq,
-  Vw,
-  Xq,
-  Zq,
-  bQ,
-  eQ,
-  hv,
-  kC,
-  lQ,
-  mk,
-  pQ,
-  rQ,
-  uQ,
-  vC,
-  vQ,
   jx,
   BJ,
   DW,
@@ -837,6 +752,7 @@ import {
   wj,
   xv,
   yy,
+  Xx,
 } from "./reacts";
 import { UIComponents } from "./UIComponents";
 import {
@@ -879,8 +795,476 @@ import { ContextWrapper5 } from "./ContextWrapper5";
 import { ContextWrapper4 } from "./ContextWrapper4";
 import { DockBuilder } from "./DockBuilder";
 import { isValidElementType } from "./isValidElementType";
-import { $5, a3, a6, Are, aY, AZ, bE, Bq, BY, bZ, c3, c6, CY, d6, DK, DY, e$, e7, Eq, EY, f6, FG, fle, Fle, FX, G9, Gae, gW, gX, GY, hG, HG, Hle, HZ, i$, i7, ite, IY, J9, Jle, kae, lZ, mle, Mq, Mx, MY, mY, n$, n7, Nae, nte, NY, o3, o6, Ore, OW, OX, pb, PY, Q5, q9, qae, qY, r7, RK, Rx, RY, rZ, s3, s6, sce, Sq, SY, t3, t6, tce, TX, ub, uK, Vre, VX, vZ, W9, wq, wY, WY, X3, xE, xle, xq, xY, Y9, Yb, yE, Yre, yY, zae, zY } from "./Icons";
-import { vh, Eh, Lh, Ph, Ah, Bh, Th, Mh, Oh, Rh, Nh, Yh, tm, gx, xx, Ix, Hx, zx, Gx, $x, qx, Qx, Yx, Kx, jb, Sb, _b, Eb, Bb, Tb, Mb, Ob, Rb, Db, Vb, Ub, zb, Xb, Jb, ey, ay, ly, uy, cy, ry, oy, ty, ny, sy, my, Fy, Uy, zy, $y, qy, lv, cv, uv, Tv, kw, Xw, sk, nk, kk, jk, Sk, Mk, _k, Ak, Lk, Pk, Bk, Tk, Ck, Ok, Ik, Hk, Nk, Uk, zk, $k, Gk, Xk, aC, fC, hC, _C, EC, LC, TC, OC, MC, RC, PC, AC, BC, GC, KC, WC, ZC, YC, aj, Pj, Tj, Dj, Aj, Bj, Mj, Rj, Oj, Vj, Kj, Yj, nS, kS, SS, CS, jS, HS, NS, $S, QS, GS, zS, US, qS, d_, p_, f_, k_, C_, j_, S_, tE, nE, sE, oE, iE, dE, pE, RE, VE, DE, EI, FH, MH, WH, XH, tN, KH, YH, eN, JH, c$, u$, d$, P$, D$, I$, H$, N$, U$, z$, F$, TI, uq, fq, sQ, MQ, OQ, RQ, DQ, FQ, IQ, VQ, HQ, yG, wG, kG, vG, UG, zG, $G, qG, QG, GG, fZ, uZ, dZ, pZ, BZ, TZ, RZ, VZ, WZ, KZ, uW, dW, pW, aW, hZ, EW, AW, zW, $W, JW, oK, iK, hK, gK, mK, xK, vK, yK, wK, FK, IK, JK, fY, pY, vX, wX, XX, eJ, JX, nJ, tJ, sJ, YX, C0, j0, k0, U0, z0, q0, $0, u1, j1, Y1, X1, J1, K1, k5, C5, S5, _5, E5, L5, G5, h4, m4, C4, j4, L4, B4, T4, M4, Q4, y3, v3, w3, k3, z3, v7, w7, k7, V7, I7, J7, e9, b9, P9, h6, m6, k6, C6, j6, f8, Uee, ate, rte, Ite, Nte, Hte, qte, Kte, Wte, mne, _ne, OH, gse, die, pie, nie, Wse, Kse, Xse, eie, Yse, Jse, tie, yie, kie, bie, Fie, Die, zie, Zie, noe, roe, uoe, foe, voe, Coe, $oe, Goe, bre, wre, Vae, ile, sle, Ale, Zle, dY } from "./vh";
+import {
+  $5,
+  $8,
+  $ne,
+  _te,
+  a3,
+  a6,
+  aQ,
+  Are,
+  ase,
+  aY,
+  AZ,
+  B0,
+  bE,
+  Bq,
+  BY,
+  bZ,
+  IconCheckmark,
+  c3,
+  c6,
+  CC,
+  cQ,
+  CY,
+  d6,
+  DK,
+  dQ,
+  Dw,
+  DY,
+  e$,
+  e7,
+  EJ,
+  Eq,
+  EY,
+  F0,
+  f6,
+  FG,
+  fle,
+  Fle,
+  fQ,
+  FX,
+  G9,
+  Gae,
+  gk,
+  Gq,
+  gW,
+  gX,
+  GY,
+  H0,
+  H8,
+  h9,
+  hG,
+  HG,
+  Hle,
+  hte,
+  HZ,
+  i$,
+  i7,
+  iie,
+  ite,
+  Iw,
+  IY,
+  J9,
+  Jq,
+  jte,
+  K8,
+  kae,
+  Kne,
+  Lee,
+  lie,
+  Lie,
+  lne,
+  Lte,
+  lZ,
+  M0,
+  mle,
+  Mq,
+  mv,
+  MY,
+  mY,
+  n$,
+  n7,
+  n8,
+  Nae,
+  Nne,
+  nte,
+  Nw,
+  NY,
+  o3,
+  o6,
+  Ore,
+  OW,
+  OX,
+  p8,
+  IconChevronDown,
+  pte,
+  PY,
+  Q5,
+  Q8,
+  q9,
+  qae,
+  Qne,
+  qq,
+  Qse,
+  qv,
+  qY,
+  r7,
+  rie,
+  RK,
+  rne,
+  Rw,
+  RY,
+  rZ,
+  s3,
+  s6,
+  Sq,
+  SY,
+  t3,
+  t6,
+  tQ,
+  TX,
+  u8,
+  U8,
+  IconChevronUp,
+  uee,
+  uK,
+  Une,
+  V0,
+  VI,
+  Vre,
+  VX,
+  vZ,
+  W9,
+  wC,
+  wQ,
+  Wq,
+  wq,
+  wY,
+  WY,
+  x5,
+  xE,
+  xle,
+  xq,
+  xre,
+  xY,
+  Y9,
+  Yb,
+  yE,
+  yQ,
+  Yq,
+  Yre,
+  yS,
+  yY,
+  Z8,
+  zae,
+  Zne,
+  zq,
+  Zse,
+  zY,
+} from "./Icons";
+import {
+  Eh,
+  Lh,
+  Ph,
+  Ah,
+  Bh,
+  Th,
+  Mh,
+  Oh,
+  Rh,
+  Nh,
+  Yh,
+  tm,
+  jb,
+  Sb,
+  _b,
+  Eb,
+  Bb,
+  Tb,
+  Mb,
+  Ob,
+  Rb,
+  Db,
+  Vb,
+  Ub,
+  zb,
+  Xb,
+  Jb,
+  ey,
+  ay,
+  ly,
+  uy,
+  cy,
+  ry,
+  oy,
+  ty,
+  ny,
+  sy,
+  my,
+  Fy,
+  Uy,
+  zy,
+  $y,
+  qy,
+  lv,
+  cv,
+  uv,
+  Tv,
+  kw,
+  Xw,
+  sk,
+  nk,
+  kk,
+  jk,
+  Sk,
+  Mk,
+  _k,
+  Ak,
+  Lk,
+  Pk,
+  Bk,
+  Tk,
+  Ck,
+  Ok,
+  Ik,
+  Hk,
+  Nk,
+  Uk,
+  zk,
+  $k,
+  fC,
+  hC,
+  GC,
+  KC,
+  WC,
+  ZC,
+  YC,
+  aj,
+  Pj,
+  Tj,
+  Dj,
+  Aj,
+  Bj,
+  Mj,
+  Rj,
+  Oj,
+  Vj,
+  Kj,
+  Yj,
+  nS,
+  kS,
+  SS,
+  CS,
+  jS,
+  HS,
+  NS,
+  $S,
+  QS,
+  GS,
+  zS,
+  US,
+  qS,
+  d_,
+  p_,
+  f_,
+  k_,
+  C_,
+  j_,
+  S_,
+  tE,
+  nE,
+  sE,
+  oE,
+  iE,
+  dE,
+  pE,
+  RE,
+  VE,
+  DE,
+  EI,
+  FH,
+  MH,
+  WH,
+  XH,
+  tN,
+  KH,
+  YH,
+  eN,
+  JH,
+  c$,
+  u$,
+  d$,
+  P$,
+  D$,
+  I$,
+  H$,
+  N$,
+  U$,
+  z$,
+  F$,
+  TI,
+  uq,
+  fq,
+  sQ,
+  MQ,
+  OQ,
+  RQ,
+  DQ,
+  FQ,
+  IQ,
+  VQ,
+  HQ,
+  yG,
+  wG,
+  kG,
+  vG,
+  UG,
+  zG,
+  $G,
+  qG,
+  QG,
+  GG,
+  fZ,
+  uZ,
+  dZ,
+  pZ,
+  BZ,
+  TZ,
+  RZ,
+  VZ,
+  WZ,
+  KZ,
+  uW,
+  dW,
+  pW,
+  aW,
+  hZ,
+  EW,
+  AW,
+  zW,
+  $W,
+  JW,
+  oK,
+  iK,
+  hK,
+  gK,
+  mK,
+  xK,
+  vK,
+  yK,
+  wK,
+  FK,
+  IK,
+  JK,
+  fY,
+  pY,
+  vX,
+  wX,
+  XX,
+  eJ,
+  JX,
+  nJ,
+  tJ,
+  sJ,
+  YX,
+  C0,
+  j0,
+  k0,
+  U0,
+  z0,
+  q0,
+  $0,
+  u1,
+  j1,
+  Y1,
+  X1,
+  J1,
+  K1,
+  k5,
+  C5,
+  S5,
+  _5,
+  E5,
+  L5,
+  G5,
+  h4,
+  m4,
+  C4,
+  j4,
+  L4,
+  B4,
+  T4,
+  M4,
+  Q4,
+  y3,
+  v3,
+  w3,
+  k3,
+  z3,
+  v7,
+  w7,
+  k7,
+  V7,
+  I7,
+  J7,
+  e9,
+  b9,
+  P9,
+  h6,
+  m6,
+  k6,
+  C6,
+  j6,
+  f8,
+  Uee,
+  ate,
+  rte,
+  Ite,
+  Nte,
+  Hte,
+  qte,
+  Kte,
+  Wte,
+  mne,
+  _ne,
+  OH,
+  gse,
+  die,
+  pie,
+  nie,
+  Wse,
+  Kse,
+  Xse,
+  eie,
+  Yse,
+  Jse,
+  tie,
+  yie,
+  kie,
+  bie,
+  Fie,
+  Die,
+  zie,
+  Zie,
+  noe,
+  roe,
+  uoe,
+  foe,
+  voe,
+  Coe,
+  $oe,
+  Goe,
+  bre,
+  wre,
+  Vae,
+  ile,
+  sle,
+  Ale,
+  Zle,
+  dY,
+  Kx,
+  C7,
+} from "./vh";
+import { ClickOutsideContextProvider } from "./ClickOutsideContextProvider";
+import { ContextPortalContextProvider } from "./ContextPortalContextProvider";
+import { AllComponents, cC, gC, Jx, Kk, tC, Ux, Wx } from "./AllComponents";
+import { lb } from "./lb";
+import { ContextWrapper8 } from "./ContextWrapper8";
+import { CanvasZooming } from "./CanvasZooming";
+import { TimelineZooming } from "./TimelineZooming";
+import { useShortcutScope } from "./useShortcutScope";
 
 export var isDocumentDefined = "undefined" != typeof document;
 export var dynamicUseEffect = isDocumentDefined
@@ -1021,33 +1405,33 @@ export function Ui(property, { layout, layoutId }) {
       (!!dimentionalPropsState[property] || "opacity" === property))
   );
 }
-var zi = (e) => Boolean(e && e.getVelocity);
+export var zi = (e) => Boolean(e && e.getVelocity);
 export var $i = {
   x: "translateX",
   y: "translateY",
   z: "translateZ",
   transformPerspective: "perspective",
 };
-var qi = dimensionalProperties.length;
+export var qi = dimensionalProperties.length;
 export var Qi = (e) => (t) => "string" == typeof t && t.startsWith(e);
-var Gi = Qi("--");
-var Zi = Qi("var(--");
-var Wi = (e, t) => (t && "number" == typeof e ? t.transform(e) : e);
-var Ki = (e, t, n) => Math.min(Math.max(n, e), t);
-var Yi = {
+export var Gi = Qi("--");
+export var Zi = Qi("var(--");
+export var Wi = (e, t) => (t && "number" == typeof e ? t.transform(e) : e);
+export var Ki = (e, t, n) => Math.min(Math.max(n, e), t);
+export var Yi = {
   test: (e) => "number" == typeof e,
   parse: parseFloat,
   transform: (e) => e,
 };
 export var Xi = { ...Yi, transform: (e) => Ki(0, 1, e) };
 export var Ji = { ...Yi, default: 1 };
-var eo = (e) => Math.round(1e5 * e) / 1e5;
-var to = /(-)?([\d]*\.?[\d])+/g;
-var no =
+export var eo = (e) => Math.round(1e5 * e) / 1e5;
+export var to = /(-)?([\d]*\.?[\d])+/g;
+export var no =
   /(#[0-9a-f]{3,8}|(rgb|hsl)a?\((-?[\d\.]+%?[,\s]+){2}(-?[\d\.]+%?)\s*[\,\/]?\s*[\d\.]*%?\))/gi;
-var so =
+export var so =
   /^(#[0-9a-f]{3,8}|(rgb|hsl)a?\((-?[\d\.]+%?[,\s]+){2}(-?[\d\.]+%?)\s*[\,\/]?\s*[\d\.]*%?\))$/i;
-var suffixValidator = (suffix) => ({
+export var suffixValidator = (suffix) => ({
   test: (inputStr) =>
     isString(inputStr) &&
     inputStr.endsWith(suffix) &&
@@ -1175,7 +1559,12 @@ export function mo(e, t, n, s) {
     i.transformOrigin = `${e} ${t} ${n}`;
   }
 }
-var go = () => ({ style: {}, transform: {}, transformOrigin: {}, vars: {} });
+export var go = () => ({
+  style: {},
+  transform: {},
+  transformOrigin: {},
+  vars: {},
+});
 export function xo(e, t, n) {
   for (const s in t) zi(t[s]) || Ui(s, n) || (e[s] = t[s]);
 }
@@ -1226,7 +1615,7 @@ export function wo(e) {
     SOME_CONSTANTS_KEYS.has(e)
   );
 }
-var ko;
+export var ko;
 export var Co = (e) => !wo(e);
 try {
   (ko = emotionIsPropValid().default) &&
@@ -1235,7 +1624,7 @@ try {
 export function So(e, t, n) {
   return "string" == typeof e ? e : pixelUnit.transform(t + n * e);
 }
-var _o = { offset: "stroke-dashoffset", array: "stroke-dasharray" };
+export var _o = { offset: "stroke-dashoffset", array: "stroke-dasharray" };
 export var Eo = { offset: "strokeDashoffset", array: "strokeDasharray" };
 export function Lo(
   e,
@@ -1277,7 +1666,7 @@ export function Lo(
         e[o.array] = `${r} ${a}`;
       })(f, r, a, l, false);
 }
-var Po = () => ({ ...go(), attrs: {} });
+export var Po = () => ({ ...go(), attrs: {} });
 export var Ao = (e) => "string" == typeof e && "svg" === e.toLowerCase();
 export function Bo(e, t, n, s) {
   const i = (0, jo.useMemo)(() => {
@@ -1323,7 +1712,7 @@ export function Mo(e, { style: t, vars: n }, s, i) {
   Object.assign(e.style, t, i && i.getProjectionStyles(s));
   for (const t in n) e.style.setProperty(t, n[t]);
 }
-var Oo = new Set([
+export var Oo = new Set([
   "baseFrequency",
   "diffuseConstant",
   "kernelMatrix",
@@ -1384,14 +1773,14 @@ export function No(e) {
   const t = (0, Ho.useRef)(null);
   return null === t.current && (t.current = e()), t.current;
 }
-var Uo = (e) => Array.isArray(e);
+export var Uo = (e) => Array.isArray(e);
 export var zo = (e) => Boolean(e && "object" == typeof e && e.mix && e.toValue);
 export var $o = (e) => (Uo(e) ? e[e.length - 1] || 0 : e);
 export function qo(e) {
   const t = zi(e) ? e.get() : e;
   return zo(t) ? t.toValue() : t;
 }
-var Qo = (e) => (t, n) => {
+export var Qo = (e) => (t, n) => {
   const s = (0, Fo.useContext)(context1),
     i = (0, Fo.useContext)(context4),
     o = () =>
@@ -1438,7 +1827,7 @@ export function Go(e, t, n, s) {
   }
   return i;
 }
-var Zo = (e) => e,
+export var Zo = (e) => e,
   {
     schedule: Wo,
     cancel: Ko,
@@ -1493,18 +1882,18 @@ export function addEventListenerWithCleanup(
     () => element.removeEventListener(eventType, listener)
   );
 }
-var nr = (e) =>
+export var nr = (e) =>
   "mouse" === e.pointerType
     ? "number" != typeof e.button || e.button <= 0
     : false !== e.isPrimary;
 export function sr(e, t = "page") {
   return { point: { x: e[t + "X"], y: e[t + "Y"] } };
 }
-var ir = (e) => (t) => nr(t) && e(t, sr(t));
+export var ir = (e) => (t) => nr(t) && e(t, sr(t));
 export function or(e, t, n, s) {
   return addEventListenerWithCleanup(e, t, ir(n), s);
 }
-var rr = (e, t) => (n) => t(e(n));
+export var rr = (e, t) => (n) => t(e(n));
 export var ar = (...e) => e.reduce(rr);
 export function lr(e) {
   let t = null;
@@ -1515,7 +1904,7 @@ export function lr(e) {
     return null === t && ((t = e), n);
   };
 }
-var cr = lr("dragHorizontal");
+export var cr = lr("dragHorizontal");
 export var ur = lr("dragVertical");
 export function dr(e) {
   let t = false;
@@ -1554,13 +1943,13 @@ export function hr(e, t) {
     { passive: !e.getProps()[s] }
   );
 }
-var mr = (e, t) => !!t && (e === t || mr(e, t.parentElement));
+export var mr = (e, t) => !!t && (e === t || mr(e, t.parentElement));
 export function gr(e, t) {
   if (!t) return;
   const n = new PointerEvent("pointer" + e);
   t(n, sr(n));
 }
-var xr = new WeakMap();
+export var xr = new WeakMap();
 export var br = new WeakMap();
 export var yr = (e) => {
   const t = xr.get(e.target);
@@ -1587,7 +1976,7 @@ export function wr(e, t, n) {
     }
   );
 }
-var kr = { some: 0, all: 1 };
+export var kr = { some: 0, all: 1 };
 export var Cr = {
   inView: {
     Feature: class extends FrameRenderer {
@@ -1813,7 +2202,7 @@ export function Sr(e, t, n) {
     })(e)
   );
 }
-var _r = Zo;
+export var _r = Zo;
 export var Er = Zo;
 export var Lr = (e) => 1e3 * e;
 export var Pr = (e) => e / 1e3;
@@ -1827,7 +2216,7 @@ export function Tr(e) {
       (Array.isArray(e) && e.every(Tr))
   );
 }
-var Mr = ([e, t, n, s]) => `cubic-bezier(${e}, ${t}, ${n}, ${s})`;
+export var Mr = ([e, t, n, s]) => `cubic-bezier(${e}, ${t}, ${n}, ${s})`;
 export var Or = {
   linear: "linear",
   ease: "ease",
@@ -1842,7 +2231,7 @@ export var Or = {
 export function Rr(e) {
   if (e) return Br(e) ? Mr(e) : Array.isArray(e) ? e.map(Rr) : Or[e];
 }
-var Vr = (e, t, n) =>
+export var Vr = (e, t, n) =>
   (((1 - 3 * n + 3 * t) * e + (3 * n - 6 * t)) * e + 3 * t) * e;
 export var Dr = 1e-7;
 export var Fr = 12;
@@ -1860,7 +2249,7 @@ export function Ir(e, t, n, s) {
     })(t, 0, 1, e, n);
   return (e) => (0 === e || 1 === e ? e : Vr(i(e), t, s));
 }
-var Hr = Ir(0.42, 0, 1, 1);
+export var Hr = Ir(0.42, 0, 1, 1);
 export var Nr = Ir(0, 0, 0.58, 1);
 export var Ur = Ir(0.42, 0, 0.58, 1);
 export var zr = (e) => Array.isArray(e) && "number" != typeof e[0];
@@ -2003,7 +2392,7 @@ export function la(e, t, n) {
       : e
   );
 }
-var ca = (e, t, n) => {
+export var ca = (e, t, n) => {
   const s = e * e;
   return Math.sqrt(Math.max(0, n * (t * t - s) + s));
 };
@@ -2040,7 +2429,7 @@ export function da(e) {
     s
   );
 }
-var pa = (e, t) => {
+export var pa = (e, t) => {
   const n = da(e),
     s = da(t),
     i = { ...n };
@@ -2108,7 +2497,7 @@ export function ya(e) {
     return t;
   };
 }
-var va = (e) => ("number" == typeof e ? 0 : e);
+export var va = (e) => ("number" == typeof e ? 0 : e);
 export var wa = {
   test: function (e) {
     var t, n;
@@ -2140,7 +2529,7 @@ export function Ca(e, t) {
     ? ka(e, t)
     : _a(e, t);
 }
-var ja = (e, t) => {
+export var ja = (e, t) => {
   const n = [...e],
     s = n.length,
     i = e.map((e, n) => Ca(e, t[n]));
@@ -2259,12 +2648,12 @@ export function Ma({
 export function Oa(e, t) {
   return t ? e * (1e3 / t) : 0;
 }
-var Ra = 5;
+export var Ra = 5;
 export function Va(e, t, n) {
   const s = Math.max(t - Ra, 0);
   return Oa(n - e(s), t - s);
 }
-var Da = 0.001;
+export var Da = 0.001;
 export var Fa = 0.01;
 export var Ia = 10;
 export var Ha = 0.05;
@@ -2311,11 +2700,11 @@ export function Ua({
     return { stiffness: t, damping: 2 * r * Math.sqrt(s * t), duration: e };
   }
 }
-var za = 12;
+export var za = 12;
 export function $a(e, t) {
   return e * Math.sqrt(1 - t * t);
 }
-var qa;
+export var qa;
 export var Qa = ["duration", "bounce"];
 export var Ga = ["stiffness", "damping", "mass"];
 export function Za(e, t) {
@@ -2451,7 +2840,7 @@ export function Ka({
 export function Ya() {
   qa = undefined;
 }
-var Xa = {
+export var Xa = {
   now: () => (
     undefined === qa &&
       Xa.set(
@@ -2478,7 +2867,13 @@ export function tl(e) {
   for (; !n.done && t < el; ) (t += 50), (n = e.next(t));
   return t >= el ? 1 / 0 : t;
 }
-var nl = { decay: Ka, inertia: Ka, tween: Ma, keyframes: Ma, spring: Wa };
+export var nl = {
+  decay: Ka,
+  inertia: Ka,
+  tween: Ma,
+  keyframes: Ma,
+  spring: Wa,
+};
 export function sl({
   autoplay: e = true,
   delay: t = 0,
@@ -2622,7 +3017,9 @@ export function il(e) {
   let t;
   return () => (undefined === t && (t = e()), t);
 }
-var ol = il(() => Object.hasOwnProperty.call(Element.prototype, "animate"));
+export var ol = il(() =>
+  Object.hasOwnProperty.call(Element.prototype, "animate")
+);
 export var rl = new Set([
   "opacity",
   "clipPath",
@@ -2747,7 +3144,7 @@ export function al(e, t, { onUpdate: n, onComplete: s, ...i }) {
     cancel: g,
   };
 }
-var ll = { type: "spring", stiffness: 500, damping: 25, restSpeed: 10 };
+export var ll = { type: "spring", stiffness: 500, damping: 25, restSpeed: 10 };
 export var cl = { type: "keyframes", duration: 0.8 };
 export var ul = {
   type: "keyframes",
@@ -2785,7 +3182,7 @@ export function hl(e) {
   let o = fl.has(t) ? 1 : 0;
   return s !== n && (o *= 100), t + "(" + o + i + ")";
 }
-var ml = /([a-z-]*)\(.*?\)/g;
+export var ml = /([a-z-]*)\(.*?\)/g;
 export var gl = {
   ...wa,
   getAnimatableNone: (e) => {
@@ -2816,7 +3213,7 @@ export function yl(e, t) {
     n.getAnimatableNone ? n.getAnimatableNone(t) : undefined
   );
 }
-var vl = (e) => /^0[^.\s]+$/.test(e);
+export var vl = (e) => /^0[^.\s]+$/.test(e);
 export function wl(e) {
   return "number" == typeof e
     ? 0 === e
@@ -2827,7 +3224,7 @@ export function wl(e) {
 export function kl(e, t) {
   return e[t] || e.default || e;
 }
-var Cl =
+export var Cl =
   (e, t, n, s = {}) =>
   (i) => {
     const o = kl(s, e) || {},
@@ -2932,7 +3329,7 @@ var Cl =
 export function jl(e) {
   return Boolean(zi(e) && e.add);
 }
-var Sl = (e) => /^\-?\d*\.?\d+$/.test(e);
+export var Sl = (e) => /^\-?\d*\.?\d+$/.test(e);
 export function _l(e, t) {
   -1 === e.indexOf(t) && e.push(t);
 }
@@ -2940,7 +3337,7 @@ export function El(e, t) {
   const n = e.indexOf(t);
   n > -1 && e.splice(n, 1);
 }
-var Ll = class {
+export var Ll = class {
   constructor() {
     this.subscriptions = [];
   }
@@ -3084,7 +3481,7 @@ export var Al = class {
 export function Bl(e, t) {
   return new Al(e, t);
 }
-var Tl = (e) => (t) => t.test(e);
+export var Tl = (e) => (t) => t.test(e);
 export var Ml = [
   Yi,
   pixelUnit,
@@ -3219,7 +3616,7 @@ export function Nl(e, t, n = {}) {
 export function Ul(e, t) {
   return e.sortNodePosition(t);
 }
-var zl = [...interactionStates].reverse();
+export var zl = [...interactionStates].reverse();
 export var $l = interactionStates.length;
 export function ql(e) {
   return (t) =>
@@ -3376,7 +3773,7 @@ export function Zl(e = false) {
     prevResolvedValues: {},
   };
 }
-var Wl = 0;
+export var Wl = 0;
 export var Kl = {
   animation: {
     Feature: class extends FrameRenderer {
@@ -3580,14 +3977,14 @@ export function fc(e, t) {
     s = t.max - e.max;
   return t.max - t.min < e.max - e.min && ([n, s] = [s, n]), { min: n, max: s };
 }
-var hc = 0.35;
+export var hc = 0.35;
 export function mc(e, t, n) {
   return { min: gc(e, t), max: gc(e, n) };
 }
 export function gc(e, t) {
   return "number" == typeof e ? e : e[t] || 0;
 }
-var xc = () => ({
+export var xc = () => ({
   x: { translate: 0, scale: 1, origin: 0, originPoint: 0 },
   y: { translate: 0, scale: 1, origin: 0, originPoint: 0 },
 });
@@ -3639,7 +4036,7 @@ export function Tc(e, t, [n, s, i]) {
     r = aa(e.min, e.max, o);
   Lc(e, t[n], t[s], r, t.scale);
 }
-var Mc = ["x", "scaleX", "originX"];
+export var Mc = ["x", "scaleX", "originX"];
 export var Oc = ["y", "scaleY", "originY"];
 export function Rc(e, t) {
   Tc(e.x, t, Mc), Tc(e.y, t, Oc);
@@ -3654,7 +4051,7 @@ export function Vc(e, t) {
     })(e.getBoundingClientRect(), t)
   );
 }
-var Dc = ({ current: e }) => (e ? e.ownerDocument.defaultView : null);
+export var Dc = ({ current: e }) => (e ? e.ownerDocument.defaultView : null);
 export var Fc = new WeakMap();
 export var Ic = class {
   constructor(e) {
@@ -4043,14 +4440,14 @@ export var Ic = class {
 export function Hc(e, t, n) {
   return !((true !== t && t !== e) || (null !== n && n !== e));
 }
-var Nc = (e) => (t, n) => {
+export var Nc = (e) => (t, n) => {
   e && Wo.update(() => e(t, n));
 };
 export var $c = { hasAnimatedSinceResize: true, hasEverUpdated: false };
 export function qc(e, t) {
   return t.max === t.min ? 0 : (e / (t.max - t.min)) * 100;
 }
-var Qc = {
+export var Qc = {
   correct: (e, t) => {
     if (!t.target) return e;
     if ("string" == typeof e) {
@@ -4175,7 +4572,7 @@ export function Wc(e) {
     safeToRemove: n,
   });
 }
-var Kc = {
+export var Kc = {
   borderRadius: {
     ...Qc,
     applyTo: [
@@ -4198,7 +4595,7 @@ export var eu = (e) => "number" == typeof e || pixelUnit.test(e);
 export function tu(e, t) {
   return undefined !== e[t] ? e[t] : e.borderRadius;
 }
-var nu = iu(0, 0.5, Gr);
+export var nu = iu(0, 0.5, Gr);
 export var su = iu(0.5, 0.95, Zo);
 export function iu(e, t, n) {
   return (s) => (s < e ? 0 : s > t ? 1 : n(Ea(e, t, s)));
@@ -4225,7 +4622,7 @@ export function lu(e, t, [n, s, i], o, r) {
       (e.max = au(e.max, t, n, a, i));
   })(e, t[n], t[s], t[i], t.scale, o, r);
 }
-var cu = ["x", "scaleX", "originX"];
+export var cu = ["x", "scaleX", "originX"];
 export var uu = ["y", "scaleY", "originY"];
 export function du(e, t, n, s) {
   lu(e.x, t, cu, n ? n.x : undefined, s ? s.x : undefined),
@@ -4248,7 +4645,7 @@ export function hu(e, t) {
 export function mu(e) {
   return oc(e.x) / oc(e.y);
 }
-var gu = class {
+export var gu = class {
   constructor() {
     this.members = [];
   }
@@ -4327,7 +4724,7 @@ export function xu(e, t, n) {
     a = e.y.scale * t.y;
   return (1 === r && 1 === a) || (s += `scale(${r}, ${a})`), s || "none";
 }
-var bu = (e, t) => e.depth - t.depth;
+export var bu = (e, t) => e.depth - t.depth;
 export var yu = class {
   constructor() {
     (this.children = []), (this.isDirty = false);
@@ -4351,7 +4748,7 @@ export function wu(e, t, n) {
   const s = zi(e) ? e : Bl(e);
   return s.start(Cl("", s, t, n)), s.animation;
 }
-var ku = ["", "X", "Y", "Z"];
+export var ku = ["", "X", "Y", "Z"];
 export var Cu = { visibility: "hidden" };
 export var ju = 0;
 export var Su = {
@@ -5405,7 +5802,7 @@ export function Nu(e, t, n, s) {
 export function Uu(e) {
   return e.animationValues && undefined !== e.animationValues.opacityExit;
 }
-var zu = { duration: 0.45, ease: [0.4, 0, 0.1, 1] };
+export var zu = { duration: 0.45, ease: [0.4, 0, 0.1, 1] };
 export var $u = (e) =>
   "undefined" != typeof navigator &&
   navigator.userAgent.toLowerCase().includes(e);
@@ -5418,7 +5815,7 @@ export function Gu(e, t, n) {
     "position" === e || ("preserve-aspect" === e && !rc(mu(t), mu(n), 0.2))
   );
 }
-var Zu = _u({
+export var Zu = _u({
   attachResizeListener: (e, t) => addEventListenerWithCleanup(e, "resize", t),
   measureScroll: () => ({
     x: document.documentElement.scrollLeft || document.body.scrollLeft,
@@ -5527,7 +5924,7 @@ export function ed(e, t, n = 1) {
   }
   return Zi(i) ? ed(i, t, n + 1) : i;
 }
-var td = new Set([
+export var td = new Set([
   "width",
   "height",
   "top",
@@ -5670,7 +6067,7 @@ export function ud(e, t, n, s) {
     ? cd(e, t, n, s)
     : { target: t, transitionEnd: s };
 }
-var dd = (e, t, n, s) => {
+export var dd = (e, t, n, s) => {
   const i = (function (e, { ...t }, n) {
     const s = e.current;
     if (!(s instanceof Element)) return { target: t, transitionEnd: n };
@@ -6243,7 +6640,7 @@ export function Vd({ children: e, isPresent: t }) {
     )
   );
 }
-var Dd = ({
+export var Dd = ({
   children: e,
   initial: t,
   isPresent: n,
@@ -6464,7 +6861,7 @@ export function qd(e, t, n) {
   } else e instanceof Element && (e = [e]);
   return Array.from(e || []);
 }
-var Qd = class extends Al {
+export var Qd = class extends Al {
   constructor() {
     super(...arguments), (this.members = []), (this.transforms = new Set());
   }
@@ -6606,7 +7003,7 @@ export function Yd(e, t, n, s) {
     ? i
     : e;
 }
-var Xd = (e, t, n) => {
+export var Xd = (e, t, n) => {
   const s = t - e;
   return ((((n - e) % s) + s) % s) + e;
 };
@@ -6632,7 +7029,7 @@ export function tp(e, t) {
       : 0
     : e.at - t.at;
 }
-var np = "easeInOut";
+export var np = "easeInOut";
 export function sp(e, t) {
   return !t.has(e) && t.set(e, {}), t.get(e);
 }
@@ -6645,7 +7042,7 @@ export function op(e) {
 export function rp(e, t) {
   return e[t] ? { ...e, ...e[t] } : { ...e };
 }
-var ap = (e) => "number" == typeof e;
+export var ap = (e) => "number" == typeof e;
 export var lp = (e) => e.every(ap);
 export function cp(e, t, n, s) {
   const i = qd(e, s),
@@ -6762,7 +7159,7 @@ export function up(e, t, n) {
     new Zd(s)
   );
 }
-var dp;
+export var dp;
 export var pp = function (e, t, n) {
   let s;
   var i;
@@ -6816,38 +7213,6 @@ export function mp(e, { root: t, margin: n, amount: s, once: i = false } = {}) {
   );
 }
 export var componentContriller = () => new ComponentController();
-export var CompCustomButtonLink = ((0, Vp.forwardRef)(
-  (
-    {
-      children: e,
-      variant: t = "regular",
-      size: n = "normal",
-      "data-cy": s,
-      ...i
-    },
-    o
-  ) =>
-    (0, Dp.jsx)("a", {
-      ref: o,
-      ...i,
-      className: (0, Rp.default)(
-        BUTTON_STYLES.block,
-        BUTTON_STYLES.link,
-        BUTTON_STYLES[`ubq-variant_${t}`],
-        BUTTON_STYLES[`ubq-size_${n}`],
-        i.className
-      ),
-      "data-cy": s,
-      children: (0, Dp.jsx)("span", {
-        children: Vp.Children.map(e, (e) =>
-          "string" == typeof e ? (0, Dp.jsx)("span", { children: e }) : e
-        ),
-      }),
-    })
-).displayName = "uikit/ButtonLink");
-export var classNamePlainToggleButton =
-  "UBQ_PlainToggleButton-module__block--OZ9GQ";
-
 Object.defineProperty(CompPlainToggleButton, "displayName", {
   value: "uikit/PlainToggleButton",
 });
@@ -7996,81 +8361,8 @@ export function bh(e, t) {
     throw e;
   }
 }
-var yh = "UBQ_Theme-module__block--sJF92";
-
-export function ContextWrapper8({
-  children: e,
-  theme: t = "light",
-  scale: n = "normal",
-  className: s,
-  contextContainer: i,
-  renderTarget: o,
-  assetPath: r,
-  disableFontInsertion: a,
-}) {
-  (0, Kp.useLayoutEffect)(() => {
-    const e = `ubq-${t}`,
-      s = `ubq-${n}`;
-    let r;
-    const a = document.querySelector(`.${gh}`);
-    return (
-      o &&
-        (o.classList.remove("ubq-light"),
-        o.classList.remove("ubq-dark"),
-        o.classList.add(e),
-        o.classList.add("ubq-static"),
-        o.classList.remove("ubq-normal"),
-        o.classList.remove("ubq-large"),
-        o.classList.add(s),
-        a instanceof HTMLElement &&
-          ((a.dataset.ubqTheme = t), (a.dataset.ubqScale = n))),
-      i &&
-        (i.classList.add(vh),
-        (r = window.setTimeout(() => {
-          i.classList.remove(vh);
-        }, 300))),
-      () => {
-        clearTimeout(r);
-      }
-    );
-  }, [t, n, o, i]),
-    (0, Kp.useEffect)(
-      function () {
-        if (a) return () => {};
-        const e = `${r}fonts/`,
-          t = document.createElement("style");
-        t.innerHTML = `\n      @font-face {\n        font-family: 'Inter';\n        src: url('${e}Inter-Regular.woff2') format('woff2'),\n          url('${e}Inter-Regular.woff') format('woff');\n        font-weight: normal;\n      }\n\n      @font-face {\n        font-family: 'Inter';\n        src: url('${e}Inter-Medium.woff2') format('woff2'),\n          url('${e}Inter-Medium.woff') format('woff');\n        font-weight: 500;\n      }\n\n      @font-face {\n        font-family: 'Inter';\n        src: url('${e}Inter-Bold.woff2') format('woff2'),\n          url('${e}Inter-Bold.woff') format('woff');\n        font-weight: 600;\n      }\n    `;
-        const n = document.querySelector("head");
-        return (
-          n && n.appendChild(t),
-          function () {
-            t.remove();
-          }
-        );
-      },
-      [r, a]
-    );
-  const l = (0, Kp.useMemo)(
-    () => ({ theme: t, scale: n, container: i }),
-    [i, n, t]
-  );
-  return (0, wh.jsx)("div", {
-    className: (0, Wp.default)(yh, s),
-    children: (0, wh.jsx)(kh.Provider, { value: l, children: e }),
-  });
-}
-
-(ContextWrapper8 || (ContextWrapper8 = {})).Context = kh;
 export var jh;
 export var Sh = ContextWrapper8;
-
-
-
-
-
-
-
-
 
 export function Dh({ children: e, className: t, style: n }) {
   return (0, Vh.jsx)("div", {
@@ -8181,7 +8473,7 @@ export function lm(e) {
     },
   });
 }
-var cm = [];
+export var cm = [];
 (lm || (lm = {})).isActive = function () {
   return cm.some((e) => e.active && false === e.paused);
 };
@@ -8200,35 +8492,12 @@ export var bm =
   window.document.createElement
     ? gm.useLayoutEffect
     : gm.useEffect;
-export var vm = "top";
-export var wm = "bottom";
-export var km = "right";
-export var Cm = "left";
-export var jm = "auto";
-export var Sm = [vm, wm, km, Cm];
-export var _m = "start";
-export var Em = "end";
-export var Lm = "clippingParents";
-export var Pm = "viewport";
-export var Am = "popper";
-export var Bm = "reference";
 export var Tm = Sm.reduce(function (e, t) {
   return e.concat([t + "-" + _m, t + "-" + Em]);
 }, []);
 export var Mm = [].concat(Sm, [jm]).reduce(function (e, t) {
   return e.concat([t, t + "-" + _m, t + "-" + Em]);
 }, []);
-export var Om = [
-  "beforeRead",
-  "read",
-  "afterRead",
-  "beforeMain",
-  "main",
-  "afterMain",
-  "beforeWrite",
-  "write",
-  "afterWrite",
-];
 export function Rm(e) {
   return e ? (e.nodeName || "").toLowerCase() : null;
 }
@@ -8252,7 +8521,7 @@ export function Im(e) {
     (e instanceof Vm(e).ShadowRoot || e instanceof ShadowRoot)
   );
 }
-var Hm = {
+export var Hm = {
   name: "applyStyles",
   enabled: true,
   phase: "write",
@@ -8313,7 +8582,7 @@ var Hm = {
 export function Nm(e) {
   return e.split("-")[0];
 }
-var Um = Math.max;
+export var Um = Math.max;
 export var zm = Math.min;
 export var $m = Math.round;
 export function qm() {
@@ -8442,7 +8711,7 @@ export function og(e, t) {
     return (t[n] = e), t;
   }, {});
 }
-var rg = {
+export var rg = {
   name: "arrow",
   enabled: true,
   phase: "main",
@@ -8503,7 +8772,7 @@ var rg = {
 export function ag(e) {
   return e.split("-")[1];
 }
-var lg = { top: "auto", right: "auto", bottom: "auto", left: "auto" };
+export var lg = { top: "auto", right: "auto", bottom: "auto", left: "auto" };
 export function cg(e) {
   var t,
     n = e.popper,
@@ -8586,7 +8855,7 @@ export function cg(e) {
         )
   );
 }
-var ug = { passive: true };
+export var ug = { passive: true };
 export var dg = {
   name: "eventListeners",
   enabled: true,
@@ -8625,7 +8894,7 @@ export function fg(e) {
     return pg[e];
   });
 }
-var hg = { start: "end", end: "start" };
+export var hg = { start: "end", end: "start" };
 export function mg(e) {
   return e.replace(/start|end/g, function (e) {
     return hg[e];
@@ -8850,7 +9119,7 @@ export function Sg(e, t) {
   }
   return _;
 }
-var _g = {
+export var _g = {
   name: "flip",
   enabled: true,
   phase: "main",
@@ -9013,7 +9282,7 @@ export function Lg(e) {
     return e[t] >= 0;
   });
 }
-var Pg = {
+export var Pg = {
   name: "hide",
   enabled: true,
   phase: "main",
@@ -9253,7 +9522,7 @@ export function Og(e) {
     s
   );
 }
-var Rg = { placement: "bottom", modifiers: [], strategy: "absolute" };
+export var Rg = { placement: "bottom", modifiers: [], strategy: "absolute" };
 export function Vg() {
   for (var e = arguments.length, t = new Array(e), n = 0; n < e; n++)
     t[n] = arguments[n];
@@ -9409,7 +9678,7 @@ export function Dg(e) {
     );
   };
 }
-var Fg = Dg({
+export var Fg = Dg({
   defaultModifiers: [
     dg,
     Bg,
@@ -9606,56 +9875,7 @@ export function Qg(...e) {
       "function" == typeof n ? n(t) : null != n && (n.current = t);
   };
 }
-export var ClickOutsideContext = (0, react11.createContext)(
-  () => (
-    console.warn(
-      "Adding ClickOutside handler to dummy context value. Did you forget to install the ClickOutsideManager at the top of your app?"
-    ),
-    () => {}
-  )
-);
-ClickOutsideContext.displayName = "ClickOutsideContext";
-export function ClickOutsideContextProvider({
-  onClickOutside: e,
-  children: t,
-}) {
-  const n = (0, react12.useRef)([]),
-    s = (0, react12.useContext)(ClickOutsideContext),
-    i = (0, react12.useRef)(e);
-  i.current = e;
-  const o = (0, react12.useCallback)(
-    (e) => (
-      n.current.push(e),
-      () => {
-        const t = n.current.indexOf(e);
-        t >= 0 && n.current.splice(t, 1);
-      }
-    ),
-    []
-  );
-  return (
-    (0, react12.useEffect)(
-      () =>
-        s((e) => {
-          if (n.current.length > 0) {
-            let t = true;
-            if (
-              (n.current.forEach((n) => {
-                const s = e.clone();
-                n(s), s.propagationStopped || (t = false);
-              }),
-              t)
-            )
-              return void e.stopPropagation();
-          }
-          i.current?.(e);
-        }),
-      [s]
-    ),
-    (0, Xg.jsx)(ClickOutsideContext.Provider, { value: o, children: t })
-  );
-}
-var sx;
+export var sx;
 export var ax = () => {
   const e = (0, react13.useRef)(true);
   return (
@@ -9671,25 +9891,6 @@ export var ax = () => {
     e
   );
 };
-export function ContextPortalContextProvider({ children: e }) {
-  const [t, n] = (0, react14.useState)({}),
-    s = ax(),
-    i = (0, react14.useCallback)(
-      (e, t) => (
-        n((n) => ({ ...n, [e]: t })),
-        () => {
-          s.current &&
-            n((t) => {
-              const { ...n } = t;
-              return delete n[e], n;
-            });
-        }
-      ),
-      [s]
-    ),
-    o = (0, react14.useMemo)(() => ({ portals: t, addPortal: i }), [i, t]);
-  return (0, lx.jsx)(context9.Provider, { value: o, children: e });
-}
 export function px({ layer: e = "default", children: t }) {
   const { portals: n } = (0, react14.useContext)(context9),
     s = n[e];
@@ -9703,7 +9904,6 @@ export function hx({ children: e }) {
   (sx.Container = ContextWrapper5);
 export var mx = px;
 
-
 export var bx = 0;
 export var yx = () => `UBQ__popover-content-group-${(bx += 1)}`;
 
@@ -9713,189 +9913,7 @@ export var wx = (0, hm.createContext)({
   },
   isOpen: false,
 });
-export var kx = (0, hm.forwardRef)(function (
-  {
-    children: [e, t],
-    disableFocusTrap: n,
-    placement: s,
-    popperContainerClassname: i,
-    onClose: o,
-    onOpen: r,
-    defaultOpen: a = false,
-    closeOnWheel: l = false,
-    closeOnOutsideClick: c = true,
-    keyShortcutTrigger: u,
-    keyShortcutTriggerOptions: { preventDefault: d, ...p } = {},
-    doubleOffset: f = false,
-    className: h,
-    returnFocus: m,
-    boundary: g = {},
-  },
-  x
-) {
-  const [b] = (0, hm.useState)(yx),
-    [y, v] = (0, hm.useState)(a),
-    w = (0, hm.useRef)(null),
-    k = (0, hm.useCallback)(
-      (e) => {
-        let t = null;
-        (0, mm.flushSync)(() => {
-          v((n) => {
-            const s = "function" == typeof e ? e(n) : e;
-            return n && !s && (t = "closed"), !n && s && (t = "opened"), s;
-          });
-        }),
-          "closed" === t
-            ? o?.()
-            : "opened" === t && r?.({ forceUpdate: w.current });
-      },
-      [r, o]
-    ),
-    C = (0, hm.useCallback)(() => k(false), [k]);
-  mostlyHook1(u, () => (k((e) => !e), !d), p);
-  const [j, S] = (0, hm.useState)(null),
-    [_, E] = (0, hm.useState)(null),
-    L = (0, hm.useRef)(null),
-    P = (0, hm.useRef)(null),
-    A = !n && y;
-  mostlyHook1(["esc"], A ? C : null, { elementRef: P });
-  const {
-    styles: B,
-    attributes: T,
-    forceUpdate: M,
-  } = Ng(j, _, {
-    placement: s,
-    modifiers: (0, hm.useMemo)(
-      () => [
-        {
-          name: "preventOverflow",
-          options: { padding: g.padding ?? 8, boundary: g.element },
-        },
-        {
-          name: "offset",
-          options: {
-            offset: () => [
-              0,
-              parseInt(xh("--ubq-scale-base", { fallback: "4px" }), 10) *
-                (f ? 2 : 1),
-            ],
-          },
-        },
-        {
-          name: "flip",
-          options: {
-            fallbackPlacements: [
-              "bottom-end",
-              "bottom-start",
-              "top",
-              "top-end",
-              "top-start",
-              "left",
-              "left-end",
-              "left-start",
-              "right",
-              "right-end",
-              "right-start",
-            ],
-          },
-        },
-      ],
-      [g.element, g.padding, f]
-    ),
-  });
-  w.current = M;
-  (0, hm.useEffect)(() => {
-    const e = ({ target: e }) => {
-      e && _ && !_.contains(e) && y && k(false);
-    };
-    return (
-      l && document.addEventListener("wheel", e, { passive: true }),
-      () => {
-        document.removeEventListener("wheel", e);
-      }
-    );
-  }, [_, y]),
-    (0, hm.useEffect)(() => {
-      const e = (e) => {
-        e.stopPropagation();
-      };
-      return (
-        _?.addEventListener("wheel", e, { passive: true }),
-        () => {
-          _?.removeEventListener("wheel", e);
-        }
-      );
-    }, [_]);
-  const O = (0, hm.useMemo)(() => ({ isOpen: y, closePopover: C }), [C, y]);
-  (0, hm.useEffect)(() => {
-    if (j) {
-      const e = () => k((e) => !e);
-      return (
-        j.addEventListener("click", e),
-        () => {
-          j.removeEventListener("click", e);
-        }
-      );
-    }
-    return fm.default;
-  }, [j, k]);
-  const R = {
-      "aria-controls": b,
-      "aria-haspopup": true,
-      "aria-expanded": y,
-      ref: (0, hm.useMemo)(() => Qg(L, S, x), [L, S, x]),
-    },
-    [V, D] = (0, hm.useState)(null),
-    F = (0, hm.useMemo)(() => (V ? [V] : []), [V]);
-  return (0, vx.jsxs)(wx.Provider, {
-    value: O,
-    children: [
-      e(R, O),
-      (0, vx.jsx)(um, {
-        containerElements: F,
-        active: A && F.length > 0,
-        focusTrapOptions: {
-          preventScroll: true,
-          escapeDeactivates: false,
-          clickOutsideDeactivates: true,
-          setReturnFocus: m,
-        },
-      }),
-      (0, vx.jsx)(Nd, {
-        children:
-          y &&
-          (0, vx.jsx)(hx, {
-            children: (0, vx.jsx)(ClickOutsideContextProvider, {
-              onClickOutside: (e) => {
-                y && c && (e.isOutside(_, j) ? k(false) : e.stopPropagation());
-              },
-              children: (0, vx.jsx)(Sd.div, {
-                ref: (e) => {
-                  (P.current = e), E(e);
-                },
-                style: B.popper,
-                ...T.popper,
-                className: (0, pm.default)(gx, i, h),
-                transition: { ease: "easeInOut", duration: 0.2 },
-                initial: { opacity: 0 },
-                animate: { opacity: 1 },
-                exit: { opacity: 0 },
-                children: (0, vx.jsx)("div", {
-                  id: b,
-                  ref: D,
-                  className: xx,
-                  role: "menu",
-                  "aria-hidden": !y,
-                  children: t(O),
-                }),
-              }),
-            }),
-          }),
-      }),
-    ],
-  });
-});
-export var Cx = kx;
+export var Cx = AllComponents;
 export var _x = {
   heading: "UBQ_Heading-module__heading--DTBrP",
   singleline: "UBQ_Heading-module__singleline--2WkDS",
@@ -9926,143 +9944,11 @@ export function Ex({
   );
 }
 
-
-
-
-export var Ux = function ({
-  className: e,
-  children: t,
-  labelFor: n,
-  isDisabled: s = false,
-  ...i
-}) {
-  return (0, Nx.jsx)("label", {
-    htmlFor: n,
-    ...i,
-    className: (0, Fx.default)(Ix, { [Hx]: s }, e),
-    children: t,
-  });
-};
-
-
-
-
-
-
-export var Wx = function ({
-  name: e,
-  label: t,
-  ariaLabel: n,
-  ariaControls: s,
-  onChange: i,
-  "data-cy": o,
-  checked: r,
-  isDisabled: a,
-  labelPosition: l = "left",
-  icon: c,
-  className: u,
-  indeterminate: d,
-  hideLabel: p = false,
-}) {
-  const f = (0, Dx.useRef)(null);
-  return (
-    (0, Dx.useEffect)(() => {
-      f.current && (f.current.indeterminate = d ?? false);
-    }, [d]),
-    (0, Zx.jsxs)("div", {
-      className: (0, Vx.default)(zx, u, { [Gx]: a, [$x]: "right" === l }),
-      "aria-label": n || t,
-      children: [
-        !p &&
-          (0, Zx.jsxs)(Ux, {
-            htmlFor: e,
-            "data-checked": d ? "mixed" : r,
-            children: [
-              c &&
-                ("string" == typeof c
-                  ? (0, Zx.jsx)(CompCustomIcon, { icon: c })
-                  : c),
-              t,
-            ],
-          }),
-        (0, Zx.jsxs)("div", {
-          className: (0, Vx.default)(qx),
-          children: [
-            (0, Zx.jsx)("input", {
-              type: "checkbox",
-              name: e,
-              id: e,
-              "data-cy": o || e,
-              "aria-controls": s,
-              "aria-label": p ? t : undefined,
-              checked: true === r,
-              onChange: () => {
-                i?.(!r);
-              },
-              tabIndex: 0,
-              disabled: a,
-              ref: f,
-            }),
-            (0, Zx.jsx)("div", {
-              className: (0, Vx.default)(Qx),
-              "data-checked": d ? "mixed" : r,
-              children: d ? (0, Zx.jsx)(Rx, {}) : (0, Zx.jsx)(Mx, {}),
-            }),
-          ],
-        }),
-      ],
-    })
-  );
-};
-
-
-
-export function Jx({ children: e }) {
-  return (0, Xx.jsx)("li", { className: Yx, children: e });
-}
-export function eb({ children: e }) {
-  return (0, Xx.jsx)("ul", { className: Kx, children: e });
-}
 (eb || (eb = {})).Item = Jx;
 export var tb = eb;
 export var nb = Wx;
 
 export var ob = { block: "UBQ_ColorField-module__block--Du2AZ" };
-
-export var ab = (0, ib.forwardRef)(function (
-  {
-    children: e,
-    color: t,
-    onClick: n,
-    name: s,
-    "aria-label": i,
-    className: o,
-    isDisabled: r = false,
-    "data-cy": a,
-  },
-  l
-) {
-  return (0, rb.jsx)("button", {
-    ref: l,
-    name: s,
-    type: "button",
-    className: (0, sb.default)(ob.block, o),
-    style: { background: t },
-    onClick: n,
-    "aria-label": i,
-    disabled: r,
-    "data-cy": a,
-    children: e,
-  });
-});
-export function lb({ children: e, color: t, className: n }) {
-  return (0, rb.jsx)("div", {
-    className: (0, sb.default)(ob.block, n),
-    style: { background: t },
-    children: e,
-  });
-}
-ab.displayName = "uikit/ColorFieldButton";
 
 export var mb = new RegExp(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/, "i");
 export var gb = new RegExp(/[A-Fa-f0-9]{1}/, "g");
@@ -10134,10 +10020,6 @@ export var Cb = (e) =>
     ? "rgba(0,0,0,0.9)"
     : "rgba(255,255,255,0.9)";
 
-
-
-
-
 export var Pb = function ({
   previewColor: e,
   hidePreviewLabel: t,
@@ -10173,14 +10055,6 @@ export var Pb = function ({
   });
 };
 
-
-
-
-
-
-
-
-
 export var Ib = (0, Ab.forwardRef)(function (
   {
     previewColor: e,
@@ -10195,7 +10069,10 @@ export var Ib = (0, Ab.forwardRef)(function (
   },
   c
 ) {
-  const u = o || (() => (r ? (0, Fb.jsx)(pb, {}) : (0, Fb.jsx)(ub, {})));
+  const u =
+    o ||
+    (() =>
+      r ? (0, Fb.jsx)(IconChevronDown, {}) : (0, Fb.jsx)(IconChevronUp, {}));
   return (0, Fb.jsx)(CompCustomButton, {
     ref: c,
     ...l,
@@ -10221,9 +10098,6 @@ export var Ib = (0, Ab.forwardRef)(function (
   });
 });
 
-
-
-
 export var qb = (0, Nb.forwardRef)(function (
   { children: e, className: t, revealLastOnHover: n },
   s
@@ -10238,20 +10112,8 @@ qb.displayName = "uikit/ElementStack";
 export var Qb = qb;
 export var Gb = Qb;
 
-
-
-
-
-
-
 export var iy =
   "UBQ_ColorPreviewField-module__mappedPreviewColorsContainer--qugKf";
-
-
-
-
-
-
 
 export var py = (0, Wb.forwardRef)(function (
   {
@@ -10306,8 +10168,6 @@ export var py = (0, Wb.forwardRef)(function (
   });
 });
 
-
-
 export var xy = (0, hy.forwardRef)(function (
   {
     previewColor: e,
@@ -10341,7 +10201,6 @@ export var xy = (0, hy.forwardRef)(function (
     ],
   });
 });
-
 
 export var ky = !!("ontouchstart" in window || navigator.maxTouchPoints > 0);
 export var Cy = {
@@ -10465,7 +10324,7 @@ export var Ay = function ({
 }) {
   return "none" === m
     ? (0, Py.jsx)(Py.Fragment, { children: t })
-    : (0, Py.jsxs)(kx, {
+    : (0, Py.jsxs)(AllComponents, {
         ...c,
         onClose: r,
         closeOnWheel: u,
@@ -10513,17 +10372,11 @@ export var By = Ay;
 export var Ty = Ib;
 export var My = xy;
 
-
-
 export var Hy = (0, Dy.forwardRef)(({ className: e, ...t }, n) =>
   (0, Iy.jsx)("input", { ...t, className: (0, Vy.default)(Fy, e), ref: n })
 );
 Hy.displayName = "uikit/BaseInput";
 export var Ny = Hy;
-
-
-
-
 
 export var Gy = (0, Ry.forwardRef)(
   (
@@ -10680,10 +10533,7 @@ export function rv(e, t) {
     n
   );
 }
-var av = "UBQ_SaturationBrightnessSelector-module__block--RHwQ8";
-
-
-
+export var av = "UBQ_SaturationBrightnessSelector-module__block--RHwQ8";
 
 export var pv = (e, t, n) => ({
   width: e.width - t,
@@ -10769,272 +10619,6 @@ export var fv = function ({
     }),
   });
 };
-export var mv = (e) =>
-  (0, hv.jsxs)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: [
-      (0, hv.jsx)("g", {
-        clipPath: "url(#clip0_14258_524738)",
-        children: (0, hv.jsx)("path", {
-          fillRule: "evenodd",
-          clipRule: "evenodd",
-          d: "M19.7678 6.00019L13.7678 12.0002L19.7678 18.0002L18 19.768L12 13.768L6 19.768L4.23223 18.0002L10.2322 12.0002L4.23223 6.00019L6 4.23242L12 10.2324L18 4.23242L19.7678 6.00019Z",
-          fill: "currentColor",
-        }),
-      }),
-      (0, hv.jsx)("defs", {
-        children: (0, hv.jsx)("clipPath", {
-          id: "clip0_14258_524738",
-          children: (0, hv.jsx)("rect", {
-            width: 24,
-            height: 24,
-            fill: "currentColor",
-          }),
-        }),
-      }),
-    ],
-  });
-
-export var qv = (e) =>
-  (0, $v.jsx)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: (0, $v.jsx)("path", {
-      fillRule: "evenodd",
-      clipRule: "evenodd",
-      d: "M3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12ZM6.39362 16.1922C5.5184 15.0236 5 13.5723 5 12C5 8.13401 8.13401 5 12 5C13.5723 5 15.0236 5.5184 16.1922 6.39362L6.39362 16.1922ZM7.80783 17.6064C8.97641 18.4816 10.4277 19 12 19C15.866 19 19 15.866 19 12C19 10.4277 18.4816 8.97641 17.6064 7.80783L7.80783 17.6064Z",
-      fill: "currentColor",
-    }),
-  });
-
-
-export var Rw = (e) =>
-  (0, Ow.jsxs)("svg", {
-    width: 40,
-    height: 40,
-    viewBox: "0 0 40 40",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: [
-      (0, Ow.jsx)("path", {
-        opacity: 0.5,
-        d: "M13.376 5H26.624L36 14.376V27.624L26.624 37H13.376L4 27.624V14.376L13.376 5Z",
-        fill: "#DC608E",
-      }),
-      (0, Ow.jsx)("path", {
-        d: "M13.376 5H26.624L36 14.376V27.624L26.624 37H13.376L4 27.624V14.376L13.376 5Z",
-        stroke: "#DC608E",
-        strokeWidth: 2,
-        strokeLinecap: "round",
-        strokeLinejoin: "round",
-      }),
-      (0, Ow.jsx)("path", {
-        d: "M20 15V21.6667",
-        stroke: "#DC608E",
-        strokeWidth: 4,
-        strokeLinecap: "round",
-        strokeLinejoin: "round",
-      }),
-      (0, Ow.jsx)("path", {
-        d: "M20 28.3334H20.015",
-        stroke: "#DC608E",
-        strokeWidth: 4,
-        strokeLinecap: "round",
-        strokeLinejoin: "round",
-      }),
-    ],
-  });
-export var Dw = (e) =>
-  (0, Vw.jsxs)("svg", {
-    width: 40,
-    height: 40,
-    viewBox: "0 0 40 40",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: [
-      (0, Vw.jsx)("path", {
-        opacity: 0.5,
-        d: "M20 37C29.3888 37 37 29.3888 37 20C37 10.6112 29.3888 3 20 3C10.6112 3 3 10.6112 3 20C3 29.3888 10.6112 37 20 37Z",
-        fill: "currentColor",
-        fillOpacity: 0.9,
-      }),
-      (0, Vw.jsx)("path", {
-        d: "M20 37C29.3888 37 37 29.3888 37 20C37 10.6112 29.3888 3 20 3C10.6112 3 3 10.6112 3 20C3 29.3888 10.6112 37 20 37Z",
-        stroke: "currentColor",
-        strokeOpacity: 0.9,
-        strokeWidth: 2,
-        strokeLinecap: "round",
-        strokeLinejoin: "round",
-      }),
-      (0, Vw.jsx)("path", {
-        d: "M20 26.6667V20",
-        stroke: "currentColor",
-        strokeOpacity: 0.9,
-        strokeWidth: 4,
-        strokeLinecap: "round",
-        strokeLinejoin: "round",
-      }),
-      (0, Vw.jsx)("path", {
-        d: "M20 13.3333H20.0167",
-        stroke: "currentColor",
-        strokeOpacity: 0.9,
-        strokeWidth: 4,
-        strokeLinecap: "round",
-        strokeLinejoin: "round",
-      }),
-    ],
-  });
-export var Iw = (e) =>
-  (0, Fw.jsxs)("svg", {
-    width: 40,
-    height: 40,
-    viewBox: "0 0 40 40",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: [
-      (0, Fw.jsx)("path", {
-        opacity: 0.5,
-        d: "M20 37C29.3888 37 37 29.3888 37 20C37 10.6112 29.3888 3 20 3C10.6112 3 3 10.6112 3 20C3 29.3888 10.6112 37 20 37Z",
-        fill: "#09B48B",
-      }),
-      (0, Fw.jsx)("path", {
-        d: "M13 22.4L17.6667 26L27 14",
-        stroke: "#09B48B",
-        strokeWidth: 4,
-        strokeLinecap: "round",
-      }),
-      (0, Fw.jsx)("path", {
-        d: "M20 37C29.3888 37 37 29.3888 37 20C37 10.6112 29.3888 3 20 3C10.6112 3 3 10.6112 3 20C3 29.3888 10.6112 37 20 37Z",
-        stroke: "#09B48B",
-        strokeWidth: 2,
-        strokeLinecap: "round",
-        strokeLinejoin: "round",
-      }),
-    ],
-  });
-export var Nw = (e) =>
-  (0, Hw.jsxs)("svg", {
-    width: 40,
-    height: 40,
-    viewBox: "0 0 40 40",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: [
-      (0, Hw.jsx)("path", {
-        opacity: 0.5,
-        d: "M17.15 6.43334L3.03337 30C2.74231 30.504 2.58831 31.0755 2.58668 31.6575C2.58505 32.2396 2.73585 32.8119 3.02408 33.3176C3.31231 33.8232 3.72791 34.2446 4.22955 34.5398C4.73119 34.8349 5.30137 34.9936 5.88337 35H34.1167C34.6987 34.9936 35.2689 34.8349 35.7705 34.5398C36.2722 34.2446 36.6878 33.8232 36.976 33.3176C37.2642 32.8119 37.415 32.2396 37.4134 31.6575C37.4118 31.0755 37.2578 30.504 36.9667 30L22.85 6.43334C22.5529 5.94352 22.1346 5.53854 21.6354 5.25748C21.1362 4.97642 20.5729 4.82877 20 4.82877C19.4271 4.82877 18.8639 4.97642 18.3647 5.25748C17.8655 5.53854 17.4472 5.94352 17.15 6.43334Z",
-        fill: "#FFBB33",
-      }),
-      (0, Hw.jsx)("path", {
-        d: "M17.15 6.43331L3.03337 30C2.74231 30.504 2.58831 31.0755 2.58668 31.6575C2.58505 32.2395 2.73585 32.8119 3.02408 33.3175C3.31231 33.8232 3.72791 34.2446 4.22955 34.5397C4.73118 34.8349 5.30137 34.9936 5.88337 35H34.1167C34.6987 34.9936 35.2689 34.8349 35.7705 34.5397C36.2722 34.2446 36.6878 33.8232 36.976 33.3175C37.2642 32.8119 37.415 32.2395 37.4134 31.6575C37.4118 31.0755 37.2578 30.504 36.9667 30L22.85 6.43331C22.5529 5.94349 22.1346 5.53851 21.6354 5.25745C21.1361 4.97639 20.5729 4.82874 20 4.82874C19.4271 4.82874 18.8639 4.97639 18.3647 5.25745C17.8655 5.53851 17.4472 5.94349 17.15 6.43331V6.43331Z",
-        stroke: "#FFBB33",
-        strokeWidth: 2,
-        strokeLinecap: "round",
-        strokeLinejoin: "round",
-      }),
-      (0, Hw.jsx)("path", {
-        d: "M20 15V21.6667",
-        stroke: "#FFBB33",
-        strokeWidth: 4,
-        strokeLinecap: "round",
-        strokeLinejoin: "round",
-      }),
-      (0, Hw.jsx)("path", {
-        d: "M20 28.3333H20.015",
-        stroke: "#FFBB33",
-        strokeWidth: 4,
-        strokeLinecap: "round",
-        strokeLinejoin: "round",
-      }),
-    ],
-  });
-
-
-export var gk = (e) =>
-  (0, mk.jsxs)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: [
-      (0, mk.jsx)("path", {
-        d: "M6 3H9V5H6C5.44772 5 5 5.44772 5 6V18C5 18.5523 5.44772 19 6 19H18C18.5523 19 19 18.5523 19 18V15H21V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18V6C3 4.34315 4.34315 3 6 3Z",
-        fill: "currentColor",
-      }),
-      (0, mk.jsx)("path", {
-        fillRule: "evenodd",
-        clipRule: "evenodd",
-        d: "M21.707 2.29312C20.4881 1.07417 18.5118 1.07417 17.2928 2.29312L9.62591 9.96005L8.20937 14.2097C7.88364 15.1868 8.81331 16.1165 9.79051 15.7908L14.0401 14.3743L21.7071 6.70733C22.926 5.48838 22.926 3.51207 21.707 2.29312ZM18.7071 3.70733C19.145 3.26943 19.8549 3.26943 20.2928 3.70733C20.7307 4.14524 20.7307 4.85522 20.2928 5.29312L13.1678 12.4181L11.582 10.8323L18.7071 3.70733Z",
-        fill: "currentColor",
-      }),
-    ],
-  });
-
-  export var wC = (e) =>
-    (0, vC.jsx)("svg", {
-      width: 16,
-      height: 16,
-      viewBox: "0 0 16 16",
-      fill: "none",
-      xmlns: "http://www.w3.org/2000/svg",
-      "aria-hidden": true,
-      ...e,
-      children: (0, vC.jsx)("path", {
-        d: "M16 12.5V16H12.5L14.25 14.25L16 12.5Z",
-        fill: "currentColor",
-        fillOpacity: 0.9,
-      }),
-    });
-  export var CC = (e) =>
-    (0, kC.jsxs)("svg", {
-      width: 24,
-      height: 24,
-      viewBox: "0 0 24 24",
-      fill: "none",
-      xmlns: "http://www.w3.org/2000/svg",
-      "aria-hidden": true,
-      ...e,
-      children: [
-        (0, kC.jsx)("path", {
-          d: "M7 12C7 13.1046 6.10457 14 5 14C3.89543 14 3 13.1046 3 12C3 10.8954 3.89543 10 5 10C6.10457 10 7 10.8954 7 12Z",
-          fill: "currentColor",
-        }),
-        (0, kC.jsx)("path", {
-          d: "M12 14C13.1046 14 14 13.1046 14 12C14 10.8954 13.1046 10 12 10C10.8954 10 10 10.8954 10 12C10 13.1046 10.8954 14 12 14Z",
-          fill: "currentColor",
-        }),
-        (0, kC.jsx)("path", {
-          d: "M19 14C20.1046 14 21 13.1046 21 12C21 10.8954 20.1046 10 19 10C17.8954 10 17 10.8954 17 12C17 13.1046 17.8954 14 19 14Z",
-          fill: "currentColor",
-        }),
-      ],
-    });
-  
-
-
-
 export function yv(e, t) {
   const n = ov(e),
     s = (0, bv.useRef)(),
@@ -11077,7 +10661,7 @@ export function yv(e, t) {
     { pause: a, resume: l }
   );
 }
-var vv = {
+export var vv = {
   block: "UBQ_Notification-module__block--4Z2nM",
   wrapper: "UBQ_Notification-module__wrapper--TKM4E",
   info: "UBQ_Notification-module__info--0vbWO",
@@ -11194,8 +10778,6 @@ export var Lv = function ({
 };
 export var Pv = Lv;
 
-
-
 export var Ov = (0, Bv.forwardRef)(
   (
     { value: e, onChange: t, onRelease: n, isDisabled: s, className: i, ...o },
@@ -11233,7 +10815,7 @@ export function Iv(e, t) {
         return e + Math.sign(e) * i;
       })(parseFloat(e.toString()), parseFloat(t.toString()));
 }
-var Hv = {
+export var Hv = {
   block: "UBQ_NumberInput-module__block--y1ECY",
   input: "UBQ_NumberInput-module__input--6EI9x",
   overlay: "UBQ_NumberInput-module__overlay--6SA7a",
@@ -11539,8 +11121,7 @@ export function tw(e) {
     n
   );
 }
-var nw;
-
+export var nw;
 
 export var rw = {
   options: "UBQ_ListBox-module__options--QXJ8g",
@@ -11817,8 +11398,6 @@ export function xw({ children: e, ...t }) {
   });
 export var bw = xw;
 
-
-
 export var jw = function ({ className: e, orientation: t = "horizontal" }) {
   return (0, Cw.jsx)("hr", {
     className: (0, ww.default)(kw, e),
@@ -11882,7 +11461,9 @@ export function Pw({
               "aria-label": l["aria-label"],
               "aria-labelledby": l["aria-labelledby"],
               ...e,
-              children: t ? (0, Ew.jsx)(pb, {}) : (0, Ew.jsx)(ub, {}),
+              children: t
+                ? (0, Ew.jsx)(IconChevronDown, {})
+                : (0, Ew.jsx)(IconChevronUp, {}),
             }),
           () =>
             (0, Ew.jsx)(bw.Options, {
@@ -11927,7 +11508,7 @@ export function Pw({
     ],
   });
 }
-var Aw = function ({
+export var Aw = function ({
   value: e,
   onChange: t,
   onRelease: n,
@@ -11965,7 +11546,9 @@ var Aw = function ({
               "aria-label": a["aria-label"],
               "aria-labelledby": a["aria-labelledby"],
               ...e,
-              children: t ? (0, Ew.jsx)(pb, {}) : (0, Ew.jsx)(ub, {}),
+              children: t
+                ? (0, Ew.jsx)(IconChevronDown, {})
+                : (0, Ew.jsx)(IconChevronUp, {}),
             }),
           () =>
             (0, Ew.jsx)(bw.Options, {
@@ -12034,11 +11617,10 @@ export function Mw({
     (n.Determinate = "determinate");
 })(Mw || (Mw = {}));
 
-
 export function $w(e, t = 100) {
   return `${Math.round((e / t) * 100)}%`;
 }
-var qw = {
+export var qw = {
   block: "UBQ_Dialog-module__block--8gEdi",
   dialog: "UBQ_Dialog-module__dialog--WDrz1",
   body: "UBQ_Dialog-module__body--22mCq",
@@ -12163,13 +11745,10 @@ export function Kw(e) {
 };
 export var Yw = Ww;
 
-
 export var ek = function () {
   return (0, Jw.jsx)("x-spacer", { class: Xw });
 };
 export var tk = mx;
-
-
 
 export var ok = {
   block: "UBQ_Card-module__block--Zs4rt",
@@ -12242,26 +11821,15 @@ export function pk({ children: e, ...t }) {
 }
 (pk || (pk = {})).Label = dk;
 export var fk = pk;
-export var hk = ck;  
+export var hk = ck;
 export const vk = (e) => {
   const t = (+e).toString();
   return -1 === t.lastIndexOf(".") ? 0 : t.slice(t.lastIndexOf(".") + 1).length;
 };
 export var wk = (e, t, n) => Math.min(Math.max(e, t), n);
 
-
-
-
-
 export var Ek =
   "UBQ_Slider-module__centeredValueHigherThanSelectedValue--4cMIW";
-
-
-
-
-
-
-
 
 export var Vk = function ({
   name: e,
@@ -12424,13 +11992,6 @@ export var Vk = function ({
 };
 export var Dk = Vk;
 
-
-
-
-
-
-
-
 export var Qk = function ({
   title: e,
   headingLevel: t,
@@ -12462,25 +12023,7 @@ export var Qk = function ({
   });
 };
 
-
-export var Kk = function ({ children: e, className: t, "data-cy": n }) {
-  return (0, Wk.jsx)("div", {
-    className: (0, Zk.default)(Gk, t),
-    "data-cy": n,
-    children: e,
-  });
-};
 export var Yk = Kk;
-
-
-export var tC = function ({ children: e, className: t, "data-cy": n }) {
-  return (0, eC.jsx)("div", {
-    className: (0, Jk.default)(Xk, t),
-    "data-cy": n,
-    children: e,
-  });
-};
-
 export var iC = {
   block: "UBQ_Panel-module__block--EaNC7",
   floating: "UBQ_Panel-module__floating--XYymS",
@@ -12558,18 +12101,6 @@ export var rC = function ({
   });
 };
 
-
-export var cC = function ({ value: e, readOnly: t = false }) {
-  return (0, lC.jsx)("textarea", { className: aC, value: e, readOnly: t });
-};
-
-
-
-
-export function gC({ children: e, ...t }) {
-  return (0, mC.jsx)("li", { role: "menuitem", ...t, children: e });
-}
-var xC;
 export var bC = {
   Container: function ({ children: e, className: t }) {
     const n = (0, dC.useRef)(null),
@@ -12629,147 +12160,6 @@ export var bC = {
 };
 export var yC = bC;
 
-
-
-
-
-
-
-
-
-
-export function DC({ children: e, isActive: t, className: n }) {
-  return (0, VC.jsx)("ul", {
-    className: (0, jC.default)(_C, n, { [EC]: t }),
-    children: e,
-  });
-}
-export function FC({ children: e, isActive: t, className: n, ...s }, i) {
-  return (0, VC.jsx)("li", {
-    className: (0, jC.default)(LC, { [TC]: t }),
-    children: (0, VC.jsx)("button", {
-      ref: i,
-      type: "button",
-      ...s,
-      className: (0, jC.default)(OC, n),
-      children: e,
-    }),
-  });
-}
-export function IC(
-  { children: e, isActive: t, menu: n, className: s, ...i },
-  o
-) {
-  return (0, VC.jsxs)("li", {
-    className: (0, jC.default)(LC, { [TC]: t }),
-    children: [
-      (0, VC.jsx)("a", {
-        ref: o,
-        ...i,
-        className: (0, jC.default)(MC, s),
-        children: e,
-      }),
-      n,
-    ],
-  });
-}
-export function HC({ children: e, className: t }) {
-  return (0, VC.jsx)("div", { className: (0, jC.default)(RC, t), children: e });
-}
-export function NC(
-  { children: e, icon: t, isActive: n, menu: s, className: i, ...o },
-  r
-) {
-  return (0, VC.jsxs)("li", {
-    className: PC,
-    children: [
-      (0, VC.jsxs)("button", {
-        ref: r,
-        type: "button",
-        ...o,
-        className: (0, jC.default)(OC, i, { [TC]: n }),
-        children: [
-          (0, VC.jsx)("div", { className: (0, jC.default)(AC), children: t }),
-          " ",
-          e,
-        ],
-      }),
-      s,
-    ],
-  });
-}
-export function UC(
-  { icon: e, isActive: t, menu: n, children: s, className: i, ...o },
-  r
-) {
-  return (0, VC.jsxs)("li", {
-    className: (0, jC.default)(PC, { [TC]: t }),
-    children: [
-      (0, VC.jsxs)("a", {
-        ref: r,
-        ...o,
-        className: (0, jC.default)(MC, i),
-        children: [
-          (0, VC.jsx)("div", { className: (0, jC.default)(AC), children: e }),
-          " ",
-          s,
-        ],
-      }),
-      n,
-    ],
-  });
-}
-export function zC({ children: e }) {
-  return (0, VC.jsx)(bC.Item, { children: e });
-}
-export function $C({ children: e, isDisabled: t }) {
-  return (0, VC.jsxs)(kx, {
-    children: [
-      (e) =>
-        (0, VC.jsx)(CompCustomButton, {
-          name: "treeViewMenuMore",
-          "aria-label": "Open folder options",
-          variant: "plain",
-          className: BC,
-          isDisabled: t,
-          ...e,
-          children: (0, VC.jsxs)(Qb, {
-            children: [(0, VC.jsx)(CC, {}), (0, VC.jsx)(wC, {})],
-          }),
-        }),
-      ({ closePopover: t }) =>
-        (0, VC.jsx)(bC.Container, {
-          children: "function" == typeof e ? e({ onMenuClose: t }) : e,
-        }),
-    ],
-  });
-}
-((xC = DC || (DC = {})).HeaderButton = (0, SC.forwardRef)(FC)),
-  (xC.HeaderLink = (0, SC.forwardRef)(IC)),
-  (xC.HeaderIcon = HC),
-  (xC.ItemButton = (0, SC.forwardRef)(NC)),
-  (xC.ItemLink = (0, SC.forwardRef)(UC)),
-  (xC.Menu = $C),
-  (xC.MenuItem = zC);
-
-
-
-
-
-
-
-export var JC = [
-  "#00D8A4",
-  "#2BD409",
-  "#335FFF",
-  "#33BBFF",
-  "#8A5A2D",
-  "#9933FF",
-  "#FF3333",
-  "#FF33DD",
-  "#FF7433",
-  "#FFD333",
-];
 export function ej(e) {
   const t = e
       .split("")
@@ -12869,8 +12259,6 @@ export var oj = class extends nj.Component {
   }
 };
 
-
-
 export function cj(e, t) {
   if (!t || (!t.source && !t.medium)) return e;
   const n = e.split("?"),
@@ -12885,7 +12273,7 @@ export function cj(e, t) {
   const o = n[1] ? `&${n[1]}` : "";
   return `${s}?${i.join("&")}${o}`;
 }
-var uj;
+export var uj;
 export var dj = function ({ url: e, children: t, utm: n, className: s }) {
   return (0, lj.jsx)("a", {
     href: cj(e, n),
@@ -12949,7 +12337,6 @@ export function bj(
   (uj.Button = (0, fj.forwardRef)(bj));
 export var yj = CompSidebar;
 
-
 export function Cj({ children: e, height: t, width: n, gap: s, style: i }) {
   const o = ((r = t), (a = s), Math.ceil(r / a) * a);
   var r, a;
@@ -12977,16 +12364,6 @@ export function jj({ children: e, width: t, columnCount: n, className: s }) {
 (jj || (jj = {})).Item = Cj;
 export var Sj;
 export var _j = jj;
-
-
-
-
-
-
-
-
-
-
 
 export var Ij = 16384;
 export function Hj({
@@ -13104,9 +12481,6 @@ export function qj({ atlas: e, atlasColumns: t, atlasRows: n }) {
 export var Qj = Hj;
 export var Gj = Qj;
 
-
-
-
 export var Jj = (0, Wj.forwardRef)(
   (
     {
@@ -13133,8 +12507,6 @@ export var Jj = (0, Wj.forwardRef)(
 Jj.displayName = "uikit/ResizeHandle";
 export var eS = Jj;
 
-
-
 export var iS = function ({ children: e, className: t }) {
   return (0, sS.jsx)("div", {
     className: (0, tS.default)(nS, t),
@@ -13148,7 +12520,7 @@ export function lS(e, t) {
 export function cS(e, t) {
   return t * e;
 }
-var uS = {
+export var uS = {
   block: "UBQ_MediaTrim-module__block--9efb5",
   containedWrapper: "UBQ_MediaTrim-module__containedWrapper--Z5q7z",
   contained: "UBQ_MediaTrim-module__contained--ccHap",
@@ -13169,7 +12541,7 @@ export function pS({ children: e, overlayWidth: t, style: n }) {
     ],
   });
 }
-var fS = function ({
+export var fS = function ({
   mediaDuration: e,
   trimOffset: t,
   setTrimOffset: n,
@@ -13348,25 +12720,6 @@ export function xS(e, t = false) {
   };
 }
 
-export var yS = (e) =>
-  (0, bS.jsx)("svg", {
-    width: 8,
-    height: 12,
-    viewBox: "0 0 8 12",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: (0, bS.jsx)("path", {
-      d: "M0.5 1C0.5 0.723858 0.723858 0.5 1 0.5H7C7.27614 0.5 7.5 0.723858 7.5 1V8.25339C7.5 8.40336 7.43269 8.54541 7.31662 8.64037L4.31662 11.0949C4.13244 11.2456 3.86756 11.2456 3.68338 11.0949L0.683381 8.64037C0.567313 8.54541 0.5 8.40336 0.5 8.25339V1Z",
-    }),
-  });
-
-
-
-
-
-
 export var ES = (0, wS.forwardRef)(
   (
     {
@@ -13523,15 +12876,6 @@ export var VS = (0, MS.forwardRef)(function (
     }),
   });
 });
-
-
-
-
-
-
-
-
-
 
 export var WS = 48;
 (0, FS.forwardRef)(
@@ -13804,10 +13148,6 @@ export function a_({ size: e = "medium", children: t, className: n, ...s }) {
 export var l_;
 export var c_ = a_;
 
-
-
-
-
 export function m_({ className: e, ...t }) {
   return (0, h_.jsx)("div", { className: (0, u_.default)(d_, e), ...t });
 }
@@ -13822,11 +13162,6 @@ export var g_ = m_;
 export var context7 = (0, x_.createContext)({
   default: { width: 0, height: 0 },
 });
-
-
-
-
-
 
 export var E_ = function ({
   isDisabled: e,
@@ -14013,7 +13348,7 @@ export function O_({
     t.id
   );
 }
-var R_ = (0, T_.forwardRef)(function (
+export var R_ = (0, T_.forwardRef)(function (
   {
     fixed: e,
     width: t,
@@ -14303,7 +13638,7 @@ export function Z_({ index: e, context: { dragState: t } }) {
     }),
   });
 }
-var W_ = { state: "idle" };
+export var W_ = { state: "idle" };
 export var K_ = (e) => {
   return function (e, i) {
     return "pointerDown" === i.type && "idle" === e.state
@@ -14530,13 +13865,6 @@ export function X_({
   );
 }
 
-
-
-
-
-
-
-
 export var aE = [
   { interval: 40, tickIntervals: [40, 20, 10, 5, 2] },
   { interval: 20, tickIntervals: [20, 10, 5, 2] },
@@ -14551,7 +13879,7 @@ export function lE(e) {
   const t = e % 60;
   return `${Math.floor(e / 60)}:${t < 10 ? `0${t}` : t}`;
 }
-var cE = function ({
+export var cE = function ({
   className: e,
   pixelRatio: t,
   minDuration: n,
@@ -14632,9 +13960,6 @@ var cE = function ({
   });
 };
 
-
-
-
 export var hE = function ({
   className: e,
   pixelRatio: t,
@@ -14656,7 +13981,7 @@ export var hE = function ({
   });
 };
 
-var vE;
+export var vE;
 export var wE = {
   block: "UBQ_TimelineClip-module__block--8UprU",
   trimHandle: "UBQ_TimelineClip-module__trimHandle--hLClY",
@@ -14788,10 +14113,6 @@ export function BE(e) {
   (vE.ContextMenuItem = BE);
 export var TE = CE;
 
-
-
-
-
 export var IE = function ({
   className: e,
   ariaLabeledBy: t,
@@ -14910,11 +14231,11 @@ export var $E = (e, t) => {
     [n, s]
   );
 };
-var QE = ["down", "shift+down"];
-var GE = ["left", "shift+left"];
-var ZE = ["right", "shift+right"];
-var WE = ["enter", "shift+enter"];
-var KE = ["escape"];
+export var QE = ["down", "shift+down"];
+export var GE = ["left", "shift+left"];
+export var ZE = ["right", "shift+right"];
+export var WE = ["enter", "shift+enter"];
+export var KE = ["escape"];
 export var YE = function ({
   elementRef: e,
   up: t,
@@ -15026,7 +14347,7 @@ export function aL({
 }
 Object.defineProperty(aL, "displayName", { value: "FileUpload" });
 export var lL = aL;
-var fL = /\s([^'"/\s><]+?)[\s/>]|([^\s=]+)=\s?(".*?"|'.*?')/g;
+export var fL = /\s([^'"/\s><]+?)[\s/>]|([^\s=]+)=\s?(".*?"|'.*?')/g;
 export function hL(e) {
   var t = {
       type: "tag",
@@ -15058,9 +14379,9 @@ export function hL(e) {
         o[2] && (t.attrs[o[2]] = o[3].trim().substring(1, o[3].length - 1));
   return t;
 }
-var mL = /<[a-zA-Z0-9\-\!\/](?:"[^"]*"|'[^']*'|[^'">])*>/g;
-var gL = /^\s*$/;
-var xL = Object.create(null);
+export var mL = /<[a-zA-Z0-9\-\!\/](?:"[^"]*"|'[^']*'|[^'">])*>/g;
+export var gL = /^\s*$/;
+export var xL = Object.create(null);
 export function bL(e, t) {
   switch (t.type) {
     case "text":
@@ -15084,8 +14405,8 @@ export function bL(e, t) {
       return e + "\x3c!--" + t.comment + "--\x3e";
   }
 }
-var yL;
-var vL = {
+export var yL;
+export var vL = {
   parse: function (e, t) {
     t || (t = {}), t.components || (t.components = xL);
     var n,
@@ -15152,16 +14473,16 @@ var vL = {
     }, "");
   },
 };
-var wL = vL;
-var kL = (...e) => {
+export var wL = vL;
+export var kL = (...e) => {
   console?.warn &&
     (LL(e[0]) && (e[0] = `react-i18next:: ${e[0]}`), console.warn(...e));
 };
-var CL = {};
-var jL = (...e) => {
+export var CL = {};
+export var jL = (...e) => {
   (LL(e[0]) && CL[e[0]]) || (LL(e[0]) && (CL[e[0]] = new Date()), kL(...e));
 };
-var SL = (e, t) => () => {
+export var SL = (e, t) => () => {
   if (e.isInitialized) t();
   else {
     const n = () => {
@@ -15173,21 +14494,21 @@ var SL = (e, t) => () => {
     e.on("initialized", n);
   }
 };
-var _L = (e, t, n) => {
+export var _L = (e, t, n) => {
   e.loadNamespaces(t, SL(e, n));
 };
-var EL = (e, t, n, s) => {
+export var EL = (e, t, n, s) => {
   LL(n) && (n = [n]),
     n.forEach((t) => {
       e.options.ns.indexOf(t) < 0 && e.options.ns.push(t);
     }),
     e.loadLanguages(t, SL(e, s));
 };
-var LL = (e) => "string" == typeof e;
-var PL = (e) => "object" == typeof e && null !== e;
-var AL =
+export var LL = (e) => "string" == typeof e;
+export var PL = (e) => "object" == typeof e && null !== e;
+export var AL =
   /&(?:amp|#38|lt|#60|gt|#62|apos|#39|quot|#34|nbsp|#160|copy|#169|reg|#174|hellip|#8230|#x2F|#47);/g;
-var BL = {
+export var BL = {
   "&amp;": "&",
   "&#38;": "&",
   "&lt;": "<",
@@ -15209,8 +14530,8 @@ var BL = {
   "&#x2F;": "/",
   "&#47;": "/",
 };
-var TL = (e) => BL[e];
-var ML = {
+export var TL = (e) => BL[e];
+export var ML = {
   bindI18n: "languageChanged",
   bindI18nStore: "",
   transEmptyNodeValue: "",
@@ -15220,20 +14541,20 @@ var ML = {
   useSuspense: true,
   unescape: (e) => e.replace(AL, TL),
 };
-var OL = () => ML;
-var RL = () => yL;
-var VL = (e, t) => {
+export var OL = () => ML;
+export var RL = () => yL;
+export var VL = (e, t) => {
   if (!e) return false;
   const n = e.props?.children ?? e.children;
   return t ? n.length > 0 : !!n;
 };
-var DL = (e) => {
+export var DL = (e) => {
   if (!e) return [];
   const t = e.props?.children ?? e.children;
   return e.props?.i18nIsDynamicList ? FL(t) : t;
 };
-var FL = (e) => (Array.isArray(e) ? e : [e]);
-var IL = (e, t) => {
+export var FL = (e) => (Array.isArray(e) ? e : [e]);
+export var IL = (e, t) => {
   if (!e) return "";
   let n = "";
   const s = FL(e),
@@ -15278,7 +14599,7 @@ var IL = (e, t) => {
     n
   );
 };
-var HL = (e, t, n, s, i, o) => {
+export var HL = (e, t, n, s, i, o) => {
   if ("" === t) return [];
   const r = s.transKeepBasicHtmlNodesFor || [],
     a = t && new RegExp(r.map((e) => `<${e}`).join("|")).test(t);
@@ -15641,7 +14962,7 @@ export function YL(e) {
       : "[MobX] " + e
   );
 }
-var XL = {};
+export var XL = {};
 export function JL() {
   return "undefined" != typeof globalThis
     ? globalThis
@@ -15653,16 +14974,16 @@ export function JL() {
     ? self
     : XL;
 }
-var eP = Object.assign;
-var tP = Object.getOwnPropertyDescriptor;
-var nP = Object.defineProperty;
-var sP = Object.prototype;
-var iP = [];
+export var eP = Object.assign;
+export var tP = Object.getOwnPropertyDescriptor;
+export var nP = Object.defineProperty;
+export var sP = Object.prototype;
+export var iP = [];
 Object.freeze(iP);
 export var oP = {};
 Object.freeze(oP);
 export var rP = "undefined" != typeof Proxy;
-var aP = Object.toString();
+export var aP = Object.toString();
 export function lP() {
   rP || YL("Proxy not available");
 }
@@ -15672,7 +14993,7 @@ export function cP(e) {
     if (!t) return (t = true), e.apply(this, arguments);
   };
 }
-var uP = function () {};
+export var uP = function () {};
 export function dP(e) {
   return "function" == typeof e;
 }
@@ -15729,7 +15050,7 @@ export function yP(e) {
 export function vP(e) {
   return e instanceof Set;
 }
-var wP = undefined !== Object.getOwnPropertySymbols;
+export var wP = undefined !== Object.getOwnPropertySymbols;
 export var kP =
   "undefined" != typeof Reflect && Reflect.ownKeys
     ? Reflect.ownKeys
@@ -15746,7 +15067,7 @@ export function CP(e) {
 export function jP(e, t) {
   return sP.hasOwnProperty.call(e, t);
 }
-var SP =
+export var SP =
   Object.getOwnPropertyDescriptors ||
   function (e) {
     var t = {};
@@ -15835,7 +15156,7 @@ export function TP(e, t) {
   }
   return (n = e[Symbol.iterator]()).next.bind(n);
 }
-var MP = Symbol("mobx-stored-annotations");
+export var MP = Symbol("mobx-stored-annotations");
 export function OP(e) {
   return Object.assign(function (t, n) {
     RP(t, n, e);
@@ -15847,8 +15168,8 @@ export function RP(e, t, n) {
       return e.annotationType_ === zP;
     })(n) || (e[MP][t] = n);
 }
-var VP = Symbol("mobx administration");
-var DP = (function () {
+export var VP = Symbol("mobx administration");
+export var DP = (function () {
   function e(e) {
     undefined === e && (e = "Atom"),
       (this.name_ = undefined),
@@ -15888,14 +15209,14 @@ var DP = (function () {
     e
   );
 })();
-var FP = bP("Atom", DP);
+export var FP = bP("Atom", DP);
 export function IP(e, t, n) {
   undefined === t && (t = uP), undefined === n && (n = uP);
   var s,
     i = new DP(e);
   return t !== uP && DB(OB, i, t, s), n !== uP && VB(i, n), i;
 }
-var HP = {
+export var HP = {
   identity: function (e, t) {
     return e === t;
   },
@@ -15929,7 +15250,7 @@ export function NP(e, t, n) {
 export function UP(e) {
   return e;
 }
-var zP = "override";
+export var zP = "override";
 export function $P(e, t) {
   return { annotationType_: e, options_: t, make_: qP, extend_: QP };
 }
@@ -16047,8 +15368,8 @@ export function sA(e, t, n, s) {
     )
   );
 }
-var iA = "true";
-var oA = rA();
+export var iA = "true";
+export var oA = rA();
 export function rA(e) {
   return { annotationType_: iA, options_: e, make_: aA, extend_: lA };
 }
@@ -16106,7 +15427,7 @@ export function lA(e, t, n, s) {
     false === (null == (o = this.options_) ? undefined : o.deep) ? vA.ref : vA
   ).extend_(e, t, n, s);
 }
-var cA = {
+export var cA = {
   deep: true,
   name: undefined,
   defaultDecorator: undefined,
@@ -16117,8 +15438,8 @@ export function uA(e) {
 }
 Object.freeze(cA);
 export var dA = tA("observable");
-var pA = tA("observable.ref", { enhancer: UP });
-var fA = tA("observable.shallow", {
+export var pA = tA("observable.ref", { enhancer: UP });
+export var fA = tA("observable.shallow", {
   enhancer: function (e, t, n) {
     return null == e || UT(e) || ST(e) || TT(e) || RT(e)
       ? e
@@ -16133,12 +15454,12 @@ var fA = tA("observable.shallow", {
       : undefined;
   },
 });
-var hA = tA("observable.struct", {
+export var hA = tA("observable.struct", {
   enhancer: function (e, t) {
     return sM(e, t) ? t : e;
   },
 });
-var mA = OP(dA);
+export var mA = OP(dA);
 export function gA(e) {
   return true === e.deep
     ? NP
@@ -16169,7 +15490,7 @@ export function xA(e, t, n) {
 }
 Object.assign(xA, mA);
 export var bA, yA;
-var vA = eP(xA, {
+export var vA = eP(xA, {
   box: function (e, t) {
     var n = uA(t);
     return new RA(e, gA(n), n.name, true, n.equals);
@@ -16213,10 +15534,10 @@ var vA = eP(xA, {
   deep: mA,
   struct: OP(hA),
 });
-var wA = "computed";
-var kA = XP(wA);
-var CA = XP("computed.struct", { equals: HP.structural });
-var jA = function (e, t) {
+export var wA = "computed";
+export var kA = XP(wA);
+export var CA = XP("computed.struct", { equals: HP.structural });
+export var jA = function (e, t) {
   if (pP(t)) return RP(e, t, kA);
   if (hP(e)) return OP(XP(wA, e));
   var n = hP(t) ? t : {};
@@ -16685,7 +16006,7 @@ export function eB(e) {
       t[n].lowestObserverState_ = DA.UP_TO_DATE_;
   }
 }
-var tB = function () {
+export var tB = function () {
   (this.version = 6),
     (this.UNCHANGED = {}),
     (this.trackingDerivation = null),
@@ -16779,7 +16100,7 @@ export function dB(e) {
         (e.dependenciesState_ = DA.STALE_);
     }));
 }
-var pB = (function () {
+export var pB = (function () {
   function e(e, t, n, s) {
     undefined === e && (e = "Reaction"),
       undefined === s && (s = false),
@@ -16918,7 +16239,7 @@ export function gB() {
   }
   iB.isRunningReactions = false;
 }
-var xB = bP("Reaction", pB);
+export var xB = bP("Reaction", pB);
 export var bB = "action";
 export var yB = "autoAction";
 export var vB = "<unnamed action>";
@@ -17053,7 +16374,7 @@ export function MB(e, t, n) {
   }
   return m.schedule_(), m.getDisposer_();
 }
-var OB = "onBO";
+export var OB = "onBO";
 export var RB = "onBUO";
 export function VB(e, t, n) {
   return DB(RB, e, t, n);
@@ -17070,7 +16391,7 @@ export function DB(e, t, n, s) {
     }
   );
 }
-var FB = "never";
+export var FB = "never";
 export var IB = "always";
 export var HB = "observed";
 export function NB(e) {
@@ -17142,7 +16463,7 @@ export function zB(e) {
     n
   );
 }
-var $B = 0;
+export var $B = 0;
 export function qB() {
   this.message = "FLOW_CANCELLED";
 }
@@ -17362,7 +16683,7 @@ export function cT(e, t) {
     YA(n);
   }
 }
-var uT = Symbol("mobx-keys");
+export var uT = Symbol("mobx-keys");
 export function dT(e, t, n) {
   if (hP(e)) return UB(e, e, t, n);
   var s = IT(e, n)[VP];
@@ -17381,7 +16702,7 @@ export function dT(e, t, n) {
   }
   return e;
 }
-var pT = "splice";
+export var pT = "splice";
 export var fT = "update";
 export var hT = {
   get: function (e, t) {
@@ -17618,7 +16939,7 @@ export function gT(e, t, n, s) {
   }
   return o;
 }
-var xT = {
+export var xT = {
   clear: function () {
     return this.splice(0);
   },
@@ -17754,7 +17075,7 @@ export var jT = bP("ObservableArrayAdministration", mT);
 export function ST(e) {
   return fP(e) && jT(e[VP]);
 }
-var _T = {};
+export var _T = {};
 export var ET = "add";
 export var LT = "delete";
 (kT = Symbol.iterator), (CT = Symbol.toStringTag);
@@ -18566,7 +17887,7 @@ export function IT(e, t) {
     );
   return gP(e, VP, i), e;
 }
-var HT = bP("ObservableObjectAdministration", FT);
+export var HT = bP("ObservableObjectAdministration", FT);
 export function NT(e) {
   return (
     VT[e] ||
@@ -18588,7 +17909,7 @@ export function zT(e, t, n) {
   null == (s = e.target_[MP]) || delete s[n];
 }
 export function $T(e, t, n) {}
-var qT, QT;
+export var qT, QT;
 export var GT = 0;
 export var ZT = function () {};
 (qT = ZT),
@@ -18913,7 +18234,7 @@ export var mM = [
 ];
 export var gM = ["ly.img.trimControls.inspectorBar"];
 export var xM = ["ly.img.cropControls.inspectorBar"];
-var UserInterfaceElements = {};
+export var UserInterfaceElements = {};
 defineGetter(UserInterfaceElements, {
   NavigationPosition: () => vM,
   PanelPosition: () => yM,
@@ -19153,7 +18474,7 @@ export var _M = function () {
     return ("x" === e ? t : (3 & t) | 8).toString(16);
   });
 };
-var ConfigTypes = {};
+export var ConfigTypes = {};
 defineGetter(ConfigTypes, { ViewStyle: () => EditorModes });
 export var nO = {
   width: 256,
@@ -19277,156 +18598,6 @@ export var localUploadCallback = async (e, t, n) => {
     meta: { uri: s, thumbUri: o || "", filename: e.name },
   };
 };
-export var pO = {
-  aliceblue: "#f0f8ff",
-  antiquewhite: "#faebd7",
-  aqua: "#00ffff",
-  aquamarine: "#7fffd4",
-  azure: "#f0ffff",
-  beige: "#f5f5dc",
-  bisque: "#ffe4c4",
-  black: "#000000",
-  blanchedalmond: "#ffebcd",
-  blue: "#0000ff",
-  blueviolet: "#8a2be2",
-  brown: "#a52a2a",
-  burlywood: "#deb887",
-  cadetblue: "#5f9ea0",
-  chartreuse: "#7fff00",
-  chocolate: "#d2691e",
-  coral: "#ff7f50",
-  cornflowerblue: "#6495ed",
-  cornsilk: "#fff8dc",
-  crimson: "#dc143c",
-  cyan: "#00ffff",
-  darkblue: "#00008b",
-  darkcyan: "#008b8b",
-  darkgoldenrod: "#b8860b",
-  darkgray: "#a9a9a9",
-  darkgreen: "#006400",
-  darkgrey: "#a9a9a9",
-  darkkhaki: "#bdb76b",
-  darkmagenta: "#8b008b",
-  darkolivegreen: "#556b2f",
-  darkorange: "#ff8c00",
-  darkorchid: "#9932cc",
-  darkred: "#8b0000",
-  darksalmon: "#e9967a",
-  darkseagreen: "#8fbc8f",
-  darkslateblue: "#483d8b",
-  darkslategray: "#2f4f4f",
-  darkslategrey: "#2f4f4f",
-  darkturquoise: "#00ced1",
-  darkviolet: "#9400d3",
-  deeppink: "#ff1493",
-  deepskyblue: "#00bfff",
-  dimgray: "#696969",
-  dimgrey: "#696969",
-  dodgerblue: "#1e90ff",
-  firebrick: "#b22222",
-  floralwhite: "#fffaf0",
-  forestgreen: "#228b22",
-  fuchsia: "#ff00ff",
-  gainsboro: "#dcdcdc",
-  ghostwhite: "#f8f8ff",
-  goldenrod: "#daa520",
-  gold: "#ffd700",
-  gray: "#808080",
-  green: "#008000",
-  greenyellow: "#adff2f",
-  grey: "#808080",
-  honeydew: "#f0fff0",
-  hotpink: "#ff69b4",
-  indianred: "#cd5c5c",
-  indigo: "#4b0082",
-  ivory: "#fffff0",
-  khaki: "#f0e68c",
-  lavenderblush: "#fff0f5",
-  lavender: "#e6e6fa",
-  lawngreen: "#7cfc00",
-  lemonchiffon: "#fffacd",
-  lightblue: "#add8e6",
-  lightcoral: "#f08080",
-  lightcyan: "#e0ffff",
-  lightgoldenrodyellow: "#fafad2",
-  lightgray: "#d3d3d3",
-  lightgreen: "#90ee90",
-  lightgrey: "#d3d3d3",
-  lightpink: "#ffb6c1",
-  lightsalmon: "#ffa07a",
-  lightseagreen: "#20b2aa",
-  lightskyblue: "#87cefa",
-  lightslategray: "#778899",
-  lightslategrey: "#778899",
-  lightsteelblue: "#b0c4de",
-  lightyellow: "#ffffe0",
-  lime: "#00ff00",
-  limegreen: "#32cd32",
-  linen: "#faf0e6",
-  magenta: "#ff00ff",
-  maroon: "#800000",
-  mediumaquamarine: "#66cdaa",
-  mediumblue: "#0000cd",
-  mediumorchid: "#ba55d3",
-  mediumpurple: "#9370db",
-  mediumseagreen: "#3cb371",
-  mediumslateblue: "#7b68ee",
-  mediumspringgreen: "#00fa9a",
-  mediumturquoise: "#48d1cc",
-  mediumvioletred: "#c71585",
-  midnightblue: "#191970",
-  mintcream: "#f5fffa",
-  mistyrose: "#ffe4e1",
-  moccasin: "#ffe4b5",
-  navajowhite: "#ffdead",
-  navy: "#000080",
-  oldlace: "#fdf5e6",
-  olive: "#808000",
-  olivedrab: "#6b8e23",
-  orange: "#ffa500",
-  orangered: "#ff4500",
-  orchid: "#da70d6",
-  palegoldenrod: "#eee8aa",
-  palegreen: "#98fb98",
-  paleturquoise: "#afeeee",
-  palevioletred: "#db7093",
-  papayawhip: "#ffefd5",
-  peachpuff: "#ffdab9",
-  peru: "#cd853f",
-  pink: "#ffc0cb",
-  plum: "#dda0dd",
-  powderblue: "#b0e0e6",
-  purple: "#800080",
-  rebeccapurple: "#663399",
-  red: "#ff0000",
-  rosybrown: "#bc8f8f",
-  royalblue: "#4169e1",
-  saddlebrown: "#8b4513",
-  salmon: "#fa8072",
-  sandybrown: "#f4a460",
-  seagreen: "#2e8b57",
-  seashell: "#fff5ee",
-  sienna: "#a0522d",
-  silver: "#c0c0c0",
-  skyblue: "#87ceeb",
-  slateblue: "#6a5acd",
-  slategray: "#708090",
-  slategrey: "#708090",
-  snow: "#fffafa",
-  springgreen: "#00ff7f",
-  steelblue: "#4682b4",
-  tan: "#d2b48c",
-  teal: "#008080",
-  thistle: "#d8bfd8",
-  tomato: "#ff6347",
-  turquoise: "#40e0d0",
-  violet: "#ee82ee",
-  wheat: "#f5deb3",
-  white: "#ffffff",
-  whitesmoke: "#f5f5f5",
-  yellow: "#ffff00",
-  yellowgreen: "#9acd32",
-};
 export function fO(e, t, n = Number.EPSILON) {
   return Math.abs(e - t) < n;
 }
@@ -19462,7 +18633,7 @@ export function mO(e, t) {
   };
 }
 export function gO(e) {
-  const t = Object.entries(pO),
+  const t = Object.entries(customColorsMap),
     n = [];
   let s,
     i = 1 / 0,
@@ -19480,7 +18651,7 @@ export function gO(e) {
     o
   );
 }
-var xO = (e, t = "0") => (0, dO.default)(e).set("hsl.l", t);
+export var xO = (e, t = "0") => (0, dO.default)(e).set("hsl.l", t);
 export var bO = (e) => {
   const t = ((e) => (0, dO.default)(e).luminance() < 0.5)(e)
     ? (0, dO.default)("white")
@@ -19575,7 +18746,7 @@ export function kO(e, t) {
       (n.innerHTML = `.${gh} {\n${s}}`));
   })(n, e);
 }
-var CO = (e, t) => {
+export var CO = (e, t) => {
   switch (t) {
     case "Red":
       return e("color.red");
@@ -19685,8 +18856,7 @@ export function DO() {
   return e.facade;
 }
 
-
-var zO = class {
+export var zO = class {
   #i;
   constructor(e) {
     (this.#i = _makeEngineChannel(
@@ -19768,7 +18938,7 @@ export function GO(e, t) {
       return QO(t);
   }
 }
-var ZO = {
+export var ZO = {
   type: "logger",
   log(e) {
     this.output("log", e);
@@ -22568,7 +21738,7 @@ export var qR = class {
 
 export var GR = (0, HR.createContext)({});
 export var ZR = () => (0, HR.useContext)(GR);
-var KR = () => {
+export var KR = () => {
   const { engine: e } = ZR();
   if (!e) throw new Error("No engine store found in context");
   return e;
@@ -22584,7 +21754,7 @@ export var XR = () => {
   return e;
 };
 
-var { fan: nV, merge: sV } = _streams;
+export var { fan: nV, merge: sV } = _streams;
 export var iV = class {
   subscribe;
   value;
@@ -22601,7 +21771,7 @@ export var iV = class {
 
 export var aV = () => {};
 
-var uV = class extends Map {
+export var uV = class extends Map {
   getOrCreate(e, t) {
     const n = this.get(e);
     if (undefined !== n) return n;
@@ -23115,13 +22285,13 @@ export function hV(e, t, n, s) {
     return s();
   });
 }
-var mV = class extends fV {
+export var mV = class extends fV {
   getBlock(e) {
     return hV(e, this.engine, this.entities, () => new pV(this.engine, e));
   }
 };
 
-var xV = class {
+export var xV = class {
   constructor(e) {
     const t = e.editor;
     this.editMode = _makeEngineChannel(
@@ -23133,7 +22303,7 @@ var xV = class {
   editMode;
 };
 
-var yV = class extends dV {
+export var yV = class extends dV {
   enabled;
   constructor(e, t) {
     super(e, t),
@@ -23150,7 +22320,13 @@ export var vV = class extends fV {
   }
 };
 
-var { map: _V, merge: EV, pipe: LV, startWith: PV, switchAll: AV } = _streams;
+export var {
+  map: _V,
+  merge: EV,
+  pipe: LV,
+  startWith: PV,
+  switchAll: AV,
+} = _streams;
 export var BV = class {
   constructor(e, t) {
     const n = e.scene,
@@ -23324,7 +22500,7 @@ export var BV = class {
   dpi;
 };
 
-var OV = class {
+export var OV = class {
   #y;
   allSelected;
   selectedPage;
@@ -23370,7 +22546,7 @@ export var RV = function (e, t) {
 export function VV(e, t = "label") {
   return `assets.${e.replace(/\/\//i, "").replace(/\//g, ".")}.${t}`;
 }
-var DV = async function (e) {
+export var DV = async function (e) {
   if (e.type.startsWith("image")) {
     const t = await (function (e) {
       return new Promise((t, n) => {
@@ -23565,7 +22741,7 @@ export function qV(e) {
     (document.getSelection() ?? "").toString().length > 0
   );
 }
-var QV = class {
+export var QV = class {
   engineFacade;
   data;
   perPageSourceElementPasteCounts = new Map();
@@ -23672,7 +22848,7 @@ export function GV(e) {
   return t ? { id: t[0], preset: t[1] } : undefined;
 }
 
-var KV = class {
+export var KV = class {
   engineFacade;
   engineStore;
   bleedMargin;
@@ -25111,7 +24287,6 @@ export function uD() {
   }, [t, n]);
 }
 
-
 if (ifUseStateNoAvailable)
   throw new Error("mobx-react-lite requires React with Hooks support");
 if (
@@ -25142,11 +24317,11 @@ export function mD(e) {
   return zB(JT(e, t));
   var t;
 }
-var gD = false;
+export var gD = false;
 export function xD() {
   return gD;
 }
-var bD = (function () {
+export var bD = (function () {
   function e(e) {
     var t = this;
     Object.defineProperty(this, "finalize", {
@@ -25368,7 +24543,7 @@ export function mayBeUseMemp(e, t) {
     l
   );
 }
-var TD = {
+export var TD = {
   $$typeof: true,
   render: true,
   compare: true,
@@ -25397,7 +24572,7 @@ export function DD(e, t) {
     (e.prototype.constructor = e),
     VD(e, t);
 }
-var FD = (function () {
+export var FD = (function () {
   function e() {
     this.listeners = [];
   }
@@ -25440,7 +24615,7 @@ export function ID() {
     ID.apply(this, arguments)
   );
 }
-var HD = "undefined" == typeof window;
+export var HD = "undefined" == typeof window;
 export function ND() {}
 export function UD(e) {
   return "number" == typeof e && e >= 0 && e !== 1 / 0;
@@ -25593,7 +24768,7 @@ export function iF(e) {
 export function oF() {
   if ("function" == typeof AbortController) return new AbortController();
 }
-var rF = new ((function (e) {
+export var rF = new ((function (e) {
   function t() {
     var t;
     return (
@@ -25724,14 +24899,14 @@ export function lF(e) {
 export function cF(e) {
   return "function" == typeof (null == e ? undefined : e.cancel);
 }
-var uF = function (e) {
+export var uF = function (e) {
   (this.revert = null == e ? undefined : e.revert),
     (this.silent = null == e ? undefined : e.silent);
 };
 export function dF(e) {
   return e instanceof uF;
 }
-var pF = function (e) {
+export var pF = function (e) {
   var t,
     n,
     s,
@@ -25898,7 +25073,7 @@ export var hF = console;
 export function mF() {
   return hF;
 }
-var gF = (function () {
+export var gF = (function () {
   function e(e) {
     (this.abortSignalConsumed = false),
       (this.hadObservers = false),
@@ -26764,7 +25939,7 @@ export function jF(e, t) {
     return null != n && false !== n;
   }
 }
-var SF = (function () {
+export var SF = (function () {
   function e(e) {
     undefined === e && (e = {}),
       (this.queryCache = e.queryCache || new xF()),
@@ -27461,7 +26636,7 @@ export function PF(e, t, n, s) {
 export function AF(e, t) {
   return e.isStaleByTime(t.staleTime);
 }
-var BF = (function (e) {
+export var BF = (function (e) {
   function t(t, n) {
     var s;
     return (
@@ -27818,7 +26993,7 @@ export function KF() {
     },
   ];
 }
-var YF = function () {
+export var YF = function () {
   return DO().engine;
 };
 
@@ -27857,9 +27032,9 @@ export function eI(e, t, n = { equals: XF.default }) {
     u
   );
 }
-var tI = (e, t) => e === t;
+export var tI = (e, t) => e === t;
 export var nI = { track: (e) => e(), subscribe: () => function () {} };
-export var sI = function (e, t) {
+export var WithEngineComp = function WithEngine(e, t) {
   return (function (e, t) {
     const n = t?.debugName,
       s = t?.useEngine;
@@ -27905,7 +27080,7 @@ export function rI(e, t) {
       : n.block.isAllowedByScope(t, e)
   );
 }
-var aI, lI;
+export var aI, lI;
 
 export function dI() {
   const [e, t] = (0, cI.useState)(lI ?? { state: "pending" });
@@ -27969,23 +27144,12 @@ export var xI = () => {
   };
 };
 
-export var yI = (0, bI.createContext)(null);
-export function vI() {
-  const e = (0, bI.useContext)(yI);
-  if (!e)
-    throw new Error("useShortcutScope must be used within a ShortcutScope");
-  return e;
-}
-
-
-
-
 export var PI = (0, _I.forwardRef)(function (
   { scope: e, label: t, className: n, ...s },
   i
 ) {
   const o = (0, _I.useRef)(null),
-    { registerScope: r, unregisterScope: a, getScope: l } = vI();
+    { registerScope: r, unregisterScope: a, getScope: l } = useShortcutScope();
   return (
     (0, _I.useEffect)(() => {
       const t = o.current;
@@ -28031,30 +27195,6 @@ export var PI = (0, _I.forwardRef)(function (
 export var AI = "video-timeline";
 export var BI = "editor";
 
-
-export var VI = (e) =>
-  (0, RI.jsxs)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: [
-      (0, RI.jsx)("path", {
-        d: "M12.7072 3.2929L17.2072 7.79293L15.793 9.20714L13.0001 6.41422V14H11.0001V6.41423L8.20719 9.20714L6.79297 7.79293L11.293 3.2929C11.4805 3.10536 11.7349 3 12.0001 3C12.2653 3 12.5197 3.10536 12.7072 3.2929Z",
-        fill: "currentColor",
-      }),
-      (0, RI.jsx)("path", {
-        fillRule: "evenodd",
-        clipRule: "evenodd",
-        d: "M3 17V14H5V17C5 17.5523 5.44772 18 6 18H18C18.5523 18 19 17.5523 19 17V14H21V17C21 18.6569 19.6569 20 18 20H6C4.34315 20 3 18.6569 3 17Z",
-        fill: "currentColor",
-      }),
-    ],
-  });
-
 export var FI = () => (0, DI.useContext)(WF);
 
 export function HI(e) {
@@ -28077,20 +27217,20 @@ export var $I = (e) => {
   ];
 };
 
-export var GI = (0, qI.createContext)({
+export var SetUploadContext = (0, qI.createContext)({
   setUpload: aV,
   setUploadError: aV,
   setUploadProgress: aV,
 });
-export var ZI = (0, qI.createContext)({
+export var UploadContext = (0, qI.createContext)({
   upload: [],
   uploadError: undefined,
   uploadProgress: 0,
 });
-export function KI() {
-  return (0, qI.useContext)(GI);
+export function useSetUploadContext() {
+  return (0, qI.useContext)(SetUploadContext);
 }
-var YI = (e) => {
+export var YI = (e) => {
   const t = {};
   return (n, s) => {
     const i = s.size / e;
@@ -28100,7 +27240,11 @@ var YI = (e) => {
   };
 };
 export var XI = (e) => {
-  const { setUpload: t, setUploadProgress: n, setUploadError: s } = KI(),
+  const {
+      setUpload: t,
+      setUploadProgress: n,
+      setUploadError: s,
+    } = useSetUploadContext(),
     i = DO(),
     [o, r] = $I(e);
   return {
@@ -28398,14 +27542,12 @@ export var TH = () => {
   );
 };
 
-
 export var RH = "canvas-action";
 export var VH = `button[data-ubq-action=${RH}]`;
 export var DH = (e, t, n) => {
   const s = t?.querySelector(VH);
   s && s.focus ? s.focus() : gI(e, n || mI);
 };
-
 
 export var HH = mayBeUseMemp(
   ({
@@ -28559,13 +27701,6 @@ export function qH() {
   });
 }
 
-
-
-
-
-
-
-
 export function sN(e) {
   const [t, n] = (0, nN.useState)(false),
     s = () => n(true),
@@ -28587,7 +27722,7 @@ export function sN(e) {
     t
   );
 }
-var iN = 20;
+export var iN = 20;
 export function oN(e, t, n, s) {
   const i = sN(s),
     o = 2 * parseInt(xh("--ubq-scale-base"), 10),
@@ -28664,7 +27799,6 @@ export var aN = mayBeUseMemp(function (e) {
     }),
   });
 });
-
 
 export var pN = mayBeUseMemp(function (e) {
   const t = DO().channels.camera,
@@ -28768,7 +27902,7 @@ export function TN(e) {
     (e instanceof PN(e).ShadowRoot || e instanceof ShadowRoot)
   );
 }
-var MN = {
+export var MN = {
   name: "applyStyles",
   enabled: true,
   phase: "write",
@@ -28829,7 +27963,7 @@ var MN = {
 export function ON(e) {
   return e.split("-")[0];
 }
-var RN = Math.max;
+export var RN = Math.max;
 export var VN = Math.min;
 export var DN = Math.round;
 export function FN() {
@@ -28958,7 +28092,7 @@ export function XN(e, t) {
     return (t[n] = e), t;
   }, {});
 }
-var JN = {
+export var JN = {
   name: "arrow",
   enabled: true,
   phase: "main",
@@ -29019,7 +28153,7 @@ var JN = {
 export function eU(e) {
   return e.split("-")[1];
 }
-var tU = { top: "auto", right: "auto", bottom: "auto", left: "auto" };
+export var tU = { top: "auto", right: "auto", bottom: "auto", left: "auto" };
 export function nU(e) {
   var t,
     n = e.popper,
@@ -29102,7 +28236,7 @@ export function nU(e) {
         )
   );
 }
-var sU = { passive: true };
+export var sU = { passive: true };
 export var iU = {
   name: "eventListeners",
   enabled: true,
@@ -29141,7 +28275,7 @@ export function rU(e) {
     return oU[e];
   });
 }
-var aU = { start: "end", end: "start" };
+export var aU = { start: "end", end: "start" };
 export function lU(e) {
   return e.replace(/start|end/g, function (e) {
     return aU[e];
@@ -29366,7 +28500,7 @@ export function bU(e, t) {
   }
   return _;
 }
-var yU = {
+export var yU = {
   name: "flip",
   enabled: true,
   phase: "main",
@@ -29529,7 +28663,7 @@ export function wU(e) {
     return e[t] >= 0;
   });
 }
-var kU = {
+export var kU = {
   name: "hide",
   enabled: true,
   phase: "main",
@@ -29769,7 +28903,7 @@ export function EU(e) {
     s
   );
 }
-var LU = { placement: "bottom", modifiers: [], strategy: "absolute" };
+export var LU = { placement: "bottom", modifiers: [], strategy: "absolute" };
 export function PU() {
   for (var e = arguments.length, t = new Array(e), n = 0; n < e; n++)
     t[n] = arguments[n];
@@ -29924,7 +29058,7 @@ export function AU(e) {
     );
   };
 }
-var BU = AU({
+export var BU = AU({
   defaultModifiers: [
     iU,
     jU,
@@ -30082,7 +29216,7 @@ export function XU(e, t) {
   }
   return false;
 }
-var JU = { isTouch: false };
+export var JU = { isTouch: false };
 export var ez = 0;
 export function tz() {
   JU.isTouch ||
@@ -30103,7 +29237,7 @@ export function sz() {
     t.blur && !n.state.isVisible && t.blur();
   }
 }
-var iz =
+export var iz =
   !!("undefined" != typeof window && "undefined" != typeof document) &&
   !!window.msCrypto;
 export var oz = Object.assign(
@@ -30208,7 +29342,7 @@ export function lz(e, t) {
     n
   );
 }
-var cz = function () {
+export var cz = function () {
   return "innerHTML";
 };
 export function uz(e, t) {
@@ -30943,7 +30077,7 @@ export function Sz(e, t) {
   for (s = 0; s < o.length; s++) (n = o[s]), t.indexOf(n) >= 0 || (i[n] = e[n]);
   return i;
 }
-var _z = "undefined" != typeof window && "undefined" != typeof document;
+export var _z = "undefined" != typeof window && "undefined" != typeof document;
 export function Ez(e, t) {
   e &&
     ("function" == typeof e && e(t),
@@ -30975,13 +30109,13 @@ export function Az(e) {
     t
   );
 }
-var Bz = _z ? Cz.useLayoutEffect : Cz.useEffect;
+export var Bz = _z ? Cz.useLayoutEffect : Cz.useEffect;
 export function Tz(e, t, n) {
   n.split(/\s+/).forEach(function (n) {
     n && e.classList[t](n);
   });
 }
-var Mz = {
+export var Mz = {
   name: "className",
   defaultValue: "",
   fn: function (e) {
@@ -31221,7 +30355,7 @@ export function Oz(e) {
     );
   };
 }
-var Rz = function (e, t) {
+export var Rz = function (e, t) {
   return (0, Cz.forwardRef)(function (n, s) {
     var i = n.children,
       o = Sz(n, ["children"]);
@@ -31277,7 +30411,7 @@ export var $z = class {
   }
 };
 export var qz = mayBeUseMemp(
-  sI(function ({
+  WithEngineComp(function ({
     builderRenderFunction: e,
     createBuilder: t,
     engine: n,
@@ -31321,7 +30455,9 @@ export var Zz = (0, Qz.forwardRef)(
     const r = (0, Qz.useRef)(null),
       { width: a } = iL(),
       [l, c] = (0, Qz.useState)(true),
-      { initialWidth: u, setInitialWidth: d } = (0, Qz.useContext)(B$);
+      { initialWidth: u, setInitialWidth: d } = (0, Qz.useContext)(
+        InitialWidthContext
+      );
     (0, Qz.useEffect)(() => {
       const e = r.current?.parentElement,
         t = e?.offsetWidth;
@@ -31383,9 +30519,6 @@ export var l$ = function ({ icon: e, iconSize: t }) {
   return (0, r$.jsx)(CompCustomIcon, { icon: e, iconSize: t });
 };
 
-
-
-
 export var f$ = mayBeUseMemp(function ({ iconSize: e, customIcon: t }) {
   const { theme: n } = (0, Xz.useContext)(Sh.Context),
     { scale: s } = YR(),
@@ -31398,9 +30531,8 @@ export var f$ = mayBeUseMemp(function ({ iconSize: e, customIcon: t }) {
   p$.jsx)("div", { className: (0, Yz.default)(c$, { [u$]: "large" === i, [d$]: "normal" === i }), style: { backgroundImage: `url(${o})`, backgroundSize: "contain" } });
 });
 
-
 export var k$ = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const { hideUserInterface: t } = YR(),
       n = XR(),
       { t: s } = ZL();
@@ -31482,14 +30614,17 @@ export function E$(e, t) {
     i
   );
 }
-var L$ = "UBQ_CanvasMenu-module__block--hk7CF";
+export var L$ = "UBQ_CanvasMenu-module__block--hk7CF";
 
-
-export var B$ = (0, Dz.createContext)({
+export var InitialWidthContext = (0, Dz.createContext)({
   initialWidth: 0,
   setInitialWidth: () => {},
 });
-export var T$ = sI(function ({ engine: e, children: t, boundaryElement: n }) {
+export var T$ = WithEngineComp(function ({
+  engine: e,
+  children: t,
+  boundaryElement: n,
+}) {
   const s = (0, Dz.useRef)(null),
     [i, o] = (0, Dz.useState)(0);
   (0, Dz.useEffect)(() => {
@@ -31527,7 +30662,7 @@ export var T$ = sI(function ({ engine: e, children: t, boundaryElement: n }) {
       sticky: true,
       visible: m,
       plugins: [vz],
-      content: (0, A$.jsx)(B$.Provider, {
+      content: (0, A$.jsx)(InitialWidthContext.Provider, {
         value: r,
         children: (0, A$.jsx)("div", {
           ref: s,
@@ -31574,14 +30709,6 @@ export function O$() {
     [t] = possibleHook3(e);
   return t[0];
 }
-
-
-
-
-
-
-
-
 
 export var q$ = V$.forwardRef(function (
   {
@@ -31704,7 +30831,7 @@ export var G$ = (0, M$.forwardRef)(function (e, t) {
 });
 
 export var W$ = mayBeUseMemp(
-  sI(function ({ engine: e, block: t, ...n }) {
+  WithEngineComp(function ({ engine: e, block: t, ...n }) {
     const [s] = KF(),
       { hideUserInterface: i } = YR(),
       o = e.block.isVisible(t);
@@ -31716,7 +30843,11 @@ export var W$ = mayBeUseMemp(
 
 export var X$ = { x: 0, y: 0, width: 0, height: 0 };
 export var J$ = mayBeUseMemp(
-  sI(function ({ canvasControls: e, editorContainer: t, engine: n }) {
+  WithEngineComp(function ({
+    canvasControls: e,
+    editorContainer: t,
+    engine: n,
+  }) {
     const { t: s } = ZL(),
       i = DO(),
       o = YR(),
@@ -31901,7 +31032,7 @@ export var rq = {
 };
 
 export var lq = mayBeUseMemp(
-  sI(function ({ engine: e, position: t }) {
+  WithEngineComp(function ({ engine: e, position: t }) {
     const { t: n } = ZL(),
       s = XR(),
       i = e.editor.getEditMode(),
@@ -31943,7 +31074,6 @@ export var cq = mayBeUseMemp(function () {
         ],
       });
 });
-
 
 export var pq = mayBeUseMemp(function () {
   const e = VO(),
@@ -32025,12 +31155,11 @@ export var pq = mayBeUseMemp(function () {
   );
 });
 
-
 export var mq = function () {
   return (0, hq.jsx)("hr", { className: fq });
 };
 export var Nq = mayBeUseMemp(
-  sI(function ({ engine: e, className: t }) {
+  WithEngineComp(function ({ engine: e, className: t }) {
     const { t: n } = ZL(),
       s = XR(),
       { dockIconSize: i, dockHideLabels: o } = YR(),
@@ -32072,154 +31201,6 @@ export var Nq = mayBeUseMemp(
     });
   })
 );
-export var zq = (e) =>
-  (0, Uq.jsx)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: (0, Uq.jsx)("path", {
-      fillRule: "evenodd",
-      clipRule: "evenodd",
-      d: "M10.5002 5.58594L16.2073 11.293C16.5978 11.6836 16.5978 12.3167 16.2073 12.7073L10.5002 18.4144L9.08594 17.0002L14.0859 12.0002L9.08594 7.00015L10.5002 5.58594Z",
-      fill: "currentColor",
-    }),
-  });
-export var qq = (e) =>
-  (0, $q.jsxs)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: [
-      (0, $q.jsx)("path", {
-        d: "M11.293 15.2071L6.29297 10.2071L7.70719 8.7929L11.0002 12.0859V3H13.0002V12.0857L16.293 8.7929L17.7072 10.2071L12.7072 15.2071C12.5196 15.3947 12.2653 15.5 12.0001 15.5C11.7349 15.5 11.4805 15.3947 11.293 15.2071Z",
-        fill: "currentColor",
-      }),
-      (0, $q.jsx)("rect", {
-        x: 5,
-        y: 17,
-        width: 14,
-        height: 2,
-        fill: "currentColor",
-      }),
-    ],
-  });
-export var Gq = (e) =>
-  (0, Qq.jsxs)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: [
-      (0, Qq.jsx)("rect", {
-        x: 5,
-        y: 11,
-        width: 14,
-        height: 2,
-        fill: "currentColor",
-      }),
-      (0, Qq.jsx)("path", {
-        d: "M12.7072 9.20721L17.7072 4.20718L16.293 2.79297L12.0001 7.08589L7.70719 2.79297L6.29297 4.20718L11.293 9.20721C11.4805 9.39475 11.7349 9.5001 12.0001 9.5001C12.2653 9.5001 12.5196 9.39475 12.7072 9.20721Z",
-        fill: "currentColor",
-      }),
-      (0, Qq.jsx)("path", {
-        d: "M12.7072 14.7929L17.7072 19.793L16.293 21.2072L12.0001 16.9143L7.70719 21.2072L6.29297 19.793L11.293 14.7929C11.4805 14.6054 11.7349 14.5 12.0001 14.5C12.2653 14.5 12.5196 14.6054 12.7072 14.7929Z",
-        fill: "currentColor",
-      }),
-    ],
-  });
-export var Wq = (e) =>
-  (0, Zq.jsxs)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: [
-      (0, Zq.jsx)("path", {
-        d: "M12.7072 8.7929L17.7072 13.7929L16.293 15.2071L13 11.9141V21H11V11.9143L7.70719 15.2071L6.29297 13.7929L11.293 8.7929C11.4805 8.60536 11.7349 8.5 12.0001 8.5C12.2653 8.5 12.5196 8.60536 12.7072 8.7929Z",
-        fill: "currentColor",
-      }),
-      (0, Zq.jsx)("rect", {
-        x: 5,
-        y: 5,
-        width: 14,
-        height: 2,
-        fill: "currentColor",
-      }),
-    ],
-  });
-export var Yq = (e) =>
-  (0, Kq.jsxs)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: [
-      (0, Kq.jsx)("path", {
-        d: "M9.70721 18.2069L5.70721 22.2071C5.51967 22.3947 5.26532 22.5001 5.00009 22.5001C4.73487 22.5001 4.48051 22.3947 4.29297 22.2072L0.292969 18.2071L1.70719 16.7929L4 19.0858V4.9143L1.70719 7.20713L0.292969 5.79292L4.29297 1.7929C4.48051 1.60536 4.73486 1.5 5.00008 1.5C5.2653 1.5 5.51965 1.60536 5.70719 1.7929L9.70719 5.79292L8.29297 7.20713L6 4.91415V19.0858L8.29295 16.7927L9.70721 18.2069Z",
-        fill: "currentColor",
-      }),
-      (0, Kq.jsx)("path", { d: "M21 9H10V11H21V9Z", fill: "currentColor" }),
-      (0, Kq.jsx)("path", { d: "M17 13H10V15H17V13Z", fill: "currentColor" }),
-    ],
-  });
-export var Jq = (e) =>
-  (0, Xq.jsxs)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: [
-      (0, Xq.jsx)("path", {
-        d: "M16.7071 9.20719L20.2071 5.70719C20.3947 5.51965 20.5 5.2653 20.5 5.00008C20.5 4.73486 20.3947 4.48051 20.2071 4.29297L16.7071 0.792969L15.2929 2.20719L17.0857 4H4V17.0857L2.20719 15.2929L0.792969 16.7071L4.29297 20.2071C4.48051 20.3947 4.73486 20.5 5.00008 20.5C5.2653 20.5 5.51965 20.3947 5.70719 20.2071L9.20719 16.7071L7.79297 15.2929L6 17.0859V6H17.0859L15.2929 7.79297L16.7071 9.20719Z",
-        fill: "currentColor",
-      }),
-      (0, Xq.jsx)("path", { d: "M21 11H11V13H21V11Z", fill: "currentColor" }),
-      (0, Xq.jsx)("path", { d: "M18 15H11V17H18V15Z", fill: "currentColor" }),
-    ],
-  });
-export var tQ = (e) =>
-  (0, eQ.jsxs)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: [
-      (0, eQ.jsx)("path", {
-        fillRule: "evenodd",
-        clipRule: "evenodd",
-        d: "M3 6C3 4.34315 4.34315 3 6 3H18C19.6569 3 21 4.34315 21 6V18C21 19.6569 19.6569 21 18 21H6C4.34315 21 3 19.6569 3 18V6ZM6 5C5.44772 5 5 5.44772 5 6V18C5 18.5523 5.44772 19 6 19H18C18.5523 19 19 18.5523 19 18V6C19 5.44772 18.5523 5 18 5H6Z",
-        fill: "currentColor",
-      }),
-      (0, eQ.jsx)("path", { d: "M17 9H7V11H17V9Z", fill: "currentColor" }),
-      (0, eQ.jsx)("path", { d: "M13 13H7V15H13V13Z", fill: "currentColor" }),
-    ],
-  });
-
-
-
 export var oQ = function () {
   const { t: e } = ZL(),
     t = IV(),
@@ -32269,84 +31250,6 @@ export var oQ = function () {
     ],
   });
 };
-export var aQ = (e) =>
-  (0, rQ.jsx)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: (0, rQ.jsx)("rect", {
-      x: 7,
-      y: 11,
-      width: 10,
-      height: 2,
-      fill: "currentColor",
-    }),
-  });
-export var cQ = (e) =>
-  (0, lQ.jsxs)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: [
-      (0, lQ.jsx)("path", {
-        d: "M8.49316 16.0928V11.5576C8.49316 11.2178 8.43164 10.9248 8.30859 10.6787C8.18555 10.4326 7.99805 10.2422 7.74609 10.1074C7.5 9.97266 7.18945 9.90527 6.81445 9.90527C6.46875 9.90527 6.16992 9.96387 5.91797 10.0811C5.66602 10.1982 5.46973 10.3564 5.3291 10.5557C5.18848 10.7549 5.11816 10.9805 5.11816 11.2324H3.00879C3.00879 10.8574 3.09961 10.4941 3.28125 10.1426C3.46289 9.79102 3.72656 9.47754 4.07227 9.20215C4.41797 8.92676 4.83105 8.70996 5.31152 8.55176C5.79199 8.39355 6.33105 8.31445 6.92871 8.31445C7.64355 8.31445 8.27637 8.43457 8.82715 8.6748C9.38379 8.91504 9.82031 9.27832 10.1367 9.76465C10.459 10.2451 10.6201 10.8486 10.6201 11.5752V15.8027C10.6201 16.2363 10.6494 16.626 10.708 16.9717C10.7725 17.3115 10.8633 17.6074 10.9805 17.8594V18H8.80957C8.70996 17.7715 8.63086 17.4814 8.57227 17.1299C8.51953 16.7725 8.49316 16.4268 8.49316 16.0928ZM8.80078 12.2168L8.81836 13.5264H7.29785C6.90527 13.5264 6.55957 13.5645 6.26074 13.6406C5.96191 13.7109 5.71289 13.8164 5.51367 13.957C5.31445 14.0977 5.16504 14.2676 5.06543 14.4668C4.96582 14.666 4.91602 14.8916 4.91602 15.1436C4.91602 15.3955 4.97461 15.627 5.0918 15.8379C5.20898 16.043 5.37891 16.2041 5.60156 16.3213C5.83008 16.4385 6.10547 16.4971 6.42773 16.4971C6.86133 16.4971 7.23926 16.4092 7.56152 16.2334C7.88965 16.0518 8.14746 15.832 8.33496 15.5742C8.52246 15.3105 8.62207 15.0615 8.63379 14.8271L9.31934 15.7676C9.24902 16.0078 9.12891 16.2656 8.95898 16.541C8.78906 16.8164 8.56641 17.0801 8.29102 17.332C8.02148 17.5781 7.69629 17.7803 7.31543 17.9385C6.94043 18.0967 6.50684 18.1758 6.01465 18.1758C5.39355 18.1758 4.83984 18.0527 4.35352 17.8066C3.86719 17.5547 3.48633 17.2178 3.21094 16.7959C2.93555 16.3682 2.79785 15.8848 2.79785 15.3457C2.79785 14.8418 2.8916 14.3965 3.0791 14.0098C3.27246 13.6172 3.55371 13.2891 3.92285 13.0254C4.29785 12.7617 4.75488 12.5625 5.29395 12.4277C5.83301 12.2871 6.44824 12.2168 7.13965 12.2168H8.80078Z",
-        fill: "currentColor",
-      }),
-      (0, lQ.jsx)("path", {
-        d: "M18.9258 8.49023H20.8506V17.7363C20.8506 18.5918 20.6689 19.3184 20.3057 19.916C19.9424 20.5137 19.4355 20.9678 18.7852 21.2783C18.1348 21.5947 17.3818 21.7529 16.5264 21.7529C16.1631 21.7529 15.7588 21.7002 15.3135 21.5947C14.874 21.4893 14.4463 21.3193 14.0303 21.085C13.6201 20.8564 13.2773 20.5547 13.002 20.1797L13.9951 18.9316C14.335 19.3359 14.71 19.6318 15.1201 19.8193C15.5303 20.0068 15.9609 20.1006 16.4121 20.1006C16.8984 20.1006 17.3115 20.0098 17.6514 19.8281C17.9971 19.6523 18.2637 19.3916 18.4512 19.0459C18.6387 18.7002 18.7324 18.2783 18.7324 17.7803V10.6436L18.9258 8.49023ZM12.4658 13.3506V13.166C12.4658 12.4453 12.5537 11.7891 12.7295 11.1973C12.9053 10.5996 13.1572 10.0869 13.4854 9.65918C13.8135 9.22559 14.2119 8.89453 14.6807 8.66602C15.1494 8.43164 15.6797 8.31445 16.2715 8.31445C16.8867 8.31445 17.4111 8.42578 17.8447 8.64844C18.2842 8.87109 18.6504 9.19043 18.9434 9.60645C19.2363 10.0166 19.4648 10.5088 19.6289 11.083C19.7988 11.6514 19.9248 12.2842 20.0068 12.9814V13.5703C19.9307 14.25 19.8018 14.8711 19.6201 15.4336C19.4385 15.9961 19.1982 16.4824 18.8994 16.8926C18.6006 17.3027 18.2314 17.6191 17.792 17.8418C17.3584 18.0645 16.8457 18.1758 16.2539 18.1758C15.6738 18.1758 15.1494 18.0557 14.6807 17.8154C14.2178 17.5752 13.8193 17.2383 13.4854 16.8047C13.1572 16.3711 12.9053 15.8613 12.7295 15.2754C12.5537 14.6836 12.4658 14.042 12.4658 13.3506ZM14.584 13.166V13.3506C14.584 13.7842 14.625 14.1885 14.707 14.5635C14.7949 14.9385 14.9268 15.2695 15.1025 15.5566C15.2842 15.8379 15.5127 16.0605 15.7881 16.2246C16.0693 16.3828 16.4004 16.4619 16.7812 16.4619C17.2793 16.4619 17.6865 16.3564 18.0029 16.1455C18.3252 15.9346 18.5713 15.6504 18.7412 15.293C18.917 14.9297 19.04 14.5254 19.1104 14.0801V12.4893C19.0752 12.1436 19.002 11.8213 18.8906 11.5225C18.7852 11.2236 18.6416 10.9629 18.46 10.7402C18.2783 10.5117 18.0498 10.3359 17.7744 10.2129C17.499 10.084 17.1738 10.0195 16.7988 10.0195C16.418 10.0195 16.0869 10.1016 15.8057 10.2656C15.5244 10.4297 15.293 10.6553 15.1113 10.9424C14.9355 11.2295 14.8037 11.5635 14.7158 11.9443C14.6279 12.3252 14.584 12.7324 14.584 13.166Z",
-        fill: "currentColor",
-      }),
-    ],
-  });
-export var dQ = (e) =>
-  (0, uQ.jsxs)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: [
-      (0, uQ.jsx)("path", {
-        d: "M7.20996 6.9082L3.38672 18H1.0752L5.8916 5.20312H7.36816L7.20996 6.9082ZM10.4092 18L6.57715 6.9082L6.41016 5.20312H7.89551L12.7295 18H10.4092ZM10.2246 13.2539V15.0029H3.26367V13.2539H10.2246Z",
-        fill: "currentColor",
-      }),
-      (0, uQ.jsx)("path", {
-        d: "M20.042 8.49023H21.9668V17.7363C21.9668 18.5918 21.7852 19.3184 21.4219 19.916C21.0586 20.5137 20.5518 20.9678 19.9014 21.2783C19.251 21.5947 18.498 21.7529 17.6426 21.7529C17.2793 21.7529 16.875 21.7002 16.4297 21.5947C15.9902 21.4893 15.5625 21.3193 15.1465 21.085C14.7363 20.8564 14.3936 20.5547 14.1182 20.1797L15.1113 18.9316C15.4512 19.3359 15.8262 19.6318 16.2363 19.8193C16.6465 20.0068 17.0771 20.1006 17.5283 20.1006C18.0146 20.1006 18.4277 20.0098 18.7676 19.8281C19.1133 19.6523 19.3799 19.3916 19.5674 19.0459C19.7549 18.7002 19.8486 18.2783 19.8486 17.7803V10.6436L20.042 8.49023ZM13.582 13.3506V13.166C13.582 12.4453 13.6699 11.7891 13.8457 11.1973C14.0215 10.5996 14.2734 10.0869 14.6016 9.65918C14.9297 9.22559 15.3281 8.89453 15.7969 8.66602C16.2656 8.43164 16.7959 8.31445 17.3877 8.31445C18.0029 8.31445 18.5273 8.42578 18.9609 8.64844C19.4004 8.87109 19.7666 9.19043 20.0596 9.60645C20.3525 10.0166 20.5811 10.5088 20.7451 11.083C20.915 11.6514 21.041 12.2842 21.123 12.9814V13.5703C21.0469 14.25 20.918 14.8711 20.7363 15.4336C20.5547 15.9961 20.3145 16.4824 20.0156 16.8926C19.7168 17.3027 19.3477 17.6191 18.9082 17.8418C18.4746 18.0645 17.9619 18.1758 17.3701 18.1758C16.79 18.1758 16.2656 18.0557 15.7969 17.8154C15.334 17.5752 14.9355 17.2383 14.6016 16.8047C14.2734 16.3711 14.0215 15.8613 13.8457 15.2754C13.6699 14.6836 13.582 14.042 13.582 13.3506ZM15.7002 13.166V13.3506C15.7002 13.7842 15.7412 14.1885 15.8232 14.5635C15.9111 14.9385 16.043 15.2695 16.2188 15.5566C16.4004 15.8379 16.6289 16.0605 16.9043 16.2246C17.1855 16.3828 17.5166 16.4619 17.8975 16.4619C18.3955 16.4619 18.8027 16.3564 19.1191 16.1455C19.4414 15.9346 19.6875 15.6504 19.8574 15.293C20.0332 14.9297 20.1562 14.5254 20.2266 14.0801V12.4893C20.1914 12.1436 20.1182 11.8213 20.0068 11.5225C19.9014 11.2236 19.7578 10.9629 19.5762 10.7402C19.3945 10.5117 19.166 10.3359 18.8906 10.2129C18.6152 10.084 18.29 10.0195 17.915 10.0195C17.5342 10.0195 17.2031 10.1016 16.9219 10.2656C16.6406 10.4297 16.4092 10.6553 16.2275 10.9424C16.0518 11.2295 15.9199 11.5635 15.832 11.9443C15.7441 12.3252 15.7002 12.7324 15.7002 13.166Z",
-        fill: "currentColor",
-      }),
-    ],
-  });
-export var fQ = (e) =>
-  (0, pQ.jsxs)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: [
-      (0, pQ.jsx)("path", {
-        d: "M6.43164 6.9082L2.6084 18H0.296875L5.11328 5.20312H6.58984L6.43164 6.9082ZM9.63086 18L5.79883 6.9082L5.63184 5.20312H7.11719L11.9512 18H9.63086ZM9.44629 13.2539V15.0029H2.48535V13.2539H9.44629Z",
-        fill: "currentColor",
-      }),
-      (0, pQ.jsx)("path", {
-        d: "M22.7093 11.4609V16.3477C22.5277 16.5879 22.2435 16.8516 21.8568 17.1387C21.4759 17.4199 20.9691 17.6631 20.3363 17.8682C19.7035 18.0732 18.9154 18.1758 17.972 18.1758C17.1693 18.1758 16.4339 18.041 15.766 17.7715C15.098 17.4961 14.5209 17.0947 14.0345 16.5674C13.5541 16.04 13.182 15.3984 12.9183 14.6426C12.6546 13.8809 12.5228 13.0137 12.5228 12.041V11.1533C12.5228 10.1865 12.6429 9.3252 12.8832 8.56934C13.1293 7.80762 13.4808 7.16309 13.9379 6.63574C14.3949 6.1084 14.9457 5.70996 15.5902 5.44043C16.2406 5.16504 16.9759 5.02734 17.7962 5.02734C18.8451 5.02734 19.7123 5.20312 20.3978 5.55469C21.0892 5.90039 21.6224 6.38086 21.9974 6.99609C22.3724 7.61133 22.6097 8.31445 22.7093 9.10547H20.5472C20.4769 8.66016 20.3392 8.26172 20.1341 7.91016C19.9349 7.55859 19.6478 7.2832 19.2728 7.08398C18.9037 6.87891 18.4232 6.77637 17.8314 6.77637C17.3216 6.77637 16.8734 6.87305 16.4867 7.06641C16.1 7.25977 15.7777 7.54395 15.5199 7.91895C15.2679 8.29395 15.0775 8.75098 14.9486 9.29004C14.8197 9.8291 14.7552 10.4443 14.7552 11.1357V12.041C14.7552 12.7441 14.8285 13.3682 14.975 13.9131C15.1273 14.458 15.3441 14.918 15.6254 15.293C15.9125 15.668 16.2611 15.9521 16.6712 16.1455C17.0814 16.333 17.5443 16.4268 18.0599 16.4268C18.5638 16.4268 18.9769 16.3857 19.2992 16.3037C19.6214 16.2158 19.8763 16.1133 20.0638 15.9961C20.2572 15.873 20.4066 15.7559 20.5121 15.6445V13.1045H17.849V11.4609H22.7093Z",
-        fill: "currentColor",
-      }),
-    ],
-  });
-
 export var mQ = function () {
   const e = IV(),
     { t: t } = ZL(),
@@ -32414,39 +31317,6 @@ export var mQ = function () {
   });
 };
 
-export var yQ = (e) =>
-  (0, bQ.jsx)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: (0, bQ.jsx)("path", {
-      fillRule: "evenodd",
-      clipRule: "evenodd",
-      d: "M5.58594 10.5002L11.293 16.2073C11.4806 16.3948 11.7349 16.5002 12.0002 16.5002C12.2654 16.5002 12.5197 16.3948 12.7073 16.2073L18.4144 10.5002L17.0002 9.08594L12.0002 14.0859L7.00015 9.08594L5.58594 10.5002Z",
-      fill: "currentColor",
-    }),
-  });
-export var wQ = (e) =>
-  (0, vQ.jsx)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: (0, vQ.jsx)("path", {
-      fillRule: "evenodd",
-      clipRule: "evenodd",
-      d: "M13.4999 5.58594L7.79275 11.2929C7.60521 11.4805 7.49985 11.7348 7.49985 12C7.49985 12.2653 7.6052 12.5196 7.79274 12.7072L13.4998 18.4144L14.9141 17.0002L9.91406 12.0001L14.9141 7.00016L13.4999 5.58594Z",
-      fill: "currentColor",
-    }),
-  });
-
 export var jQ = {
   block: "UBQ_PanelPortal-module__block--Zlqwp",
   fullWidth: "UBQ_PanelPortal-module__fullWidth--AJvKV",
@@ -32497,41 +31367,36 @@ export function BQ(e, t) {
     );
   return [n, s];
 }
-var TQ = mayBeUseMemp(({ id: e, group: t, panelPosition: n, children: s }) => {
-  const i = XR(),
-    [o, r] = BQ(e, i);
-  switch (
-    ((0, CQ.useEffect)(
-      () => () => {
-        o && r(false);
-      },
-      [o, r]
-    ),
-    (0, CQ.useEffect)(() => {
-      i.getPanelState(e)?.group !== t &&
-        i.setPanelState(e, { open: false, group: t });
-    }, [e, t, i]),
-    n)
-  ) {
-    case "left":
-      return (0, SQ.jsx)(_Q, {
-        children: "function" == typeof s ? s({ isOpen: o, setIsOpen: r }) : s,
-      });
-    case "right":
-      return (0, SQ.jsx)(EQ, {
-        children: "function" == typeof s ? s({ isOpen: o, setIsOpen: r }) : s,
-      });
-    default:
-      return null;
+export var TQ = mayBeUseMemp(
+  ({ id: e, group: t, panelPosition: n, children: s }) => {
+    const i = XR(),
+      [o, r] = BQ(e, i);
+    switch (
+      ((0, CQ.useEffect)(
+        () => () => {
+          o && r(false);
+        },
+        [o, r]
+      ),
+      (0, CQ.useEffect)(() => {
+        i.getPanelState(e)?.group !== t &&
+          i.setPanelState(e, { open: false, group: t });
+      }, [e, t, i]),
+      n)
+    ) {
+      case "left":
+        return (0, SQ.jsx)(_Q, {
+          children: "function" == typeof s ? s({ isOpen: o, setIsOpen: r }) : s,
+        });
+      case "right":
+        return (0, SQ.jsx)(EQ, {
+          children: "function" == typeof s ? s({ isOpen: o, setIsOpen: r }) : s,
+        });
+      default:
+        return null;
+    }
   }
-});
-
-
-
-
-
-
-
+);
 
 export var NQ = function (e) {
   return XR().getPanelFloating(e);
@@ -32540,7 +31405,7 @@ export var UQ = function (e) {
   return XR().getPanelPosition(e);
 };
 
-export var $Q = (0, xQ.createContext)({
+export var PanelPositionContext = (0, xQ.createContext)({
   id: "",
   animationComplete: true,
   panelPosition: "left",
@@ -32549,7 +31414,7 @@ export var $Q = (0, xQ.createContext)({
   isOpen: false,
   setIsOpen: () => {},
 });
-export function qQ({
+export function PanelPositionContextProvider({
   id: e,
   animationComplete: t,
   panelPosition: n,
@@ -32573,7 +31438,7 @@ export function qQ({
     }),
     [e, t, n, o, r, a, s, i]
   );
-  return (0, zQ.jsx)($Q.Provider, { value: c, children: l });
+  return (0, zQ.jsx)(PanelPositionContext.Provider, { value: c, children: l });
 }
 export function QQ({
   id: e,
@@ -32615,7 +31480,7 @@ export function QQ({
         animationDirection: p ? "vertical" : "horizontal",
         ...u,
         children: ({ animationComplete: t }) =>
-          (0, zQ.jsx)(qQ, {
+          (0, zQ.jsx)(PanelPositionContextProvider, {
             id: e,
             animationComplete: t,
             panelPosition: v,
@@ -32685,7 +31550,7 @@ export function ZQ({ panelId: e, onClick: t }) {
     onClose: l,
     isOpen: c,
     setIsOpen: u,
-  } = (0, xQ.useContext)($Q);
+  } = (0, xQ.useContext)(PanelPositionContext);
   let d = "right";
   "back" === r
     ? (d = "left")
@@ -32730,7 +31595,7 @@ export function ZQ({ panelId: e, onClick: t }) {
       animationComplete: t,
       isOpen: n,
       setIsOpen: s,
-    } = (0, xQ.useContext)($Q);
+    } = (0, xQ.useContext)(PanelPositionContext);
     return (0, zQ.jsx)("div", {
       className: HQ,
       children:
@@ -32801,7 +31666,7 @@ export function JQ({
     }),
   });
 }
-var eG = function ({ id: e, name: t, ...n }) {
+export var eG = function ({ id: e, name: t, ...n }) {
   return (0, XQ.jsx)(Pv, {
     name: t,
     label: n.label,
@@ -32811,7 +31676,12 @@ var eG = function ({ id: e, name: t, ...n }) {
 };
 export var tG = eG;
 
-export var sG = sI(function ({ block: e, property: t, engine: n, ...s }) {
+export var sG = WithEngineComp(function ({
+  block: e,
+  property: t,
+  engine: n,
+  ...s
+}) {
   switch (n.block.getPropertyType(t)) {
     case "Int":
       return (0, nG.jsx)(iG, { block: e, property: t, ...s });
@@ -32821,7 +31691,12 @@ export var sG = sI(function ({ block: e, property: t, engine: n, ...s }) {
       return null;
   }
 });
-export var iG = sI(function ({ property: e, block: t, engine: n, ...s }) {
+export var iG = WithEngineComp(function ({
+  property: e,
+  block: t,
+  engine: n,
+  ...s
+}) {
   const i = IV();
   return n.block.isValid(t)
     ? (0, nG.jsx)(tG, {
@@ -32837,7 +31712,12 @@ export var iG = sI(function ({ property: e, block: t, engine: n, ...s }) {
       })
     : null;
 });
-export var oG = sI(function ({ property: e, block: t, engine: n, ...s }) {
+export var oG = WithEngineComp(function ({
+  property: e,
+  block: t,
+  engine: n,
+  ...s
+}) {
   const i = IV();
   return n.block.isValid(t)
     ? (0, nG.jsx)(tG, {
@@ -32855,7 +31735,7 @@ export var oG = sI(function ({ property: e, block: t, engine: n, ...s }) {
 });
 export var rG = sG;
 
-export var lG = sI(function ({
+export var lG = WithEngineComp(function ({
   engine: e,
   block: t,
   inBar: n = false,
@@ -32896,7 +31776,7 @@ export var lG = sI(function ({
         })
     : null;
 });
-export var cG = sI(function ({ engine: e, children: t }) {
+export var cG = WithEngineComp(function ({ engine: e, children: t }) {
   const n = VO().feature.isEnabled("ly.img.text.advanced", { engine: e }),
     [s] = e.block.findAllSelected();
   if (null == s) return null;
@@ -32958,7 +31838,11 @@ export function uG({ block: e }) {
     })
   );
 }
-var dG = sI(function ({ engine: e, block: t, textModeActiveStates: n }) {
+export var dG = WithEngineComp(function ({
+  engine: e,
+  block: t,
+  textModeActiveStates: n,
+}) {
   const { t: s } = ZL(),
     i = DO(),
     {
@@ -33142,14 +32026,10 @@ export function xG({ entry: e, sourceId: t, group: n }) {
       ]
     : `libraries.${e.id}.label`;
 }
-var bG = function (e, { entry: t, sourceId: n, group: s }, i) {
+export var bG = function (e, { entry: t, sourceId: n, group: s }, i) {
   const o = xG({ entry: t, sourceId: n, group: s });
   return e(o, { defaultValue: i ?? o });
 };
-
-
-
-
 
 export var jG = (e, t) => {
   if (t.label) return t.label;
@@ -33267,7 +32147,6 @@ export var TG = function ({
   });
 };
 
-
 export var VG = {
   wrapper: "UBQ_AssetLibraryCard-module__wrapper--stQdN",
   stack: "UBQ_AssetLibraryCard-module__stack--qnDzG",
@@ -33350,7 +32229,12 @@ export var XG = function ({
               name: "property-toggle-on",
               activeStateStyle: "outline",
               ...e,
-              children: [l(s), t ? (0, YG.jsx)(pb, {}) : (0, YG.jsx)(ub, {})],
+              children: [
+                l(s),
+                t
+                  ? (0, YG.jsx)(IconChevronDown, {})
+                  : (0, YG.jsx)(IconChevronUp, {}),
+              ],
             }),
           () =>
             (0, YG.jsx)(bw.Options, {
@@ -33368,7 +32252,7 @@ export var XG = function ({
   });
 };
 
-export var eZ = sI(function ({
+export var eZ = WithEngineComp(function ({
   className: e,
   label: t,
   min: n,
@@ -33851,7 +32735,7 @@ export function EZ({ asset: e, name: t, url: n }) {
     ? (0, jZ.jsx)(dj, { url: n, utm: e.utm, children: t })
     : (0, jZ.jsx)(jZ.Fragment, { children: "name" });
 }
-var LZ = function ({ asset: e, entry: t, sourceId: n, className: s }) {
+export var LZ = function ({ asset: e, entry: t, sourceId: n, className: s }) {
   const { t: i } = ZL(),
     o = VO(),
     r = YF(),
@@ -33990,8 +32874,6 @@ export var OZ = function ({ isLoading: e }) {
     : null;
 };
 
-
-
 export var FZ = function ({
   children: e,
   isLoading: t,
@@ -34035,8 +32917,6 @@ export var GZ = function ({ sourceId: e, group: t, onUpload: n }) {
     : null;
 };
 export var ZZ = GZ;
-
-
 
 export var XZ = function ({
   sourceId: e,
@@ -34132,11 +33012,6 @@ export var rW = function (e, t) {
   );
 };
 
-
-
-
-
-
 export var hW = function ({ onLoad: e, hasMoreToLoad: t, isLoading: n }) {
   const { t: s } = ZL(),
     i = (0, cW.useRef)(null),
@@ -34214,7 +33089,7 @@ export function vW({
     ],
   });
 }
-var wW = [60, 100, 70, 120, 110, 90, 70];
+export var wW = [60, 100, 70, 120, 110, 90, 70];
 export var kW = function ({
   sourceId: e,
   group: t,
@@ -34550,8 +33425,6 @@ export var jW = mayBeUseMemp(function ({
 });
 export var SW = jW;
 
-
-
 export var PW = function ({ isLoading: e }) {
   const [t, n] = (0, _W.useState)(false);
   yv(() => {
@@ -34575,7 +33448,6 @@ export var PW = function ({ isLoading: e }) {
       })
     : null;
 };
-
 
 export var TW = function () {
   const [e, t] = $E((e, t) => {
@@ -34623,8 +33495,6 @@ export var HW = {
     "UBQ_AssetLibrarySection-module__inlineMoreButtonContainer--lv-sU",
   inlineMoreButton: "UBQ_AssetLibrarySection-module__inlineMoreButton--Zqp2y",
 };
-
-
 
 export var qW =
   "UBQ_AssetLibrarySectionSkeleton-module__animatedBackground--PGO2X";
@@ -34693,7 +33563,7 @@ export function KW({ className: e, onClick: t, icon: n }) {
     children: n,
   });
 }
-var YW = mayBeUseMemp(function ({
+export var YW = mayBeUseMemp(function ({
   label: e,
   query: t,
   entry: n,
@@ -35049,7 +33919,6 @@ var YW = mayBeUseMemp(function ({
 });
 export var XW = YW;
 
-
 export var tK = function ({
   query: e,
   sections: t,
@@ -35099,8 +33968,6 @@ export var sK = async function (e, t) {
     s = t.excludeGroups || [];
   return n.filter((e) => !s.some((t) => t === e));
 };
-
-
 
 export var aK = function ({ onSelect: e, onUpload: t }) {
   const { t: n } = ZL(),
@@ -35308,15 +34175,8 @@ export var aK = function ({ onSelect: e, onUpload: t }) {
 export var lK = aK;
 export var dK = Ny;
 
-
-
-
-
 export var bK =
   "UBQ_AssetLibrarySearch-module__clearSearchIconContainer--pxocd";
-
-
-
 
 export var CK = function ({
   placeholder: e,
@@ -35581,19 +34441,18 @@ export function WK(e, t, n) {
       (e.sourceIds ?? []).filter((e) => !!s.includes(e)).map((e) => RV(e, t)),
   };
 }
-var KK, YK;
+export var KK, YK;
 export var XK = WK;
 
-
 export var tY = mayBeUseMemp(
-  sI(function ({ engine: e, children: t }) {
+  WithEngineComp(function ({ engine: e, children: t }) {
     const n = VO().feature.isEnabled("ly.img.animations", { engine: e }),
       [s] = e.block.findAllSelected();
     if (null == s) return null;
     return e.block.supportsAnimation(s) && n ? t({ block: s }) : null;
   })
 );
-export var nY = sI(function ({ engine: e }) {
+export var nY = WithEngineComp(function ({ engine: e }) {
   const { t: t } = ZL(),
     {
       ui: { baseURL: n },
@@ -35659,7 +34518,7 @@ export var nY = sI(function ({ engine: e }) {
   });
 });
 export var sY = mayBeUseMemp(
-  sI(function ({
+  WithEngineComp(function ({
     engine: e,
     block: t,
     inBar: n = false,
@@ -35750,7 +34609,7 @@ export function YY(e, t, n) {
   return n.map(({ name: n, get: s }) => [n, s(e, t)]);
 }
 export var JY = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const [t] = e.block.findAllSelected(),
       { viewStyle: n } = YR();
     return (0,
@@ -35758,7 +34617,7 @@ export var JY = mayBeUseMemp(
   })
 );
 export var eX = mayBeUseMemp(
-  sI(function ({ engine: e, block: t, setIsOpen: n }) {
+  WithEngineComp(function ({ engine: e, block: t, setIsOpen: n }) {
     const { t: s } = ZL(),
       i = IV(),
       o = FI(),
@@ -36169,7 +35028,7 @@ export var eX = mayBeUseMemp(
     );
   })
 );
-export var tX = sI(
+export var tX = WithEngineComp(
   ({
     label: e,
     description: t,
@@ -36202,7 +35061,7 @@ export var tX = sI(
     });
   }
 );
-export var nX = sI(({ entry: e, block: t, onChange: n }) => {
+export var nX = WithEngineComp(({ entry: e, block: t, onChange: n }) => {
   const s = YF(),
     i = s.block.isValid(t),
     { name: o, label: r, icon: a, indentation: l } = e,
@@ -36227,7 +35086,7 @@ export var nX = sI(({ entry: e, block: t, onChange: n }) => {
   );
 });
 export var sX = mayBeUseMemp(
-  sI(function ({ engine: e, tooltip: t, children: n, ...s }) {
+  WithEngineComp(function ({ engine: e, tooltip: t, children: n, ...s }) {
     const { t: i } = ZL(),
       o = XR(),
       [r, a] = BQ("//ly.img.panel/inspector/placeholderSettings", o),
@@ -36263,7 +35122,7 @@ export function rX(e) {
   }
 }
 
-var aX = (e) =>
+export var aX = (e) =>
   e.map((e, t) => ({ ...e, position: e.stop, id: t.toString(), index: t }));
 export var lX = (e, t) => {
   if (e.length !== t.length) return aX(t);
@@ -36364,7 +35223,7 @@ export function jX({ onReset: e, isDisabled: t, dataCy: n }) {
       })
     : null;
 }
-var SX = mayBeUseMemp(function ({
+export var SX = mayBeUseMemp(function ({
   panelId: e,
   groupId: t,
   isOpen: n,
@@ -36471,8 +35330,6 @@ export var _X = function ({
 };
 export var EX = _X;
 
-
-
 export var HX = { button: "UBQ_ColorModeSelect-module__button--8-8sX" };
 
 export var UX = ["Linear"];
@@ -36536,7 +35393,7 @@ export function QX({ mode: e, setMode: t, isDisabled: n = false }) {
     }),
   });
 }
-var GX = {
+export var GX = {
   block: "UBQ_ColorSelection-module__block--hQIfN",
   noPopover: "UBQ_ColorSelection-module__noPopover--K51bl",
   sectionRow: "UBQ_ColorSelection-module__sectionRow--R-VVL",
@@ -36547,14 +35404,6 @@ var GX = {
   hueSlider: "UBQ_ColorSelection-module__hueSlider--WQXI2",
   opacitySlider: "UBQ_ColorSelection-module__opacitySlider--PI-Wu",
 };
-
-
-
-
-
-
-
-
 
 export var oJ = "";
 export var rJ = (e, t, n) => {
@@ -36638,7 +35487,7 @@ export var pJ = ({
   );
 };
 
-export var hJ = sI(function ({
+export var hJ = WithEngineComp(function ({
   engine: e,
   gradientStops: t,
   controlPoints: n,
@@ -37095,7 +35944,7 @@ export function yJ({
     ],
   });
 }
-var vJ = function ({
+export var vJ = function ({
   name: e,
   colorMode: t = "Solid",
   setColorMode: n,
@@ -37355,24 +36204,6 @@ export var CJ = function ({
   }
 };
 
-
-export var EJ = (e) =>
-  (0, _J.jsx)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: (0, _J.jsx)("path", {
-      fillRule: "evenodd",
-      clipRule: "evenodd",
-      d: "M5.58594 13.4998L11.293 7.79274C11.4806 7.6052 11.7349 7.49985 12.0002 7.49985C12.2654 7.49985 12.5197 7.6052 12.7073 7.79274L18.4144 13.4998L17.0002 14.9141L12.0002 9.91406L7.00015 14.9141L5.58594 13.4998Z",
-      fill: "currentColor",
-    }),
-  });
-
 export function AJ({ title: e, children: t }) {
   const { a11y: n } = FI();
   return (0, PJ.jsx)(Qk, {
@@ -37383,7 +36214,7 @@ export function AJ({ title: e, children: t }) {
   });
 }
 
-var VJ = {
+export var VJ = {
   block: "UBQ_ColorBox-module__block--d1O8q",
   colorLabels: "UBQ_ColorBox-module__colorLabels--I4WDp",
   colorName: "UBQ_ColorBox-module__colorName--IuO5o",
@@ -37413,7 +36244,7 @@ export function IJ(e) {
 export function HJ(e, t) {
   if (isSpotColor(e)) return t("common.spotColor");
 }
-var NJ = function ({
+export var NJ = function ({
   color: e,
   gradientStops: t,
   onClick: n,
@@ -37639,7 +36470,7 @@ export function XJ(e) {
     (KJ(e.representation) || YJ(e.representation))
   );
 }
-var JJ = mayBeUseMemp(function ({ setColor: e, isDisabled: t }) {
+export var JJ = mayBeUseMemp(function ({ setColor: e, isDisabled: t }) {
   const { t: n } = ZL(),
     s = DO(),
     i = IV(),
@@ -37840,7 +36671,7 @@ export function s0({ isDisabled: e = false, color: t, setColor: n }) {
         ],
       });
 }
-var i0 = mayBeUseMemp(function ({
+export var i0 = mayBeUseMemp(function ({
   block: e,
   name: t,
   inBar: n,
@@ -37978,7 +36809,7 @@ export function l0(e) {
     });
 }
 export var u0 = mayBeUseMemp(
-  sI(function ({
+  WithEngineComp(function ({
     block: e,
     name: t,
     inBar: n,
@@ -38128,7 +36959,7 @@ export function p0({ block: e, ...t }) {
   })(e);
   return (0, c0.jsx)(d0, { block: e, ...t, ...n });
 }
-var f0 = sI(function ({
+export var f0 = WithEngineComp(function ({
   engine: e,
   name: t = "strokeColor",
   i18nLabelString: n = "property.strokeColor",
@@ -38150,7 +36981,7 @@ var f0 = sI(function ({
     ...i,
   });
 });
-export var h0 = sI(function ({
+export var h0 = WithEngineComp(function ({
   engine: e,
   name: t = "strokeColor",
   i18nLabelString: n = "property.strokeColor",
@@ -38200,17 +37031,22 @@ export function m0({ block: e, ...t }) {
   })(e);
   return (0, c0.jsx)(d0, { block: e, ...t, ...n });
 }
-var g0 = sI(function ({ engine: e, ...t }) {
+export var g0 = WithEngineComp(function ({ engine: e, ...t }) {
   const [n] = e.block.findAllSelected();
   if (!(null != n && e.block.hasDropShadow(n))) return null;
   const s = e.block.isAllowedByScope(n, wH);
   return (0,
   c0.jsx)(m0, { block: n, isDisabled: !s, "data-cy": "shadow-color", ...t });
 });
-export var x0 = sI(function ({ engine: e, ...t }) {
+export var x0 = WithEngineComp(function ({ engine: e, ...t }) {
   return e.block.isValid(t.block) ? (0, c0.jsx)(b0, { ...t }) : null;
 });
-export var b0 = sI(function ({ engine: e, property: t, block: n, ...s }) {
+export var b0 = WithEngineComp(function ({
+  engine: e,
+  property: t,
+  block: n,
+  ...s
+}) {
   const i = e.block.getColor(n, t);
   const o = (0, xX.useMemo)(() => PO(i, e.editor), [i, e.editor]);
   return (0, c0.jsx)(d0, {
@@ -38236,18 +37072,15 @@ export var b0 = sI(function ({ engine: e, property: t, block: n, ...s }) {
 export var y0, v0;
 export var w0 = d0;
 
-
-
-
 export var _0 = mayBeUseMemp(
-  sI(function ({ engine: e, children: t }) {
+  WithEngineComp(function ({ engine: e, children: t }) {
     const n = VO().feature.isEnabled("ly.img.shadow", { engine: e }),
       [s] = e.block.findAllSelected();
     return null != s && e.block.hasDropShadow(s) && n ? t({ block: s }) : null;
   })
 );
 export var E0 = mayBeUseMemp(
-  sI(function ({
+  WithEngineComp(function ({
     engine: e,
     block: t,
     inBar: n = false,
@@ -38316,7 +37149,7 @@ export var E0 = mayBeUseMemp(
         });
   })
 );
-export var L0 = sI(function ({ engine: e, block: t }) {
+export var L0 = WithEngineComp(function ({ engine: e, block: t }) {
   const { t: n } = ZL(),
     s = IV(),
     i = e.block.isAllowedByScope(t, wH),
@@ -38506,121 +37339,6 @@ export var L0 = sI(function ({ engine: e, block: t }) {
   });
 export var P0 = y0;
 
-
-export var B0 = (e) =>
-  (0, A0.jsxs)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: [
-      (0, A0.jsx)("path", {
-        d: "M4 22L4 13L20 13L20 17L4 22Z",
-        fill: "currentColor",
-      }),
-      (0, A0.jsx)("path", {
-        fillRule: "evenodd",
-        clipRule: "evenodd",
-        d: "M4 2L20.0002 7.00013V11.0001L4 11.0001L4 2ZM6 4.72039L18.0002 8.47051V9.00013L6 9.00013L6 4.72039Z",
-        fill: "currentColor",
-      }),
-    ],
-  });
-export var M0 = (e) =>
-  (0, T0.jsxs)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: [
-      (0, T0.jsx)("path", {
-        d: "M3 3V8.99994L9.00283 9.00052L9.00303 7.00052L6.34206 7.00027C7.88839 5.74864 9.85663 5.00004 11.9999 5.00004C14.9437 5.00004 17.5574 6.41235 19.201 8.60061L20.8002 7.39946C18.795 4.72993 15.5993 3.00004 11.9999 3.00004C9.34039 3.00004 6.90131 3.94442 5 5.51441V3H3Z",
-        fill: "currentColor",
-      }),
-      (0, T0.jsx)("path", {
-        fillRule: "evenodd",
-        clipRule: "evenodd",
-        d: "M12.0002 10L18.0002 16L11.999 22.0012L5.99902 16.0012L12.0002 10ZM8.82745 16.0012L11.999 19.1728L15.1718 16L12.0002 12.8284L8.82745 16.0012Z",
-        fill: "currentColor",
-      }),
-    ],
-  });
-
-export var V0 = (e) =>
-  (0, R0.jsx)("svg", {
-    width: 12,
-    height: 8,
-    viewBox: "0 0 12 8",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: (0, R0.jsx)("path", {
-      d: "M0 0.5H5.5C8.81371 0.5 11.5 3.18629 11.5 6.5V8",
-      stroke: "currentColor",
-      strokeOpacity: 0.5,
-    }),
-  });
-export var F0 = (e) =>
-  (0, D0.jsxs)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: [
-      (0, D0.jsx)("path", {
-        d: "M12 2C8.68629 2 6 4.68629 6 8V10H8V8C8 5.79086 9.79086 4 12 4C14.2091 4 16 5.79086 16 8V10H18V8C18 4.68629 15.3137 2 12 2Z",
-        fill: "currentColor",
-      }),
-      (0, D0.jsx)("path", {
-        d: "M12 22C8.68629 22 6 19.3137 6 16V14H8V16C8 18.2091 9.79086 20 12 20C14.2091 20 16 18.2091 16 16V14H18V16C18 19.3137 15.3137 22 12 22Z",
-        fill: "currentColor",
-      }),
-      (0, D0.jsx)("rect", {
-        x: 10,
-        y: 7,
-        width: 4,
-        height: 10,
-        rx: 2,
-        fill: "currentColor",
-      }),
-    ],
-  });
-export var H0 = (e) =>
-  (0, I0.jsxs)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: [
-      (0, I0.jsx)("path", {
-        d: "M12 2C8.68629 2 6 4.68629 6 8V10H8V8C8 5.79086 9.79086 4 12 4C14.2091 4 16 5.79086 16 8V10H18V8C18 4.68629 15.3137 2 12 2Z",
-        fill: "currentColor",
-      }),
-      (0, I0.jsx)("path", {
-        d: "M12 22C8.68629 22 6 19.3137 6 16V14H8V16C8 18.2091 9.79086 20 12 20C14.2091 20 16 18.2091 16 16V14H18V16C18 19.3137 15.3137 22 12 22Z",
-        fill: "currentColor",
-      }),
-    ],
-  });
-
-
-
-
-
-
 export var G0 = function ({
   isLocked: e,
   setIsLocked: t,
@@ -38652,7 +37370,7 @@ export var G0 = function ({
 };
 export var Z0 = G0;
 
-export var K0 = sI(function ({ engine: e, block: t }) {
+export var K0 = WithEngineComp(function ({ engine: e, block: t }) {
   const n = IV(),
     s = DO(),
     i = oD(),
@@ -38744,7 +37462,7 @@ export var K0 = sI(function ({ engine: e, block: t }) {
   });
 });
 
-export var J0 = sI(function ({ engine: e, block: t }) {
+export var J0 = WithEngineComp(function ({ engine: e, block: t }) {
   const n = IV(),
     s = DO(),
     { t: i } = ZL(),
@@ -38938,7 +37656,7 @@ export function i1(e) {
     },
   };
 }
-export var r1 = sI(({ block: e, engine: t }) => {
+export var r1 = WithEngineComp(({ block: e, engine: t }) => {
   const { t: n } = ZL(),
     s = IV(),
     i = "Contain" === t.block.getContentFillMode(e),
@@ -39055,23 +37773,6 @@ export var r1 = sI(({ block: e, engine: t }) => {
   });
 });
 export var a1 = r1;
-export var c1 = (e) =>
-  (0, l1.jsx)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: (0, l1.jsx)("path", {
-      fillRule: "evenodd",
-      clipRule: "evenodd",
-      d: "M19.4057 6.84363L10.781 17.6245C10.4436 18.0463 9.8322 18.1239 9.4001 17.7998L4.6001 14.1998L5.8001 12.5998L9.82471 15.6183L17.8439 5.59424L19.4057 6.84363Z",
-      fill: "currentColor",
-    }),
-  });
-
 
 export var p1 = function ({ block: e }) {
   const t = DO(),
@@ -39092,7 +37793,7 @@ export var p1 = function ({ block: e }) {
       (0, d1.jsx)("span", {
         className: u1,
         children: (0, d1.jsx)(CompCustomButton, {
-          icon: (0, d1.jsx)(c1, {}),
+          icon: (0, d1.jsx)(IconCheckmark, {}),
           name: "crop-done",
           "aria-label": n("action.crop.exit"),
           onClick: () => {
@@ -39186,7 +37887,7 @@ export var p1 = function ({ block: e }) {
 };
 
 export var h1 = mayBeUseMemp(
-  sI(function ({ engine: e, children: t }) {
+  WithEngineComp(function ({ engine: e, children: t }) {
     const n = VO(),
       { blocks: s } = YR();
     if (!n.feature.isEnabled("ly.img.crop", { engine: e })) return null;
@@ -39230,7 +37931,7 @@ export function m1({ block: e }) {
     ],
   });
 }
-var g1, x1;
+export var g1, x1;
 export var b1 = mayBeUseMemp(function ({
   block: e,
   inBar: t = false,
@@ -39313,8 +38014,6 @@ export var w1 = function (e) {
       e.toUpperCase().replace("-", "").replace("_", "")
     );
 };
-
-
 
 export function _1({
   items: e,
@@ -39646,7 +38345,7 @@ export var T1 = { min: 0, max: 1, step: 0.01 };
 export function M1(e) {
   return B1[e] ?? T1;
 }
-var O1 = new Map([
+export var O1 = new Map([
   [
     "//ly.img.ubq/effect/recolor",
     new Map(
@@ -39692,7 +38391,7 @@ export var N1 = {
 export function U1(e, t, n) {
   return e(`property.blur.${w1(I1(t))}Blur.${n.split("/").pop()}`);
 }
-var z1 = function ({ blurId: e, blurType: t }) {
+export var z1 = function ({ blurId: e, blurType: t }) {
   const { t: n } = ZL(),
     s = YF(),
     i = (0, L1.useMemo)(() => {
@@ -39726,7 +38425,7 @@ var z1 = function ({ blurId: e, blurType: t }) {
 export function q1(e, t) {
   return e(`property.blur.${w1(I1(t))}Blur`);
 }
-var Q1, G1;
+export var Q1, G1;
 export var Z1 = function ({
   blurId: e,
   setBlur: t,
@@ -39780,13 +38479,8 @@ export var Z1 = function ({
   });
 };
 
-
-
-
-
-
 export var t2 = mayBeUseMemp(
-  sI(function ({ engine: e, children: t }) {
+  WithEngineComp(function ({ engine: e, children: t }) {
     const n = VO().feature.isEnabled("ly.img.blur", { engine: e }),
       { blocks: s } = YR(),
       [i] = e.block.findAllSelected();
@@ -39799,7 +38493,7 @@ export var t2 = mayBeUseMemp(
       : null;
   })
 );
-export var n2 = sI(function ({ engine: e, block: t }) {
+export var n2 = WithEngineComp(function ({ engine: e, block: t }) {
   const { t: n } = ZL(),
     s = IV(),
     i = e.block.isAllowedByScope(t, vH),
@@ -39862,7 +38556,7 @@ export var n2 = sI(function ({ engine: e, block: t }) {
   });
 });
 export var s2 = mayBeUseMemp(
-  sI(function ({
+  WithEngineComp(function ({
     engine: e,
     block: t,
     inBar: n = false,
@@ -39945,7 +38639,6 @@ export var s2 = mayBeUseMemp(
   });
 export var i2 = Q1;
 
-
 export var l2 = [
   "effect/adjustments/brightness",
   "effect/adjustments/saturation",
@@ -39966,7 +38659,7 @@ export var u2 = l2.concat(c2);
 export function d2(e, t) {
   return e(`property.adjustments.${t.split("/").pop()}`);
 }
-var p2 = function ({ effectId: e }) {
+export var p2 = function ({ effectId: e }) {
   const { t: t } = ZL();
   return (0, a2.jsxs)(a2.Fragment, {
     children: [
@@ -40010,7 +38703,7 @@ var p2 = function ({ effectId: e }) {
   });
 };
 
-var h2 = class _Effect {
+export var h2 = class _Effect {
   constructor(e, t, n, s, i, o, r) {
     (this.id = e),
       (this.slotIndex = t),
@@ -40131,10 +38824,10 @@ export function m2(e) {
     removeEffect: a,
   };
 }
-var g2, x2;
+export var g2, x2;
 
 export var y2 = mayBeUseMemp(
-  sI(function ({ engine: e, children: t }) {
+  WithEngineComp(function ({ engine: e, children: t }) {
     const n = VO().feature.isEnabled("ly.img.adjustment", { engine: e }),
       { blocks: s } = YR(),
       [i] = e.block.findAllSelected();
@@ -40151,7 +38844,7 @@ export var y2 = mayBeUseMemp(
   })
 );
 export var v2 = mayBeUseMemp(
-  sI(function ({ engine: e, block: t, effectId: n }) {
+  WithEngineComp(function ({ engine: e, block: t, effectId: n }) {
     const { t: s } = ZL(),
       i = IV(),
       o = DO(),
@@ -40246,7 +38939,7 @@ export var v2 = mayBeUseMemp(
   })
 );
 export var w2 = mayBeUseMemp(
-  sI(function ({
+  WithEngineComp(function ({
     engine: e,
     effectId: t,
     block: n,
@@ -40566,7 +39259,7 @@ export function V2(e, t) {
     })(t)}`
   );
 }
-var D2 = function ({
+export var D2 = function ({
   filter: e,
   duotoneAssets: t,
   lutAssets: n,
@@ -40630,7 +39323,7 @@ export var U2 = function () {
 };
 
 export var $2 = mayBeUseMemp(
-  sI(function ({ engine: e, children: t }) {
+  WithEngineComp(function ({ engine: e, children: t }) {
     const n = VO().feature.isEnabled("ly.img.filter", { engine: e }),
       { blocks: s } = YR(),
       [i] = e.block.findAllSelected();
@@ -40643,7 +39336,7 @@ export var $2 = mayBeUseMemp(
       : null;
   })
 );
-export var q2 = sI(function ({ engine: e, effectId: t, block: n }) {
+export var q2 = WithEngineComp(function ({ engine: e, effectId: t, block: n }) {
   const { t: s } = ZL(),
     i = IV(),
     { filters: o, insertEffect: r, removeEffect: a } = m2(n),
@@ -40716,7 +39409,7 @@ export var q2 = sI(function ({ engine: e, effectId: t, block: n }) {
   });
 });
 export var Q2 = mayBeUseMemp(
-  sI(function ({
+  WithEngineComp(function ({
     engine: e,
     effectId: t,
     block: n,
@@ -40927,9 +39620,14 @@ export var e5 = function ({ effectId: e, effectType: t }) {
 export function n5(e, t) {
   return e(`property.effect.${w1(F1(t))}`);
 }
-var s5, i5;
+export var s5, i5;
 export var o5 = mayBeUseMemp(
-  sI(function ({ engine: e, effectId: t, insertEffect: n, removeEffect: s }) {
+  WithEngineComp(function ({
+    engine: e,
+    effectId: t,
+    insertEffect: n,
+    removeEffect: s,
+  }) {
     const { t: i } = ZL(),
       o = FI(),
       r = (0, K2.useRef)(null),
@@ -40990,7 +39688,7 @@ export var o5 = mayBeUseMemp(
 );
 
 export var l5 = mayBeUseMemp(
-  sI(function ({ engine: e, children: t }) {
+  WithEngineComp(function ({ engine: e, children: t }) {
     const n = VO().feature.isEnabled("ly.img.effect", { engine: e }),
       { blocks: s } = YR(),
       [i] = e.block.findAllSelected();
@@ -41003,7 +39701,7 @@ export var l5 = mayBeUseMemp(
       : null;
   })
 );
-export var c5 = sI(function ({ engine: e, block: t, effectId: n }) {
+export var c5 = WithEngineComp(function ({ engine: e, block: t, effectId: n }) {
   const { t: s } = ZL(),
     i = IV(),
     { effects: o, insertEffect: r, removeEffect: a } = m2(t),
@@ -41062,7 +39760,7 @@ export var c5 = sI(function ({ engine: e, block: t, effectId: n }) {
   });
 });
 export var u5 = mayBeUseMemp(
-  sI(function ({
+  WithEngineComp(function ({
     engine: e,
     effectId: t,
     block: n,
@@ -41155,44 +39853,6 @@ export function d5({ block: e, ...t }) {
 export var p5 = s5;
 
 export var m5 = i0;
-export var x5 = (e) =>
-  (0, g5.jsxs)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: [
-      (0, g5.jsx)("path", {
-        fillRule: "evenodd",
-        clipRule: "evenodd",
-        d: "M12 5C12 6.01666 11.4943 6.9152 10.7207 7.4578L13.4996 19.5L13.5 21H10.5V19.6365C10.4069 19.3987 10.3436 19.1472 10.3136 18.8874L9.61572 12.8393L6.9736 13.3997C6.77817 14.8676 5.52133 16 4 16C2.34315 16 1 14.6569 1 13C1 11.3431 2.34315 10 4 10C5.21963 10 6.26927 10.7278 6.73832 11.7728L9.39822 10.9544L9.05725 7.99946C9.03821 7.99982 9.01913 8 9 8C7.34315 8 6 6.65685 6 5C6 3.34315 7.34315 2 9 2C10.6569 2 12 3.34315 12 5ZM10 5C10 5.55228 9.55228 6 9 6C8.44772 6 8 5.55228 8 5C8 4.44772 8.44772 4 9 4C9.55228 4 10 4.44772 10 5ZM5 13C5 13.5523 4.55228 14 4 14C3.44772 14 3 13.5523 3 13C3 12.4477 3.44772 12 4 12C4.55228 12 5 12.4477 5 13Z",
-        fill: "currentColor",
-      }),
-      (0, g5.jsx)("path", {
-        d: "M13.7598 11.9602L22.9997 10.0003L20.0746 8.53777C19.3846 8.19276 18.5882 8.12685 17.8508 8.35372L13.2539 9.76807L13.7598 11.9602Z",
-        fill: "currentColor",
-      }),
-      (0, g5.jsx)("path", {
-        d: "M4.5 21V19.5H1.5V21H4.5Z",
-        fill: "currentColor",
-      }),
-      (0, g5.jsx)("path", {
-        d: "M9 19.5H6V21H9V19.5Z",
-        fill: "currentColor",
-      }),
-      (0, g5.jsx)("path", {
-        d: "M18 19.5H15V21H18V19.5Z",
-        fill: "currentColor",
-      }),
-      (0, g5.jsx)("path", {
-        d: "M19.5 19.5H22.5V21H19.5V19.5Z",
-        fill: "currentColor",
-      }),
-    ],
-  });
 
 export var v5 = function (e) {
   const t = YF(),
@@ -41243,19 +39903,13 @@ export var v5 = function (e) {
   };
 };
 
-
-
 export var j5 =
   "UBQ_TrimSubInspector-module__containerTrimModeInterface--YVMh4";
-
-
-
-
 
 export function A5(e, t) {
   return e(t.join("."));
 }
-var B5 = function ({ block: e, selectedBlock: t, blockType: n }) {
+export var B5 = function ({ block: e, selectedBlock: t, blockType: n }) {
   const s = YF(),
     { t: i } = ZL(),
     o = IV(),
@@ -41613,7 +40267,7 @@ export var R5 = function ({ block: e, selectedBlock: t, i18nBlockType: n }) {
 };
 
 export var D5 = mayBeUseMemp(
-  sI(function ({ engine: e, children: t }) {
+  WithEngineComp(function ({ engine: e, children: t }) {
     const n = VO(),
       s = rI(SH);
     if (!n.feature.isEnabled("ly.img.trim", { engine: e })) return null;
@@ -41648,7 +40302,7 @@ export function F5({ block: e, i18nBlockType: t, selectedBlock: n }) {
     ],
   });
 }
-var I5, H5;
+export var I5, H5;
 export var N5 = mayBeUseMemp(function ({
   block: e,
   i18nBlockType: t,
@@ -41718,8 +40372,11 @@ export var N5 = mayBeUseMemp(function ({
   });
 export var U5 = I5;
 
-
-export var W5 = sI(function ({ block: e, isDisabled: t, engine: n }) {
+export var W5 = WithEngineComp(function ({
+  block: e,
+  isDisabled: t,
+  engine: n,
+}) {
   const { t: s } = ZL(),
     i = IV(),
     o = n.block.getBool(e, "playback/muted"),
@@ -41768,7 +40425,7 @@ Y5.InBar = function ({ deniedByScopeBehavior: e }) {
   });
 };
 export var X5 = mayBeUseMemp(
-  sI(function ({ engine: e, children: t }) {
+  WithEngineComp(function ({ engine: e, children: t }) {
     if (!VO().feature.isEnabled("ly.img.volume", { engine: e })) return null;
     const [n] = e.block.findAllSelected();
     if (!n || "//ly.img.ubq/page" === e.block.getType(n)) return null;
@@ -41790,7 +40447,7 @@ export var X5 = mayBeUseMemp(
       : null;
   })
 );
-export var J5 = sI(function ({
+export var J5 = WithEngineComp(function ({
   engine: e,
   block: t,
   selectedBlock: n,
@@ -41802,7 +40459,7 @@ export var J5 = sI(function ({
     ? (0, K5.jsx)(W5, { block: t, isDisabled: s || !o })
     : null;
 });
-export var e4 = sI(function ({
+export var e4 = WithEngineComp(function ({
   engine: e,
   isDisabled: t,
   selectedBlock: n,
@@ -41973,10 +40630,10 @@ export function i4(e) {
     showGradientControls: true,
   };
 }
-var o4 = "UBQ_FillInspectorControls-module__contentBox--KoUDx";
+export var o4 = "UBQ_FillInspectorControls-module__contentBox--KoUDx";
 
 export var a4 = mayBeUseMemp(
-  sI(({ engine: e, fillBlock: t, isDisabled: n = false }) => {
+  WithEngineComp(({ engine: e, fillBlock: t, isDisabled: n = false }) => {
     const s = VO(),
       { t: i } = ZL(),
       o = XR(),
@@ -42030,7 +40687,7 @@ export var a4 = mayBeUseMemp(
   })
 );
 export var l4 = mayBeUseMemp(
-  sI(({ engine: e, fillBlock: t, isDisabled: n = false }) => {
+  WithEngineComp(({ engine: e, fillBlock: t, isDisabled: n = false }) => {
     const s = VO(),
       { t: i } = ZL(),
       o = XR(),
@@ -42111,8 +40768,8 @@ export function c4({ block: e, isDisabled: t }) {
     }),
   });
 }
-var u4, d4;
-export var p4 = sI(function ({ block: e, engine: t }) {
+export var u4, d4;
+export var p4 = WithEngineComp(function ({ block: e, engine: t }) {
   const n = t.block.isAllowedByScope(e, SH),
     s = t.block.isFillEnabled(e),
     i = t.block.getFill(e);
@@ -42133,11 +40790,8 @@ export var p4 = sI(function ({ block: e, engine: t }) {
   }
 });
 
-
-
-
 export var x4 = mayBeUseMemp(
-  sI(function ({ engine: e, children: t }) {
+  WithEngineComp(function ({ engine: e, children: t }) {
     const n = VO(),
       [s] = e.block.findAllSelected();
     if (null == s) return null;
@@ -42148,7 +40802,7 @@ export var x4 = mayBeUseMemp(
       : null;
   })
 );
-export var b4 = sI(function ({ engine: e, block: t }) {
+export var b4 = WithEngineComp(function ({ engine: e, block: t }) {
   const { t: n } = ZL(),
     s = IV(),
     i = e.block.isAllowedByScope(t, SH),
@@ -42207,7 +40861,9 @@ export var b4 = sI(function ({ engine: e, block: t }) {
                       isDisabled: d || !o,
                       children: [
                         f,
-                        t ? (0, g4.jsx)(pb, {}) : (0, g4.jsx)(ub, {}),
+                        t
+                          ? (0, g4.jsx)(IconChevronDown, {})
+                          : (0, g4.jsx)(IconChevronUp, {}),
                       ],
                     }),
                   }),
@@ -42323,7 +40979,7 @@ export var b4 = sI(function ({ engine: e, block: t }) {
   });
 });
 export var y4 = mayBeUseMemp(
-  sI(function ({
+  WithEngineComp(function ({
     engine: e,
     block: t,
     inBar: n = false,
@@ -42491,10 +41147,8 @@ export var k4 = class extends UIComponentBuilder {
   }
 };
 
-
-
 export var _4 = mayBeUseMemp(
-  sI(function ({ engine: e, className: t }) {
+  WithEngineComp(function ({ engine: e, className: t }) {
     const { t: n } = ZL(),
       s = XR(),
       i = e.editor.getEditMode(),
@@ -42529,8 +41183,6 @@ export var _4 = mayBeUseMemp(
   })
 );
 
-
-
 export var A4 = class extends UIComponentBuilder {
   constructor(e, t, n, s) {
     super("NavigationBarBuilder", e, t, n, s);
@@ -42546,11 +41198,8 @@ export var A4 = class extends UIComponentBuilder {
   };
 };
 
-
-
-
 export var R4 = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const { t: t } = ZL(),
       n = XR(),
       s = Nz(),
@@ -42654,7 +41303,11 @@ export var H4 = mayBeUseMemp(function () {
   });
 });
 
-export var U4 = sI(function ({ children: e, engine: t, condition: n }) {
+export var U4 = WithEngineComp(function ({
+  children: e,
+  engine: t,
+  condition: n,
+}) {
   return ("function" == typeof n ? n(t) : n)
     ? (0, N4.jsx)(N4.Fragment, { children: e })
     : null;
@@ -42662,7 +41315,6 @@ export var U4 = sI(function ({ children: e, engine: t, condition: n }) {
 
 export var $4 = ["B", "kB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
 export var q4 = (e) => e.toLocaleString("en");
-
 
 export var Z4 = (e, t) => {
   let n = "";
@@ -42686,8 +41338,12 @@ export var Z4 = (e, t) => {
 };
 export var W4 = function () {
   const { t: e } = ZL(),
-    { upload: t, uploadProgress: n, uploadError: s } = (0, qI.useContext)(ZI),
-    i = KI(),
+    {
+      upload: t,
+      uploadProgress: n,
+      uploadError: s,
+    } = (0, qI.useContext)(UploadContext),
+    i = useSetUploadContext(),
     o = () => {
       i.setUpload(undefined),
         i.setUploadError(undefined),
@@ -42746,7 +41402,7 @@ export var W4 = function () {
 };
 export var K4 = W4;
 
-var f3 = function (e, t, n, s) {
+export var f3 = function (e, t, n, s) {
   const i = t.scene.getMode();
   let o = (0, p3.default)(
     ((e) => {
@@ -42795,7 +41451,7 @@ export var h3 = function () {
 };
 
 export var g3 = mayBeUseMemp(
-  sI(function ({ engine: e, children: t }) {
+  WithEngineComp(function ({ engine: e, children: t }) {
     const n = XR(),
       [s, i] = BQ("//ly.img.panel/assetLibrary.replace", n),
       [o] = BQ("//ly.img.panel/assetLibrary", n),
@@ -42849,12 +41505,7 @@ export var x3 = {
   ghost: "UBQ_Clip-module__ghost--tCq5-",
 };
 
-
-
-
-
-
-export var j3 = sI(function ({
+export var j3 = WithEngineComp(function ({
   engine: e,
   block: t,
   height: n,
@@ -42923,7 +41574,7 @@ export var j3 = sI(function ({
     ],
   });
 });
-export var S3 = sI(function ({
+export var S3 = WithEngineComp(function ({
   engine: e,
   block: t,
   height: n,
@@ -42985,7 +41636,7 @@ export function _3() {
     style: { maskImage: `url(${e})`, WebkitMaskImage: `url(${e})` },
   });
 }
-var E3 = {
+export var E3 = {
   idle: { x: "-100%", opacity: 0 },
   loading: {
     opacity: 1,
@@ -43018,7 +41669,7 @@ export function P3() {
     }, []);
   return (0, b3.useEffect)(() => () => n(), [n]), [t, n];
 }
-export var B3 = sI(function ({
+export var B3 = WithEngineComp(function ({
   engine: e,
   block: t,
   maxDuration: n,
@@ -43061,7 +41712,7 @@ export var B3 = sI(function ({
       return null;
   }
 });
-export var T3 = sI(function ({
+export var T3 = WithEngineComp(function ({
   engine: e,
   clips: t,
   block: n,
@@ -43181,7 +41832,7 @@ export var T3 = sI(function ({
     ],
   });
 });
-export var M3 = sI(function ({
+export var M3 = WithEngineComp(function ({
   engine: e,
   clips: t,
   block: n,
@@ -43248,11 +41899,11 @@ export var M3 = sI(function ({
   });
 });
 export var O3 = mayBeUseMemp(
-  sI(function ({ engine: e, block: t, clips: n, clipType: s }) {
+  WithEngineComp(function ({ engine: e, block: t, clips: n, clipType: s }) {
     const i = VO(),
       o = DO(),
       { focusSelectedElement: r } = xI(),
-      { getScope: a } = vI(),
+      { getScope: a } = useShortcutScope(),
       { t: l } = ZL(),
       c = IV(),
       u = i.feature.isEnabled("ly.img.duplicate", { engine: e }),
@@ -43538,7 +42189,7 @@ export function R3() {
 export function V3(e, t) {
   return e(`block.${t.replace("//ly.img.ubq/shape/", "")}`);
 }
-var D3 = new RegExp("[^/]*$");
+export var D3 = new RegExp("[^/]*$");
 export var F3 = B3;
 export function I3() {
   const e = E$("--ubq-scale-base", (e) => C$(e, 4));
@@ -43658,8 +42309,6 @@ export var N3 = function ({
     })
   );
 };
-
-
 
 export var q3 = function ({
   scrollContainerRef: e,
@@ -43926,7 +42575,7 @@ export var c7 = {
   expandButton: "UBQ_VideoTimelineControls-module__expandButton--MRale",
 };
 
-export var d7 = sI(function ({ engine: e, page: t }) {
+export var d7 = WithEngineComp(function ({ engine: e, page: t }) {
   const n = i4(t);
   return e.block.isValid(e.block.getFill(t))
     ? (0, u7.jsx)(w0, {
@@ -43940,7 +42589,7 @@ export var d7 = sI(function ({ engine: e, page: t }) {
       })
     : null;
 });
-export var p7 = sI(function ({ engine: e, page: t }) {
+export var p7 = WithEngineComp(function ({ engine: e, page: t }) {
   const n = I3(),
     { t: s } = ZL(),
     i = IV(),
@@ -43998,14 +42647,14 @@ export var p7 = sI(function ({ engine: e, page: t }) {
     }),
   });
 });
-export var f7 = sI(function ({ engine: e, page: t }) {
+export var f7 = WithEngineComp(function ({ engine: e, page: t }) {
   const n = e.block.getDuration(t),
     s = xS(e.block.getPlaybackTime(t), true),
     i = xS(n, true);
   return (0,
   u7.jsxs)("span", { className: c7.playbackInfo, children: [(0, u7.jsx)("time", { dateTime: s.periodString, "data-cy": "timelinePlaybackInfo-playbackTime", children: s.timeString }), (0, u7.jsx)("span", { children: " / " }), (0, u7.jsx)("time", { dateTime: i.periodString, "data-cy": "timelinePlaybackInfo-totalDuration", children: i.timeString })] });
 });
-export var h7 = sI(function ({ engine: e, page: t }) {
+export var h7 = WithEngineComp(function ({ engine: e, page: t }) {
   const { t: n } = ZL(),
     s = e.block.isPlaying(t),
     i = e.block.getDuration(t),
@@ -44019,7 +42668,7 @@ export var h7 = sI(function ({ engine: e, page: t }) {
   return (
     (function (e, t) {
       const n = ov(t),
-        { registerShortcut: s, unregisterShortcut: i } = vI();
+        { registerShortcut: s, unregisterShortcut: i } = useShortcutScope();
       (0, bI.useEffect)(() => {
         const t = s(e, n);
         return () => {
@@ -44064,7 +42713,7 @@ export var h7 = sI(function ({ engine: e, page: t }) {
     })
   );
 });
-export var m7 = sI(function ({ engine: e, page: t }) {
+export var m7 = WithEngineComp(function ({ engine: e, page: t }) {
   const { t: n } = ZL(),
     s = e.block.isLooping(t);
   return (0, u7.jsx)(Ly, {
@@ -44082,44 +42731,7 @@ export var m7 = sI(function ({ engine: e, page: t }) {
     }),
   });
 });
-export function g7({ zoomIn: e, zoomOut: t, zoomToFit: n }) {
-  const { t: s } = ZL();
-  return (0, u7.jsxs)("div", {
-    className: c7.zoomControls,
-    children: [
-      (0, u7.jsx)(Sv, { children: s("component.timeline.scale.label") }),
-      (0, u7.jsxs)(CompButtonGroup, {
-        children: [
-          (0, u7.jsx)(Ly, {
-            label: s("component.timeline.scale.down"),
-            children: (0, u7.jsx)(CompCustomButton, {
-              name: "timeline-scale-down",
-              "aria-label": s("component.timeline.scale.down.description"),
-              onClick: t,
-              children: (0, u7.jsx)(X3, {}),
-            }),
-          }),
-          (0, u7.jsx)(Ly, {
-            label: s("component.timeline.scale.up"),
-            children: (0, u7.jsx)(CompCustomButton, {
-              name: "timeline-scale-up",
-              "aria-label": s("component.timeline.scale.up.description"),
-              onClick: e,
-              children: (0, u7.jsx)(HZ, {}),
-            }),
-          }),
-        ],
-      }),
-      (0, u7.jsx)(CompCustomButton, {
-        name: "timeline-scale-fit",
-        "aria-label": s("component.timeline.scale.fit.description"),
-        onClick: n,
-        children: s("component.timeline.scale.fit"),
-      }),
-    ],
-  });
-}
-var x7 = sI(function ({
+export var x7 = WithEngineComp(function TimelineZoomingWrapper({
   engine: e,
   isExpanded: t,
   toggleExpanded: n,
@@ -44158,7 +42770,12 @@ var x7 = sI(function ({
       (0, u7.jsxs)("div", {
         className: (0, a7.default)(c7.group, c7.right),
         children: [
-          t && (0, u7.jsx)(g7, { zoomIn: s, zoomOut: i, zoomToFit: o }),
+          t &&
+            (0, u7.jsx)(TimelineZooming, {
+              zoomIn: s,
+              zoomOut: i,
+              zoomToFit: o,
+            }),
           (0, u7.jsx)(Ly, {
             label: r(
               t ? "component.timeline.collapse" : "component.timeline.expand"
@@ -44183,12 +42800,6 @@ var x7 = sI(function ({
     ],
   });
 });
-
-
-
-
-export var C7 =
-  "UBQ_BackgroundTrackAddButton-module__addClipStickySentinel--Wcwxd";
 
 export var S7 = mayBeUseMemp(function ({ scrollContainerRef: e }) {
   const t = (0, y7.useRef)(null),
@@ -44365,7 +42976,7 @@ export function L7({
     })
   );
 }
-var P7 = mayBeUseMemp(function ({ className: e }) {
+export var P7 = mayBeUseMemp(function ({ className: e }) {
   const t = DO(),
     n = YF(),
     s = (0, X4.useRef)(null),
@@ -44724,8 +43335,6 @@ export var O7 = mayBeUseMemp(function () {
   M7.jsx)(WQ, { id: e, group: "subInspector", delayRenderAfterAnimation: false, "data-cy": "asset-library-panel", fullHeight: true, focusTrapActive: false, floating: t, panelPosition: s ? "left" : n, children: (0, M7.jsx)(oY.PanelContent, {}) });
 });
 
-
-
 export var F7 = function ({ error: e, onClose: t }) {
   const { t: n } = ZL();
   return (0, D7.jsx)(Yw, {
@@ -44749,7 +43358,6 @@ export var F7 = function ({ error: e, onClose: t }) {
     }),
   });
 };
-
 
 export var N7 = function ({
   panelId: e,
@@ -44883,7 +43491,7 @@ export var q7 = mayBeUseMemp(function () {
 });
 
 export var G7 = mayBeUseMemp(
-  sI(function ({ block: e }) {
+  WithEngineComp(function ({ block: e }) {
     const t = NQ("//ly.img.panel/inspector"),
       n = UQ("//ly.img.panel/inspector"),
       s = Nz();
@@ -44936,8 +43544,6 @@ export var X7 = function (e, t) {
     n
   );
 };
-
-
 
 export var n9 = function ({ error: e }) {
   const { t: t } = ZL();
@@ -45069,31 +43675,6 @@ export var p9 = mayBeUseMemp(function ({ block: e }) {
   return (0,
   d9.jsx)(WQ, { id: "//ly.img.panel/inspector/filters", group: "subInspector", "data-cy": "filters-subinspector-panel", floating: n, panelPosition: i ? "left" : s, children: (0, d9.jsx)(W2.PanelContent, { effectId: o, block: e }) });
 });
-export var h9 = (e) =>
-  (0, f9.jsxs)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: [
-      (0, f9.jsx)("path", {
-        fillRule: "evenodd",
-        clipRule: "evenodd",
-        d: "M17.707 5.29312C16.4881 4.07417 14.5118 4.07417 13.2928 5.29312L5.62591 12.96L4.20937 17.2097C3.88364 18.1868 4.81331 19.1165 5.79051 18.7908L10.0401 17.3743L17.7071 9.70733C18.926 8.48838 18.926 6.51207 17.707 5.29312ZM14.7071 6.70733C15.145 6.26943 15.8549 6.26943 16.2928 6.70733C16.7307 7.14524 16.7307 7.85522 16.2928 8.29312L9.168 15.418L7.58221 13.8322L14.7071 6.70733Z",
-        fill: "currentColor",
-      }),
-      (0, f9.jsx)("rect", {
-        x: 11,
-        y: 18,
-        width: 8,
-        height: 2,
-        fill: "currentColor",
-      }),
-    ],
-  });
 
 export var x9 = {};
 defineGetter(x9, {
@@ -45105,7 +43686,6 @@ defineGetter(x9, {
   SceneDesignBlock: () => kte,
   TextDesignBlock: () => Mne,
 });
-
 
 export function v9({ definitionElement: { children: e }, context: t }) {
   return (0, y9.jsx)("div", {
@@ -45135,7 +43715,6 @@ export var E9 = mayBeUseMemp(function ({ definitionElement: e }) {
   return (0, _9.jsx)(Sv, { isDisabled: !!n && n(), children: t(`${s}`) });
 });
 export var L9 = E9;
-
 
 export var B9 = function ({ isDisabled: e }) {
   const t = IV(),
@@ -45516,7 +44095,9 @@ export var x6 = function () {
                   (0, g6.jsx)(yC.Item, {
                     children: (0, g6.jsx)(V9, {
                       name: "toggle-always_on_top",
-                      icon: p ? (0, g6.jsx)(c1, {}) : (0, g6.jsx)(G9, {}),
+                      icon: p
+                        ? (0, g6.jsx)(IconCheckmark, {})
+                        : (0, g6.jsx)(G9, {}),
                       i18nKey: "input.alwaysOnTop",
                       variant: "plain",
                       isDisabled: y || !l,
@@ -45529,7 +44110,9 @@ export var x6 = function () {
                   (0, g6.jsx)(yC.Item, {
                     children: (0, g6.jsx)(V9, {
                       name: "toggle-always_on_bottom",
-                      icon: h ? (0, g6.jsx)(c1, {}) : (0, g6.jsx)(G9, {}),
+                      icon: h
+                        ? (0, g6.jsx)(IconCheckmark, {})
+                        : (0, g6.jsx)(G9, {}),
                       i18nKey: "input.alwaysOnBottom",
                       variant: "plain",
                       isDisabled: v || !l,
@@ -45548,7 +44131,7 @@ export var x6 = function () {
   });
 };
 
-export var y6 = sI(function ({ engine: e }) {
+export var y6 = WithEngineComp(function ({ engine: e }) {
   const { t: t } = ZL(),
     [n] = e.block.findAllSelected();
   if (!n || !e.block.hasOpacity(n)) return null;
@@ -45556,10 +44139,6 @@ export var y6 = sI(function ({ engine: e }) {
   return (0,
   b6.jsx)(rG, { block: n, label: t("common.opacity"), property: "opacity", min: 0, max: 1, step: 0.01, isDisabled: !s, centeredZeroPosition: false });
 });
-
-
-
-
 
 export var _6 = [
   ["PassThrough", "Normal"],
@@ -45569,7 +44148,7 @@ export var _6 = [
   ["Difference", "Exclusion"],
   ["Hue", "Saturation", "Color", "Luminosity"],
 ];
-export var E6 = sI(function ({ engine: e }) {
+export var E6 = WithEngineComp(function ({ engine: e }) {
   const { t: t } = ZL(),
     n = ((e) => ({
       PassThrough: e("property.blendMode.PassThrough"),
@@ -45613,7 +44192,12 @@ export var E6 = sI(function ({ engine: e }) {
                 "aria-label": t("property.blendMode.description", {
                   mode: n[l],
                 }),
-                children: [n[l], s ? (0, S6.jsx)(pb, {}) : (0, S6.jsx)(ub, {})],
+                children: [
+                  n[l],
+                  s
+                    ? (0, S6.jsx)(IconChevronDown, {})
+                    : (0, S6.jsx)(IconChevronUp, {}),
+                ],
               }),
             }),
           () =>
@@ -45751,7 +44335,7 @@ export function D6() {
     "exportable"
   );
 }
-var F6 = function () {
+export var F6 = function () {
   return O$() ? (0, V6.jsx)(D6, {}) : null;
 };
 
@@ -45998,1004 +44582,7 @@ export var J6 = {
   ],
 };
 export var e8 = Y6(J6);
-export var n8 = (e) =>
-  (0, t8.jsx)("svg", {
-    width: 24,
-    height: 24,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    "aria-hidden": true,
-    ...e,
-    children: (0, t8.jsx)("path", {
-      d: "M17.7072 16.2071L12.7072 21.2072C12.5196 21.3947 12.2653 21.5001 12.0001 21.5001C11.7349 21.5001 11.4805 21.3947 11.293 21.2072L6.29297 16.2071L7.70719 14.7929L11 18.0858V5.9143L7.70719 9.20713L6.29297 7.79292L11.293 2.7929C11.4805 2.60536 11.7349 2.5 12.0001 2.5C12.2653 2.5 12.5196 2.60536 12.7072 2.7929L17.7072 7.79292L16.293 9.20713L13 5.91414V18.0859L16.293 14.7929L17.7072 16.2071Z",
-      fill: "currentColor",
-    }),
-  });
-  export var u8 = (e) =>
-    (0, c8.jsxs)("svg", {
-      width: 24,
-      height: 24,
-      viewBox: "0 0 24 24",
-      fill: "none",
-      xmlns: "http://www.w3.org/2000/svg",
-      "aria-hidden": true,
-      ...e,
-      children: [
-        (0, c8.jsx)("path", {
-          d: "M2 13.5H4V10.5H2V13.5Z",
-          fill: "currentColor",
-        }),
-        (0, c8.jsx)("path", {
-          d: "M7 13.5H10V10.5H7V13.5Z",
-          fill: "currentColor",
-        }),
-        (0, c8.jsx)("path", {
-          d: "M17 13.5H14V10.5H17V13.5Z",
-          fill: "currentColor",
-        }),
-        (0, c8.jsx)("path", {
-          d: "M20 13.5H22V10.5H20V13.5Z",
-          fill: "currentColor",
-        }),
-      ],
-    });
-  export var p8 = (e) =>
-    (0, d8.jsx)("svg", {
-      width: 24,
-      height: 24,
-      viewBox: "0 0 24 24",
-      fill: "none",
-      xmlns: "http://www.w3.org/2000/svg",
-      "aria-hidden": true,
-      ...e,
-      children: (0, d8.jsx)("path", {
-        d: "M2 12H22",
-        stroke: "currentColor",
-        strokeWidth: 3,
-      }),
-    });
-  
-    export var H8 = (e) =>
-      (0, I8.jsxs)("svg", {
-        width: 24,
-        height: 24,
-        viewBox: "0 0 24 24",
-        fill: "none",
-        xmlns: "http://www.w3.org/2000/svg",
-        "aria-hidden": true,
-        ...e,
-        children: [
-          (0, I8.jsx)("path", {
-            fillRule: "evenodd",
-            clipRule: "evenodd",
-            d: "M13 13H21V15H15V21H13V13Z",
-            fill: "currentColor",
-          }),
-          (0, I8.jsx)("path", {
-            fillRule: "evenodd",
-            clipRule: "evenodd",
-            d: "M3 21H7V14.8284L14.8284 7H21V3H13.1716L3 13.1716V21Z",
-            fill: "currentColor",
-          }),
-        ],
-      });
-    export var U8 = (e) =>
-      (0, N8.jsxs)("svg", {
-        width: 24,
-        height: 24,
-        viewBox: "0 0 24 24",
-        fill: "none",
-        xmlns: "http://www.w3.org/2000/svg",
-        "aria-hidden": true,
-        ...e,
-        children: [
-          (0, N8.jsx)("path", {
-            fillRule: "evenodd",
-            clipRule: "evenodd",
-            d: "M13 13H21V15H15V21H13V13Z",
-            fill: "currentColor",
-          }),
-          (0, N8.jsx)("path", {
-            fillRule: "evenodd",
-            clipRule: "evenodd",
-            d: "M3 21H7V7H21V3H3V21Z",
-            fill: "currentColor",
-          }),
-        ],
-      });
-    export var $8 = (e) =>
-      (0, z8.jsxs)("svg", {
-        width: 24,
-        height: 24,
-        viewBox: "0 0 24 24",
-        fill: "none",
-        xmlns: "http://www.w3.org/2000/svg",
-        "aria-hidden": true,
-        ...e,
-        children: [
-          (0, z8.jsx)("path", {
-            fillRule: "evenodd",
-            clipRule: "evenodd",
-            d: "M13 13H21V15H15V21H13V13Z",
-            fill: "currentColor",
-          }),
-          (0, z8.jsx)("path", {
-            fillRule: "evenodd",
-            clipRule: "evenodd",
-            d: "M3 15V21H7V15C7 10.5817 10.5817 7 15 7H21V3H15C8.37258 3 3 8.37258 3 15Z",
-            fill: "currentColor",
-          }),
-        ],
-      });
-    export var Q8 = (e) =>
-      (0, q8.jsxs)("svg", {
-        width: 24,
-        height: 24,
-        viewBox: "0 0 24 24",
-        fill: "none",
-        xmlns: "http://www.w3.org/2000/svg",
-        "aria-hidden": true,
-        ...e,
-        children: [
-          (0, q8.jsx)("path", {
-            d: "M3 3V21H21V19H5V3H3Z",
-            fill: "currentColor",
-          }),
-          (0, q8.jsx)("path", {
-            d: "M13 3V11H21V9H15V3H13Z",
-            fill: "currentColor",
-          }),
-          (0, q8.jsx)("path", {
-            fillRule: "evenodd",
-            clipRule: "evenodd",
-            d: "M7 13.5V3H11V13H21V17H10.5C8.567 17 7 15.433 7 13.5Z",
-            fill: "currentColor",
-          }),
-        ],
-      });
-    export var Z8 = (e) =>
-      (0, G8.jsxs)("svg", {
-        width: 24,
-        height: 24,
-        viewBox: "0 0 24 24",
-        fill: "none",
-        xmlns: "http://www.w3.org/2000/svg",
-        "aria-hidden": true,
-        ...e,
-        children: [
-          (0, G8.jsx)("path", {
-            fillRule: "evenodd",
-            clipRule: "evenodd",
-            d: "M4 3H6V18H21V20H4V3Z",
-            fill: "currentColor",
-          }),
-          (0, G8.jsx)("path", {
-            fillRule: "evenodd",
-            clipRule: "evenodd",
-            d: "M8 12.5V3H12V12H21V16H11.5C9.567 16 8 14.433 8 12.5Z",
-            fill: "currentColor",
-          }),
-        ],
-      });
-    export var K8 = (e) =>
-      (0, W8.jsxs)("svg", {
-        width: 24,
-        height: 24,
-        viewBox: "0 0 24 24",
-        fill: "none",
-        xmlns: "http://www.w3.org/2000/svg",
-        "aria-hidden": true,
-        ...e,
-        children: [
-          (0, W8.jsx)("path", {
-            fillRule: "evenodd",
-            clipRule: "evenodd",
-            d: "M10 3H12V12H21V14H10V3Z",
-            fill: "currentColor",
-          }),
-          (0, W8.jsx)("path", {
-            fillRule: "evenodd",
-            clipRule: "evenodd",
-            d: "M4 16.5V3H8V16H21V20H7.5C5.567 20 4 18.433 4 16.5Z",
-            fill: "currentColor",
-          }),
-        ],
-      });
-    
-    
-    export var uee = (e) =>
-      (0, cee.jsxs)("svg", {
-        width: 24,
-        height: 24,
-        viewBox: "0 0 24 24",
-        fill: "none",
-        xmlns: "http://www.w3.org/2000/svg",
-        "aria-hidden": true,
-        ...e,
-        children: [
-          (0, cee.jsx)("path", {
-            d: "M6 13.5H2V10.5H6V13.5Z",
-            fill: "currentColor",
-          }),
-          (0, cee.jsx)("path", {
-            d: "M15 13.5H9V10.5H15V13.5Z",
-            fill: "currentColor",
-          }),
-          (0, cee.jsx)("path", {
-            d: "M18 13.5H22V10.5H18V13.5Z",
-            fill: "currentColor",
-          }),
-        ],
-      });
-      export var Lee = (e) =>
-        (0, Eee.jsxs)("svg", {
-          width: 24,
-          height: 24,
-          viewBox: "0 0 24 24",
-          fill: "none",
-          xmlns: "http://www.w3.org/2000/svg",
-          "aria-hidden": true,
-          ...e,
-          children: [
-            (0, Eee.jsx)("path", {
-              fillRule: "evenodd",
-              clipRule: "evenodd",
-              d: "M4.5 8.625C4.5 6.34683 6.34683 4.5 8.625 4.5C10.9032 4.5 12.75 6.34683 12.75 8.625C12.75 10.9032 10.9032 12.75 8.625 12.75C6.34683 12.75 4.5 10.9032 4.5 8.625ZM8.625 11.25C7.17525 11.25 6 10.0747 6 8.625C6 7.17525 7.17525 6 8.625 6C10.0747 6 11.25 7.17525 11.25 8.625C11.25 10.0747 10.0747 11.25 8.625 11.25Z",
-              fill: "currentColor",
-            }),
-            (0, Eee.jsx)("path", {
-              fillRule: "evenodd",
-              clipRule: "evenodd",
-              d: "M15.4258 10.3101C15.5703 10.0608 15.9303 10.0608 16.0748 10.3102L20.2024 17.4371C20.3472 17.6871 20.1668 18 19.8779 18H11.6209C11.332 18 11.1516 17.687 11.2964 17.437L15.4258 10.3101ZM13.5729 16.5L15.75 12.7425L17.9263 16.5H13.5729Z",
-              fill: "currentColor",
-            }),
-            (0, Eee.jsx)("path", {
-              d: "M1.5 3C1.5 3.82843 2.17157 4.5 3 4.5C3.82843 4.5 4.5 3.82843 4.5 3C4.5 2.17157 3.82843 1.5 3 1.5C2.17157 1.5 1.5 2.17157 1.5 3Z",
-              fill: "currentColor",
-            }),
-            (0, Eee.jsx)("path", {
-              d: "M9 21C9 21.8284 9.67157 22.5 10.5 22.5C11.3284 22.5 12 21.8284 12 21C12 20.1716 11.3284 19.5 10.5 19.5C9.67157 19.5 9 20.1716 9 21Z",
-              fill: "currentColor",
-            }),
-            (0, Eee.jsx)("path", {
-              d: "M13.5 4.5C12.6716 4.5 12 3.82843 12 3C12 2.17157 12.6716 1.5 13.5 1.5C14.3284 1.5 15 2.17157 15 3C15 3.82843 14.3284 4.5 13.5 4.5Z",
-              fill: "currentColor",
-            }),
-            (0, Eee.jsx)("path", {
-              d: "M1.5 13.5C1.5 14.3284 2.17157 15 3 15C3.82843 15 4.5 14.3284 4.5 13.5C4.5 12.6716 3.82843 12 3 12C2.17157 12 1.5 12.6716 1.5 13.5Z",
-              fill: "currentColor",
-            }),
-            (0, Eee.jsx)("path", {
-              d: "M21 22.5C20.1716 22.5 19.5 21.8284 19.5 21C19.5 20.1716 20.1716 19.5 21 19.5C21.8284 19.5 22.5 20.1716 22.5 21C22.5 21.8284 21.8284 22.5 21 22.5Z",
-              fill: "currentColor",
-            }),
-            (0, Eee.jsx)("path", {
-              d: "M19.5 10.5C19.5 11.3284 20.1716 12 21 12C21.8284 12 22.5 11.3284 22.5 10.5C22.5 9.67157 21.8284 9 21 9C20.1716 9 19.5 9.67157 19.5 10.5Z",
-              fill: "currentColor",
-            }),
-          ],
-        });
-      
-        export var pte = (e) =>
-          (0, dte.jsxs)("svg", {
-            width: 24,
-            height: 24,
-            viewBox: "0 0 24 24",
-            fill: "none",
-            xmlns: "http://www.w3.org/2000/svg",
-            "aria-hidden": true,
-            ...e,
-            children: [
-              (0, dte.jsx)("path", {
-                d: "M21 8L22 8V6L21 6C19.3431 6 18 7.34315 18 9V15C18 16.6569 19.3431 18 21 18H22V16H21C20.4477 16 20 15.5523 20 15V9C20 8.44772 20.4477 8 21 8Z",
-                fill: "currentColor",
-              }),
-              (0, dte.jsx)("path", {
-                d: "M3 8H2L2 6L3 6C4.65686 6 6 7.34315 6 9L6 15C6 16.6569 4.65685 18 3 18H2L2 16H3C3.55228 16 4 15.5523 4 15L4 9C4 8.44772 3.55229 8 3 8Z",
-                fill: "currentColor",
-              }),
-              (0, dte.jsx)("path", {
-                fillRule: "evenodd",
-                clipRule: "evenodd",
-                d: "M14 4C15.6569 4 17 5.34315 17 7L17 17C17 18.6569 15.6569 20 14 20L10 20C8.34314 20 7 18.6569 7 17L7 7C7 5.34315 8.34315 4 10 4L14 4ZM15 7C15 6.44772 14.5523 6 14 6L10 6C9.44772 6 9 6.44771 9 7L9 17C9 17.5523 9.44771 18 10 18L14 18C14.5523 18 15 17.5523 15 17L15 7Z",
-                fill: "currentColor",
-              }),
-            ],
-          });
-        export var hte = (e) =>
-          (0, fte.jsxs)("svg", {
-            width: 24,
-            height: 24,
-            viewBox: "0 0 24 24",
-            fill: "none",
-            xmlns: "http://www.w3.org/2000/svg",
-            "aria-hidden": true,
-            ...e,
-            children: [
-              (0, fte.jsx)("path", {
-                d: "M8 3V2H6V3C6 4.65685 7.34315 6 9 6H15C16.6569 6 18 4.65685 18 3V2H16V3C16 3.55228 15.5523 4 15 4H9C8.44772 4 8 3.55228 8 3Z",
-                fill: "currentColor",
-              }),
-              (0, fte.jsx)("path", {
-                d: "M8 21V22H6V21C6 19.3431 7.34315 18 9 18H15C16.6569 18 18 19.3431 18 21V22H16V21C16 20.4477 15.5523 20 15 20H9C8.44772 20 8 20.4477 8 21Z",
-                fill: "currentColor",
-              }),
-              (0, fte.jsx)("path", {
-                fillRule: "evenodd",
-                clipRule: "evenodd",
-                d: "M4 10C4 8.34315 5.34315 7 7 7H17C18.6569 7 20 8.34315 20 10V14C20 15.6569 18.6569 17 17 17H7C5.34315 17 4 15.6569 4 14V10ZM7 9C6.44772 9 6 9.44772 6 10V14C6 14.5523 6.44772 15 7 15H17C17.5523 15 18 14.5523 18 14V10C18 9.44772 17.5523 9 17 9H7Z",
-                fill: "currentColor",
-              }),
-            ],
-          });
-        
-          export var jte = (e) =>
-            (0, Cte.jsxs)("svg", {
-              width: 24,
-              height: 24,
-              viewBox: "0 0 24 24",
-              fill: "none",
-              xmlns: "http://www.w3.org/2000/svg",
-              "aria-hidden": true,
-              ...e,
-              children: [
-                (0, Cte.jsx)("path", { d: "M4 5H20V7H4V5Z", fill: "currentColor" }),
-                (0, Cte.jsx)("path", { d: "M6 17H18V19H6V17Z", fill: "currentColor" }),
-                (0, Cte.jsx)("path", { d: "M15 11H9V13H15V11Z", fill: "currentColor" }),
-              ],
-            });
-          export var _te = (e) =>
-            (0, Ste.jsxs)("svg", {
-              width: 24,
-              height: 24,
-              viewBox: "0 0 24 24",
-              fill: "none",
-              xmlns: "http://www.w3.org/2000/svg",
-              "aria-hidden": true,
-              ...e,
-              children: [
-                (0, Ste.jsx)("path", { d: "M4 5H20V7H4V5Z", fill: "currentColor" }),
-                (0, Ste.jsx)("path", { d: "M4 17H16V19H4V17Z", fill: "currentColor" }),
-                (0, Ste.jsx)("path", { d: "M12 11H4V13H12V11Z", fill: "currentColor" }),
-              ],
-            });
-          export var Lte = (e) =>
-            (0, Ete.jsxs)("svg", {
-              width: 24,
-              height: 24,
-              viewBox: "0 0 24 24",
-              fill: "none",
-              xmlns: "http://www.w3.org/2000/svg",
-              "aria-hidden": true,
-              ...e,
-              children: [
-                (0, Ete.jsx)("path", { d: "M20 5H4V7H20V5Z", fill: "currentColor" }),
-                (0, Ete.jsx)("path", { d: "M20 17H8V19H20V17Z", fill: "currentColor" }),
-                (0, Ete.jsx)("path", {
-                  d: "M12 11H20V13H12V11Z",
-                  fill: "currentColor",
-                }),
-              ],
-            });
-          
-            export var rne = (e) =>
-              (0, one.jsx)("svg", {
-                width: 24,
-                height: 24,
-                viewBox: "0 0 24 24",
-                fill: "none",
-                xmlns: "http://www.w3.org/2000/svg",
-                "aria-hidden": true,
-                ...e,
-                children: (0, one.jsx)("path", {
-                  d: "M6 20H13.1797C16.7188 20 18.75 18.1094 18.75 15.5234C18.75 13.2109 17.0703 11.7578 15.1328 11.6719V11.5156C16.8906 11.1484 18.125 9.875 18.125 8.04688C18.125 5.63281 16.2656 4 12.6719 4H6V20ZM9.86719 16.8828V13.0703H12.3281C13.8047 13.0703 14.7109 13.8516 14.7109 15.0781C14.7109 16.2109 13.9297 16.8828 12.2578 16.8828H9.86719ZM9.86719 10.5781V7.07031H12.0703C13.3594 7.07031 14.1797 7.73438 14.1797 8.79688C14.1797 9.92188 13.2734 10.5781 12.0078 10.5781H9.86719Z",
-                  fill: "currentColor",
-                }),
-              });
-            export var lne = (e) =>
-              (0, ane.jsx)("svg", {
-                width: 24,
-                height: 24,
-                viewBox: "0 0 24 24",
-                fill: "none",
-                xmlns: "http://www.w3.org/2000/svg",
-                "aria-hidden": true,
-                ...e,
-                children: (0, ane.jsx)("path", {
-                  fillRule: "evenodd",
-                  clipRule: "evenodd",
-                  d: "M11.9691 7H10V4H18V7H15.1079L12.0309 17H14V20H6V17H8.89214L11.9691 7Z",
-                  fill: "currentColor",
-                }),
-              });
-            
-              export var Nne = (e) =>
-                (0, Hne.jsxs)("svg", {
-                  width: 80,
-                  height: 80,
-                  viewBox: "0 0 80 80",
-                  fill: "none",
-                  xmlns: "http://www.w3.org/2000/svg",
-                  "aria-hidden": true,
-                  ...e,
-                  children: [
-                    (0, Hne.jsx)("circle", {
-                      opacity: 0.55,
-                      cx: 27,
-                      cy: 48,
-                      r: 10.5,
-                      stroke: "currentColor",
-                      strokeOpacity: 0.9,
-                    }),
-                    (0, Hne.jsx)("rect", {
-                      opacity: 0.55,
-                      x: 43.5,
-                      y: 44.5,
-                      width: 19,
-                      height: 19,
-                      rx: 3.5,
-                      stroke: "currentColor",
-                      strokeOpacity: 0.9,
-                      strokeLinecap: "round",
-                      strokeLinejoin: "round",
-                    }),
-                    (0, Hne.jsx)("path", {
-                      opacity: 0.55,
-                      d: "M46.6832 17.4584C47.2517 16.4161 48.7483 16.4161 49.3168 17.4584L57.9478 33.2817C58.493 34.2813 57.7695 35.5 56.6309 35.5H39.3691C38.2305 35.5 37.507 34.2813 38.0522 33.2817L46.6832 17.4584Z",
-                      stroke: "currentColor",
-                      strokeOpacity: 0.9,
-                    }),
-                    (0, Hne.jsx)("g", {
-                      opacity: 0.55,
-                      children: (0, Hne.jsx)("path", {
-                        fillRule: "evenodd",
-                        clipRule: "evenodd",
-                        d: "M67 9C67 8.44772 67.4477 8 68 8H71C71.5523 8 72 8.44772 72 9V12C72 12.5523 71.5523 13 71 13H70V67H71C71.5523 67 72 67.4477 72 68V71C72 71.5523 71.5523 72 71 72H68C67.4477 72 67 71.5523 67 71V70H13V71C13 71.5523 12.5523 72 12 72H9C8.44772 72 8 71.5523 8 71V68C8 67.4477 8.44772 67 9 67H10V13H9C8.44772 13 8 12.5523 8 12V9C8 8.44772 8.44772 8 9 8H12C12.5523 8 13 8.44772 13 9V10H67V9ZM11 13H12C12.5523 13 13 12.5523 13 12V11H67V12C67 12.5523 67.4477 13 68 13H69V67H68C67.4477 67 67 67.4477 67 68V69H13V68C13 67.4477 12.5523 67 12 67H11V13Z",
-                        fill: "currentColor",
-                        fillOpacity: 0.9,
-                      }),
-                    }),
-                  ],
-                });
-              export var Une = {
-                dialog: "UBQ_BooleanOperationsErrorDialog-module__dialog--dfiOa",
-                heading: "UBQ_BooleanOperationsErrorDialog-module__heading--6oMaL",
-              };
-              
-              export var $ne = (e) =>
-                (0, zne.jsxs)("svg", {
-                  width: 24,
-                  height: 24,
-                  viewBox: "0 0 24 24",
-                  fill: "none",
-                  xmlns: "http://www.w3.org/2000/svg",
-                  "aria-hidden": true,
-                  ...e,
-                  children: [
-                    (0, zne.jsx)("path", {
-                      d: "M14 16C15.1046 16 16 15.1046 16 14V8H19C20.1046 8 21 8.89543 21 10V19C21 20.1046 20.1046 21 19 21H10C8.89543 21 8 20.1046 8 19V16H14Z",
-                      fill: "currentColor",
-                    }),
-                    (0, zne.jsx)("path", {
-                      d: "M3 5C3 3.89543 3.89543 3 5 3H14C15.1046 3 16 3.89543 16 5V8H10C8.89543 8 8 8.89543 8 10V16H5C3.89543 16 3 15.1046 3 14V5Z",
-                      fill: "currentColor",
-                    }),
-                  ],
-                });
-              export var Qne = (e) =>
-                (0, qne.jsxs)("svg", {
-                  width: 24,
-                  height: 24,
-                  viewBox: "0 0 24 24",
-                  fill: "none",
-                  xmlns: "http://www.w3.org/2000/svg",
-                  "aria-hidden": true,
-                  ...e,
-                  children: [
-                    (0, qne.jsx)("path", {
-                      d: "M10 8H14V14H8V10C8 8.89543 8.89543 8 10 8Z",
-                      fill: "currentColor",
-                    }),
-                    (0, qne.jsx)("path", {
-                      d: "M8 18V19C8 20.1046 8.89543 21 10 21H19C20.1046 21 21 20.1046 21 19V10C21 8.89543 20.1046 8 19 8H18V10H19V19H10V18H8Z",
-                      fill: "currentColor",
-                    }),
-                    (0, qne.jsx)("path", {
-                      fillRule: "evenodd",
-                      clipRule: "evenodd",
-                      d: "M14 5H5L5 14H14V5ZM5 3C3.89543 3 3 3.89543 3 5V14C3 15.1046 3.89543 16 5 16H14C15.1046 16 16 15.1046 16 14V5C16 3.89543 15.1046 3 14 3H5Z",
-                      fill: "currentColor",
-                    }),
-                  ],
-                });
-              export var Zne = (e) =>
-                (0, Gne.jsxs)("svg", {
-                  width: 24,
-                  height: 24,
-                  viewBox: "0 0 24 24",
-                  fill: "none",
-                  xmlns: "http://www.w3.org/2000/svg",
-                  "aria-hidden": true,
-                  ...e,
-                  children: [
-                    (0, Gne.jsx)("path", {
-                      d: "M14 18H8V19C8 20.1046 8.89543 21 10 21H19C20.1046 21 21 20.1046 21 19V10C21 8.89543 20.1046 8 19 8H18V14C18 16.2091 16.2091 18 14 18Z",
-                      fill: "currentColor",
-                    }),
-                    (0, Gne.jsx)("path", {
-                      fillRule: "evenodd",
-                      clipRule: "evenodd",
-                      d: "M14 5H5L5 14H14V5ZM5 3C3.89543 3 3 3.89543 3 5V14C3 15.1046 3.89543 16 5 16H14C15.1046 16 16 15.1046 16 14V5C16 3.89543 15.1046 3 14 3H5Z",
-                      fill: "currentColor",
-                    }),
-                  ],
-                });
-              export var Kne = (e) =>
-                (0, Wne.jsxs)("svg", {
-                  width: 24,
-                  height: 24,
-                  viewBox: "0 0 24 24",
-                  fill: "none",
-                  xmlns: "http://www.w3.org/2000/svg",
-                  "aria-hidden": true,
-                  ...e,
-                  children: [
-                    (0, Wne.jsx)("path", {
-                      d: "M14 18H8V19C8 20.1046 8.89543 21 10 21H19C20.1046 21 21 20.1046 21 19V10C21 8.89543 20.1046 8 19 8H18V14C18 16.2091 16.2091 18 14 18Z",
-                      fill: "currentColor",
-                    }),
-                    (0, Wne.jsx)("path", {
-                      d: "M3 5C3 3.89543 3.89543 3 5 3H14C15.1046 3 16 3.89543 16 5V14C16 15.1046 15.1046 16 14 16H5C3.89543 16 3 15.1046 3 14V5Z",
-                      fill: "currentColor",
-                    }),
-                  ],
-                });
-              
-                export var ase = (e) =>
-                  (0, rse.jsxs)("svg", {
-                    width: 24,
-                    height: 24,
-                    viewBox: "0 0 24 24",
-                    fill: "none",
-                    xmlns: "http://www.w3.org/2000/svg",
-                    "aria-hidden": true,
-                    ...e,
-                    children: [
-                      (0, rse.jsx)("path", {
-                        fillRule: "evenodd",
-                        clipRule: "evenodd",
-                        d: "M4.5 8.625C4.5 6.34683 6.34683 4.5 8.625 4.5C10.9032 4.5 12.75 6.34683 12.75 8.625C12.75 10.9032 10.9032 12.75 8.625 12.75C6.34683 12.75 4.5 10.9032 4.5 8.625ZM8.625 11.25C7.17525 11.25 6 10.0747 6 8.625C6 7.17525 7.17525 6 8.625 6C10.0747 6 11.25 7.17525 11.25 8.625C11.25 10.0747 10.0747 11.25 8.625 11.25Z",
-                        fill: "currentColor",
-                      }),
-                      (0, rse.jsx)("path", {
-                        fillRule: "evenodd",
-                        clipRule: "evenodd",
-                        d: "M15.4258 10.3101C15.5703 10.0608 15.9303 10.0608 16.0748 10.3102L20.2024 17.4371C20.3472 17.6871 20.1668 18 19.8779 18H11.6209C11.332 18 11.1516 17.687 11.2964 17.437L15.4258 10.3101ZM13.5729 16.5L15.75 12.7425L17.9263 16.5H13.5729Z",
-                        fill: "currentColor",
-                      }),
-                      (0, rse.jsx)("path", {
-                        d: "M1.5 3C1.5 3.82843 2.17157 4.5 3 4.5C3.82843 4.5 4.5 3.82843 4.5 3C4.5 2.17157 3.82843 1.5 3 1.5C2.17157 1.5 1.5 2.17157 1.5 3Z",
-                        fill: "currentColor",
-                      }),
-                      (0, rse.jsx)("path", {
-                        d: "M19.5 3C19.5 3.82843 20.1716 4.5 21 4.5C21.8284 4.5 22.5 3.82843 22.5 3C22.5 2.17157 21.8284 1.5 21 1.5C20.1716 1.5 19.5 2.17157 19.5 3Z",
-                        fill: "currentColor",
-                      }),
-                      (0, rse.jsx)("path", {
-                        d: "M3 22.5C2.17157 22.5 1.5 21.8284 1.5 21C1.5 20.1716 2.17157 19.5 3 19.5C3.82843 19.5 4.5 20.1716 4.5 21C4.5 21.8284 3.82843 22.5 3 22.5Z",
-                        fill: "currentColor",
-                      }),
-                      (0, rse.jsx)("path", {
-                        d: "M19.5 21C19.5 21.8284 20.1716 22.5 21 22.5C21.8284 22.5 22.5 21.8284 22.5 21C22.5 20.1716 21.8284 19.5 21 19.5C20.1716 19.5 19.5 20.1716 19.5 21Z",
-                        fill: "currentColor",
-                      }),
-                    ],
-                  });
-                  export var Qse = (e) =>
-                    (0, qse.jsxs)("svg", {
-                      width: 120,
-                      height: 25,
-                      viewBox: "0 0 120 25",
-                      fill: "none",
-                      xmlns: "http://www.w3.org/2000/svg",
-                      "aria-hidden": true,
-                      ...e,
-                      children: [
-                        (0, qse.jsx)("path", {
-                          d: "M12.992 24.704C9.32267 24.704 6.336 23.5947 4.032 21.376C1.728 19.136 0.576 16.2773 0.576 12.8C0.576 9.32267 1.728 6.47467 4.032 4.256C6.336 2.016 9.32267 0.895998 12.992 0.895998C16.4907 0.895998 19.3067 1.71733 21.44 3.36C23.5733 5.00267 24.7787 7.28533 25.056 10.208H18.016C17.7813 9.16267 17.2267 8.34133 16.352 7.744C15.4773 7.12533 14.368 6.816 13.024 6.816C11.296 6.816 9.94133 7.34933 8.96 8.416C8 9.48267 7.52 10.944 7.52 12.8C7.52 14.656 8 16.1173 8.96 17.184C9.94133 18.2507 11.296 18.784 13.024 18.784C14.368 18.784 15.4773 18.4853 16.352 17.888C17.2267 17.2693 17.7813 16.4373 18.016 15.392H25.056C24.7787 18.3147 23.5733 20.5973 21.44 22.24C19.3067 23.8827 16.4907 24.704 12.992 24.704ZM27.484 24V1.6H41.884V6.592H34.14V10.496H41.884V15.264H34.14V19.008H41.884V24H27.484ZM64.327 24.704C61.4043 24.704 59.1003 24 57.415 22.592C55.751 21.1627 54.919 19.1893 54.919 16.672H61.575C61.575 17.632 61.8203 18.3893 62.311 18.944C62.823 19.4987 63.527 19.776 64.423 19.776C65.9163 19.776 66.663 19.1573 66.663 17.92C66.663 17.408 66.503 17.0027 66.183 16.704C65.863 16.384 65.319 16.0747 64.551 15.776L60.103 14.144C56.903 12.9493 55.303 10.8373 55.303 7.808C55.303 5.71733 56.0817 4.04267 57.639 2.784C59.2177 1.52533 61.3617 0.895998 64.071 0.895998C66.8017 0.895998 68.9777 1.536 70.599 2.816C72.2417 4.096 73.063 5.84533 73.063 8.064H66.407C66.407 7.232 66.1937 6.592 65.767 6.144C65.3617 5.67467 64.775 5.44 64.007 5.44C63.3883 5.44 62.8977 5.58933 62.535 5.888C62.1723 6.18667 61.991 6.60267 61.991 7.136C61.991 7.584 62.1723 7.97867 62.535 8.32C62.8977 8.64 63.5377 8.97067 64.455 9.312L68.551 10.88C71.7297 12.1173 73.319 14.272 73.319 17.344C73.319 19.6053 72.5083 21.3973 70.887 22.72C69.2657 24.0427 67.079 24.704 64.327 24.704ZM75.9215 24V1.6H85.1695C88.6255 1.6 91.4202 2.66667 93.5535 4.8C95.7082 6.93333 96.7855 9.6 96.7855 12.8C96.7855 16 95.7082 18.6667 93.5535 20.8C91.4202 22.9333 88.6255 24 85.1695 24H75.9215ZM82.5775 18.56H84.5935C86.2148 18.56 87.4948 18.016 88.4335 16.928C89.3935 15.8187 89.8735 14.4427 89.8735 12.8C89.8735 11.1573 89.3935 9.792 88.4335 8.704C87.4948 7.59467 86.2148 7.04 84.5935 7.04H82.5775V18.56ZM120.001 1.6L112.033 12.736L120.001 24H112.353L105.953 14.272V24H99.2965V1.6H105.953V11.328L112.353 1.6H120.001Z",
-                          fill: "currentColor",
-                        }),
-                        (0, qse.jsx)("path", {
-                          d: "M49.0323 24.416C47.9869 24.416 47.1123 24.064 46.4083 23.36C45.7043 22.6347 45.3523 21.7813 45.3523 20.8C45.3523 19.8187 45.7043 18.976 46.4083 18.272C47.1123 17.568 47.9869 17.216 49.0323 17.216C50.0563 17.216 50.9203 17.568 51.6243 18.272C52.3283 18.976 52.6803 19.8187 52.6803 20.8C52.6803 21.7813 52.3283 22.6347 51.6243 23.36C50.9203 24.064 50.0563 24.416 49.0323 24.416Z",
-                          fill: "#AD00FF",
-                        }),
-                      ],
-                    });
-                  export var Zse = (e) =>
-                    (0, Gse.jsxs)("svg", {
-                      width: 58,
-                      height: 13,
-                      viewBox: "0 0 58 13",
-                      fill: "none",
-                      xmlns: "http://www.w3.org/2000/svg",
-                      "aria-hidden": true,
-                      ...e,
-                      children: [
-                        (0, Gse.jsx)("path", {
-                          d: "M0.992 12V0.799999H4.32V12H0.992ZM6.3045 12V0.799999H10.5285L12.9125 8.112L15.2805 0.799999H19.4085V12H16.2085V4.896L14.1605 12H11.6965L9.5045 4.864V12H6.3045ZM33.5583 5.84V8.096H32.6783C32.3689 9.46133 31.7076 10.512 30.6943 11.248C29.6916 11.984 28.3849 12.352 26.7743 12.352C24.9716 12.352 23.5049 11.7973 22.3743 10.688C21.2543 9.57867 20.6943 8.16 20.6943 6.432C20.7049 4.68267 21.2703 3.248 22.3903 2.128C23.5209 1.008 25.0356 0.447999 26.9343 0.447999C28.5663 0.447999 29.8996 0.810666 30.9343 1.536C31.9796 2.26133 32.5449 3.20533 32.6303 4.368H29.0143C28.9289 3.99467 28.6996 3.696 28.3263 3.472C27.9636 3.23733 27.5049 3.12 26.9503 3.12C26.0649 3.12 25.3769 3.41333 24.8863 4C24.4063 4.576 24.1663 5.34933 24.1663 6.32C24.1663 7.26933 24.4169 8.04267 24.9183 8.64C25.4196 9.22667 26.0863 9.52 26.9183 9.52C28.1556 9.52 28.9343 9.04533 29.2543 8.096H27.4143V5.84H33.5583ZM40.0701 12V0.799999H43.3981V9.136H47.2061V12H40.0701ZM53.7785 0.799999H57.4905L51.9385 12H48.2105L50.1305 8.064L46.3705 0.799999H50.2905L52.0665 4.8L53.7785 0.799999Z",
-                          fill: "currentColor",
-                        }),
-                        (0, Gse.jsx)("path", {
-                          d: "M36.4068 12.208C35.8841 12.208 35.4468 12.032 35.0948 11.68C34.7428 11.3173 34.5668 10.8907 34.5668 10.4C34.5668 9.90933 34.7428 9.488 35.0948 9.136C35.4468 8.784 35.8841 8.608 36.4068 8.608C36.9188 8.608 37.3508 8.784 37.7028 9.136C38.0548 9.488 38.2308 9.90933 38.2308 10.4C38.2308 10.8907 38.0548 11.3173 37.7028 11.68C37.3508 12.032 36.9188 12.208 36.4068 12.208Z",
-                          fill: "#3355FF",
-                        }),
-                      ],
-                    });
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  export var iie = (e) =>
-                    (0, sie.jsxs)("svg", {
-                      width: 19,
-                      height: 26,
-                      viewBox: "0 0 19 26",
-                      fill: "none",
-                      xmlns: "http://www.w3.org/2000/svg",
-                      "aria-hidden": true,
-                      ...e,
-                      children: [
-                        (0, sie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M4 0H15V1H16V2H17V18H2V2H3V1H4V0Z",
-                          fill: "#F1FFFF",
-                        }),
-                        (0, sie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M15 1H4V2H3V18H16V2H15V1Z",
-                          fill: "#DEFFFF",
-                        }),
-                        (0, sie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M14 2H5V3H4V18H15V3H14V2Z",
-                          fill: "#161617",
-                        }),
-                        (0, sie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M6 4H7V5H8V4H9V5H10V4H11V5H12V4H13V5H14V6H15V18H4V6H5V5H6V4Z",
-                          fill: "#FF1A1A",
-                        }),
-                        (0, sie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M13 4H12V5H13V6H14V18H15V6H14V5H13V4Z",
-                          fill: "#A50101",
-                        }),
-                        (0, sie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M6 4H7V5H6V6H5V18H4V6H5V5H6V4Z",
-                          fill: "#FF9292",
-                        }),
-                        (0, sie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M7 7H8V8H9V9H10V8H11V7H12V9H13V10H12V12H7V10H6V9H7V7Z",
-                          fill: "currentColor",
-                        }),
-                        (0, sie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M9 9H8V11H11V9H10V10H9V9Z",
-                          fill: "black",
-                        }),
-                        (0, sie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M11 14H8V15H7V16H8H11H12V15H11V14Z",
-                          fill: "currentColor",
-                        }),
-                        (0, sie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M17 18H2V19H0V20H2V21H3V22H4V23H15V22H16V21H17V20H19V19H17V18Z",
-                          fill: "#C2BCF2",
-                        }),
-                        (0, sie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M4 18H2V20H3H4H8V22H10V23H15V22V21V19H14H8H4V18Z",
-                          fill: "#ACA4D4",
-                        }),
-                        (0, sie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M18 19H17H14V20V21H15V22H14V23H15V22H16V21H17V20H18V19Z",
-                          fill: "#867DC6",
-                        }),
-                        (0, sie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M3 19H6V20H3V19ZM13 19H16V20H13V19ZM11 21H8V22H11V21Z",
-                          fill: "#FFFF00",
-                        }),
-                        (0, sie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M3 23H4V24H3V23ZM2 25V24H3V25H2ZM2 25V26H1V25H2ZM6 23H7V24H6V23ZM5 25V24H6V25H5ZM5 25V26H4V25H5ZM10 23H9V24H8V25H7V26H8V25H9V24H10V25H11V26H12V25H11V24H10V23ZM12 23H13V24H12V23ZM14 25H13V24H14V25ZM14 25H15V26H14V25ZM16 23H15V24H16V25H17V26H18V25H17V24H16V23Z",
-                          fill: "#867DC6",
-                        }),
-                      ],
-                    });
-                  export var rie = (e) =>
-                    (0, oie.jsxs)("svg", {
-                      width: 19,
-                      height: 26,
-                      viewBox: "0 0 19 26",
-                      fill: "none",
-                      xmlns: "http://www.w3.org/2000/svg",
-                      "aria-hidden": true,
-                      ...e,
-                      children: [
-                        (0, oie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M4 0H15V1H16V2H17V18H2V2H3V1H4V0Z",
-                          fill: "#F1FFFF",
-                        }),
-                        (0, oie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M15 1H4V2H3V18H16V2H15V1Z",
-                          fill: "#DEFFFF",
-                        }),
-                        (0, oie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M14 2H5V3H4V18H15V3H14V2Z",
-                          fill: "#161617",
-                        }),
-                        (0, oie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M6 4H7V5H8V4H9V5H10V4H11V5H12V4H13V5H14V6H15V18H4V6H5V5H6V4Z",
-                          fill: "#471AFF",
-                        }),
-                        (0, oie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M13 4H12V5H13V6H14V18H15V6H14V5H13V4Z",
-                          fill: "#0200FF",
-                        }),
-                        (0, oie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M6 4H7V5H6V6H5V18H4V6H5V5H6V4Z",
-                          fill: "#766BFF",
-                        }),
-                        (0, oie.jsx)("path", { d: "M6 9H13V10H6V9Z", fill: "currentColor" }),
-                        (0, oie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M9 9H8V10H9V9ZM10 9V10H11V9H10Z",
-                          fill: "black",
-                        }),
-                        (0, oie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M7 14H8V15H7V14ZM9 15V16H8V15H9ZM10 15H9V14H10V15ZM11 15H10V16H11V15ZM11 15V14H12V15H11Z",
-                          fill: "currentColor",
-                        }),
-                        (0, oie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M17 18H2V19H0V20H2V21H3V22H4V23H15V22H16V21H17V20H19V19H17V18Z",
-                          fill: "#C2BCF2",
-                        }),
-                        (0, oie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M4 18H2V20H3H4H8V22H10V23H15V22V21V19H14H8H4V18Z",
-                          fill: "#ACA4D4",
-                        }),
-                        (0, oie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M18 19H17H14V20V21H15V22H14V23H15V22H16V21H17V20H18V19Z",
-                          fill: "#867DC6",
-                        }),
-                        (0, oie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M3 19H6V20H3V19ZM13 19H16V20H13V19ZM11 21H8V22H11V21Z",
-                          fill: "#FFFF00",
-                        }),
-                        (0, oie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M3 23H4V24H3V23ZM2 25V24H3V25H2ZM2 25V26H1V25H2ZM6 23H7V24H6V23ZM5 25V24H6V25H5ZM5 25V26H4V25H5ZM10 23H9V24H8V25H7V26H8V25H9V24H10V25H11V26H12V25H11V24H10V23ZM12 23H13V24H12V23ZM14 25H13V24H14V25ZM14 25H15V26H14V25ZM16 23H15V24H16V25H17V26H18V25H17V24H16V23Z",
-                          fill: "#867DC6",
-                        }),
-                      ],
-                    });
-                  export var lie = (e) =>
-                    (0, aie.jsxs)("svg", {
-                      width: 19,
-                      height: 26,
-                      viewBox: "0 0 19 26",
-                      fill: "none",
-                      xmlns: "http://www.w3.org/2000/svg",
-                      "aria-hidden": true,
-                      ...e,
-                      children: [
-                        (0, aie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M4 0H15V1H16V2H17V18H2V2H3V1H4V0Z",
-                          fill: "#F1FFFF",
-                        }),
-                        (0, aie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M15 1H4V2H3V18H16V2H15V1Z",
-                          fill: "#DEFFFF",
-                        }),
-                        (0, aie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M14 2H5V3H4V18H15V3H14V2Z",
-                          fill: "#161617",
-                        }),
-                        (0, aie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M6 4H7V5H8V4H9V5H10V4H11V5H12V4H13V5H14V6H15V18H4V6H5V5H6V4Z",
-                          fill: "#471AFF",
-                        }),
-                        (0, aie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M13 4H12V5H13V6H14V18H15V6H14V5H13V4Z",
-                          fill: "#0200FF",
-                        }),
-                        (0, aie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M6 4H7V5H6V6H5V18H4V6H5V5H6V4Z",
-                          fill: "#766BFF",
-                        }),
-                        (0, aie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M12 7H7V9H6V10H7V12H12V10H13V9H12V7Z",
-                          fill: "currentColor",
-                        }),
-                        (0, aie.jsx)("path", {
-                          className: "eye",
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M11 8H8V11H11V8ZM10 9H9V10H10V9Z",
-                          fill: "black",
-                        }),
-                        (0, aie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M6 13H7V14H6V13ZM12 14H7V16H12V14ZM12 14V13H13V14H12Z",
-                          fill: "currentColor",
-                        }),
-                        (0, aie.jsx)("rect", {
-                          x: 8,
-                          y: 15,
-                          width: 3,
-                          height: 1,
-                          fill: "#E5333D",
-                        }),
-                        (0, aie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M17 18H2V19H0V20H2V21H3V22H4V23H15V22H16V21H17V20H19V19H17V18Z",
-                          fill: "#C2BCF2",
-                        }),
-                        (0, aie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M4 18H2V20H3H4H8V22H10V23H15V22V21V19H14H8H4V18Z",
-                          fill: "#ACA4D4",
-                        }),
-                        (0, aie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M18 19H17H14V20V21H15V22H14V23H15V22H16V21H17V20H18V19Z",
-                          fill: "#867DC6",
-                        }),
-                        (0, aie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M3 19H6V20H3V19ZM13 19H16V20H13V19ZM11 21H8V22H11V21Z",
-                          fill: "#FFFF00",
-                        }),
-                        (0, aie.jsx)("path", {
-                          fillRule: "evenodd",
-                          clipRule: "evenodd",
-                          d: "M3 23H4V24H3V23ZM2 25V24H3V25H2ZM2 25V26H1V25H2ZM6 23H7V24H6V23ZM5 25V24H6V25H5ZM5 25V26H4V25H5ZM10 23H9V24H8V25H7V26H8V25H9V24H10V25H11V26H12V25H11V24H10V23ZM12 23H13V24H12V23ZM14 25H13V24H14V25ZM14 25H15V26H14V25ZM16 23H15V24H16V25H17V26H18V25H17V24H16V23Z",
-                          fill: "#867DC6",
-                        }),
-                      ],
-                    });
-                  
-                    export var Lie = (e) =>
-                      (0, Eie.jsxs)("svg", {
-                        width: 24,
-                        height: 24,
-                        viewBox: "0 0 24 24",
-                        fill: "none",
-                        xmlns: "http://www.w3.org/2000/svg",
-                        "aria-hidden": true,
-                        ...e,
-                        children: [
-                          (0, Eie.jsx)("path", {
-                            fillRule: "evenodd",
-                            clipRule: "evenodd",
-                            d: "M4 2C2.89543 2 2 2.89543 2 4V6C2 7.10457 2.89543 8 4 8H6C7.10457 8 8 7.10457 8 6V4C8 2.89543 7.10457 2 6 2H4ZM4 4H6V6H4V4Z",
-                            fill: "currentColor",
-                          }),
-                          (0, Eie.jsx)("path", {
-                            fillRule: "evenodd",
-                            clipRule: "evenodd",
-                            d: "M18 2C16.8954 2 16 2.89543 16 4V6C16 7.10457 16.8954 8 18 8H20C21.1046 8 22 7.10457 22 6V4C22 2.89543 21.1046 2 20 2H18ZM18 4H20V6H18V4Z",
-                            fill: "currentColor",
-                          }),
-                          (0, Eie.jsx)("path", {
-                            fillRule: "evenodd",
-                            clipRule: "evenodd",
-                            d: "M16 18C16 16.8954 16.8954 16 18 16H20C21.1046 16 22 16.8954 22 18V20C22 21.1046 21.1046 22 20 22H18C16.8954 22 16 21.1046 16 20V18ZM20 18H18V20H20V18Z",
-                            fill: "currentColor",
-                          }),
-                          (0, Eie.jsx)("path", {
-                            fillRule: "evenodd",
-                            clipRule: "evenodd",
-                            d: "M4 16C2.89543 16 2 16.8954 2 18V20C2 21.1046 2.89543 22 4 22H6C7.10457 22 8 21.1046 8 20V18C8 16.8954 7.10457 16 6 16H4ZM4 18H6V20H4V18Z",
-                            fill: "currentColor",
-                          }),
-                          (0, Eie.jsx)("path", { d: "M16 4H8V6H16V4Z", fill: "currentColor" }),
-                          (0, Eie.jsx)("path", { d: "M16 18H8V20H16V18Z", fill: "currentColor" }),
-                          (0, Eie.jsx)("path", { d: "M4 8H6V16H4V8Z", fill: "currentColor" }),
-                          (0, Eie.jsx)("path", { d: "M20 8H18V16H20V8Z", fill: "currentColor" }),
-                        ],
-                      });export var xre = (e) =>
-                        (0, gre.jsxs)("svg", {
-                          width: 24,
-                          height: 24,
-                          viewBox: "0 0 24 24",
-                          fill: "none",
-                          xmlns: "http://www.w3.org/2000/svg",
-                          "aria-hidden": true,
-                          ...e,
-                          children: [
-                            (0, gre.jsx)("path", {
-                              fillRule: "evenodd",
-                              clipRule: "evenodd",
-                              d: "M7 2C5.34315 2 4 3.34315 4 5V19C4 20.6569 5.34315 22 7 22H12.6736C12.3783 21.3783 12.1719 20.7061 12.0709 20H7C6.44772 20 6 19.5523 6 19V5C6 4.44772 6.44772 4 7 4H12V7.5C12 8.88071 13.1193 10 14.5 10H18V12.0709C18.3266 12.0242 18.6605 12 19 12C19.3395 12 19.6734 12.0242 20 12.0709V8.32843C20 7.53278 19.6839 6.76972 19.1213 6.20711L15.7929 2.87868C15.2303 2.31607 14.4672 2 13.6716 2H7ZM17.9445 8C17.8954 7.8588 17.8148 7.72904 17.7071 7.62132L14.3787 4.29289C14.271 4.18518 14.1412 4.10457 14 4.05547V7.5C14 7.77614 14.2239 8 14.5 8H17.9445Z",
-                              fill: "currentColor",
-                            }),
-                            (0, gre.jsx)("path", {
-                              d: "M18 15V18H15V20H18V23H20V20H23V18H20V15H18Z",
-                              fill: "currentColor",
-                            }),
-                          ],
-                        });
-  
-
-export var i8 = sI(function ({ engine: e }) {
+export var i8 = WithEngineComp(function ({ engine: e }) {
   const { t: t } = ZL(),
     n = IV(),
     s = t("input.cutoutOffset"),
@@ -47022,7 +44609,7 @@ export var i8 = sI(function ({ engine: e }) {
 export var o8 = i8;
 
 export var a8 = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const { t: t } = ZL(),
       n = t("input.cutoutOffset");
     return VO().feature.isEnabled("ly.img.cutout", { engine: e })
@@ -47045,10 +44632,10 @@ export var a8 = mayBeUseMemp(
       : null;
   })
 );
-export var l8 = a8;  
+export var l8 = a8;
 
 export var m8 = mayBeUseMemp(
-  sI(function ({ engine: e, inBar: t = false, ...n }) {
+  WithEngineComp(function ({ engine: e, inBar: t = false, ...n }) {
     const { t: s } = ZL(),
       i = IV(),
       o = VO().feature.isEnabled("ly.img.cutout", { engine: e }),
@@ -47086,7 +44673,9 @@ export var m8 = mayBeUseMemp(
               ...e,
               children: [
                 c.label,
-                s ? (0, h8.jsx)(pb, {}) : (0, h8.jsx)(ub, {}),
+                s
+                  ? (0, h8.jsx)(IconChevronDown, {})
+                  : (0, h8.jsx)(IconChevronUp, {}),
               ],
             }),
           }),
@@ -47223,7 +44812,7 @@ export var j8 = {
 };
 export var S8 = Y6(j8);
 
-export var E8 = sI(function ({ engine: e }) {
+export var E8 = WithEngineComp(function ({ engine: e }) {
   const { t: t } = ZL(),
     n = IV(),
     [s] = e.block.findAllSelected();
@@ -47281,7 +44870,7 @@ export var E8 = sI(function ({ engine: e }) {
 });
 
 export var P8 = "shape/star/innerDiameter";
-export var A8 = sI(function ({ engine: e }) {
+export var A8 = WithEngineComp(function ({ engine: e }) {
   const { t: t } = ZL(),
     n = e.block.findAllSelected()[0];
   if (!n) return null;
@@ -47293,7 +44882,7 @@ export var A8 = sI(function ({ engine: e }) {
   L8.jsx)(Yk, { children: (0, L8.jsx)(rG, { block: s, property: P8, label: t("property.innerDiameter"), min: 0.1, max: 1, centeredZeroPosition: false, disabled: !i }) });
 });
 
-export var T8 = sI(function ({ engine: e }) {
+export var T8 = WithEngineComp(function ({ engine: e }) {
   const { t: t } = ZL(),
     n = IV(),
     s = e.block.findAllSelected()[0];
@@ -47323,7 +44912,7 @@ export var T8 = sI(function ({ engine: e }) {
 });
 
 export var O8 = "shape/star/points";
-export var R8 = sI(function ({ engine: e }) {
+export var R8 = WithEngineComp(function ({ engine: e }) {
   const { t: t } = ZL(),
     n = e.block.findAllSelected()[0];
   if (!n) return null;
@@ -47336,7 +44925,7 @@ export var R8 = sI(function ({ engine: e }) {
 });
 
 export var D8 = "shape/polygon/sides";
-export var F8 = sI(function ({ engine: e }) {
+export var F8 = WithEngineComp(function ({ engine: e }) {
   const { t: t } = ZL(),
     n = e.block.findAllSelected()[0];
   if (!n) return null;
@@ -47549,7 +45138,6 @@ export function lee() {
     children: (0, J8.jsx)(iee, { disablePositionControls: true }),
   });
 }
-  
 
 export var pee = {
   button: "UBQ_StrokeStyleSelect-module__button--NBL3i",
@@ -47619,7 +45207,9 @@ export function gee({ plain: e = false, isDisabled: t = false }) {
             ...n,
             children: [
               o[l].label,
-              s ? (0, fee.jsx)(pb, {}) : (0, fee.jsx)(ub, {}),
+              s
+                ? (0, fee.jsx)(IconChevronDown, {})
+                : (0, fee.jsx)(IconChevronUp, {}),
             ],
           }),
         }),
@@ -47652,7 +45242,7 @@ export function xee() {
     ],
   });
 }
-var bee = function ({ isDisabled: e }) {
+export var bee = function ({ isDisabled: e }) {
   const t = rI(EH),
     n = X8();
   return n
@@ -47705,7 +45295,7 @@ export function vee({ isDisabled: e }) {
     ],
   });
 }
-var wee = {
+export var wee = {
   DefaultUI: function () {
     return (0, yee.jsx)(vee, { isDisabled: false });
   },
@@ -47872,9 +45462,9 @@ export var _ee = Y6({
     },
     ...w8(),
   ],
-});  
+});
 export var Aee = mayBeUseMemp(
-  sI(function ({
+  WithEngineComp(function ({
     engine: e,
     isDisabled: t,
     className: n,
@@ -48085,8 +45675,6 @@ export var Iee = function () {
 };
 export var Hee = Iee;
 
-
-
 export var $ee = function () {
   const { t: e } = ZL(),
     t = DO().getPageManager(),
@@ -48250,7 +45838,7 @@ export var Kee = mayBeUseMemp(function () {
 });
 export var Yee = Kee;
 
-export var ete = sI(function ({ engine: e }) {
+export var ete = WithEngineComp(function ({ engine: e }) {
   const t = IV(),
     { t: n } = ZL(),
     s = e.scene.get();
@@ -48334,7 +45922,9 @@ export var cte = mayBeUseMemp(function () {
                 ...t,
                 children: [
                   e(`preset.document.${a}`, { defaultValue: a }),
-                  n ? (0, lte.jsx)(pb, {}) : (0, lte.jsx)(ub, {}),
+                  n
+                    ? (0, lte.jsx)(IconChevronDown, {})
+                    : (0, lte.jsx)(IconChevronUp, {}),
                 ],
               }),
             }),
@@ -48385,7 +45975,7 @@ export var cte = mayBeUseMemp(function () {
       }),
     ],
   });
-});  
+});
 export var gte = function () {
   const e = DO(),
     { t: t } = ZL(),
@@ -48436,7 +46026,7 @@ export var gte = function () {
 };
 export var xte = gte;
 
-export var yte = sI(function ({ engine: e }) {
+export var yte = WithEngineComp(function ({ engine: e }) {
   const t = IV(),
     { t: n } = ZL(),
     s = e.scene.get();
@@ -48561,7 +46151,9 @@ export var wte = {
                             ...e,
                             children: [
                               l(o),
-                              t ? (0, Xee.jsx)(pb, {}) : (0, Xee.jsx)(ub, {}),
+                              t
+                                ? (0, Xee.jsx)(IconChevronDown, {})
+                                : (0, Xee.jsx)(IconChevronUp, {}),
                             ],
                           }),
                         }),
@@ -48622,8 +46214,8 @@ export var wte = {
   ],
 };
 export var kte = Y6(wte);
-  
-export var Bte = sI(function ({ engine: e, children: t }) {
+
+export var Bte = WithEngineComp(function ({ engine: e, children: t }) {
   const n = VO(),
     [s] = e.block.findAllSelected(),
     i = null != s && "//ly.img.ubq/text" === e.block.getType(s),
@@ -48696,7 +46288,7 @@ export var Ote = Mte;
 export function Dte(e) {
   return null != e ? Math.round(100 * e) / 100 : e;
 }
-var Fte = (e) => {
+export var Fte = (e) => {
   const { t: t } = ZL(),
     n = FontSizeOptions,
     s = (0, Vte.useMemo)(
@@ -48722,10 +46314,7 @@ var Fte = (e) => {
   return { options: r, selectedOption: a };
 };
 
-
-
-
-export var zte = sI(function ({
+export var zte = WithEngineComp(function ({
   engine: e,
   block: t,
   isDisabled: n,
@@ -48804,7 +46393,7 @@ export var zte = sI(function ({
     : null;
 });
 export var $te = mayBeUseMemp(
-  sI(function ({ engine: e, ...t }) {
+  WithEngineComp(function ({ engine: e, ...t }) {
     const n = VO(),
       [s] = e.block.findAllSelected(),
       i = n.feature.isEnabled("ly.img.text.fontSize", { engine: e });
@@ -48813,7 +46402,6 @@ export var $te = mayBeUseMemp(
       : null;
   })
 );
-
 
 export var Gte = function () {
   const e = IV(),
@@ -48879,8 +46467,6 @@ export var Gte = function () {
     : null;
 };
 
-
-
 export var Yte = (e, t) => (e ? e.subFamily : t("typography.weight.400"));
 
 export var Jte = function ({ font: e }) {
@@ -48915,7 +46501,7 @@ export function tne(e) {
 export function nne(e) {
   return e.sort((e, t) => tne(e.weight) - tne(t.weight));
 }
-var sne = function ({ selectedFont: e }) {
+export var sne = function ({ selectedFont: e }) {
   const t = YF(),
     n = O$(),
     s = IV(),
@@ -48943,7 +46529,9 @@ var sne = function ({ selectedFont: e }) {
             ...t,
             children: [
               Yte(e, i),
-              n ? (0, ene.jsx)(pb, {}) : (0, ene.jsx)(ub, {}),
+              n
+                ? (0, ene.jsx)(IconChevronDown, {})
+                : (0, ene.jsx)(IconChevronUp, {}),
             ],
           }),
         });
@@ -48988,10 +46576,10 @@ var sne = function ({ selectedFont: e }) {
     ],
   });
 };
-export var ine = sne;  
+export var ine = sne;
 export var une = { bold: (0, cne.jsx)(rne, {}), italic: (0, cne.jsx)(lne, {}) };
 export var dne = mayBeUseMemp(
-  sI(function ({
+  WithEngineComp(function ({
     engine: e,
     type: t,
     buttonProps: n,
@@ -49074,7 +46662,6 @@ export var hne = (e) => {
   return n ? { typeface: n, font: i } : undefined;
 };
 
-
 export var bne = {};
 export var yne = async ({ fontFamily: e, fontFileUri: t }) => {
   if (!bne[e]) {
@@ -49139,7 +46726,7 @@ export var kne = function ({ typeface: e, font: t, label: n }) {
 };
 
 export var jne = mayBeUseMemp(
-  sI(function ({
+  WithEngineComp(function ({
     engine: e,
     buttonVariant: t,
     showIcon: n,
@@ -49207,7 +46794,9 @@ export var jne = mayBeUseMemp(
               variant: t,
               children: [
                 f ? f.name : a("input.fontSelect.fallback"),
-                i ? (0, Cne.jsx)(pb, {}) : (0, Cne.jsx)(ub, {}),
+                i
+                  ? (0, Cne.jsx)(IconChevronDown, {})
+                  : (0, Cne.jsx)(IconChevronUp, {}),
               ],
             }),
           }),
@@ -49235,9 +46824,8 @@ export var jne = mayBeUseMemp(
 );
 export var Sne = jne;
 
-
 export var Lne = mayBeUseMemp(
-  sI(function ({ engine: e, block: t }) {
+  WithEngineComp(function ({ engine: e, block: t }) {
     const { t: n } = ZL(),
       s = VO(),
       i = s.feature.isEnabled("ly.img.text.typeface", { engine: e }),
@@ -49249,7 +46837,7 @@ export var Lne = mayBeUseMemp(
     Ene.jsxs)(Ene.Fragment, { children: [i && (0, Ene.jsxs)(Yk, { children: [(0, Ene.jsx)(Sv, { isDisabled: !a, children: n("typography.typeface") }), (0, Ene.jsx)(Sne, {})] }), r && (0, Ene.jsxs)(Yk, { children: [(0, Ene.jsx)(Sv, { isDisabled: !a, children: n("typography.style") }), (0, Ene.jsx)(ine, { selectedFont: l?.font }), (0, Ene.jsxs)("div", { className: _ne, children: [(0, Ene.jsx)(pne, { type: "bold" }), (0, Ene.jsx)(pne, { type: "italic" })] })] }), o && (0, Ene.jsxs)(Ene.Fragment, { children: [(0, Ene.jsx)(Yk, { children: (0, Ene.jsx)($te, {}) }), (0, Ene.jsx)(Gte, {})] })] });
   })
 );
-export var Pne = sI(function ({ engine: e }) {
+export var Pne = WithEngineComp(function ({ engine: e }) {
   const [t] = e.block.findAllSelected();
   return null == t || "//ly.img.ubq/text" !== e.block.getType(t)
     ? null
@@ -49266,7 +46854,7 @@ export function Tne(e, t) {
     isActive: ("horizontal" === e && s === t) || ("vertical" === e && i === t),
   };
 }
-var Mne = Y6({
+export var Mne = Y6({
   designBlockType: "//ly.img.ubq/text",
   propsComponent: Bne,
   inspector: [
@@ -49481,7 +47069,7 @@ export var Ine = function () {
       }),
     }),
   });
-};  
+};
 export function Jne(e, t, n) {
   const { ids: s, parentId: i } = (function (e, t) {
     if (0 === e.length) return { ids: [] };
@@ -49624,7 +47212,7 @@ export function sse({ error: e, dismissError: t }) {
   });
 }
 export var ose = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const { t: t } = ZL(),
       n = VO(),
       { a11y: s } = FI(),
@@ -49667,7 +47255,7 @@ export var ose = mayBeUseMemp(
         })
       : null;
   })
-);  
+);
 
 export var cse = mayBeUseMemp(function ({
   isDisabled: e,
@@ -49718,7 +47306,7 @@ export var pse = mayBeUseMemp(function () {
 });
 
 export var hse = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const t = KR(),
       { viewStyle: n } = YR(),
       s = (() => {
@@ -49823,8 +47411,8 @@ export function kse({ name: e, setMode: t }) {
     }),
   });
 }
-var Cse = mayBeUseMemp(
-  sI(function ({ engine: e, ...t }) {
+export var Cse = mayBeUseMemp(
+  WithEngineComp(function ({ engine: e, ...t }) {
     const n = VO(),
       { t: s } = ZL(),
       [i] = KF(),
@@ -50155,7 +47743,9 @@ export var Vse = class extends UIComponentBuilder {
                       : undefined,
                   children: [
                     a,
-                    n ? (0, Rse.jsx)(pb, {}) : (0, Rse.jsx)(ub, {}),
+                    n
+                      ? (0, Rse.jsx)(IconChevronDown, {})
+                      : (0, Rse.jsx)(IconChevronUp, {}),
                   ],
                 }),
               }),
@@ -50446,7 +48036,9 @@ export var Vse = class extends UIComponentBuilder {
                   ...t,
                   children: [
                     this._translateLabel(s.label),
-                    n ? (0, Rse.jsx)(pb, {}) : (0, Rse.jsx)(ub, {}),
+                    n
+                      ? (0, Rse.jsx)(IconChevronDown, {})
+                      : (0, Rse.jsx)(IconChevronUp, {}),
                   ],
                 }),
               }),
@@ -50515,7 +48107,7 @@ export var Vse = class extends UIComponentBuilder {
   };
 };
 export var Fse = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const { t: t } = ZL(),
       n = XR();
     return (0, Dse.jsx)(Dse.Fragment, {
@@ -50552,7 +48144,7 @@ export var Fse = mayBeUseMemp(
   })
 );
 export var Nse = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const t = DO(),
       n = IV(),
       { t: s } = ZL(),
@@ -50717,7 +48309,7 @@ export var $se = function (e, t) {
     e.ui.setPanelPosition("//ly.img.panel/inspector/colorLibrary", () =>
       e.ui.getPanelPosition("//ly.img.panel/inspector")
     );
-};  
+};
 
 export var hie = function ({ onIgorPissed: e }) {
   const t = (0, uie.useRef)(null),
@@ -50807,7 +48399,6 @@ export var gie = function ({ show: e, onClose: t }) {
   });
 };
 export var xie = gie;
-
 
 export var wie = mayBeUseMemp(function () {
   const { t: e } = ZL(),
@@ -51013,7 +48604,7 @@ export var _ie = mayBeUseMemp(function () {
       }),
     ],
   });
-});  
+});
 export var Aie = mayBeUseMemp(function () {
   const { t: e } = ZL(),
     t = YR();
@@ -51226,7 +48817,6 @@ export var Vie = mayBeUseMemp(function () {
   return null;
 });
 
-
 export var Hie = mayBeUseMemp(function () {
   const { t: e } = ZL(),
     t = VO(),
@@ -51338,7 +48928,9 @@ export var qie = mayBeUseMemp(function () {
           ...n,
           children: [
             i(t.language),
-            s ? (0, $ie.jsx)(pb, {}) : (0, $ie.jsx)(ub, {}),
+            s
+              ? (0, $ie.jsx)(IconChevronDown, {})
+              : (0, $ie.jsx)(IconChevronUp, {}),
           ],
         }),
       () =>
@@ -51399,7 +48991,7 @@ export var Gie = mayBeUseMemp(function () {
   });
 });
 
-export var Kie = sI(function ({ engine: e }) {
+export var Kie = WithEngineComp(function ({ engine: e }) {
   const { t: t } = ZL(),
     n = e.editor.getSettingBool("page/title/appendPageName"),
     s = e.editor.getSettingBool("page/title/show");
@@ -51438,7 +49030,7 @@ export var Kie = sI(function ({ engine: e }) {
 export var Yie = Kie;
 export var Xie =
   "UBQ_PageTitleDefaultTitleVisibilityToggle-module__button--q5EJU";
-export var eoe = sI(function ({ engine: e }) {
+export var eoe = WithEngineComp(function ({ engine: e }) {
   const { t: t } = ZL(),
     n = e.editor.getSettingBool("page/title/showPageTitleTemplate"),
     s = e.editor.getSettingBool("page/title/show");
@@ -51476,7 +49068,7 @@ export var eoe = sI(function ({ engine: e }) {
 });
 export var toe = eoe;
 
-export var ioe = sI(function ({ engine: e }) {
+export var ioe = WithEngineComp(function ({ engine: e }) {
   const { t: t } = ZL(),
     n = e.editor.getSettingBool("page/title/showOnSinglePage"),
     s = e.editor.getSettingBool("page/title/show");
@@ -51514,7 +49106,7 @@ export var ioe = sI(function ({ engine: e }) {
 });
 export var ooe = ioe;
 
-export var loe = sI(function ({ engine: e }) {
+export var loe = WithEngineComp(function ({ engine: e }) {
   const { t: t } = ZL(),
     n = e.editor.getSettingBool("page/title/show");
   return (0, aoe.jsxs)(CompLayout1, {
@@ -51651,7 +49243,12 @@ export var moe = mayBeUseMemp(function () {
           name: "roleSelect",
           "aria-label": t("component.roleSelect.description"),
           ...e,
-          children: [n, s ? (0, hoe.jsx)(pb, {}) : (0, hoe.jsx)(ub, {})],
+          children: [
+            n,
+            s
+              ? (0, hoe.jsx)(IconChevronDown, {})
+              : (0, hoe.jsx)(IconChevronUp, {}),
+          ],
         }),
       () =>
         (0, hoe.jsx)(bw.Options, {
@@ -51685,7 +49282,7 @@ export function goe() {
     ? "large"
     : "normal";
 }
-var xoe = "UBQ_ScalingSelect-module__button--SuD4n";
+export var xoe = "UBQ_ScalingSelect-module__button--SuD4n";
 export var yoe = mayBeUseMemp(function () {
   const { t: e } = ZL(),
     t = YR(),
@@ -51833,7 +49430,7 @@ export function Eoe({ onReset: e, isDisabled: t }) {
     })
   );
 }
-var Loe = mayBeUseMemp(function () {
+export var Loe = mayBeUseMemp(function () {
   const e = VO(),
     { t: t } = ZL(),
     n = YR(),
@@ -52116,7 +49713,7 @@ export var Toe = mayBeUseMemp(function ({ block: e }) {
   );
 });
 export var Roe = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const { t: t } = ZL(),
       n = IV(),
       [s, i] = (0, Moe.useState)(false),
@@ -52975,7 +50572,7 @@ export var mre = function (e, t) {
 };
 
 export var vre = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const t = DO(),
       n = VO(),
       { t: s } = ZL(),
@@ -52997,7 +50594,6 @@ export var vre = mayBeUseMemp(
       : null;
   })
 );
-
 
 export var Cre = mayBeUseMemp(function () {
   const { t: e } = ZL(),
@@ -53031,7 +50627,7 @@ export var jre = function (e, t) {
     t.unstable_registerReactComponent("ly.img.page.add.canvasBar", vre);
 };
 export var _re = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const t = VO(),
       { t: n } = ZL(),
       s = IV(),
@@ -53063,7 +50659,7 @@ export var _re = mayBeUseMemp(
   })
 );
 export var Lre = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const t = VO(),
       { t: n } = ZL(),
       { focusSelectedElement: s } = xI(),
@@ -53093,7 +50689,7 @@ export var Lre = mayBeUseMemp(
   })
 );
 export var Tre = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const t = VO(),
       { t: n } = ZL(),
       s = DO(),
@@ -53123,7 +50719,7 @@ export var Hre = {
   Free: Fre,
 };
 export var Nre = mayBeUseMemp(
-  sI(function ({ engine: e, direction: t }) {
+  WithEngineComp(function ({ engine: e, direction: t }) {
     const n = VO(),
       s = DO(),
       { t: i } = ZL(),
@@ -53177,7 +50773,7 @@ export var qre = function () {
   return (0, $re.jsx)(Nre, { direction: "up" });
 };
 export var Gre = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const t = VO(),
       { t: n } = ZL(),
       s = oI("ui/placeholder"),
@@ -53197,7 +50793,7 @@ export var Gre = mayBeUseMemp(
   })
 );
 export var Wre = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const t = VO(),
       { t: n } = ZL(),
       s = e.block.findAllSelected()[0];
@@ -53241,7 +50837,7 @@ export var Wre = mayBeUseMemp(
   })
 );
 export var Jre = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const t = VO(),
       { t: n } = ZL(),
       { focusSelectedElement: s } = xI(),
@@ -53295,7 +50891,7 @@ export var iae = mayBeUseMemp(function ({ block: e, type: t }) {
 });
 export var oae = iae;
 export var aae = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const t = VO(),
       n = O$();
     return rI(jH) && n && t.feature.isEnabled("ly.img.text.edit", { engine: e })
@@ -53304,7 +50900,7 @@ export var aae = mayBeUseMemp(
   })
 );
 export var cae = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const t = VO(),
       { t: n } = ZL(),
       s = XR(),
@@ -53320,7 +50916,7 @@ export var cae = mayBeUseMemp(
   })
 );
 export var dae = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const { t: t } = ZL(),
       n = VO(),
       s = t("action.editText"),
@@ -53340,7 +50936,7 @@ export var dae = mayBeUseMemp(
   })
 );
 export var fae = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const t = VO(),
       n = O$();
     return rI(jH) && n && t.feature.isEnabled("ly.img.text.edit", { engine: e })
@@ -53502,7 +51098,7 @@ export var vae = function (e, t) {
     );
 };
 export var Sae = mayBeUseMemp(
-  sI(function ({ engine: e, isDisabled: t }) {
+  WithEngineComp(function ({ engine: e, isDisabled: t }) {
     const n = VO(),
       { t: s } = ZL(),
       i = IV(),
@@ -53598,7 +51194,7 @@ export var Sae = mayBeUseMemp(
                             children: (0, jae.jsx)(V9, {
                               name: "toggle-always_on_top",
                               icon: h
-                                ? (0, jae.jsx)(c1, {})
+                                ? (0, jae.jsx)(IconCheckmark, {})
                                 : (0, jae.jsx)(G9, {}),
                               i18nKey: "input.alwaysOnTop",
                               variant: "plain",
@@ -53614,7 +51210,7 @@ export var Sae = mayBeUseMemp(
                             children: (0, jae.jsx)(V9, {
                               name: "toggle-always_on_bottom",
                               icon: m
-                                ? (0, jae.jsx)(c1, {})
+                                ? (0, jae.jsx)(IconCheckmark, {})
                                 : (0, jae.jsx)(G9, {}),
                               i18nKey: "input.alwaysOnBottom",
                               variant: "plain",
@@ -53734,7 +51330,7 @@ export var Sae = mayBeUseMemp(
   })
 );
 export var Eae = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const { t: t } = ZL(),
       n = VO().feature.isEnabled("ly.img.replace", { engine: e }),
       [s] = e.block.findAllSelected();
@@ -53798,7 +51394,9 @@ export var Bae = function ({ isDisabled: e }) {
                     className: (0, Lae.default)(Pae.label, Pae[r]),
                     children: [u, " ", r],
                   }),
-                  i ? (0, Aae.jsx)(pb, {}) : (0, Aae.jsx)(ub, {}),
+                  i
+                    ? (0, Aae.jsx)(IconChevronDown, {})
+                    : (0, Aae.jsx)(IconChevronUp, {}),
                 ],
               }),
             }),
@@ -53814,7 +51412,10 @@ export var Bae = function ({ isDisabled: e }) {
     : null;
 };
 export var Mae = mayBeUseMemp(
-  sI(function ({ engine: e, deniedByScopeBehavior: t = "disable" }) {
+  WithEngineComp(function ({
+    engine: e,
+    deniedByScopeBehavior: t = "disable",
+  }) {
     const n = VO(),
       s = YR().blocks["//ly.img.ubq/text"].colorEnabled,
       [i] = e.block.findAllSelected();
@@ -53845,7 +51446,7 @@ export var Mae = mayBeUseMemp(
   })
 );
 export var Rae = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const t = VO(),
       { t: n } = ZL(),
       {
@@ -53899,7 +51500,7 @@ export var Rae = mayBeUseMemp(
 );
 
 export var Fae = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const { t: t } = ZL(),
       n = t("input.cutoutSmoothing");
     return VO().feature.isEnabled("ly.img.cutout", { engine: e })
@@ -54066,7 +51667,7 @@ export function Yae({
     ],
   });
 }
-var Xae = mayBeUseMemp(({ ...e }) => {
+export var Xae = mayBeUseMemp(({ ...e }) => {
   const t = rI(mH),
     n = rI(gH),
     { blocksOpacityEnabled: s } = YR();
@@ -54105,7 +51706,7 @@ var Xae = mayBeUseMemp(({ ...e }) => {
   });
 });
 export var Jae = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const t = VO().feature.isEnabled("ly.img.options", { engine: e }),
       n = YR(),
       s = !(oI("editor/managePages") && n.blocks["//ly.img.ubq/page"].manage),
@@ -54134,7 +51735,10 @@ export var Jae = mayBeUseMemp(
 export var ele =
   (mayBeUseMemp(Yae), "UBQ_ShapeOptions-module__shapePopoverContent--43lVm");
 export var nle = mayBeUseMemp(
-  sI(function ({ engine: e, deniedByScopeBehavior: t = "disable" }) {
+  WithEngineComp(function ({
+    engine: e,
+    deniedByScopeBehavior: t = "disable",
+  }) {
     const { t: n } = ZL(),
       s = VO().feature.isEnabled("ly.img.shape.options", { engine: e }),
       [i] = e.block.findAllSelected();
@@ -54165,7 +51769,9 @@ export var nle = mayBeUseMemp(
                   variant: "plain",
                   children: [
                     n("input.shape"),
-                    t ? (0, tle.jsx)(pb, {}) : (0, tle.jsx)(ub, {}),
+                    t
+                      ? (0, tle.jsx)(IconChevronDown, {})
+                      : (0, tle.jsx)(IconChevronUp, {}),
                   ],
                 }),
               }),
@@ -54185,9 +51791,8 @@ export var nle = mayBeUseMemp(
   })
 );
 
-
 export var rle = mayBeUseMemp(
-  sI(function ({
+  WithEngineComp(function ({
     engine: e,
     isDisabled: t,
     deniedByScopeBehavior: n = "disable",
@@ -54405,7 +52010,7 @@ export var lle = function (e, t) {
     );
 };
 export var backNavigationComponent = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const { t: t } = ZL(),
       n = VO(),
       s = FI(),
@@ -54567,7 +52172,7 @@ export var actionsNavigationComponent = Ple({
   condition: (e) => !!e.scene.getMode(),
 })(
   mayBeUseMemp(
-    sI(function ({ engine: e }) {
+    WithEngineComp(function ({ engine: e }) {
       const { t: t } = ZL(),
         n = VO(),
         s = DO(),
@@ -54914,7 +52519,9 @@ export var actionsNavigationComponent = Ple({
                       isDisabled: L,
                       ...e,
                       color: "accent",
-                      children: t ? (0, Ble.jsx)(pb, {}) : (0, Ble.jsx)(ub, {}),
+                      children: t
+                        ? (0, Ble.jsx)(IconChevronDown, {})
+                        : (0, Ble.jsx)(IconChevronUp, {}),
                     }),
                   }),
                 ({ closePopover: e }) =>
@@ -54944,7 +52551,7 @@ export var actionsNavigationComponent = Ple({
   )
 );
 export var closeNavigationComponent = mayBeUseMemp(
-  sI(function ({ engine: e }) {
+  WithEngineComp(function ({ engine: e }) {
     const { t: t } = ZL(),
       n = VO(),
       s = FI(),
@@ -55081,249 +52688,6 @@ export var ice = {
 };
 export var rce = 0.125;
 export var ace = 32;
-export function lce() {
-  const e = DO(),
-    { t: t } = ZL(),
-    n = Nz(),
-    s = oD(),
-    [i, o] = possibleHook3(s.camera.zoomLevel),
-    [r] = possibleHook3(s.camera.autoFit),
-    a = (0, Yle.useRef)(window.devicePixelRatio),
-    l = (0, Yle.useRef)(r),
-    c = (0, Yle.useCallback)(() => {
-      const t = e.engine.scene.getCurrentPage();
-      null !== t && (e.focusBlock(t), e.enableZoomAutoFit(t));
-    }, [e]);
-  (0, Yle.useEffect)(() => {
-    const e = window.devicePixelRatio;
-    l && e !== a.current && c(), (l.current = r), (a.current = e);
-  }, [r, c]);
-  const { selectedDesignElement: u, hasMultiSelection: d } = uD(),
-    p = (0, Yle.useRef)(null),
-    f = i > rce,
-    h = i < ace,
-    m = (e, t = false) => {
-      p.current && p.current.stop();
-      const n = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      t && !n
-        ? (p.current = pp(i, e, {
-            ease: "easeOut",
-            duration: 0.15,
-            onUpdate(e) {
-              o(e);
-            },
-            onStop: () => {
-              p.current = null;
-            },
-            onComplete: () => {
-              p.current = null;
-            },
-          }))
-        : o(e);
-    },
-    g = () => {
-      const e = Math.round(100 * i) / 100;
-      for (let t = rce; t <= ace; t *= 2) {
-        if ((t - e) / t >= 0.3) {
-          m(t, true);
-          break;
-        }
-      }
-    },
-    x = () => {
-      const e = Math.round(100 * i) / 100;
-      for (let t = ace; t >= rce; t /= 2) {
-        if ((e - t) / e >= 0.3) {
-          m(t, true);
-          break;
-        }
-      }
-    },
-    b = `${Math.round(100 * i)}%`,
-    y = t("component.zoom.out"),
-    v = t("component.zoom.in"),
-    w = t("component.zoom.options"),
-    k = {
-      "shift+2": () => {
-        m(1);
-      },
-      "+": () => {
-        g();
-      },
-      "-": () => {
-        x();
-      },
-    };
-  Xy(Object.keys(k), (e, t) => {
-    k[t]();
-  });
-  const { width: C } = iL("embedViewport"),
-    j = 0 !== C && C >= 480;
-  return (0, oce.jsxs)(CompButtonGroup, {
-    dataCy: "zoom-controls",
-    children: [
-      j &&
-        (0, oce.jsx)(Ly, {
-          label: y,
-          children: (0, oce.jsx)(CompCustomButton, {
-            "aria-label": y,
-            name: "zoom-out",
-            onClick: x,
-            isDisabled: !f,
-            children: (0, oce.jsx)(sce, {}),
-          }),
-        }),
-      (0, oce.jsxs)(Cx, {
-        children: [
-          (e, { isOpen: n }) =>
-            (0, oce.jsx)(Ly, {
-              label: w,
-              children: (0, oce.jsxs)(CompCustomButton, {
-                name: "zoomOptions",
-                className: ice.label,
-                "aria-label": w,
-                ...e,
-                children: [
-                  r ? t("component.zoom.label.auto") : b,
-                  n ? (0, oce.jsx)(pb, {}) : (0, oce.jsx)(ub, {}),
-                ],
-              }),
-            }),
-          ({ closePopover: s }) =>
-            (0, oce.jsxs)(yC.Container, {
-              className: ice.optionsMenu,
-              "aria-label": t("component.placeholder.settingsMenu"),
-              children: [
-                (0, oce.jsx)(yC.ItemCheckbox, {
-                  checked: r,
-                  children: (0, oce.jsxs)(cce, {
-                    label: t("component.zoom.autoFit"),
-                    onZoomChange: async () => {
-                      c(), s();
-                    },
-                    children: [
-                      r ? (0, oce.jsx)(c1, { className: ice.checkIcon }) : null,
-                      t("component.zoom.autoFit"),
-                    ],
-                  }),
-                }),
-                (0, oce.jsx)(Sw, {}),
-                (0, oce.jsx)(yC.Item, {
-                  children: (0, oce.jsx)(cce, {
-                    label: t("component.zoom.fitPage"),
-                    onZoomChange: async () => {
-                      const t = e.engine.scene.getCurrentPage();
-                      null != t && e.focusBlock(t), s();
-                    },
-                  }),
-                }),
-                (0, oce.jsx)(yC.Item, {
-                  children: (0, oce.jsx)(cce, {
-                    label: t("component.zoom.fitSelection"),
-                    onZoomChange: () => {
-                      u && (e.focusBlock(u.id), s());
-                    },
-                    isDisabled: !u || d,
-                  }),
-                }),
-                (0, oce.jsx)(Sw, {}),
-                (0, oce.jsx)(yC.Item, {
-                  children: (0, oce.jsx)(cce, {
-                    label: t("component.zoom.to", { percentage: 200 }),
-                    onZoomChange: () => {
-                      m(2), s();
-                    },
-                  }),
-                }),
-                (0, oce.jsx)(yC.Item, {
-                  children: (0, oce.jsxs)(cce, {
-                    label: t("component.zoom.to", { percentage: 100 }),
-                    onZoomChange: () => {
-                      m(1), s();
-                    },
-                    shortcut: "shift+2",
-                    shortcutLabel: t("component.zoom.shortcut", {
-                      shortcut: "shift+2",
-                    }),
-                    children: [
-                      t("component.zoom.to", { percentage: 100 }),
-                      !n &&
-                        (0, oce.jsxs)("span", {
-                          className: ice.shortcutContainer,
-                          children: [(0, oce.jsx)(Jle, {}), "2"],
-                        }),
-                    ],
-                  }),
-                }),
-                (0, oce.jsx)(yC.Item, {
-                  children: (0, oce.jsx)(cce, {
-                    label: t("component.zoom.to", { percentage: 50 }),
-                    onZoomChange: () => {
-                      m(0.5), s();
-                    },
-                  }),
-                }),
-                (0, oce.jsx)(Sw, {}),
-                (0, oce.jsx)(yC.Item, {
-                  children: (0, oce.jsxs)(cce, {
-                    label: t("component.zoom.in"),
-                    onZoomChange: () => {
-                      g(), s();
-                    },
-                    shortcut: "+",
-                    shortcutLabel: t("component.zoom.shortcut", {
-                      shortcut: "+",
-                    }),
-                    isDisabled: !h,
-                    children: [
-                      t("component.zoom.in"),
-                      !n &&
-                        (0, oce.jsx)("span", {
-                          className: ice.shortcutContainer,
-                          children: "+",
-                        }),
-                    ],
-                  }),
-                }),
-                (0, oce.jsx)(yC.Item, {
-                  children: (0, oce.jsxs)(cce, {
-                    label: t("component.zoom.out"),
-                    onZoomChange: () => {
-                      x(), s();
-                    },
-                    shortcut: "-",
-                    shortcutLabel: t("component.zoom.shortcut", {
-                      shortcut: "-",
-                    }),
-                    isDisabled: !f,
-                    children: [
-                      t("component.zoom.out"),
-                      !n &&
-                        (0, oce.jsx)("span", {
-                          className: ice.shortcutContainer,
-                          children: "-",
-                        }),
-                    ],
-                  }),
-                }),
-              ],
-            }),
-        ],
-      }),
-      j &&
-        (0, oce.jsx)(Ly, {
-          label: v,
-          children: (0, oce.jsx)(CompCustomButton, {
-            "aria-label": v,
-            name: "zoom-in",
-            onClick: g,
-            isDisabled: !h,
-            children: (0, oce.jsx)(tce, {}),
-          }),
-        }),
-    ],
-  });
-}
 export function cce({
   label: e,
   shortcut: t,
@@ -55346,17 +52710,20 @@ export function cce({
 }
 export var zoomNavigationComponent = function () {
   const e = FI();
-  return oI("editor/zoom") && e ? (0, oce.jsx)(lce, {}) : null;
+  return oI("editor/zoom") && e ? (0, oce.jsx)(CanvasZooming, {}) : null;
 };
 
 export {
-  ConfigTypes as ConfigTypes,
+  // ConfigTypes as ConfigTypes,
   LogLevel as LogLevel,
   MimeType as MimeType,
-  UserInterfaceElements,
+  // UserInterfaceElements,
   CreativeEditorSDK as default,
   supportsBrowser as supportsBrowser,
   supportsVideo as supportsVideo,
   supportsVideoExport as supportsVideoExport,
   supportsWasm as supportsWasm,
 };
+export function eb({ children: e }) {
+  return (0, Xx.jsx)("ul", { className: Kx, children: e });
+}

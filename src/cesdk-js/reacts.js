@@ -61,7 +61,7 @@ export var QL = cloneWithPrototypeAndProperties(react(), 1);
 export var uM = cloneWithPrototypeAndProperties(isEqual());export var Wp = cloneWithPrototypeAndProperties(classnames());
 export var Kp = cloneWithPrototypeAndProperties(react());
 export var kh = (0, Kp.createContext)({
-  theme: "light",
+  theme: "dark",
   scale: "normal",
   container: undefined,
 });

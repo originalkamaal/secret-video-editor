@@ -2,8 +2,8 @@ import { cloneWithPrototypeAndProperties } from "@/cesdk-common/others/createLaz
 import { reactJsxRuntime } from "@/cesdk-common/react";
 import {  f$, Cx, Sw, Kz } from "./working";
 import { m$ } from "./vh";
-import { pb } from "./Icons";
-import { ub } from "./Icons";
+import { IconChevronDown } from "./Icons";
+import { IconChevronUp } from "./Icons";
 import { h$ } from "./reacts";
 import { CompButtonGroup } from "./CompButtonGroup";
 import { CompCustomButton } from "./CompCustomButton";
@@ -169,7 +169,7 @@ export class UIComponentBuilder {
                   null != s
                     ? (0, reactJsx3.jsx)(f$, { iconSize: "normal", customIcon: s })
                     : undefined,
-                children: [r, n ? (0, reactJsx3.jsx)(pb, {}) : (0, reactJsx3.jsx)(ub, {})],
+                children: [r, n ? (0, reactJsx3.jsx)(IconChevronDown, {}) : (0, reactJsx3.jsx)(IconChevronUp, {})],
               }),
             }),
           ({ closePopover: t }) => (

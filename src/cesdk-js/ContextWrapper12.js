@@ -1,4 +1,4 @@
-import { GI, ZI } from "./working";
+import { SetUploadContext, UploadContext } from "./working";
 import { qI, QI } from "./reacts";
 
 export function ContextWrapper12({ children: e }) {
@@ -9,8 +9,8 @@ export function ContextWrapper12({ children: e }) {
     () => ({ upload: t, uploadError: s, uploadProgress: o }),
     [t, s, o]
   );
-  return (0, QI.jsx)(GI.Provider, {
+  return (0, QI.jsx)(SetUploadContext.Provider, {
     value: a,
-    children: (0, QI.jsx)(ZI.Provider, { value: l, children: e }),
+    children: (0, QI.jsx)(UploadContext.Provider, { value: l, children: e }),
   });
 }
