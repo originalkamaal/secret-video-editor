@@ -1,6 +1,10 @@
 import { cloneWithPrototypeAndProperties } from "@/cesdk-common/others/createLazyModule";
 import { reactJsxRuntime } from "@/cesdk-common/react";
-import {  f$, h$, Cx, pb, ub, m$, Sw, Kz } from "./working";
+import {  f$, Cx, Sw, Kz } from "./working";
+import { m$ } from "./vh";
+import { pb } from "./Icons";
+import { ub } from "./Icons";
+import { h$ } from "./reacts";
 import { CompButtonGroup } from "./CompButtonGroup";
 import { CompCustomButton } from "./CompCustomButton";
 import { CompTooltip } from "./CompTooltip";

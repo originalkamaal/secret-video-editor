@@ -1,0 +1,6 @@
+,\s*\n\s{2}([a-zA-Z_$][\w$]*)\s*=
+        ; \n var $1 = 
+
+
+^export\s+var\s+([a-zA-Z_$][\w$]*)\s*=\s*cloneWithPrototypeAndProperties\(react\(\)\);\s*$
+

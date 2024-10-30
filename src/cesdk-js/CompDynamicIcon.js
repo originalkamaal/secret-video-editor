@@ -1,4 +1,7 @@
-import { Vq, f$, Pq, Rq, Oq, wq, Mq, xq, Bq, Sq, Eq, VI, Cq, yq } from "./working";
+import { f$, VI } from "./working";
+import { Pq, wq, Mq, xq, Bq, Sq, Eq, Cq, yq } from "./Icons";
+import { Rq, Oq } from "./vh";
+import { Vq } from "./reacts";
 
 export var CompDynamicIcon = function ({ id: e, iconSize: t, customIcon: n }) {
   if (n) return (0, Vq.jsx)(f$, { iconSize: t, customIcon: n });

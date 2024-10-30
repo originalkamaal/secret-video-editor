@@ -1,4 +1,5 @@
-import { QR, GR, HR } from "./working";
+import { GR } from "./working";
+import { QR, HR } from "./reacts";
 
 export function ContextWrapper7({
   children: e, engineStore: t, configurationStore: n, userInterfaceStore: s,

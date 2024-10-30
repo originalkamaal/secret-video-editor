@@ -1,4 +1,5 @@
-import { WL, zL } from "./working";
+import { zL } from "./working";
+import { WL } from "./reacts";
 
 export function ContextWrapper6({ i18n: e, defaultNS: t, children: n }) {
   const s = (0, WL.useMemo)(() => ({ i18n: e, defaultNS: t }), [e, t]);

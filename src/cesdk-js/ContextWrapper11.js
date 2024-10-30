@@ -1,5 +1,6 @@
 import { CompCustomButton } from "./CompCustomButton";
-import { Yoe, Yw, HI } from "./working";
+import { Yw, HI } from "./working";
+import { Yoe } from "./reacts";
 import React from "react";
 
 export class ContextWrapper11 extends React.Component {

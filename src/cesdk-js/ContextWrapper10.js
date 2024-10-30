@@ -1,4 +1,5 @@
-import { Koe, ZL, aV, Yoe } from "./working";
+import { ZL, aV } from "./working";
+import { Koe, Yoe } from "./reacts";
 import { ContextWrapper11 } from "./ContextWrapper11";
 
 export var ContextWrapper10 = function ({

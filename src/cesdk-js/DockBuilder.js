@@ -1,7 +1,8 @@
 import { CompDynamicIcon } from "./CompDynamicIcon";
 import { CompTooltip } from "./CompTooltip";
 import { UIComponentBuilder } from "./UIComponentBuilder";
-import { Fq, mq, yj } from "./working";
+import { mq, yj } from "./working";
+import { Fq } from "./reacts";
 
 export var DockBuilder = class extends UIComponentBuilder {
   constructor(e, t, n, s) {

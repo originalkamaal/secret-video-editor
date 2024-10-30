@@ -1,4 +1,5 @@
-import { qI, QI, GI, ZI } from "./working";
+import { GI, ZI } from "./working";
+import { qI, QI } from "./reacts";
 
 export function ContextWrapper12({ children: e }) {
   const [t, n] = (0, qI.useState)(), [s, i] = (0, qI.useState)(), [o, r] = (0, qI.useState)(), a = (0, qI.useMemo)(
