@@ -1,4 +1,4 @@
-import { cD, dI, nre, tre, pI, tk, hx, WF, Uoe, Qoe, ore, ire } from "./working";
+import { possibleHook3, dI, nre, tre, pI, tk, hx, WF, Uoe, Qoe, ore, ContextWrapper15Memo } from "./working";
 import { ContextWrapper14 } from "./ContextWrapper14";
 import { ContextWrapper13 } from "./ContextWrapper13";
 import { ContextWrapper12 } from "./ContextWrapper12";
@@ -11,7 +11,7 @@ import { ContextWrapper3 } from "./ContextWrapper3";
 export function ContextWrapper1({
   cesdk: e, facade: t, initError: n, i18n: s, config: i, internalRenderTarget: o, configuredRenderTarget: r, configurationStore: a, userInterfaceStore: l, engineStore: c,
 }) {
-  const [u] = cD(t?.channels.scene.ready, false), d = dI(), p = !u || "pending" === d.state;
+  const [u] = possibleHook3(t?.channels.scene.ready, false), d = dI(), p = !u || "pending" === d.state;
   return (0, nre.jsx)(ContextWrapper2, {
     className: tre.globalContainerQuery,
     containerName: "embedViewport",
@@ -44,7 +44,7 @@ export function ContextWrapper1({
                           children: (0, nre.jsx)(ContextWrapper13, {
                             context: { cesdk: e, facade: t, container: o },
                             children: (0, nre.jsx)(ContextWrapper14, {
-                              children: (0, nre.jsx)(ire, {
+                              children: (0, nre.jsx)(ContextWrapper15Memo, {
                                 videoExportSupportState: d,
                                 editorContainer: o,
                               }),

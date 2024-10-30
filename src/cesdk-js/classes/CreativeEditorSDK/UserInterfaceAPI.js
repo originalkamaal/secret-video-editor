@@ -1,4 +1,5 @@
-import { LB, uM, _M, eT } from "../../working";
+import { LB, _M, eT } from "../../working";
+import { uM } from "@/cesdk-js/reacts";
 
 export class UserInterfaceAPI {
   #n;

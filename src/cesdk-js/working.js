@@ -39,11 +39,9 @@ import { useSyncExternalStore } from "../cesdk-common/useSyncExternalStoreProd";
 import { voidElements } from "../cesdk-common/voidElements";
 import { reactDomClient } from "../cesdk-common/react-dom";
 import { warningJs } from "../cesdk-common/warningJs";
-import { reactFastCompare } from "../cesdk-common/reactFastCompare";
 import { reactIsBase } from "../cesdk-common/reactIs";
 import { draggableCJS } from "../cesdk-common/Draggable";
 import { chromaJs } from "../cesdk-common/chromaJs";
-import { focusTrapReact } from "../cesdk-common/focus-trap-react";
 import { tabbable } from "../cesdk-common/tabbable";
 import { classnames } from "../cesdk-common/classnames";
 import { reactJsxRuntime, react } from "../cesdk-common/react";
@@ -99,6 +97,51 @@ import {
   context3,
   layoutContext,
   context6,
+  Di,
+  Fi,
+  jo,
+  Fo,
+  Ho,
+  QL,
+  Kp,
+  Wp,
+  kh,
+  _d,
+  Ed,
+  Ld,
+  Pd,
+  Bd,
+  Md,
+  Od,
+  Td,
+  Id,
+  Ud,
+  fp,
+  Dp,
+  Rp,
+  Vp,
+  _h,
+  Vh,
+  Uh,
+  am,
+  em,
+  im,
+  Kh,
+  nm,
+  Xh,
+  fm,
+  gm,
+  hm,
+  mm,
+  pm,
+  ym,
+  Ig,
+  Ug,
+  zg,
+  Xg,
+  wh,
+  lx,
+  context9,
 } from "./reacts";
 import { UIComponents } from "./UIComponents";
 import {
@@ -169,13 +212,13 @@ export function ContextProviderContext1({
   const o = (0, react4.forwardRef)(function (o, r) {
     let a;
     const l = {
-        ...(0, react4.useContext)(pagePointContext),
-        ...o,
-        layoutId: Mi(o),
-      },
-      { isStatic: c } = l,
-      u = extractInitialAndAnimateProps(o),
-      d = useVisualState(o, c);
+      ...(0, react4.useContext)(pagePointContext),
+      ...o,
+      layoutId: Mi(o),
+    };
+    const { isStatic: c } = l;
+    var u = extractInitialAndAnimateProps(o);
+    var d = useVisualState(o, c);
     if (!c && isDocumentDefined) {
       u.visualElement = (function (e, t, n, s) {
         const { visualElement: i } = (0, react5.useContext)(context1),
@@ -271,8 +314,6 @@ export function Oi(e) {
     get: (e, s) => (n.has(s) || n.set(s, t(s)), n.get(s)),
   });
 }
-export var Di = cloneWithPrototypeAndProperties(react(), 1);
-export var  Fi = cloneWithPrototypeAndProperties(react(), 1);
 export var dimentionalPropsState = {};
 export var dimensionalPropertiesSet = new Set(dimensionalProperties);
 export function Ui(property, { layout, layoutId }) {
@@ -283,31 +324,31 @@ export function Ui(property, { layout, layoutId }) {
       (!!dimentionalPropsState[property] || "opacity" === property))
   );
 }
-var zi = (e) => Boolean(e && e.getVelocity),
-  $i = {
+var zi = (e) => Boolean(e && e.getVelocity);
+export var $i = {
     x: "translateX",
     y: "translateY",
     z: "translateZ",
     transformPerspective: "perspective",
-  },
-  qi = dimensionalProperties.length;
-export var Qi = (e) => (t) => "string" == typeof t && t.startsWith(e),
-  Gi = Qi("--"),
-  Zi = Qi("var(--"),
-  Wi = (e, t) => (t && "number" == typeof e ? t.transform(e) : e),
-  Ki = (e, t, n) => Math.min(Math.max(n, e), t),
-  Yi = {
+  }; 
+ var qi =  dimensionalProperties.length;
+export var Qi = (e) => (t) => "string" == typeof t && t.startsWith(e); 
+ var Gi =  Qi("--"); 
+ var Zi =  Qi("var(--"); 
+ var Wi =  (e, t) => (t && "number" == typeof e ? t.transform(e) : e); 
+ var Ki =  (e, t, n) => Math.min(Math.max(n, e), t); 
+ var Yi =  {
     test: (e) => "number" == typeof e,
     parse: parseFloat,
     transform: (e) => e,
   };
 export var Xi = { ...Yi, transform: (e) => Ki(0, 1, e) };
-export var Ji = { ...Yi, default: 1 },
-  eo = (e) => Math.round(1e5 * e) / 1e5,
-  to = /(-)?([\d]*\.?[\d])+/g,
-  no =
-    /(#[0-9a-f]{3,8}|(rgb|hsl)a?\((-?[\d\.]+%?[,\s]+){2}(-?[\d\.]+%?)\s*[\,\/]?\s*[\d\.]*%?\))/gi,
-  so =
+export var Ji = { ...Yi, default: 1 }; 
+ var eo =  (e) => Math.round(1e5 * e) / 1e5; 
+ var to =  /(-)?([\d]*\.?[\d])+/g; 
+ var no = 
+    /(#[0-9a-f]{3,8}|(rgb|hsl)a?\((-?[\d\.]+%?[,\s]+){2}(-?[\d\.]+%?)\s*[\,\/]?\s*[\d\.]*%?\))/gi; 
+ var so = 
     /^(#[0-9a-f]{3,8}|(rgb|hsl)a?\((-?[\d\.]+%?[,\s]+){2}(-?[\d\.]+%?)\s*[\,\/]?\s*[\d\.]*%?\))$/i;
 var suffixValidator = (suffix) => ({
     test: (inputStr) =>
@@ -494,7 +535,6 @@ try {
   (ko = emotionIsPropValid().default) &&
     (Co = (e) => (e.startsWith("on") ? !wo(e) : ko(e)));
 } catch (e) {}
-var jo = cloneWithPrototypeAndProperties(react(), 1);
 export function So(e, t, n) {
   return "string" == typeof e ? e : pixelUnit.transform(t + n * e);
 }
@@ -635,7 +675,6 @@ export function Do(e, t) {
     }
   return n;
 }
-var Fo = cloneWithPrototypeAndProperties(react(), 1);
 export function Io(e, t, n, s = {}, i = {}) {
   return (
     "function" == typeof t && (t = t(undefined !== n ? n : e.custom, s, i)),
@@ -644,7 +683,6 @@ export function Io(e, t, n, s = {}, i = {}) {
     t
   );
 }
-var Ho = cloneWithPrototypeAndProperties(react(), 1);
 export function No(e) {
   const t = (0, Ho.useRef)(null);
   return null === t.current && (t.current = e()), t.current;
@@ -5445,10 +5483,6 @@ export const Sd = Oi((e, t) =>
     };
   })(e, t, jd, Cd)
 );
-export var _d = cloneWithPrototypeAndProperties(react(), 1),
-  Ed = cloneWithPrototypeAndProperties(react(), 1),
-  Ld = cloneWithPrototypeAndProperties(react(), 1),
-  Pd = cloneWithPrototypeAndProperties(react(), 1);
 export function Ad() {
   const e = (0, Pd.useRef)(false);
   return (
@@ -5464,27 +5498,23 @@ export function Ad() {
     e
   );
 }
-var Bd = cloneWithPrototypeAndProperties(react(), 1),
-  Td = cloneWithPrototypeAndProperties(react(), 1),
-  Md = cloneWithPrototypeAndProperties(react(), 1),
-  Od = cloneWithPrototypeAndProperties(react(), 1),
-  Rd = class extends Md.Component {
-    getSnapshotBeforeUpdate(e) {
-      const t = this.props.childRef.current;
-      if (t && e.isPresent && !this.props.isPresent) {
-        const e = this.props.sizeRef.current;
-        (e.height = t.offsetHeight || 0),
-          (e.width = t.offsetWidth || 0),
-          (e.top = t.offsetTop),
-          (e.left = t.offsetLeft);
-      }
-      return null;
+export var Rd = class extends Md.Component {
+  getSnapshotBeforeUpdate(e) {
+    const t = this.props.childRef.current;
+    if (t && e.isPresent && !this.props.isPresent) {
+      const e = this.props.sizeRef.current;
+      (e.height = t.offsetHeight || 0),
+        (e.width = t.offsetWidth || 0),
+        (e.top = t.offsetTop),
+        (e.left = t.offsetLeft);
     }
-    componentDidUpdate() {}
-    render() {
-      return this.props.children;
-    }
-  };
+    return null;
+  }
+  componentDidUpdate() {}
+  render() {
+    return this.props.children;
+  }
+};
 export function Vd({ children: e, isPresent: t }) {
   const n = (0, Od.useId)(),
     s = (0, Od.useRef)(null),
@@ -5553,149 +5583,147 @@ var Dd = ({
 export function Fd() {
   return new Map();
 }
-var Id = cloneWithPrototypeAndProperties(react(), 1);
 export var Hd = (e) => e.key || "";
 export var Nd = ({
-    children: e,
-    custom: t,
-    initial: n = true,
-    onExitComplete: s,
-    exitBeforeEnter: i,
-    presenceAffectsLayout: o = true,
-    mode: r = "sync",
-  }) => {
-    Er(!i, "Replace exitBeforeEnter with mode='wait'");
-    const a =
-        (0, Ed.useContext)(layoutContext).forceRender ||
-        (function () {
-          const e = Ad(),
-            [t, n] = (0, Ld.useState)(0),
-            s = (0, Ld.useCallback)(() => {
-              e.current && n(t + 1);
-            }, [t]);
-          return [(0, Ld.useCallback)(() => Wo.postRender(s), [s]), t];
-        })()[0],
-      l = Ad(),
-      c = (function (e) {
-        const t = [];
-        return (
-          Ed.Children.forEach(e, (e) => {
-            (0, Ed.isValidElement)(e) && t.push(e);
-          }),
-          t
-        );
-      })(e);
-    let u = c;
-    const d = (0, Ed.useRef)(new Map()).current,
-      p = (0, Ed.useRef)(u),
-      f = (0, Ed.useRef)(new Map()).current,
-      h = (0, Ed.useRef)(true);
-    var m;
-    if (
-      (dynamicUseEffect(() => {
-        (h.current = false),
-          (function (e, t) {
-            e.forEach((e) => {
-              const n = Hd(e);
-              t.set(n, e);
-            });
-          })(c, f),
-          (p.current = u);
-      }),
-      (m = () => {
-        (h.current = true), f.clear(), d.clear();
-      }),
-      (0, Id.useEffect)(() => () => m(), []),
-      h.current)
-    )
-      return _d.createElement(
-        _d.Fragment,
-        null,
-        u.map((e) =>
-          _d.createElement(
+  children: e,
+  custom: t,
+  initial: n = true,
+  onExitComplete: s,
+  exitBeforeEnter: i,
+  presenceAffectsLayout: o = true,
+  mode: r = "sync",
+}) => {
+  Er(!i, "Replace exitBeforeEnter with mode='wait'");
+  const a =
+      (0, Ed.useContext)(layoutContext).forceRender ||
+      (function () {
+        const e = Ad(),
+          [t, n] = (0, Ld.useState)(0),
+          s = (0, Ld.useCallback)(() => {
+            e.current && n(t + 1);
+          }, [t]);
+        return [(0, Ld.useCallback)(() => Wo.postRender(s), [s]), t];
+      })()[0],
+    l = Ad(),
+    c = (function (e) {
+      const t = [];
+      return (
+        Ed.Children.forEach(e, (e) => {
+          (0, Ed.isValidElement)(e) && t.push(e);
+        }),
+        t
+      );
+    })(e);
+  let u = c;
+  const d = (0, Ed.useRef)(new Map()).current,
+    p = (0, Ed.useRef)(u),
+    f = (0, Ed.useRef)(new Map()).current,
+    h = (0, Ed.useRef)(true);
+  var m;
+  if (
+    (dynamicUseEffect(() => {
+      (h.current = false),
+        (function (e, t) {
+          e.forEach((e) => {
+            const n = Hd(e);
+            t.set(n, e);
+          });
+        })(c, f),
+        (p.current = u);
+    }),
+    (m = () => {
+      (h.current = true), f.clear(), d.clear();
+    }),
+    (0, Id.useEffect)(() => () => m(), []),
+    h.current)
+  )
+    return _d.createElement(
+      _d.Fragment,
+      null,
+      u.map((e) =>
+        _d.createElement(
+          Dd,
+          {
+            key: Hd(e),
+            isPresent: true,
+            initial: !!n && undefined,
+            presenceAffectsLayout: o,
+            mode: r,
+          },
+          e
+        )
+      )
+    );
+  u = [...u];
+  const g = p.current.map(Hd),
+    x = c.map(Hd),
+    b = g.length;
+  for (let e = 0; e < b; e++) {
+    const t = g[e];
+    -1 !== x.indexOf(t) || d.has(t) || d.set(t, undefined);
+  }
+  return (
+    "wait" === r && d.size && (u = []),
+    d.forEach((e, n) => {
+      if (-1 !== x.indexOf(n)) return;
+      const i = f.get(n);
+      if (!i) return;
+      const h = g.indexOf(n);
+      let m = e;
+      if (!m) {
+        const e = () => {
+          d.delete(n);
+          const e = Array.from(f.keys()).filter((e) => !x.includes(e));
+          if (
+            (e.forEach((e) => f.delete(e)),
+            (p.current = c.filter((t) => {
+              const s = Hd(t);
+              return s === n || e.includes(s);
+            })),
+            !d.size)
+          ) {
+            if (false === l.current) return;
+            a(), s && s();
+          }
+        };
+        (m = _d.createElement(
+          Dd,
+          {
+            key: Hd(i),
+            isPresent: false,
+            onExitComplete: e,
+            custom: t,
+            presenceAffectsLayout: o,
+            mode: r,
+          },
+          i
+        )),
+          d.set(n, m);
+      }
+      u.splice(h, 0, m);
+    }),
+    (u = u.map((e) => {
+      const t = e.key;
+      return d.has(t)
+        ? e
+        : _d.createElement(
             Dd,
             {
               key: Hd(e),
               isPresent: true,
-              initial: !!n && undefined,
               presenceAffectsLayout: o,
               mode: r,
             },
             e
-          )
-        )
-      );
-    u = [...u];
-    const g = p.current.map(Hd),
-      x = c.map(Hd),
-      b = g.length;
-    for (let e = 0; e < b; e++) {
-      const t = g[e];
-      -1 !== x.indexOf(t) || d.has(t) || d.set(t, undefined);
-    }
-    return (
-      "wait" === r && d.size && (u = []),
-      d.forEach((e, n) => {
-        if (-1 !== x.indexOf(n)) return;
-        const i = f.get(n);
-        if (!i) return;
-        const h = g.indexOf(n);
-        let m = e;
-        if (!m) {
-          const e = () => {
-            d.delete(n);
-            const e = Array.from(f.keys()).filter((e) => !x.includes(e));
-            if (
-              (e.forEach((e) => f.delete(e)),
-              (p.current = c.filter((t) => {
-                const s = Hd(t);
-                return s === n || e.includes(s);
-              })),
-              !d.size)
-            ) {
-              if (false === l.current) return;
-              a(), s && s();
-            }
-          };
-          (m = _d.createElement(
-            Dd,
-            {
-              key: Hd(i),
-              isPresent: false,
-              onExitComplete: e,
-              custom: t,
-              presenceAffectsLayout: o,
-              mode: r,
-            },
-            i
-          )),
-            d.set(n, m);
-        }
-        u.splice(h, 0, m);
-      }),
-      (u = u.map((e) => {
-        const t = e.key;
-        return d.has(t)
-          ? e
-          : _d.createElement(
-              Dd,
-              {
-                key: Hd(e),
-                isPresent: true,
-                presenceAffectsLayout: o,
-                mode: r,
-              },
-              e
-            );
-      })),
-      _d.createElement(
-        _d.Fragment,
-        null,
-        d.size ? u : u.map((e) => (0, Ed.cloneElement)(e))
-      )
-    );
-  },
-  Ud = cloneWithPrototypeAndProperties(react(), 1);
+          );
+    })),
+    _d.createElement(
+      _d.Fragment,
+      null,
+      d.size ? u : u.map((e) => (0, Ed.cloneElement)(e))
+    )
+  );
+};
 export function zd(e) {
   const t = No(() => Bl(e)),
     { isStatic: n } = (0, Ud.useContext)(pagePointContext);
@@ -6052,9 +6080,8 @@ var dp,
       dp && dp.animations.push(s),
       s
     );
-  },
-  fp = cloneWithPrototypeAndProperties(react(), 1),
-  hp = { some: 0, all: 1 };
+  };
+export var hp = { some: 0, all: 1 };
 export function mp(e, { root: t, margin: n, amount: s, once: i = false } = {}) {
   const [o, r] = (0, fp.useState)(false);
   return (
@@ -6090,38 +6117,35 @@ export function mp(e, { root: t, margin: n, amount: s, once: i = false } = {}) {
   );
 }
 export var componentContriller = () => new ComponentController();
-var Rp = cloneWithPrototypeAndProperties(classnames()),
-  Vp = cloneWithPrototypeAndProperties(react());
-export var Dp = cloneWithPrototypeAndProperties(reactJsxRuntime()),
-  CompCustomButtonLink = ((0, Vp.forwardRef)(
-    (
-      {
-        children: e,
-        variant: t = "regular",
-        size: n = "normal",
-        "data-cy": s,
-        ...i
-      },
-      o
-    ) =>
-      (0, Dp.jsx)("a", {
-        ref: o,
-        ...i,
-        className: (0, Rp.default)(
-          BUTTON_STYLES.block,
-          BUTTON_STYLES.link,
-          BUTTON_STYLES[`ubq-variant_${t}`],
-          BUTTON_STYLES[`ubq-size_${n}`],
-          i.className
+export var CompCustomButtonLink = ((0, Vp.forwardRef)(
+  (
+    {
+      children: e,
+      variant: t = "regular",
+      size: n = "normal",
+      "data-cy": s,
+      ...i
+    },
+    o
+  ) =>
+    (0, Dp.jsx)("a", {
+      ref: o,
+      ...i,
+      className: (0, Rp.default)(
+        BUTTON_STYLES.block,
+        BUTTON_STYLES.link,
+        BUTTON_STYLES[`ubq-variant_${t}`],
+        BUTTON_STYLES[`ubq-size_${n}`],
+        i.className
+      ),
+      "data-cy": s,
+      children: (0, Dp.jsx)("span", {
+        children: Vp.Children.map(e, (e) =>
+          "string" == typeof e ? (0, Dp.jsx)("span", { children: e }) : e
         ),
-        "data-cy": s,
-        children: (0, Dp.jsx)("span", {
-          children: Vp.Children.map(e, (e) =>
-            "string" == typeof e ? (0, Dp.jsx)("span", { children: e }) : e
-          ),
-        }),
-      })
-  ).displayName = "uikit/ButtonLink");
+      }),
+    })
+).displayName = "uikit/ButtonLink");
 export var classNamePlainToggleButton =
   "UBQ_PlainToggleButton-module__block--OZ9GQ";
 
@@ -6134,9 +6158,7 @@ export var Up,
   qp,
   Qp,
   Gp = CompPlainToggleButton,
-  Zp = Gp,
-  Wp = cloneWithPrototypeAndProperties(classnames()),
-  Kp = cloneWithPrototypeAndProperties(react());
+  Zp = Gp;
 ((Qp = Up || (Up = {})).HEX = "HEX"),
   (Qp.RGB = "RGB"),
   (Qp.HSL = "HSL"),
@@ -7285,13 +7307,7 @@ export function bh(e, t) {
   }
 }
 var yh = "UBQ_Theme-module__block--sJF92",
-  vh = "UBQ_Theme-module__transition--Ldgpe",
-  wh = cloneWithPrototypeAndProperties(reactJsxRuntime()),
-  kh = (0, Kp.createContext)({
-    theme: "light",
-    scale: "normal",
-    container: undefined,
-  });
+  vh = "UBQ_Theme-module__transition--Ldgpe";
 export function ContextWrapper8({
   children: e,
   theme: t = "light",
@@ -7356,9 +7372,8 @@ export function ContextWrapper8({
 
 (ContextWrapper8 || (ContextWrapper8 = {})).Context = kh;
 export var jh,
-  Sh = ContextWrapper8,
-  _h = cloneWithPrototypeAndProperties(classnames()),
-  Eh = "UBQ_LayoutEdge-module__block--0R8Ut",
+  Sh = ContextWrapper8;
+export var Eh = "UBQ_LayoutEdge-module__block--0R8Ut",
   Lh = "UBQ_LayoutEdge-module__topLeft--y36dM",
   Ph = "UBQ_LayoutEdge-module__middleLeft--OzPuo",
   Ah = "UBQ_LayoutEdge-module__bottomLeft--HlLWO",
@@ -7366,8 +7381,7 @@ export var jh,
   Th = "UBQ_LayoutEdge-module__bottomCenter--SB0o1",
   Mh = "UBQ_LayoutEdge-module__topRight--iflYv",
   Oh = "UBQ_LayoutEdge-module__middleRight--iZbpB",
-  Rh = "UBQ_LayoutEdge-module__bottomRight--7-Jha",
-  Vh = cloneWithPrototypeAndProperties(reactJsxRuntime());
+  Rh = "UBQ_LayoutEdge-module__bottomRight--7-Jha";
 export function Dh({ children: e, className: t, style: n }) {
   return (0, Vh.jsx)("div", {
     className: (0, _h.default)(Eh, t),
@@ -7423,8 +7437,7 @@ export function Dh({ children: e, className: t, style: n }) {
 export var Fh = { Edge: Dh },
   Ih = Fh,
   Hh = CompCustomShapes,
-  Nh = "UBQ_AsyncResult-module__progress--c4YGS",
-  Uh = cloneWithPrototypeAndProperties(reactJsxRuntime());
+  Nh = "UBQ_AsyncResult-module__progress--c4YGS";
 export var zh = function ({
   children: e,
   asyncState: t,
@@ -7443,27 +7456,21 @@ export var zh = function ({
       return null;
   }
 };
-export var Kh = cloneWithPrototypeAndProperties(classnames()),
-  Yh = "UBQ_InputGroup-module__block--BLGPu",
-  Xh = cloneWithPrototypeAndProperties(reactJsxRuntime());
+export var Yh = "UBQ_InputGroup-module__block--BLGPu";
 export var Jh = function ({ children: e, className: t }) {
-    return (0, Xh.jsx)("div", {
-      className: (0, Kh.default)(Yh, t),
-      children: e,
-    });
-  },
-  em = cloneWithPrototypeAndProperties(classnames()),
-  tm = "UBQ_InputGrid-module__block--zRPAf",
-  nm = cloneWithPrototypeAndProperties(reactJsxRuntime());
+  return (0, Xh.jsx)("div", {
+    className: (0, Kh.default)(Yh, t),
+    children: e,
+  });
+};
+export var tm = "UBQ_InputGrid-module__block--zRPAf";
 export var sm = function ({ children: e, className: t }) {
-    return (0, nm.jsx)("div", {
-      className: (0, em.default)(tm, t),
-      children: e,
-    });
-  },
-  im = cloneWithPrototypeAndProperties(focusTrapReact());
-export var rm = isDOMAvailable && !!document.body.attachShadow,
-  am = cloneWithPrototypeAndProperties(reactJsxRuntime());
+  return (0, nm.jsx)("div", {
+    className: (0, em.default)(tm, t),
+    children: e,
+  });
+};
+export var rm = isDOMAvailable && !!document.body.attachShadow;
 export function lm(e) {
   const { focusTrapOptions: t = {} } = e,
     n = document.querySelector(`.${gh}`);
@@ -7489,12 +7496,7 @@ var cm = [];
   return cm.some((e) => e.active && false === e.paused);
 };
 export var um = lm,
-  dm = um,
-  pm = cloneWithPrototypeAndProperties(classnames()),
-  fm = cloneWithPrototypeAndProperties(lodashNoop()),
-  hm = cloneWithPrototypeAndProperties(react());
-export var mm = cloneWithPrototypeAndProperties(reactDom()),
-  gm = cloneWithPrototypeAndProperties(react());
+  dm = um;
 export var xm = function (e) {
     return e.reduce(function (e, t) {
       var n = t[0],
@@ -7507,8 +7509,7 @@ export var xm = function (e) {
     window.document &&
     window.document.createElement
       ? gm.useLayoutEffect
-      : gm.useEffect,
-  ym = cloneWithPrototypeAndProperties(react());
+      : gm.useEffect;
 export var vm = "top",
   wm = "bottom",
   km = "right",
@@ -8719,72 +8720,71 @@ export function Dg(e) {
   };
 }
 var Fg = Dg({
-    defaultModifiers: [
-      dg,
-      Bg,
-      {
-        name: "computeStyles",
-        enabled: true,
-        phase: "beforeWrite",
-        fn: function (e) {
-          var t = e.state,
-            n = e.options,
-            s = n.gpuAcceleration,
-            i = undefined === s || s,
-            o = n.adaptive,
-            r = undefined === o || o,
-            a = n.roundOffsets,
-            l = undefined === a || a,
-            c = {
-              placement: Nm(t.placement),
-              variation: ag(t.placement),
-              popper: t.elements.popper,
-              popperRect: t.rects.popper,
-              gpuAcceleration: i,
-              isFixed: "fixed" === t.options.strategy,
-            };
-          null != t.modifiersData.popperOffsets &&
-            (t.styles.popper = Object.assign(
+  defaultModifiers: [
+    dg,
+    Bg,
+    {
+      name: "computeStyles",
+      enabled: true,
+      phase: "beforeWrite",
+      fn: function (e) {
+        var t = e.state,
+          n = e.options,
+          s = n.gpuAcceleration,
+          i = undefined === s || s,
+          o = n.adaptive,
+          r = undefined === o || o,
+          a = n.roundOffsets,
+          l = undefined === a || a,
+          c = {
+            placement: Nm(t.placement),
+            variation: ag(t.placement),
+            popper: t.elements.popper,
+            popperRect: t.rects.popper,
+            gpuAcceleration: i,
+            isFixed: "fixed" === t.options.strategy,
+          };
+        null != t.modifiersData.popperOffsets &&
+          (t.styles.popper = Object.assign(
+            {},
+            t.styles.popper,
+            cg(
+              Object.assign({}, c, {
+                offsets: t.modifiersData.popperOffsets,
+                position: t.options.strategy,
+                adaptive: r,
+                roundOffsets: l,
+              })
+            )
+          )),
+          null != t.modifiersData.arrow &&
+            (t.styles.arrow = Object.assign(
               {},
-              t.styles.popper,
+              t.styles.arrow,
               cg(
                 Object.assign({}, c, {
-                  offsets: t.modifiersData.popperOffsets,
-                  position: t.options.strategy,
-                  adaptive: r,
+                  offsets: t.modifiersData.arrow,
+                  position: "absolute",
+                  adaptive: false,
                   roundOffsets: l,
                 })
               )
             )),
-            null != t.modifiersData.arrow &&
-              (t.styles.arrow = Object.assign(
-                {},
-                t.styles.arrow,
-                cg(
-                  Object.assign({}, c, {
-                    offsets: t.modifiersData.arrow,
-                    position: "absolute",
-                    adaptive: false,
-                    roundOffsets: l,
-                  })
-                )
-              )),
-            (t.attributes.popper = Object.assign({}, t.attributes.popper, {
-              "data-popper-placement": t.placement,
-            }));
-        },
-        data: {},
+          (t.attributes.popper = Object.assign({}, t.attributes.popper, {
+            "data-popper-placement": t.placement,
+          }));
       },
-      Hm,
-      Ag,
-      _g,
-      Tg,
-      rg,
-      Pg,
-    ],
-  }),
-  Ig = cloneWithPrototypeAndProperties(reactFastCompare()),
-  Hg = [],
+      data: {},
+    },
+    Hm,
+    Ag,
+    _g,
+    Tg,
+    rg,
+    Pg,
+  ],
+});
+export var Hg = [],
   Ng = function (e, t, n) {
     undefined === n && (n = {});
     var s = ym.useRef(null),
@@ -8874,9 +8874,7 @@ var Fg = Dg({
         forceUpdate: u.current ? u.current.forceUpdate : null,
       }
     );
-  },
-  Ug = cloneWithPrototypeAndProperties(mouseTrap()),
-  zg = cloneWithPrototypeAndProperties(react());
+  };
 !(function (e) {
   if (e) {
     var t = {},
@@ -8892,26 +8890,26 @@ var Fg = Dg({
       e.init();
   }
 })("undefined" != typeof Mousetrap ? Mousetrap : undefined);
-export var $g = (e) => (null != e ? e : () => {}),
-  qg = (e, t, n = {}) => {
-    const s = (0, zg.useRef)($g(t));
+export var $g = (e) => (null != e ? e : () => {});
+export var mostlyHook1 = (e, t, n = {}) => {
+  const s = (0, zg.useRef)($g(t));
+  (0, zg.useEffect)(() => {
+    s.current = $g(t);
+  }, [t]),
     (0, zg.useEffect)(() => {
-      s.current = $g(t);
-    }, [t]),
-      (0, zg.useEffect)(() => {
-        const { elementRef: t, action: i } = n,
-          o = null != t?.current ? (0, Ug.default)(t.current) : Ug.default;
-        return (
-          e &&
-            (n.global && "bindGlobal" in o
-              ? o.bindGlobal(e, s.current, i)
-              : o.bind(e, s.current, i)),
-          () => {
-            e && o.unbind(e);
-          }
-        );
-      }, [e]);
-  };
+      const { elementRef: t, action: i } = n,
+        o = null != t?.current ? (0, Ug.default)(t.current) : Ug.default;
+      return (
+        e &&
+          (n.global && "bindGlobal" in o
+            ? o.bindGlobal(e, s.current, i)
+            : o.bind(e, s.current, i)),
+        () => {
+          e && o.unbind(e);
+        }
+      );
+    }, [e]);
+};
 export function Qg(...e) {
   return (t) => {
     for (const n of e)
@@ -8927,7 +8925,6 @@ export var ClickOutsideContext = (0, react11.createContext)(
   )
 );
 ClickOutsideContext.displayName = "ClickOutsideContext";
-export var Xg = cloneWithPrototypeAndProperties(reactJsxRuntime());
 export function ClickOutsideContextProvider({
   onClickOutside: e,
   children: t,
@@ -8970,27 +8967,20 @@ export function ClickOutsideContextProvider({
 }
 var sx;
 export var ax = () => {
-    const e = (0, react13.useRef)(true);
-    return (
-      (0, react13.useEffect)(
-        () => (
-          (e.current = true),
-          () => {
-            e.current = false;
-          }
-        ),
-        []
+  const e = (0, react13.useRef)(true);
+  return (
+    (0, react13.useEffect)(
+      () => (
+        (e.current = true),
+        () => {
+          e.current = false;
+        }
       ),
-      e
-    );
-  },
-  lx = cloneWithPrototypeAndProperties(reactJsxRuntime());
-export var context9 = (0, react14.createContext)({
-  portals: {},
-  addPortal: () => {
-    throw new Error("Not portal provider has been found");
-  },
-});
+      []
+    ),
+    e
+  );
+};
 export function ContextPortalContextProvider({ children: e }) {
   const [t, n] = (0, react14.useState)({}),
     s = ax(),
@@ -9072,13 +9062,13 @@ export var mx = px,
         [r, o]
       ),
       C = (0, hm.useCallback)(() => k(false), [k]);
-    qg(u, () => (k((e) => !e), !d), p);
+    mostlyHook1(u, () => (k((e) => !e), !d), p);
     const [j, S] = (0, hm.useState)(null),
       [_, E] = (0, hm.useState)(null),
       L = (0, hm.useRef)(null),
       P = (0, hm.useRef)(null),
       A = !n && y;
-    qg(["esc"], A ? C : null, { elementRef: P });
+    mostlyHook1(["esc"], A ? C : null, { elementRef: P });
     const {
       styles: B,
       attributes: T,
@@ -10050,7 +10040,7 @@ export var Yy = function ({
     );
     var c;
   },
-  Xy = qg,
+  Xy = mostlyHook1,
   Jy = cloneWithPrototypeAndProperties(chromaJs()),
   ev = cloneWithPrototypeAndProperties(classnames()),
   tv = cloneWithPrototypeAndProperties(react());
@@ -10880,7 +10870,7 @@ export var fw,
         },
         [l]
       );
-      qg(
+      mostlyHook1(
         ["down"],
         () => (
           d((e) => {
@@ -10891,7 +10881,7 @@ export var fw,
         ),
         { elementRef: p }
       ),
-        qg(
+        mostlyHook1(
           ["up"],
           () => (
             d((e) => {
@@ -10902,14 +10892,14 @@ export var fw,
           ),
           { elementRef: p }
         ),
-        qg(
+        mostlyHook1(
           ["tab", "shift+tab"],
           () => {
             n && n();
           },
           { elementRef: p }
         ),
-        qg(["space", "enter"], () => (f(l[u].value, u), false), {
+        mostlyHook1(["space", "enter"], () => (f(l[u].value, u), false), {
           elementRef: p,
         });
       const m = (0, ow.useMemo)(lw, []),
@@ -11508,7 +11498,7 @@ export function Ww({
   progress: u = 0,
 }) {
   const d = (0, zw.useRef)(null);
-  qg(["esc"], s ?? null, { elementRef: d });
+  mostlyHook1(["esc"], s ?? null, { elementRef: d });
   return (0, Qw.jsx)(Nd, {
     children:
       t &&
@@ -11734,14 +11724,14 @@ export var Vk = function ({
     (0, bk.useEffect)(() => {
       C && x?.current?.focus();
     }, [C]),
-      qg(
+      mostlyHook1(
         ["enter"],
         () => {
           j(true), x?.current?.focus();
         },
         { elementRef: g }
       ),
-      qg(
+      mostlyHook1(
         ["enter"],
         () => {
           j(false), g?.current?.focus();
@@ -12023,7 +12013,7 @@ var xC,
       const n = (0, dC.useRef)(null),
         s = null !== n.current ? (0, pC.tabbable)(n.current) : [];
       return (
-        qg(
+        mostlyHook1(
           ["down"],
           ({ target: e }) => {
             if (s.length > 0) {
@@ -12037,7 +12027,7 @@ var xC,
           },
           { elementRef: n }
         ),
-        qg(
+        mostlyHook1(
           ["up"],
           ({ target: e }) => {
             if (s.length > 0) {
@@ -13092,56 +13082,56 @@ export var IS = cloneWithPrototypeAndProperties(draggableCJS()),
       i(n + 0.1 * (e ? 10 : 1));
     }
     return (
-      qg(
+      mostlyHook1(
         "left",
         () => {
           j();
         },
         { elementRef: w }
       ),
-      qg(
+      mostlyHook1(
         "right",
         () => {
           C();
         },
         { elementRef: w }
       ),
-      qg(
+      mostlyHook1(
         "left",
         () => {
           C();
         },
         { elementRef: k }
       ),
-      qg(
+      mostlyHook1(
         "right",
         () => {
           j();
         },
         { elementRef: k }
       ),
-      qg(
+      mostlyHook1(
         "shift+left",
         () => {
           j(true);
         },
         { elementRef: w }
       ),
-      qg(
+      mostlyHook1(
         "shift+right",
         () => {
           C(true);
         },
         { elementRef: w }
       ),
-      qg(
+      mostlyHook1(
         "shift+left",
         () => {
           C(true);
         },
         { elementRef: k }
       ),
-      qg(
+      mostlyHook1(
         "shift+right",
         () => {
           j(true);
@@ -14450,7 +14440,8 @@ export var IE = function ({
 cloneWithPrototypeAndProperties(mouseTrap());
 export var HE = function ({ elementRef: e, copy: t, paste: n }) {
     const s = { elementRef: e, action: "keydown", global: false };
-    qg(["ctrl+c", "command+c"], t, s), qg(["ctrl+v", "command+v"], n, s);
+    mostlyHook1(["ctrl+c", "command+c"], t, s),
+      mostlyHook1(["ctrl+v", "command+v"], n, s);
   },
   NE = cloneWithPrototypeAndProperties(react());
 export var UE = (
@@ -14496,13 +14487,13 @@ export var $E = (e, t) => {
       }, []),
       [n, s]
     );
-  },
-  qE = (cloneWithPrototypeAndProperties(mouseTrap()), ["up", "shift+up"]),
-  QE = ["down", "shift+down"],
-  GE = ["left", "shift+left"],
-  ZE = ["right", "shift+right"],
-  WE = ["enter", "shift+enter"],
-  KE = ["escape"];
+  }; 
+ var qE =  (cloneWithPrototypeAndProperties(mouseTrap()), ["up", "shift+up"]); 
+ var QE =  ["down", "shift+down"]; 
+ var GE =  ["left", "shift+left"]; 
+ var ZE =  ["right", "shift+right"]; 
+ var WE =  ["enter", "shift+enter"]; 
+ var KE =  ["escape"];
 export var YE = function ({
     elementRef: e,
     up: t,
@@ -14519,10 +14510,10 @@ export var YE = function ({
       Xy(ZE, i, a),
       Xy(WE, o, a),
       Xy(KE, r, a);
-  },
-  XE = cloneWithPrototypeAndProperties(react());
-export var JE = () => (0, XE.useReducer)(() => ({}), {})[1],
-  eL =
+  }; 
+ var XE =  cloneWithPrototypeAndProperties(react());
+export var JE = () => (0, XE.useReducer)(() => ({}), {})[1]; 
+ var eL = 
     (cloneWithPrototypeAndProperties(react()),
     cloneWithPrototypeAndProperties(react()));
 export var tL = cloneWithPrototypeAndProperties(react());
@@ -14619,12 +14610,12 @@ export function aL({
   });
 }
 Object.defineProperty(aL, "displayName", { value: "FileUpload" });
-export var lL = aL,
-  cL = cloneWithPrototypeAndProperties(reactDomClient()),
-  uL = cloneWithPrototypeAndProperties(react(), 1),
-  dL = cloneWithPrototypeAndProperties(react(), 1),
-  pL = cloneWithPrototypeAndProperties(voidElements()),
-  fL = /\s([^'"/\s><]+?)[\s/>]|([^\s=]+)=\s?(".*?"|'.*?')/g;
+export var lL = aL; 
+export var cL =  cloneWithPrototypeAndProperties(reactDomClient()); 
+export var uL =  cloneWithPrototypeAndProperties(react(), 1);
+export var dL = cloneWithPrototypeAndProperties(react(), 1);
+export var pL = cloneWithPrototypeAndProperties(voidElements()); 
+ var fL =  /\s([^'"/\s><]+?)[\s/>]|([^\s=]+)=\s?(".*?"|'.*?')/g;
 export function hL(e) {
   var t = {
       type: "tag",
@@ -14656,9 +14647,9 @@ export function hL(e) {
         o[2] && (t.attrs[o[2]] = o[3].trim().substring(1, o[3].length - 1));
   return t;
 }
-var mL = /<[a-zA-Z0-9\-\!\/](?:"[^"]*"|'[^']*'|[^'">])*>/g,
-  gL = /^\s*$/,
-  xL = Object.create(null);
+var mL = /<[a-zA-Z0-9\-\!\/](?:"[^"]*"|'[^']*'|[^'">])*>/g; 
+ var gL =  /^\s*$/; 
+ var xL =  Object.create(null);
 export function bL(e, t) {
   switch (t.type) {
     case "text":
@@ -14682,8 +14673,8 @@ export function bL(e, t) {
       return e + "\x3c!--" + t.comment + "--\x3e";
   }
 }
-var yL,
-  vL = {
+var yL; 
+ var vL =  {
     parse: function (e, t) {
       t || (t = {}), t.components || (t.components = xL);
       var n,
@@ -14749,17 +14740,17 @@ var yL,
         return e + bL("", t);
       }, "");
     },
-  },
-  wL = vL,
-  kL = (...e) => {
+  }; 
+ var wL =  vL; 
+ var kL =  (...e) => {
     console?.warn &&
       (LL(e[0]) && (e[0] = `react-i18next:: ${e[0]}`), console.warn(...e));
-  },
-  CL = {},
-  jL = (...e) => {
+  }; 
+ var CL =  {}; 
+ var jL =  (...e) => {
     (LL(e[0]) && CL[e[0]]) || (LL(e[0]) && (CL[e[0]] = new Date()), kL(...e));
-  },
-  SL = (e, t) => () => {
+  }; 
+ var SL =  (e, t) => () => {
     if (e.isInitialized) t();
     else {
       const n = () => {
@@ -14770,22 +14761,22 @@ var yL,
       };
       e.on("initialized", n);
     }
-  },
-  _L = (e, t, n) => {
+  }; 
+ var _L =  (e, t, n) => {
     e.loadNamespaces(t, SL(e, n));
-  },
-  EL = (e, t, n, s) => {
+  }; 
+ var EL =  (e, t, n, s) => {
     LL(n) && (n = [n]),
       n.forEach((t) => {
         e.options.ns.indexOf(t) < 0 && e.options.ns.push(t);
       }),
       e.loadLanguages(t, SL(e, s));
-  },
-  LL = (e) => "string" == typeof e,
-  PL = (e) => "object" == typeof e && null !== e,
-  AL =
-    /&(?:amp|#38|lt|#60|gt|#62|apos|#39|quot|#34|nbsp|#160|copy|#169|reg|#174|hellip|#8230|#x2F|#47);/g,
-  BL = {
+  }; 
+ var LL =  (e) => "string" == typeof e; 
+ var PL =  (e) => "object" == typeof e && null !== e; 
+ var AL = 
+    /&(?:amp|#38|lt|#60|gt|#62|apos|#39|quot|#34|nbsp|#160|copy|#169|reg|#174|hellip|#8230|#x2F|#47);/g; 
+ var BL =  {
     "&amp;": "&",
     "&#38;": "&",
     "&lt;": "<",
@@ -14806,9 +14797,9 @@ var yL,
     "&#8230;": "…",
     "&#x2F;": "/",
     "&#47;": "/",
-  },
-  TL = (e) => BL[e],
-  ML = {
+  }; 
+ var TL =  (e) => BL[e]; 
+ var ML =  {
     bindI18n: "languageChanged",
     bindI18nStore: "",
     transEmptyNodeValue: "",
@@ -14817,21 +14808,21 @@ var yL,
     transKeepBasicHtmlNodesFor: ["br", "strong", "i", "p"],
     useSuspense: true,
     unescape: (e) => e.replace(AL, TL),
-  },
-  OL = () => ML,
-  RL = () => yL,
-  VL = (e, t) => {
+  }; 
+ var OL =  () => ML; 
+ var RL =  () => yL; 
+ var VL =  (e, t) => {
     if (!e) return false;
     const n = e.props?.children ?? e.children;
     return t ? n.length > 0 : !!n;
-  },
-  DL = (e) => {
+  }; 
+ var DL =  (e) => {
     if (!e) return [];
     const t = e.props?.children ?? e.children;
     return e.props?.i18nIsDynamicList ? FL(t) : t;
-  },
-  FL = (e) => (Array.isArray(e) ? e : [e]),
-  IL = (e, t) => {
+  }; 
+ var FL =  (e) => (Array.isArray(e) ? e : [e]); 
+ var IL =  (e, t) => {
     if (!e) return "";
     let n = "";
     const s = FL(e),
@@ -14877,8 +14868,8 @@ var yL,
       }),
       n
     );
-  },
-  HL = (e, t, n, s, i, o) => {
+  }; 
+ var HL =  (e, t, n, s, i, o) => {
     if ("" === t) return [];
     const r = s.transKeepBasicHtmlNodesFor || [],
       a = t && new RegExp(r.map((e) => `<${e}`).join("|")).test(t);
@@ -15000,8 +14991,8 @@ var yL,
       m = h([{ dummy: true, children: e || [] }], u, FL(e || []));
     return DL(m[0]);
   };
-export var NL = cloneWithPrototypeAndProperties(react(), 1),
-  UL = {
+export var NL = cloneWithPrototypeAndProperties(react(), 1);
+export var UL = {
     type: "3rdParty",
     init(e) {
       ((e = {}) => {
@@ -15011,8 +15002,8 @@ export var NL = cloneWithPrototypeAndProperties(react(), 1),
           yL = e;
         })(e);
     },
-  },
-  zL = (0, NL.createContext)();
+  }; 
+export var zL =  (0, NL.createContext)();
 
 export function qL({
   children: e,
@@ -15121,9 +15112,8 @@ export function qL({
     ...f,
   });
 }
-export var QL = cloneWithPrototypeAndProperties(react(), 1),
-  GL = (e, t, n, s) => e.getFixedT(t, n, s),
-  ZL = (e, t = {}) => {
+export var GL = (e, t, n, s) => e.getFixedT(t, n, s); 
+export var ZL =  (e, t = {}) => {
     const { i18n: n } = t,
       { i18n: s, defaultNS: i } = (0, QL.useContext)(zL) || {},
       o = n || s || RL();
@@ -15230,8 +15220,8 @@ export var QL = cloneWithPrototypeAndProperties(react(), 1),
     throw new Promise((e) => {
       t.lng ? EL(o, t.lng, c, () => e()) : _L(o, c, () => e());
     });
-  },
-  WL =
+  }; 
+export var WL = 
     (cloneWithPrototypeAndProperties(react(), 1),
     cloneWithPrototypeAndProperties(react(), 1));
 cloneWithPrototypeAndProperties(react(), 1),
@@ -15264,16 +15254,16 @@ export function JL() {
     ? self
     : XL;
 }
-var eP = Object.assign,
-  tP = Object.getOwnPropertyDescriptor,
-  nP = Object.defineProperty,
-  sP = Object.prototype,
-  iP = [];
+var eP = Object.assign; 
+ var tP =  Object.getOwnPropertyDescriptor; 
+ var nP =  Object.defineProperty; 
+ var sP =  Object.prototype; 
+ var iP =  [];
 Object.freeze(iP);
 export var oP = {};
 Object.freeze(oP);
-export var rP = "undefined" != typeof Proxy,
-  aP = Object.toString();
+export var rP = "undefined" != typeof Proxy; 
+ var aP =  Object.toString();
 export function lP() {
   rP || YL("Proxy not available");
 }
@@ -15458,8 +15448,8 @@ export function RP(e, t, n) {
       return e.annotationType_ === zP;
     })(n) || (e[MP][t] = n);
 }
-var VP = Symbol("mobx administration"),
-  DP = (function () {
+var VP = Symbol("mobx administration"); 
+ var DP =  (function () {
     function e(e) {
       undefined === e && (e = "Atom"),
         (this.name_ = undefined),
@@ -15498,8 +15488,8 @@ var VP = Symbol("mobx administration"),
       }),
       e
     );
-  })(),
-  FP = bP("Atom", DP);
+  })(); 
+ var FP =  bP("Atom", DP);
 export function IP(e, t, n) {
   undefined === t && (t = uP), undefined === n && (n = uP);
   var s,
@@ -15658,8 +15648,8 @@ export function sA(e, t, n, s) {
     )
   );
 }
-var iA = "true",
-  oA = rA();
+var iA = "true"; 
+ var oA =  rA();
 export function rA(e) {
   return { annotationType_: iA, options_: e, make_: aA, extend_: lA };
 }
@@ -15727,9 +15717,9 @@ export function uA(e) {
   return e || cA;
 }
 Object.freeze(cA);
-export var dA = tA("observable"),
-  pA = tA("observable.ref", { enhancer: UP }),
-  fA = tA("observable.shallow", {
+export var dA = tA("observable"); 
+ var pA =  tA("observable.ref", { enhancer: UP }); 
+ var fA =  tA("observable.shallow", {
     enhancer: function (e, t, n) {
       return null == e || UT(e) || ST(e) || TT(e) || RT(e)
         ? e
@@ -15743,13 +15733,13 @@ export var dA = tA("observable"),
         ? vA.set(e, { name: n, deep: false })
         : undefined;
     },
-  }),
-  hA = tA("observable.struct", {
+  }); 
+ var hA =  tA("observable.struct", {
     enhancer: function (e, t) {
       return sM(e, t) ? t : e;
     },
-  }),
-  mA = OP(dA);
+  }); 
+ var mA =  OP(dA);
 export function gA(e) {
   return true === e.deep
     ? NP
@@ -15780,8 +15770,8 @@ export function xA(e, t, n) {
 }
 Object.assign(xA, mA);
 export var bA,
-  yA,
-  vA = eP(xA, {
+  yA; 
+ var vA =  eP(xA, {
     box: function (e, t) {
       var n = uA(t);
       return new RA(e, gA(n), n.name, true, n.equals);
@@ -15824,11 +15814,11 @@ export var bA,
     shallow: OP(fA),
     deep: mA,
     struct: OP(hA),
-  }),
-  wA = "computed",
-  kA = XP(wA),
-  CA = XP("computed.struct", { equals: HP.structural }),
-  jA = function (e, t) {
+  }); 
+ var wA =  "computed"; 
+ var kA =  XP(wA); 
+ var CA =  XP("computed.struct", { equals: HP.structural }); 
+ var jA =  function (e, t) {
     if (pP(t)) return RP(e, t, kA);
     if (hP(e)) return OP(XP(wA, e));
     var n = hP(t) ? t : {};
@@ -18473,8 +18463,7 @@ export function cM(e, t) {
     ? n({ engine: t, isPreviousEnable: () => cM(s, t) })
     : n;
 }
-export var uM = cloneWithPrototypeAndProperties(isEqual()),
-  dM = [
+export var dM = [
     "ly.img.group.enter.canvasMenu",
     "ly.img.group.select.canvasMenu",
     "ly.img.page.moveUp.canvasMenu",
@@ -24792,7 +24781,7 @@ export function lD(e, t) {
   }
   return e;
 }
-export var cD = function (e, t) {
+export var possibleHook3 = function (e, t) {
   const [n, s] = (0, rD.useReducer)(lD, { value: undefined }, () => ({
       value: e && e.value ? e.value() : aD(t),
     })),
@@ -24820,8 +24809,8 @@ export var cD = function (e, t) {
 };
 export function uD() {
   const { selection: e } = oD(),
-    [t] = cD(e.allSelected),
-    [n] = cD(e.selectedPage);
+    [t] = possibleHook3(e.allSelected),
+    [n] = possibleHook3(e.selectedPage);
   return (0, iD.useMemo)(() => {
     const e = t.map((e) => ({ id: e.id, type: e.type, selectable: true })),
       s = e[0];
@@ -27555,9 +27544,9 @@ var ZF = cloneWithPrototypeAndProperties(react());
 export var WF = (0, cloneWithPrototypeAndProperties(react()).createContext)({});
 export function KF() {
   const e = DO(),
-    [t, n] = cD(e.settings.roles.regularRole),
-    [s, i] = cD(e.settings.roles.previewRole),
-    [o] = cD(e.settings.roles.effectiveRole);
+    [t, n] = possibleHook3(e.settings.roles.regularRole),
+    [s, i] = possibleHook3(e.settings.roles.previewRole),
+    [o] = possibleHook3(e.settings.roles.effectiveRole);
   return [
     o,
     {
@@ -28198,7 +28187,7 @@ export var uH = "layer/move",
         o = KR(),
         { requestFocusForDesignElementId: r } = o,
         { t: a } = ZL(),
-        [l] = cD(i.channels.editor.editMode),
+        [l] = possibleHook3(i.channels.editor.editMode),
         c = !("Transform" === l),
         u = rH(e.type, a);
       return (0, IH.jsx)("button", {
@@ -28375,8 +28364,8 @@ export function oN(e, t, n, s) {
   const i = sN(s),
     o = 2 * parseInt(xh("--ubq-scale-base"), 10),
     r = oD(),
-    [a] = cD(r.camera.scrollPercentage),
-    [l] = cD(r.camera.sceneSize),
+    [a] = possibleHook3(r.camera.scrollPercentage),
+    [l] = possibleHook3(r.camera.sceneSize),
     c = a[n],
     u = l[n],
     d = t - o,
@@ -31479,7 +31468,7 @@ export var T$ = sI(function ({ engine: e, children: t, boundaryElement: n }) {
   M$ = cloneWithPrototypeAndProperties(react());
 export function O$() {
   const e = oD().selection.allSelected,
-    [t] = cD(e);
+    [t] = possibleHook3(e);
   return t[0];
 }
 var R$ = cloneWithPrototypeAndProperties(classnames()),
@@ -31645,7 +31634,7 @@ export var J$ = mayBeUseMemp(
         Xy(["up"], () => {
           h && i.getPageManager().selectPreviousPage();
         });
-      const [m] = cD(i.channels.scene.ready),
+      const [m] = possibleHook3(i.channels.scene.ready),
         { selectedBlock: g, fillType: x } = eI(n, () => {
           const e = n.block.findAllSelected()[0],
             t =
@@ -31676,7 +31665,7 @@ export var J$ = mayBeUseMemp(
           );
         }, [e]);
       })(i);
-      const [b] = cD(i.channels.editor.editMode);
+      const [b] = possibleHook3(i.channels.editor.editMode);
       (0, hI.useEffect)(() => {
         m
           ? a.style.removeProperty("visibility")
@@ -32379,8 +32368,8 @@ export var oQ = function () {
     const { t: e } = ZL(),
       t = IV(),
       n = O$(),
-      [s, i] = cD(n?.clipLinesOutsideOfFrame, false),
-      [o] = cD(n?.heightMode, "Auto"),
+      [s, i] = possibleHook3(n?.clipLinesOutsideOfFrame, false),
+      [o] = possibleHook3(n?.heightMode, "Auto"),
       r = (e) => {
         e !== s &&
           (i(e),
@@ -32518,7 +32507,7 @@ export var mQ = function () {
     const e = IV(),
       { t: t } = ZL(),
       n = O$(),
-      [s, i] = cD(n?.textCase, ["Normal"]),
+      [s, i] = possibleHook3(n?.textCase, ["Normal"]),
       o = (t) => () => {
         i(t), e("action.text.changeCase");
       },
@@ -40148,7 +40137,7 @@ export var K0 = sI(function ({ engine: e, block: t }) {
           (n("action.image.crop"), (c.current[t] = e));
         h({ x: a, y: l, [t]: e });
       },
-      [g] = cD(i.scene.designUnit),
+      [g] = possibleHook3(i.scene.designUnit),
       x = rX(g);
     return (0, W0.jsxs)(Qk, {
       title: o("property.crop.size"),
@@ -41222,7 +41211,7 @@ var Q1,
       l = ov(t),
       c = ov(n),
       u = oD(),
-      [d] = cD(u.assetSourceIdsChannel),
+      [d] = possibleHook3(u.assetSourceIdsChannel),
       { data: p } = GF(
         ["asset-sources", "ly.img.blur"],
         () => o.asset.findAssets("ly.img.blur", { page: 0, perPage: 1e3 }),
@@ -47015,7 +47004,7 @@ export var B9 = function ({ isDisabled: e }) {
     const t = IV(),
       { t: n } = ZL(),
       s = O$(),
-      [i, o] = cD(s?.rotation, 0);
+      [i, o] = possibleHook3(s?.rotation, 0);
     let r = ((i / Math.PI) * 180) % 360;
     r > 180 ? (r -= 360) : r <= -180 && (r += 360);
     const a = n("common.rotation.inUnit");
@@ -47048,9 +47037,9 @@ export var M9 = mayBeUseMemp(function ({
       i = VO(),
       o = IV(),
       r = O$(),
-      [a, l] = cD(r?.flipHorizontal, false),
-      [c, u] = cD(r?.flipVertical, false),
-      [d] = cD(r?.isTransformLocked, false),
+      [a, l] = possibleHook3(r?.flipHorizontal, false),
+      [c, u] = possibleHook3(r?.flipVertical, false),
+      [d] = possibleHook3(r?.isTransformLocked, false),
       [p, f, h, m] = rI([uH, fH, pH, dH]),
       g = d || !p,
       x = d || t || !f,
@@ -47549,8 +47538,8 @@ export var x6 = function () {
       c = oI("ui/fixLayers"),
       u = 1 === s?.length,
       d = s?.length > 2,
-      [p, f] = cD(u ? s[0].alwaysOnTop : undefined, false),
-      [h, m] = cD(u ? s[0].alwaysOnBottom : undefined, false),
+      [p, f] = possibleHook3(u ? s[0].alwaysOnTop : undefined, false),
+      [h, m] = possibleHook3(u ? s[0].alwaysOnBottom : undefined, false),
       g = !l || !r,
       x = !l || !u,
       b = !l || !a || !d,
@@ -47946,7 +47935,7 @@ export var O6 = function ({
 export function D6() {
   const { t: e } = ZL(),
     t = O$(),
-    [n, s] = cD(t?.includedInExport, false);
+    [n, s] = possibleHook3(t?.includedInExport, false);
   return (0, V6.jsx)(
     nb,
     {
@@ -48403,10 +48392,10 @@ export var y8 = function () {
       t = e("input.cutoutSmoothing"),
       n = IV(),
       s = oD(),
-      [i] = cD(s.scene.designUnit),
-      [o] = cD(s.scene.dpi),
+      [i] = possibleHook3(s.scene.designUnit),
+      [o] = possibleHook3(s.scene.dpi),
       r = O$(),
-      [a, l] = cD(r?.cutoutSmoothing, 0),
+      [a, l] = possibleHook3(r?.cutoutSmoothing, 0),
       [c, u] = (0, x8.useMemo)(() => {
         const e = (function (e, t) {
           return (
@@ -48800,9 +48789,9 @@ export var F8 = sI(function ({ engine: e }) {
   X8 = () => {
     const e = YF(),
       t = O$(),
-      [n] = cD(t?.hasStroke, false),
-      [s] = cD(n && t?.isStrokeEnabled, false),
-      [i] = cD(n && t?.Color("stroke/color")),
+      [n] = possibleHook3(t?.hasStroke, false),
+      [s] = possibleHook3(n && t?.isStrokeEnabled, false),
+      [i] = possibleHook3(n && t?.Color("stroke/color")),
       o = i && PO(i, e.editor);
     return !!(o && s && o.a > 0);
   },
@@ -48823,9 +48812,9 @@ export function iee({ disablePositionControls: e = false }) {
   const { t: t } = ZL(),
     n = IV(),
     s = O$(),
-    [i] = cD(s?.hasStroke),
-    [o, r] = cD(i && s?.strokePosition),
-    [a, l] = cD(i && s?.strokeCornerGeometry),
+    [i] = possibleHook3(s?.hasStroke),
+    [o, r] = possibleHook3(i && s?.strokePosition),
+    [a, l] = possibleHook3(i && s?.strokeCornerGeometry),
     c = {
       Center: t("property.strokePosition.center"),
       Inner: t("property.strokePosition.inner"),
@@ -49073,8 +49062,8 @@ export function gee({ plain: e = false, isDisabled: t = false }) {
     i = IV(),
     o = (0, dee.useMemo)(() => mee(n), [s.language]),
     r = O$(),
-    [a] = cD(r?.hasStroke, false),
-    [l, c] = cD(a && r?.strokeStyle, "Solid"),
+    [a] = possibleHook3(r?.hasStroke, false),
+    [l, c] = possibleHook3(a && r?.strokeStyle, "Solid"),
     u = n("property.strokeStyle.description");
   return (0, fee.jsxs)(bw, {
     children: [
@@ -49135,10 +49124,10 @@ var bee = function ({ isDisabled: e }) {
 export function vee({ isDisabled: e }) {
   const { t: t } = ZL(),
     n = O$(),
-    [s, i] = cD(n?.strokeWidth, 0),
+    [s, i] = possibleHook3(n?.strokeWidth, 0),
     o = t("property.strokeWidth.description"),
     r = oD(),
-    [a] = cD(r.scene.designUnit),
+    [a] = possibleHook3(r.scene.designUnit),
     l = rX(a),
     c = IV(),
     u = (() => {
@@ -49543,7 +49532,7 @@ export var Aee = mayBeUseMemp(
   }),
   Dee = (e) => {
     const t = oD(),
-      [n] = cD(t.scene.designUnit),
+      [n] = possibleHook3(t.scene.designUnit),
       s = GO(BleedMarginConfig, n),
       i = rX(n),
       o = (e) => `${(Math.round(100 * e) / 100).toString()} ${i}`;
@@ -49563,9 +49552,9 @@ export var Iee = function () {
       n = IV(),
       { t: s } = ZL(),
       i = e.getPageManager(),
-      [o, r] = cD(i.channels.bleedMargin),
-      [a, l] = cD(i.channels.bleedMarginEnabled),
-      [c] = cD(t.scene.designUnit),
+      [o, r] = possibleHook3(i.channels.bleedMargin),
+      [a, l] = possibleHook3(i.channels.bleedMarginEnabled),
+      [c] = possibleHook3(t.scene.designUnit),
       u = rX(c),
       { selectedOption: d, options: p } = Dee(o),
       f = (e, t) => {
@@ -49680,11 +49669,11 @@ export var Kee = mayBeUseMemp(function () {
       t = DO(),
       n = IV(),
       s = oD(),
-      [i] = cD(t.settings.pageFormats),
-      [o] = cD(s.scene.pageDimensions),
-      [r] = cD(s.scene.designUnit),
-      [a] = cD(s.scene.dpi),
-      [l, c] = cD(s.scene.aspectRatioLock),
+      [i] = possibleHook3(t.settings.pageFormats),
+      [o] = possibleHook3(s.scene.pageDimensions),
+      [r] = possibleHook3(s.scene.designUnit),
+      [a] = possibleHook3(s.scene.dpi),
+      [l, c] = possibleHook3(s.scene.aspectRatioLock),
       u = { unit: r, width: o.width, height: o.height },
       d = ({ width: e, height: n }) => {
         let s = 1;
@@ -49897,15 +49886,15 @@ export var rte = "UBQ_Formats-module__button--9GoDR",
 export var cte = mayBeUseMemp(function () {
     const { t: e } = ZL(),
       t = DO(),
-      [n] = cD(t.settings.pageFormats),
+      [n] = possibleHook3(t.settings.pageFormats),
       s = IV(),
       i = () => {
         s("action.page.changeFormat", { resyncCameraFromSnapshot: true });
       },
       o = oD(),
-      [r] = cD(o.scene.designUnit),
-      [a] = cD(o.scene.pageFormatId),
-      [l] = cD(o.scene.pageDimensions),
+      [r] = possibleHook3(o.scene.designUnit),
+      [a] = possibleHook3(o.scene.pageFormatId),
+      [l] = possibleHook3(o.scene.pageDimensions),
       c = (function ({ width: e, height: t }) {
         return e === t ? 2 : e > t ? 1 : 0;
       })(l),
@@ -50048,7 +50037,7 @@ export var gte = function () {
       { t: t } = ZL(),
       n = IV(),
       s = oD(),
-      [i] = cD(s.scene.layout);
+      [i] = possibleHook3(s.scene.layout);
     return (0, mte.jsxs)(Yk, {
       children: [
         (0, mte.jsx)(Sv, { children: t("property.layout") }),
@@ -50187,10 +50176,10 @@ export var yte = sI(function ({ engine: e }) {
               function () {
                 const e = DO(),
                   t = IV(),
-                  [n] = cD(e.settings.pageFormats),
+                  [n] = possibleHook3(e.settings.pageFormats),
                   { t: s } = ZL(),
                   i = oD(),
-                  [o, r] = cD(i.scene.designUnit),
+                  [o, r] = possibleHook3(i.scene.designUnit),
                   a = (s) => {
                     r(s);
                     const i = { ...e.getPageDimensions(), unit: s },
@@ -50546,9 +50535,9 @@ export var Gte = function () {
       { t: t } = ZL(),
       n = O$(),
       s = rI(jH),
-      [i] = cD(n?.automaticFontSizeEnabled, false),
-      [o, r] = cD(n?.minAutomaticFontSize, 0),
-      [a, l] = cD(n?.maxAutomaticFontSize, 0),
+      [i] = possibleHook3(n?.automaticFontSizeEnabled, false),
+      [o, r] = possibleHook3(n?.minAutomaticFontSize, 0),
+      [a, l] = possibleHook3(n?.maxAutomaticFontSize, 0),
       c = (e) => {
         e < a && r(e);
       },
@@ -51025,8 +51014,8 @@ export var Lne = mayBeUseMemp(
   Bne = "ubq/designblocks/Text";
 export function Tne(e, t) {
   const n = O$(),
-    [s] = cD(n?.horizontalTextAlignment),
-    [i] = cD(n?.verticalTextAlignment);
+    [s] = possibleHook3(n?.horizontalTextAlignment),
+    [i] = possibleHook3(n?.verticalTextAlignment);
   return {
     component: Bne,
     isActive: ("horizontal" === e && s === t) || ("vertical" === e && i === t),
@@ -54839,8 +54828,8 @@ export var Qoe = mayBeUseMemp(function ({
     facade: o,
   }) {
     const r = goe(),
-      [a] = cD(o?.settings.roles.effectiveRole),
-      [l] = cD(o?.settings.roles.previewRole);
+      [a] = possibleHook3(o?.settings.roles.effectiveRole),
+      [l] = possibleHook3(o?.settings.roles.previewRole);
     return (
       (0, zoe.useEffect)(() => {
         if (o?.engine) {
@@ -54894,7 +54883,7 @@ export var tre = {
     notifications: "UBQ_Editor-module__notifications--qaddH",
   },
   nre = cloneWithPrototypeAndProperties(reactJsxRuntime());
-export var ire = mayBeUseMemp(function ContextWrapper15({
+export var ContextWrapper15Memo = mayBeUseMemp(function ContextWrapper15({
   editorContainer: e,
   videoExportSupportState: t,
 }) {
@@ -54936,7 +54925,7 @@ export var ire = mayBeUseMemp(function ContextWrapper15({
         n.hideUserInterface = !u;
       });
     });
-  const [h] = cD(i.scene.mode);
+  const [h] = possibleHook3(i.scene.mode);
   return "Video" !== h || t.supported
     ? (0, nre.jsxs)(PI, {
         className: tre.block,
@@ -55852,10 +55841,10 @@ export var tae = cloneWithPrototypeAndProperties(reactJsxRuntime()),
 export var iae = mayBeUseMemp(function ({ block: e, type: t }) {
     const n = YF(),
       { t: s } = ZL(),
-      [i] = cD(e.textFontStyles),
-      [o] = cD(e.textFontWeights),
-      [r] = cD(e.canToggleBoldFont),
-      [a] = cD(e.canToggleItalicFont),
+      [i] = possibleHook3(e.textFontStyles),
+      [o] = possibleHook3(e.textFontWeights),
+      [r] = possibleHook3(e.canToggleBoldFont),
+      [a] = possibleHook3(e.canToggleItalicFont),
       l = undefined !== o && "bold" === o[0],
       c = undefined !== i && "italic" === i[0],
       u = (!r && "bold" === t) || (!a && "italic" === t),
@@ -56395,11 +56384,11 @@ export var Bae = function ({ isDisabled: e }) {
       n = rI(EH),
       s = X8(),
       i = oD(),
-      [o] = cD(i.scene.designUnit),
+      [o] = possibleHook3(i.scene.designUnit),
       r = rX(o),
       a = O$(),
-      [l] = cD(a?.hasStroke, false),
-      [c] = cD(l && a?.strokeWidth, 0),
+      [l] = possibleHook3(a?.hasStroke, false),
+      [c] = possibleHook3(l && a?.strokeWidth, 0),
       u = parseFloat(c.toFixed(2)),
       d = t("property.strokeWidth.description");
     return s
@@ -57863,7 +57852,7 @@ export var previewNavigationComponent = mayBeUseMemp(function () {
     [, l] = BQ("//ly.img.panel/inspector", o),
     c = oD(),
     { scene: u } = c,
-    [d, p] = cD(u.playing, false),
+    [d, p] = possibleHook3(u.playing, false),
     [, { configuredRole: f, previewRole: h, setPreviewRole: m }] = KF(),
     g = null !== h,
     x = n("common.mode.preview"),
@@ -57932,8 +57921,8 @@ export var undoRedoNavigationComponent = Ple({
         { t: t } = ZL(),
         n = t("component.undo.undo"),
         s = t("component.undo.redo"),
-        [i] = cD(e.canUndo, false),
-        [o] = cD(e.canRedo, false);
+        [i] = possibleHook3(e.canUndo, false),
+        [o] = possibleHook3(e.canRedo, false);
       Xy(["ctrl+z", "command+z"], () => (e.undo(), false)),
         Xy(["ctrl+shift+z", "command+shift+z"], () => (e.redo(), false));
       const { width: r } = iL("embedViewport"),
@@ -58024,8 +58013,8 @@ export function lce() {
     { t: t } = ZL(),
     n = Nz(),
     s = oD(),
-    [i, o] = cD(s.camera.zoomLevel),
-    [r] = cD(s.camera.autoFit),
+    [i, o] = possibleHook3(s.camera.zoomLevel),
+    [r] = possibleHook3(s.camera.autoFit),
     a = (0, Yle.useRef)(window.devicePixelRatio),
     l = (0, Yle.useRef)(r),
     c = (0, Yle.useCallback)(() => {
