@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CE.SDK Example</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+
+      html {
+        overscroll-behavior-x: contain;
+      }
+
+      #root {
+        height: 100vh;
+      }
+
+      .ubq-public {
+        /* Override CSS variables for a custom theme */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script type="module">
+      import CreativeEditorSDK from './index.js';
+
+      window.onload = function () {
+        var href = window.location.href.split('?');
+        var config = {
+          locale: 'en',
+          baseURL: 'assets/',
+          role: 'Creator', // 'Creator', 'Adopter', 'Viewer'
+          callbacks: {
+            onSave: handleSave,
+            onLoad: handleLoad,
+            onExport: handleExport,
+            onUnsupportedBrowser: () => {
+              console.error('Unsupported Browser Detected');
+            }
+          },
+          ui: {
+            elements: {
+              view: 'default',
+              panels: {
+                settings: true
+              },
+              navigation: {
+                action: {
+                  close: true,
+                  back: true,
+                  save: true,
+                  load: true,
+                  export: true
+                }
+              }
+            }
+          }
+        };
+
+        CreativeEditorSDK.create(document.getElementById('root'), config).then(
+          async (instance) => {
+            await Promise.all([
+              instance.addDefaultAssetSources(),
+              instance.addDemoAssetSources()
+            ]);
+            await instance.createDesignScene();
+          }
+        );
+      };
+
+      var handleExport = function (blobs) {
+        const blob = blobs[0];
+        const element = document.createElement('a');
+        element.setAttribute('href', window.URL.createObjectURL(blob));
+        element.setAttribute(
+          'download',
+          `cesdk-${new Date().toISOString()}.png`
+        );
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+      };
+
+      var handleSave = function (scene) {
+        const element = document.createElement('a');
+        const base64Data = btoa(unescape(encodeURIComponent(scene)));
+        element.setAttribute(
+          'href',
+          `data:application/octet-stream;base64,${base64Data}`
+        );
+        element.setAttribute(
+          'download',
+          `cesdk-${new Date().toISOString()}.scene`
+        );
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+      };
+
+      var handleLoad = (function () {
+        const element = document.createElement('input');
+        element.setAttribute('type', 'file');
+        element.setAttribute('accept', '.scene');
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        return () => {
+          return new Promise((resolve, reject) => {
+            element.onchange = (e) => {
+              const file = e.target.files[0];
+              if (file === undefined) {
+                reject(new Error('No files selected'));
+              } else {
+                const reader = new FileReader();
+                reader.readAsText(file, 'UTF-8');
+
+                reader.onload = (readerEvent) => {
+                  const scene = readerEvent.target.result;
+                  resolve(scene);
+                };
+              }
+
+              element.onchange = null;
+              element.value = '';
+            };
+
+            element.click();
+          });
+        };
+      })();
+    </script>
+  </body>
+</html>
