@@ -1,6 +1,11 @@
 import { CompButtonGroup } from "./CompButtonGroup";
 import { CompCustomButton } from "./CompCustomButton";
-import { IconSearch, IconChevronDown, IconChevronUp, IconCheckmark, IconArrowUpOutline, IconPlusCircle } from "./Icons";
+import { IconCheckmark } from "./icons/IconCheckmark.jsx";
+import { IconSearch } from "./icons/IconSearch.jsx";
+import { IconPlusCircle } from "./icons/IconPlusCircle.jsx";
+import { IconArrowUpOutline } from "./icons/IconArrowUpOutline.jsx";
+import { IconChevronDown } from "./icons/IconChevronDown.jsx";
+import { IconChevronUp } from "./icons/IconChevronUp.jsx";
 import { Yle, oce } from "./reacts";
 import { DO, ZL, Nz, oD, possibleHook3, uD, rce, ace, pp, Xy, iL, Ly, Cx, ice, yC, cce, Sw } from "./working";
 

@@ -1,6 +1,6 @@
 import { CompButtonGroup } from "./CompButtonGroup";
 import { CompCustomButton } from "./CompCustomButton";
-import { X3, HZ } from "./Icons";
+import { X3, HZ } from "./icons/Icons";
 import { u7 } from "./reacts";
 import { ZL, c7, Sv, Ly } from "./working";
 

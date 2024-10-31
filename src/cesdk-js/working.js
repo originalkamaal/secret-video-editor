@@ -27,7 +27,9 @@ import {
   isObjHasStartFunc,
   isString,
   isStringOrArray,
+  Qg,
   setupRenderingProcessor,
+  xh,
 } from "./utils";
 import {
   _m,
@@ -710,7 +712,6 @@ import {
   SI,
   TO,
   UR,
-  WF,
   XE,
   XF,
   ZF,
@@ -754,6 +755,7 @@ import {
   yy,
   Xx,
 } from "./reacts";
+import { WF } from "./reacts";
 import { UIComponents } from "./UIComponents";
 import {
   CanvasMenuBuilder,
@@ -789,7 +791,7 @@ import { CompButtonGroup } from "./CompButtonGroup";
 import { CompLayout1 } from "./CompLayout1";
 import { IconUndo } from "./IconUndo.jsx";
 import { IconRedo } from "./IconRedo.jsx";
-import { ContextWrapper2 } from "./ContextWrapper2";
+import { SizeProvider } from "./ContextWrapper2";
 import { ContextWrapper6 } from "./ContextWrapper6";
 import { ContextWrapper5 } from "./ContextWrapper5";
 import { ContextWrapper4 } from "./ContextWrapper4";
@@ -809,10 +811,8 @@ import {
   AZ,
   B0,
   bE,
-  Bq,
   BY,
   bZ,
-  IconCheckmark,
   c3,
   c6,
   CC,
@@ -826,7 +826,6 @@ import {
   e$,
   e7,
   EJ,
-  Eq,
   EY,
   F0,
   f6,
@@ -870,7 +869,6 @@ import {
   lZ,
   M0,
   mle,
-  Mq,
   mv,
   MY,
   mY,
@@ -888,7 +886,6 @@ import {
   OW,
   OX,
   p8,
-  IconChevronDown,
   pte,
   PY,
   Q5,
@@ -909,7 +906,6 @@ import {
   rZ,
   s3,
   s6,
-  Sq,
   SY,
   t3,
   t6,
@@ -917,12 +913,10 @@ import {
   TX,
   u8,
   U8,
-  IconChevronUp,
   uee,
   uK,
   Une,
   V0,
-  VI,
   Vre,
   VX,
   vZ,
@@ -930,13 +924,11 @@ import {
   wC,
   wQ,
   Wq,
-  wq,
   wY,
   WY,
   x5,
   xE,
   xle,
-  xq,
   xre,
   xY,
   Y9,
@@ -953,7 +945,17 @@ import {
   zq,
   Zse,
   zY,
-} from "./Icons";
+} from "./icons/Icons";
+import { IconPhoto } from "./icons/IconPhoto.jsx";
+import { IconUpload } from "./icons/IconUpload.jsx";
+import { IconCheckmark } from "./icons/IconCheckmark.jsx";
+import { IconPlayOutline } from "./icons/IconPlayOutline.jsx";
+import { IconFontT } from "./icons/IconFontT.jsx";
+import { IconSticker } from "./icons/IconSticker.jsx";
+import { IconShapes } from "./icons/IconShapes.jsx";
+import { IconMusic } from "./icons/IconMusic.jsx";
+import { IconChevronDown } from "./icons/IconChevronDown.jsx";
+import { IconChevronUp } from "./icons/IconChevronUp.jsx";
 import {
   Eh,
   Lh,
@@ -1259,7 +1261,7 @@ import {
 } from "./vh";
 import { ClickOutsideContextProvider } from "./ClickOutsideContextProvider";
 import { ContextPortalContextProvider } from "./ContextPortalContextProvider";
-import { AllComponents, cC, gC, Jx, Kk, tC, Ux, Wx } from "./AllComponents";
+import { PopoverWrapper, cC, gC, Jx, Kk, tC, Ux, Wx, yx } from "./components/AllComponents";
 import { lb } from "./lb";
 import { ContextWrapper8 } from "./ContextWrapper8";
 import { CanvasZooming } from "./CanvasZooming";
@@ -6681,7 +6683,7 @@ export function Fd() {
   return new Map();
 }
 export var Hd = (e) => e.key || "";
-export var Nd = ({
+export var DynamicPresenceTransition = ({
   children: e,
   custom: t,
   initial: n = true,
@@ -8337,15 +8339,6 @@ export var hh = (e, t, n, s) =>
     [zp.SQUARE]: rh.buildHarmony(t, Jf, n, s),
   }[e]);
 export const gh = "ubq-public";
-export const xh = (
-  e,
-  { publicThemeElementClass: t = gh, fallback: n = "red" } = {}
-) => {
-  const s = e.startsWith("--") ? e : `--${e}`,
-    i = document.querySelector(`.${t}`);
-  if (null == i) return n;
-  return getComputedStyle(i).getPropertyValue(s).trim();
-};
 export function bh(e, t) {
   try {
     const t = xh(e),
@@ -9869,12 +9862,6 @@ export var mostlyHook1 = (e, t, n = {}) => {
       );
     }, [e]);
 };
-export function Qg(...e) {
-  return (t) => {
-    for (const n of e)
-      "function" == typeof n ? n(t) : null != n && (n.current = t);
-  };
-}
 export var sx;
 export var ax = () => {
   const e = (0, react13.useRef)(true);
@@ -9904,16 +9891,13 @@ export function hx({ children: e }) {
   (sx.Container = ContextWrapper5);
 export var mx = px;
 
-export var bx = 0;
-export var yx = () => `UBQ__popover-content-group-${(bx += 1)}`;
-
 export var wx = (0, hm.createContext)({
   closePopover: () => {
     throw new Error("No Context for Popover provided");
   },
   isOpen: false,
 });
-export var Cx = AllComponents;
+export var Cx = PopoverWrapper;
 export var _x = {
   heading: "UBQ_Heading-module__heading--DTBrP",
   singleline: "UBQ_Heading-module__singleline--2WkDS",
@@ -10277,7 +10261,7 @@ export var Ey = (0, wy.forwardRef)(function (
   return (0, reactJsx1.jsxs)(reactJsx1.Fragment, {
     children: [
       (0, wy.cloneElement)(e, { ref: m, "aria-describedby": r }),
-      (0, reactJsx1.jsx)(Nd, {
+      (0, reactJsx1.jsx)(DynamicPresenceTransition, {
         children:
           d &&
           (0, reactJsx1.jsx)(hx, {
@@ -10324,7 +10308,7 @@ export var Ay = function ({
 }) {
   return "none" === m
     ? (0, Py.jsx)(Py.Fragment, { children: t })
-    : (0, Py.jsxs)(AllComponents, {
+    : (0, Py.jsxs)(PopoverWrapper, {
         ...c,
         onClose: r,
         closeOnWheel: u,
@@ -10688,7 +10672,7 @@ export var Cv = {
       "aria-live": "polite",
       role: "region",
       className: vv.notificationContainer,
-      children: (0, wv.jsx)(Nd, { children: e }),
+      children: (0, wv.jsx)(DynamicPresenceTransition, { children: e }),
     });
   },
   Item: function ({
@@ -11677,7 +11661,7 @@ export function Ww({
 }) {
   const d = (0, zw.useRef)(null);
   mostlyHook1(["esc"], s ?? null, { elementRef: d });
-  return (0, Qw.jsx)(Nd, {
+  return (0, Qw.jsx)(DynamicPresenceTransition, {
     children:
       t &&
       (0, Qw.jsx)(ClickOutsideContextProvider, {
@@ -12074,7 +12058,7 @@ export var rC = function ({
       default:
         m = { open: { x: "0%", y: "0%" }, closed: { x: "0%", y: "0%" } };
     }
-  return (0, oC.jsx)(Nd, {
+  return (0, oC.jsx)(DynamicPresenceTransition, {
     children:
       t &&
       (0, oC.jsx)(Sd.div, {
@@ -27398,7 +27382,7 @@ export var nH = function ({ editorContainer: e }) {
         }
       );
     }, [e]),
-    (0, tH.jsx)(Nd, {
+    (0, tH.jsx)(DynamicPresenceTransition, {
       children:
         u &&
         (0, tH.jsx)(Sd.div, {
@@ -27435,7 +27419,7 @@ export var nH = function ({ editorContainer: e }) {
             (0, tH.jsxs)("div", {
               className: eH.message,
               children: [
-                (0, tH.jsx)(VI, { width: "32px", height: "32px" }),
+                (0, tH.jsx)(IconUpload, { width: "32px", height: "32px" }),
                 (0, tH.jsxs)("div", {
                   children: [
                     (0, tH.jsx)(HI, {
@@ -33771,7 +33755,7 @@ export var YW = mayBeUseMemp(function ({
         (0, WW.jsxs)("div", {
           className: HW.paginationContainer,
           children: [
-            (0, WW.jsxs)(Nd, {
+            (0, WW.jsxs)(DynamicPresenceTransition, {
               children: [
                 0 !== U &&
                   (0, WW.jsx)(
@@ -33998,7 +33982,7 @@ export var aK = function ({ onSelect: e, onUpload: t }) {
     children: (0, rK.jsx)("div", {
       id: "asset-library-content",
       className: iK,
-      children: (0, rK.jsx)(Nd, {
+      children: (0, rK.jsx)(DynamicPresenceTransition, {
         initial: false,
         children: (() => {
           if (i) return (0, rK.jsx)(PW, { isLoading: i });
@@ -38044,7 +38028,7 @@ export function _1({
               children: e.label && (0, S1.jsx)(fk.Label, { children: e.label }),
             }),
             (0, S1.jsx)(
-              Nd,
+              DynamicPresenceTransition,
               { children: a && t && t(e) },
               `${e.id}-collapsable`
             ),
@@ -40823,12 +40807,12 @@ export var b4 = WithEngineComp(function ({ engine: e, block: t }) {
       switch (u) {
         case "//ly.img.ubq/fill/image":
           return {
-            icon: (0, g4.jsx)(wq, {}),
+            icon: (0, g4.jsx)(IconPhoto, {}),
             label: n("component.contentFill.image"),
           };
         case "//ly.img.ubq/fill/video":
           return {
-            icon: (0, g4.jsx)(Mq, {}),
+            icon: (0, g4.jsx)(IconPlayOutline, {}),
             label: n("component.contentFill.video"),
           };
         case "//ly.img.ubq/fill/gradient/conical":
@@ -40875,7 +40859,7 @@ export var b4 = WithEngineComp(function ({ engine: e, block: t }) {
                         (0, g4.jsx)(yC.Item, {
                           children: (0, g4.jsx)(CompCustomButton, {
                             variant: "plain",
-                            icon: (0, g4.jsx)(Mq, {}),
+                            icon: (0, g4.jsx)(IconPlayOutline, {}),
                             name: "video-fill",
                             onClick: () => {
                               "//ly.img.ubq/fill/video" !== u &&
@@ -40895,7 +40879,7 @@ export var b4 = WithEngineComp(function ({ engine: e, block: t }) {
                       (0, g4.jsx)(yC.Item, {
                         children: (0, g4.jsx)(CompCustomButton, {
                           variant: "plain",
-                          icon: (0, g4.jsx)(wq, {}),
+                          icon: (0, g4.jsx)(IconPhoto, {}),
                           name: "image-fill",
                           onClick: () => {
                             "//ly.img.ubq/fill/image" !== u &&
@@ -41026,12 +41010,12 @@ export var y4 = mayBeUseMemp(
         switch (f) {
           case "//ly.img.ubq/fill/image":
             return {
-              icon: (0, g4.jsx)(wq, {}),
+              icon: (0, g4.jsx)(IconPhoto, {}),
               valueLabel: i("component.contentFill.image"),
             };
           case "//ly.img.ubq/fill/video":
             return {
-              icon: (0, g4.jsx)(Mq, {}),
+              icon: (0, g4.jsx)(IconPlayOutline, {}),
               valueLabel: i("component.contentFill.video"),
             };
           case "//ly.img.ubq/fill/gradient/conical":
@@ -41313,7 +41297,7 @@ export var U4 = WithEngineComp(function ({
     : null;
 });
 
-export var $4 = ["B", "kB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+export var storageUnits = ["B", "kB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
 export var q4 = (e) => e.toLocaleString("en");
 
 export var Z4 = (e, t) => {
@@ -41325,8 +41309,8 @@ export var Z4 = (e, t) => {
         throw new TypeError(`Expected a finite number, got ${typeof t}: ${t}`);
       if (0 === t) return " 0 B";
       if (t < 1) return `${q4(t)} B`;
-      const n = Math.min(Math.floor(Math.log10(t) / 3), $4.length - 1);
-      return (t = Number((t / 1e3 ** n).toPrecision(3))), `${q4(t)} ${$4[n]}`;
+      const n = Math.min(Math.floor(Math.log10(t) / 3), storageUnits.length - 1);
+      return (t = Number((t / 1e3 ** n).toPrecision(3))), `${q4(t)} ${storageUnits[n]}`;
     })(t.reduce((e, t) => e + t.size, 0))}`;
   }
   return (0, G4.jsxs)(G4.Fragment, {
@@ -41779,26 +41763,26 @@ export var T3 = WithEngineComp(function ({
             switch (true) {
               case "//ly.img.ubq/text" === t:
                 return (0, A3.jsx)(TE.MetaIcon, {
-                  children: (0, A3.jsx)(Bq, {}),
+                  children: (0, A3.jsx)(IconFontT, {}),
                 });
               case "//ly.img.ubq/fill/video" === s:
                 return (0, A3.jsx)(TE.MetaIcon, {
-                  children: (0, A3.jsx)(Mq, {}),
+                  children: (0, A3.jsx)(IconPlayOutline, {}),
                 });
               case "//ly.img.ubq/fill/image" === s &&
                 "sticker" === e.block.getKind(n):
                 return (0, A3.jsx)(TE.MetaIcon, {
-                  children: (0, A3.jsx)(Eq, {}),
+                  children: (0, A3.jsx)(IconSticker, {}),
                 });
               case "//ly.img.ubq/fill/image" === s:
                 return (0, A3.jsx)(TE.MetaIcon, {
-                  children: (0, A3.jsx)(wq, {}),
+                  children: (0, A3.jsx)(IconPhoto, {}),
                 });
               case null != o:
                 return (0, A3.jsxs)(A3.Fragment, {
                   children: [
                     (0, A3.jsx)(TE.MetaIcon, {
-                      children: (0, A3.jsx)(Sq, {}),
+                      children: (0, A3.jsx)(IconShapes, {}),
                     }),
                     (0, A3.jsx)(TE.MetaLabel, { children: V3(h, o) }),
                   ],
@@ -41883,7 +41867,7 @@ export var M3 = WithEngineComp(function ({
         children: [
           (0, A3.jsx)(TE.MetaLabel, { show: "selected", children: h }),
           f && (0, A3.jsx)(TE.MetaIcon, { children: (0, A3.jsx)(Q5, {}) }),
-          (0, A3.jsx)(TE.MetaIcon, { children: (0, A3.jsx)(xq, {}) }),
+          (0, A3.jsx)(TE.MetaIcon, { children: (0, A3.jsx)(IconMusic, {}) }),
           (0, A3.jsxs)(TE.MetaLabel, {
             children: [
               (0, A3.jsx)("span", { children: "Title" }),
@@ -48653,7 +48637,7 @@ export var Aie = mayBeUseMemp(function () {
             onChange: _B((e) => {
               t.blocks["//ly.img.ubq/text"].colorEnabled = e;
             }),
-            icon: (0, Pie.jsx)(Bq, {}),
+            icon: (0, Pie.jsx)(IconFontT, {}),
             label: e("component.assetSettings.text.color"),
           }),
         }),
@@ -50111,7 +50095,7 @@ export var ContextWrapper15Memo = mayBeUseMemp(function ContextWrapper15({
                 !u &&
                 (f || "left" === d) &&
                 (0, nre.jsx)(Nq, { className: tre.dock }),
-              (0, nre.jsxs)(ContextWrapper2, {
+              (0, nre.jsxs)(SizeProvider, {
                 className: (0, dD.default)(tre.canvasViewport, {
                   [tre.verticalBodyLayout]: f,
                 }),
@@ -50227,7 +50211,7 @@ export var ContextWrapper15Memo = mayBeUseMemp(function ContextWrapper15({
         }),
       });
 });
-export function ore({ error: e }) {
+export function SomeKindOfErrorComponent({ error: e }) {
   return (0, nre.jsx)("div", {
     className: tre.block,
     style: { opacity: 0 },
@@ -50982,7 +50966,7 @@ export var xae = mayBeUseMemp(function () {
                   name: "insert-variable",
                   variant: "plain",
                   ...t,
-                  children: [(0, gae.jsx)(Bq, {}), e && r],
+                  children: [(0, gae.jsx)(IconFontT, {}), e && r],
                 }),
               () =>
                 (0, gae.jsx)(bw.Options, {
@@ -51763,7 +51747,7 @@ export var nle = mayBeUseMemp(
               (0, tle.jsx)(Ly, {
                 label: n("input.shape.options"),
                 children: (0, tle.jsxs)(CompCustomButton, {
-                  icon: (0, tle.jsx)(Sq, {}),
+                  icon: (0, tle.jsx)(IconShapes, {}),
                   name: "shapeOptions",
                   ...e,
                   variant: "plain",
@@ -52163,9 +52147,9 @@ export var Ple = function (e) {
 };
 
 export var Tle = {
-  default: (0, Ble.jsx)(wq, {}),
+  default: (0, Ble.jsx)(IconPhoto, {}),
   download: (0, Ble.jsx)(fle, {}),
-  upload: (0, Ble.jsx)(VI, {}),
+  upload: (0, Ble.jsx)(IconUpload, {}),
   save: (0, Ble.jsx)(mle, {}),
 };
 export var actionsNavigationComponent = Ple({
@@ -52372,7 +52356,7 @@ export var actionsNavigationComponent = Ple({
           name: A.callbackName,
           children: m,
           handler: A,
-          icon: (0, Ble.jsx)(VI, {}),
+          icon: (0, Ble.jsx)(IconUpload, {}),
           isDisabled: "Saving" === _.state,
           isLoading: _.name === A.callbackName && "Saving" === _.state,
           "data-cy": "tb-loadScene",
@@ -52382,7 +52366,7 @@ export var actionsNavigationComponent = Ple({
           name: B.callbackName,
           children: g,
           handler: B,
-          icon: (0, Ble.jsx)(VI, {}),
+          icon: (0, Ble.jsx)(IconUpload, {}),
           isDisabled: "Saving" === _.state,
           isLoading: _.name === B.callbackName && "Saving" === _.state,
           "data-cy": "tb-loadArchive",
@@ -52433,7 +52417,7 @@ export var actionsNavigationComponent = Ple({
           name: q.callbackName,
           children: x,
           handler: q,
-          icon: (0, Ble.jsx)(wq, {}),
+          icon: (0, Ble.jsx)(IconPhoto, {}),
           isDisabled: "Saving" === _.state,
           isLoading: _.name === q.callbackName && "Saving" === _.state,
           "data-cy": "tb-exportScene",
@@ -52444,7 +52428,7 @@ export var actionsNavigationComponent = Ple({
           name: G.callbackName,
           children: b,
           handler: G,
-          icon: (0, Ble.jsx)(wq, {}),
+          icon: (0, Ble.jsx)(IconPhoto, {}),
           isDisabled: "Saving" === _.state,
           isLoading: _.name === G.callbackName && "Saving" === _.state,
           "data-cy": "tb-exportPDFScene",
@@ -52454,7 +52438,7 @@ export var actionsNavigationComponent = Ple({
           name: O.callbackName,
           children: y,
           handler: O,
-          icon: (0, Ble.jsx)(Mq, {}),
+          icon: (0, Ble.jsx)(IconPlayOutline, {}),
           isDisabled: "Saving" === _.state,
           isLoading: _.name === O.callbackName && "Saving" === _.state,
           "data-cy": "tb-exportVideoScene",

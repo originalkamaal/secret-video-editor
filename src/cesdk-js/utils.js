@@ -1,6 +1,7 @@
 import { allAnimationStates, unknownBool2 } from "./constants/constants";
 import { renderPipelineStages } from "./constants/constants";
 import { TaskScheduler } from "./classes/TaskScheduler";
+import { gh } from "./working";
 
 export function setupRenderingProcessor(scheduleNextFrame, onRenderComplete) {
   let isFramePending = false,
@@ -127,5 +128,19 @@ export function hasVariants(e) {
 }
 export function isString(e) {
   return "string" == typeof e;
+}
+export const xh = (
+  e,
+  { publicThemeElementClass: t = gh, fallback: n = "red" } = {}
+) => {
+  const s = e.startsWith("--") ? e : `--${e}`, i = document.querySelector(`.${t}`);
+  if (null == i) return n;
+  return getComputedStyle(i).getPropertyValue(s).trim();
+};
+export function Qg(...e) {
+  return (t) => {
+    for (const n of e)
+      "function" == typeof n ? n(t) : null != n && (n.current = t);
+  };
 }
 

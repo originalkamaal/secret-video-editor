@@ -1,12 +1,14 @@
-import { ClickOutsideContextProvider } from "./ClickOutsideContextProvider";
-import { CompCustomButton } from "./CompCustomButton";
-import { CompCustomIcon } from "./CompCustomIcon";
-import { Rx, Mx, CC, wC } from "./Icons";
-import { hm, mm, fm, vx, pm, Fx, Nx, Dx, Vx, Zx, Xx, eC, Jk, Wk, Zk, lC, mC, VC, jC, SC } from "./reacts";
-import { $x, _C, AC, aC, BC, EC, Gk, Gx, gx, Hx, Ix, LC, MC, OC, PC, qx, Qx, RC, TC, Xk, xx, Yx, zx } from "./vh";
-import { yx, mostlyHook1, Ng, xh, Qg, wx, um, Nd, hx, Sd, bC, Qb } from "./working";
+import { ClickOutsideContextProvider } from "../ClickOutsideContextProvider";
+import { CompCustomButton } from "../CompCustomButton";
+import { CompCustomIcon } from "../CompCustomIcon";
+import { Rx, Mx, CC, wC } from "../icons/Icons";
+import { hm, mm, fm, vx, pm, Fx, Nx, Dx, Vx, Zx, Xx, eC, Jk, Wk, Zk, lC, mC, VC, jC, SC } from "../reacts";
+import { $x, _C, AC, aC, BC, EC, Gk, Gx, gx, Hx, Ix, LC, MC, OC, PC, qx, Qx, RC, TC, Xk, xx, Yx, zx } from "../vh";
+import { mostlyHook1, Ng, wx, um, DynamicPresenceTransition, hx, Sd, bC, Qb } from "../working";
+import { Qg } from "../utils";
+import { xh } from "../utils";
 
-export var AllComponents = (0, hm.forwardRef)(function (
+export var PopoverWrapper = (0, hm.forwardRef)(function (
   {
     children: [e, t], disableFocusTrap: n, placement: s, popperContainerClassname: i, onClose: o, onOpen: r, defaultOpen: a = false, closeOnWheel: l = false, closeOnOutsideClick: c = true, keyShortcutTrigger: u, keyShortcutTriggerOptions: { preventDefault: d, ...p } = {}, doubleOffset: f = false, className: h, returnFocus: m, boundary: g = {},
   },
@@ -128,7 +130,7 @@ export var AllComponents = (0, hm.forwardRef)(function (
           setReturnFocus: m,
         },
       }),
-      (0, vx.jsx)(Nd, {
+      (0, vx.jsx)(DynamicPresenceTransition, {
         children: y &&
           (0, vx.jsx)(hx, {
             children: (0, vx.jsx)(ClickOutsideContextProvider, {
@@ -332,7 +334,7 @@ export function zC({ children: e }) {
   return (0, VC.jsx)(bC.Item, { children: e });
 }
 export function $C({ children: e, isDisabled: t }) {
-  return (0, VC.jsxs)(AllComponents, {
+  return (0, VC.jsxs)(PopoverWrapper, {
     children: [
       (e) => (0, VC.jsx)(CompCustomButton, {
         name: "treeViewMenuMore",
@@ -365,4 +367,6 @@ export function DC({ children: e, isActive: t, className: n }) {
   (xC.Menu = $C),
   (xC.MenuItem = zC);
 export var xC;
+export var bx = 0;
+export var yx = () => `UBQ__popover-content-group-${(bx += 1)}`;
 

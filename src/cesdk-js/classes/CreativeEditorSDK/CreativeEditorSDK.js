@@ -5,7 +5,7 @@ import CreativeEngine, {
 } from "@/cesdk-engine";
 import { qR, $R, kM, lM, IR, UL, eD, bh, $se, rre, lre, pre, mre, vae, yae, lle, jre, X7, gh, rm } from "../../working";
 import { cL } from "@/cesdk-js/reacts";
-import { ContextWrapper1 } from "@/cesdk-js/ContextWrapper1";
+import { RootOfEditor } from "@/cesdk-js/ContextWrapper1";
 import { KM, LocalizationConfig, HeadingLevelStart, CDNBaseURL } from "@/cesdk-js/constants/configs";
 import { configMigrations } from "./utils/uploadHandler";
 import { isDOMAvailable } from "./utils/uploadHandler";
@@ -300,7 +300,7 @@ export var CreativeEditorSDK = class {
     }
     function g(e, t, n) {
       m.render(
-        (0, jsxRuntimeClone.jsx)(ContextWrapper1, {
+        (0, jsxRuntimeClone.jsx)(RootOfEditor, {
           cesdk: e,
           facade: t,
           initError: n,

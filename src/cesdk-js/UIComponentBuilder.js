@@ -2,8 +2,8 @@ import { cloneWithPrototypeAndProperties } from "@/cesdk-common/others/createLaz
 import { reactJsxRuntime } from "@/cesdk-common/react";
 import {  f$, Cx, Sw, Kz } from "./working";
 import { m$ } from "./vh";
-import { IconChevronDown } from "./Icons";
-import { IconChevronUp } from "./Icons";
+import { IconChevronDown } from "./icons/IconChevronDown.jsx";
+import { IconChevronUp } from "./icons/IconChevronUp.jsx";
 import { h$ } from "./reacts";
 import { CompButtonGroup } from "./CompButtonGroup";
 import { CompCustomButton } from "./CompCustomButton";
